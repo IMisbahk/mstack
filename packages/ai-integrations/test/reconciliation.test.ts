@@ -139,7 +139,9 @@ test("adapter deselection retains shared contributors and executable modes are e
     const desired = createIntegrationPlan(createDefaultRegistry(), spec, ["codex", "cursor"]);
     const install = createReconciliationPlan(desired, await inspectIntegrationRepository(root, desired));
     await applyIntegrationPlan(root, approveIntegrationPlan(install, Object.fromEntries(install.changes.flatMap((change) => change.approvalRequirements.map((requirement) => [requirement.id, "approve" as const])))));
-    assert.equal((await stat(join(root, "tools/check.mjs"))).mode & 0o777, 0o755);
+    if (process.platform !== "win32") assert.equal((await stat(join(root, "tools/check.mjs"))).mode & 0o777, 0o755);
+    const installedManifest = JSON.parse(await readFile(join(root, ".mstack/runtime/manifest.json"), "utf8")) as { resources: Array<{ path: string; mode?: number }> };
+    assert.equal(installedManifest.resources.find((resource) => resource.path === "tools/check.mjs")?.mode, 0o755);
 
     const removal = createRemovalPlan(await inspectIntegrationRepository(root, desired), { environments: ["codex"] });
     await applyIntegrationPlan(root, removal);

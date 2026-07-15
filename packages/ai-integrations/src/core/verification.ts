@@ -21,7 +21,7 @@ export async function verifyIntegrationRuntime(root: string, desired?: Integrati
         ? ownedJsonValid(snapshot.content ?? "", resource.ownedEntries ?? [])
         : snapshot.hash === resource.installedHash;
     if (!ownershipValid) findings.push({ code: "hash-drift", level: "error", path: resource.path, resourceId: resource.resourceId, message: "Installed managed state differs from the manifest hash" });
-    if (resource.mode !== undefined && snapshot.mode !== resource.mode) findings.push({ code: "mode-drift", level: "error", path: resource.path, resourceId: resource.resourceId, message: `Expected mode ${resource.mode.toString(8)}, found ${snapshot.mode?.toString(8) ?? "missing"}` });
+    if (process.platform !== "win32" && resource.mode !== undefined && snapshot.mode !== resource.mode) findings.push({ code: "mode-drift", level: "error", path: resource.path, resourceId: resource.resourceId, message: `Expected mode ${resource.mode.toString(8)}, found ${snapshot.mode?.toString(8) ?? "missing"}` });
     if (resource.security !== "content" && resource.approvals.length === 0) findings.push({ code: "missing-approval", level: "error", path: resource.path, resourceId: resource.resourceId, message: "Privileged resource has no recorded operation-specific approval" });
     if (resource.path.endsWith(".mjs") && resource.security === "executable") {
       const checked = spawnSync(process.execPath, ["--check", join(inspection.root, resource.path)], { encoding: "utf8" });
