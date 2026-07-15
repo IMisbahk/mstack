@@ -1,0 +1,140 @@
+packages/ai-integrations/src/runtime/agents.ts
+  s_52d7b1cf983707::t_cb0e5accd09cbe 1-18,21-469
+  s_15742fdeac8e6e::t_fdc00d9a7545d3 19-20
+packages/ai-integrations/src/adapters/claude.ts
+  s_67da17cd206f3c::t_d8a4adcbaf4b95 29-33
+  s_15742fdeac8e6e::t_bc5cc8655a63f6 71
+  s_52d7b1cf983707::t_786f7a46f5a861 13,98
+  s_52d7b1cf983707::t_ccbbae3e8d9867 72,84
+  s_52d7b1cf983707::t_60c0824ad10ead 1-12,14-28,34-70,73-83,85-97,99-115
+packages/ai-integrations/src/runtime/skills.ts
+  s_52d7b1cf983707::t_fbd101ba22fdf0 1-19,22-340
+  s_15742fdeac8e6e::t_fdc00d9a7545d3 20-21
+packages/ai-integrations/src/core/installer.ts
+  s_52d7b1cf983707::t_0938fb8f7240a4 3-20,22-26,28-29,31-50,56-57,64-99,106-154,184-186,208
+  s_67da17cd206f3c::t_06eca20e1a4ddf 1,187-207
+  s_52d7b1cf983707::t_20724516f54b26 21,27,30,155-183
+  s_67da17cd206f3c::t_f9968a10fdf7a1 51-55,58-63
+  s_52d7b1cf983707::t_ccbbae3e8d9867 100,103-105
+  s_15742fdeac8e6e::t_bc5cc8655a63f6 101-102
+  s_52d7b1cf983707::t_9652e3ff18ae05 2
+packages/ai-integrations/src/adapters/cursor.ts
+  s_15742fdeac8e6e::t_4afcd5e9800001 54
+  s_52d7b1cf983707::t_60c0824ad10ead 1-12,14,16-29,35-53,55-67,69-75,77-85,87-101
+  s_52d7b1cf983707::t_d601f9ea87ab3a 13,68
+  s_52d7b1cf983707::t_786f7a46f5a861 15,86
+  s_67da17cd206f3c::t_d8a4adcbaf4b95 30-34
+  s_52d7b1cf983707::t_ccbbae3e8d9867 76
+packages/ai-integrations/src/adapters/index.ts
+  s_52d7b1cf983707::t_9daa21756e79b2 1-25
+packages/ai-integrations/src/runtime/prompts.ts
+  s_15742fdeac8e6e::t_fdc00d9a7545d3 23-24
+  s_52d7b1cf983707::t_20508b65bdcb06 1-22,25-262
+packages/ai-integrations/src/runtime/hooks.ts
+  s_52d7b1cf983707::t_e6f6b7ee1208f5 1-2,14,16-28,30-31,35-67,75-94,96-133,135-168,181,183-192,194-198,200-204,206-226
+  s_15742fdeac8e6e::t_bc5cc8655a63f6 13,95,134
+  s_52d7b1cf983707::t_813aeb5e0c0216 68-74,169-180,182
+  s_52d7b1cf983707::t_ebf920371cf308 15,29,32-34
+  s_52d7b1cf983707::t_686e4944b0ef64 3-12,193,199,205
+packages/ai-integrations/src/adapters/codex.ts
+  s_15742fdeac8e6e::t_bc5cc8655a63f6 71
+  s_52d7b1cf983707::t_60c0824ad10ead 1-10,12,14-29,35-61,63-70,72-98,100-119
+  s_52d7b1cf983707::t_786f7a46f5a861 13,99
+  s_67da17cd206f3c::t_d8a4adcbaf4b95 30-34
+  s_52d7b1cf983707::t_d601f9ea87ab3a 11,62
+packages/ai-integrations/src/adapters/aider.ts
+  s_52d7b1cf983707::t_9daa21756e79b2 1-12,18-29,34-63,65-97
+  s_67da17cd206f3c::t_d8a4adcbaf4b95 13-17
+  s_15742fdeac8e6e::t_4afcd5e9800001 30-33,64
+packages/ai-integrations/src/adapters/shared.ts
+  s_52d7b1cf983707::t_ccbbae3e8d9867 86,133
+  s_52d7b1cf983707::t_786f7a46f5a861 152-155
+  s_52d7b1cf983707::t_d601f9ea87ab3a 8,105-113,115-119
+  s_15742fdeac8e6e::t_4afcd5e9800001 85,114,134,141
+  s_52d7b1cf983707::t_60c0824ad10ead 1-7,9-84,87-104,120-132,135-140,142-151,156-162
+packages/ai-integrations/src/adapters/gemini.ts
+  s_52d7b1cf983707::t_9daa21756e79b2 1-27,33-59,61-70,72-103
+  s_67da17cd206f3c::t_d8a4adcbaf4b95 28-32
+  s_15742fdeac8e6e::t_bc5cc8655a63f6 60
+  s_52d7b1cf983707::t_ccbbae3e8d9867 71
+packages/ai-integrations/src/runtime/index.ts
+  s_52d7b1cf983707::t_7e2c85f89a9305 1-74
+packages/ai-integrations/tsconfig.json
+  s_52d7b1cf983707::t_0938fb8f7240a4 1-20
+packages/ai-integrations/package.json
+  s_52d7b1cf983707::t_a18ef794c85d40 18
+  s_15742fdeac8e6e::t_c2d2bd54be89e8 5-7
+  s_52d7b1cf983707::t_0938fb8f7240a4 1-4,8,11-12,15-17,19-25
+  s_52d7b1cf983707::t_9652e3ff18ae05 9-10,13-14
+packages/ai-integrations/src/index.ts
+  s_52d7b1cf983707::t_7e2c85f89a9305 16-26
+  s_52d7b1cf983707::t_9daa21756e79b2 1-15,27-33
+packages/ai-integrations/src/adapters/continue.ts
+  s_15742fdeac8e6e::t_4afcd5e9800001 39-40,60,78,95
+  s_52d7b1cf983707::t_9daa21756e79b2 1-13,19,21-23,26-38,41-51,53-59,62-77,80-87,89-93,96-123
+  s_52d7b1cf983707::t_ccbbae3e8d9867 61,79,94
+  s_67da17cd206f3c::t_d8a4adcbaf4b95 14-18,20,24-25,52,88
+packages/ai-integrations/test/integrations.test.ts
+  s_67da17cd206f3c::t_d8a4adcbaf4b95 78-79,87-88
+  s_52d7b1cf983707::t_ca34e23eeb8ff4 1,3-77,80-86,89-94,103-131,151-156,161-199,240
+  s_67da17cd206f3c::t_15b086d4dcf433 213-225
+  s_67da17cd206f3c::t_f9968a10fdf7a1 157-160
+  s_52d7b1cf983707::t_21ed11b2afd118 132-150
+  s_52d7b1cf983707::t_786f7a46f5a861 95-102
+  s_52d7b1cf983707::t_20724516f54b26 2,226-239
+  s_52d7b1cf983707::t_9652e3ff18ae05 200-212
+packages/ai-integrations/src/runtime/templates.ts
+  s_52d7b1cf983707::t_e1d9957c30c39f 1-39,44-49,51,55-390,392-407,409,411-415,417,419,421-543
+  s_52d7b1cf983707::t_18eb409180e342 40-43,50,52-54,391,408,410,416,418,420
+packages/ai-integrations/src/core/validation.ts
+  s_67da17cd206f3c::t_15b086d4dcf433 12
+  s_52d7b1cf983707::t_4c3da856aeeacd 67-73
+  s_52d7b1cf983707::t_0938fb8f7240a4 2-6,9-11,13-66,74-80
+  s_52d7b1cf983707::t_9652e3ff18ae05 1,7-8
+packages/ai-integrations/src/core/registry.ts
+  s_52d7b1cf983707::t_0938fb8f7240a4 1-29
+packages/ai-integrations/test/runtime.test.ts
+  s_52d7b1cf983707::t_686e4944b0ef64 2,142-152
+  s_52d7b1cf983707::t_b59d27c6c485b5 84
+  s_52d7b1cf983707::t_a36c5fd5fc7600 106-113
+  s_52d7b1cf983707::t_e1086d6ad65d31 1,3-83,85-105,114-141,153-169
+packages/ai-integrations/src/core/planner.ts
+  s_52d7b1cf983707::t_0938fb8f7240a4 1-39,58-63
+  s_52d7b1cf983707::t_4c3da856aeeacd 40-57
+packages/ai-integrations/src/types.ts
+  s_52d7b1cf983707::t_4c3da856aeeacd 81-87,100-101
+  s_67da17cd206f3c::t_d8a4adcbaf4b95 130-134
+  s_52d7b1cf983707::t_0938fb8f7240a4 1-80,88-99,102-129,135-154
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "b8089bad51c82fe0bbfa191ca0e74a385bbb9bc1",
+  "prompts": {},
+  "sessions": {
+    "s_15742fdeac8e6e": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f669b-55ad-7452-8820-4091dc9d7dc4",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Misbah Khursheed <m.misbahkhursheed@gmail.com>"
+    },
+    "s_52d7b1cf983707": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f66a5-bf1a-7461-b348-1bb125ea82c3",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Misbah Khursheed <m.misbahkhursheed@gmail.com>"
+    },
+    "s_67da17cd206f3c": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f66a5-8e5e-7533-a508-b9b6cf46b562",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Misbah Khursheed <m.misbahkhursheed@gmail.com>"
+    }
+  }
+}
