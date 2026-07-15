@@ -1,0 +1,187 @@
+packages/cli/src/services/scaffold.ts
+  s_67da17cd206f3c::t_dc53eb54807230 34,82,89,93-97,129
+  s_67da17cd206f3c::t_fe708950c63dcc 103
+  s_67da17cd206f3c::t_be97cc35361c9b 6,23,32-33,48-49,60-68,74-81,83-84,110-111,127-128
+  s_67da17cd206f3c::t_06d931dc6208f7 1-5,7-22,24-31,35-47,50-59,69-73,85-88,90-92,98-102,104-109,112-126,130-138
+packages/cli/templates/product.template.md
+  s_15742fdeac8e6e::t_f428e9490393a7 3-5
+  s_67da17cd206f3c::t_6ce5b3c6b95da9 1-2,6-7,19-167
+  s_96ad2ed13f95f5::t_274f052f7f22cb 8-18
+packages/cli/templates/feature.template.md
+  s_15742fdeac8e6e::t_f428e9490393a7 3-5
+  s_96ad2ed13f95f5::t_274f052f7f22cb 8-12
+  s_67da17cd206f3c::t_6ce5b3c6b95da9 1-2,6-7,13-108
+packages/cli/src/commands/update.ts
+  s_67da17cd206f3c::t_4def7ee451fe24 1-39
+packages/cli/src/index.ts
+  s_67da17cd206f3c::t_4def7ee451fe24 4
+  s_67da17cd206f3c::t_f584d448231dd9 7-8
+  s_67da17cd206f3c::t_d9daa86680c046 1-3
+  s_67da17cd206f3c::t_0efc69504edc32 5-6
+  s_67da17cd206f3c::t_aa76631c1a3ce9 9
+packages/cli/src/plugins/registry.ts
+  s_67da17cd206f3c::t_e9426cfd6ab6da 1-30
+packages/cli/src/services/config.ts
+  s_67da17cd206f3c::t_15b086d4dcf433 42
+  s_67da17cd206f3c::t_31fcdd20e60f85 39-41
+  s_67da17cd206f3c::t_8fef9437fa59f4 43-45
+packages/cli/scripts/verify-release-tag.mjs
+  s_67da17cd206f3c::t_06d931dc6208f7 1-15
+packages/cli/templates/architecture.template.md
+  s_67da17cd206f3c::t_6ce5b3c6b95da9 1-2,6-7,19-237
+  s_96ad2ed13f95f5::t_274f052f7f22cb 8-18
+  s_15742fdeac8e6e::t_f428e9490393a7 3-5
+packages/cli/src/commands/init.ts
+  s_67da17cd206f3c::t_f8c6d1b42ca085 11,117
+  s_67da17cd206f3c::t_dc53eb54807230 149,183
+  s_67da17cd206f3c::t_7d9dc94b6910db 171
+  s_67da17cd206f3c::t_1c92eae16b3e8f 57,101,107,118,120-123
+  s_67da17cd206f3c::t_d53f387a80fe52 9,12-13,27-28,34,46-47,49-50,52,58-60,62,67-72,75-93,95-98,103-105,109,111,119,125,127-129,131-143,145-148,150-151,155-170,172-176,178-182,184-185
+  s_67da17cd206f3c::t_a3ee77127aca18 152-154
+  s_67da17cd206f3c::t_eb8aa20b974328 1-8,10,14-26,29-33,35-45,48,51,53-56,61,63-66,73-74,94,99-100,102,106,108,110,112-116,124,126,130,144,177,186
+packages/cli/src/commands/doctor.ts
+  s_67da17cd206f3c::t_7b259eb9da17e8 1-55
+packages/cli/src/plugins/index.ts
+  s_67da17cd206f3c::t_e9426cfd6ab6da 1-6
+packages/cli/LICENSE
+  s_67da17cd206f3c::t_6ce5b3c6b95da9 1-21
+packages/cli/src/commands/status.ts
+  s_67da17cd206f3c::t_65d18c47a42763 1-32,34-41
+  s_15742fdeac8e6e::t_fdc00d9a7545d3 33
+packages/cli/templates/adr.template.md
+  s_67da17cd206f3c::t_6ce5b3c6b95da9 1-7,12-62
+  s_96ad2ed13f95f5::t_274f052f7f22cb 8-11
+packages/cli/test/cli.test.ts
+  s_67da17cd206f3c::t_d7bce49908518e 1-60
+packages/cli/src/services/manifest.ts
+  s_67da17cd206f3c::t_24594aafd11fd2 51-54
+  s_67da17cd206f3c::t_b92e8cb03fdf16 1-12,14-38,40-50,55-69
+  s_67da17cd206f3c::t_7b259eb9da17e8 70-80,85-87
+  s_67da17cd206f3c::t_3c3461858b47ae 13,39,81-84
+packages/cli/README.md
+  s_67da17cd206f3c::t_2e8431b21632c5 1-18
+pnpm-workspace.yaml
+  s_67da17cd206f3c::t_690f45f1cf7c06 1-2
+packages/cli/src/core/errors.ts
+  s_67da17cd206f3c::t_7b259eb9da17e8 1-17
+packages/cli/package.json
+  s_67da17cd206f3c::t_4f81b79e00fa90 1-2,5-30,32-40,42-70
+  s_67da17cd206f3c::t_e07957029a80d0 3
+  s_15742fdeac8e6e::t_c2d2bd54be89e8 4,41
+  s_67da17cd206f3c::t_c178ee639bf657 31
+packages/cli/src/commands/config.ts
+  s_67da17cd206f3c::t_7b259eb9da17e8 1-40
+packages/cli/test/vnext.test.ts
+  s_67da17cd206f3c::t_f67f531ce5fd2a 48-51
+  s_67da17cd206f3c::t_06eca20e1a4ddf 1-47,52-80,108
+  s_67da17cd206f3c::t_0738c6abdbf52c 81-107
+packages/cli/src/plugins/build-like-this.ts
+  s_15742fdeac8e6e::t_fdc00d9a7545d3 8
+  s_67da17cd206f3c::t_f67f531ce5fd2a 1,10,14,23-27,34,37-38
+  s_67da17cd206f3c::t_e9426cfd6ab6da 2-7,9,11-13,15-22,28-33,35-36,39-42
+packages/cli/src/commands/ai.ts
+  s_67da17cd206f3c::t_3c3461858b47ae 129
+  s_67da17cd206f3c::t_65d18c47a42763 1-31,36-65,67-72,74-108,111-120,123,125-128,130-143,155-156,158-166
+  s_67da17cd206f3c::t_5a96a7b7ef9057 32-35
+  s_67da17cd206f3c::t_7d9dc94b6910db 109-110,144-154,157
+  s_67da17cd206f3c::t_26e9b30bec3dd6 66
+  s_67da17cd206f3c::t_1fe0b3a0dbb245 73
+  s_67da17cd206f3c::t_f9968a10fdf7a1 121-122,124
+packages/cli/src/program.ts
+  s_15742fdeac8e6e::t_fdc00d9a7545d3 55,113,123
+  s_67da17cd206f3c::t_8ed0f982520ac9 11-13,24,39,45-46,50,66-67,78-79,95-96,100-112,114-122,124-150
+  s_67da17cd206f3c::t_eb8aa20b974328 1-10,14-23,25-38,40-44,47-49,51-54,56-65,68-77,80-94,97-99,151-210
+packages/cli/src/core/process.ts
+  s_67da17cd206f3c::t_24a65d5ccc822c 1-58
+packages/cli/src/services/health.ts
+  s_67da17cd206f3c::t_69d1424f4b5e23 26-35,45
+  s_67da17cd206f3c::t_b92e8cb03fdf16 1-25,36-44,46-76
+packages/cli/scripts/generate-command-reference.mjs
+  s_67da17cd206f3c::t_c178ee639bf657 1-33
+packages/cli/src/plugins/types.ts
+  s_67da17cd206f3c::t_e9426cfd6ab6da 1-33
+packages/cli/scripts/sync-assets.mjs
+  s_67da17cd206f3c::t_4f81b79e00fa90 1-13
+packages/cli/test/scaffold.test.ts
+  s_67da17cd206f3c::t_62cf1b4aff2d86 43-52
+  s_67da17cd206f3c::t_a95ff1a0552311 63-64
+  s_67da17cd206f3c::t_127e54bc18436c 40-42
+  s_67da17cd206f3c::t_e9fa81fde8b874 53-55,60-62
+  s_67da17cd206f3c::t_f1f4422dbdb44d 65-67
+packages/cli/src/services/project.ts
+  s_67da17cd206f3c::t_4def7ee451fe24 1-92
+packages/cli/src/services/git.ts
+  s_67da17cd206f3c::t_eb8aa20b974328 1-21
+packages/cli/tsup.config.ts
+  s_67da17cd206f3c::t_eb8aa20b974328 1-20
+packages/cli/src/commands/plugins.ts
+  s_67da17cd206f3c::t_65d18c47a42763 1-23
+packages/cli/src/core/fs.ts
+  s_67da17cd206f3c::t_06d931dc6208f7 1-51
+packages/cli/src/services/runtimes.ts
+  s_67da17cd206f3c::t_e9426cfd6ab6da 1-26
+packages/cli/src/core/output.ts
+  s_67da17cd206f3c::t_ab745b284ab7ac 53
+  s_67da17cd206f3c::t_65d18c47a42763 1-52,54-63
+package.json
+  s_15742fdeac8e6e::t_c2d2bd54be89e8 4-6
+  s_67da17cd206f3c::t_4f81b79e00fa90 11-14
+  s_67da17cd206f3c::t_3f376a83b47ddf 1,9-10,15-16,21
+  s_67da17cd206f3c::t_d2a5474fbe0196 19-20
+  s_52d7b1cf983707::t_0938fb8f7240a4 2-3,7-8,17-18
+packages/cli/src/cli.ts
+  s_67da17cd206f3c::t_eb8aa20b974328 1-6,9-16,22-23,25-34
+  s_67da17cd206f3c::t_7b259eb9da17e8 7-8,17-21,24
+packages/cli/test/config.test.ts
+  s_67da17cd206f3c::t_15b086d4dcf433 6-58
+  s_67da17cd206f3c::t_3b3c76eefaaa52 3-5
+  s_67da17cd206f3c::t_2b8d401a33c52a 59
+packages/cli/test/project.test.ts
+  s_67da17cd206f3c::t_4def7ee451fe24 1-25
+packages/cli/tsconfig.json
+  s_67da17cd206f3c::t_2a03714b3da5cd 1-20
+packages/cli/vitest.config.ts
+  s_67da17cd206f3c::t_a092827303d790 1-9
+pnpm-lock.yaml
+  s_67da17cd206f3c::t_43e9da9162f36a 1-1655
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "452a998b112b56d130143629e2458a8643e5290a",
+  "prompts": {},
+  "sessions": {
+    "s_15742fdeac8e6e": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f669b-55ad-7452-8820-4091dc9d7dc4",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Misbah Khursheed <m.misbahkhursheed@gmail.com>"
+    },
+    "s_52d7b1cf983707": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f66a5-bf1a-7461-b348-1bb125ea82c3",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Misbah Khursheed <m.misbahkhursheed@gmail.com>"
+    },
+    "s_67da17cd206f3c": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f66a5-8e5e-7533-a508-b9b6cf46b562",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Misbah Khursheed <m.misbahkhursheed@gmail.com>"
+    },
+    "s_96ad2ed13f95f5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7f4cf45d-6389-47cd-afbe-a8d47c0507ab",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Misbah Khursheed <m.misbahkhursheed@gmail.com>"
+    }
+  }
+}
