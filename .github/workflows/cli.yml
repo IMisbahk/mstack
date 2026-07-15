@@ -1,0 +1,84 @@
+name: CLI
+
+on:
+  pull_request:
+    paths:
+      - "packages/cli/**"
+      - "packages/ai-integrations/**"
+      - "docs/cli/**"
+      - "templates/**"
+      - "package.json"
+      - "pnpm-lock.yaml"
+      - "pnpm-workspace.yaml"
+      - ".github/workflows/cli.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "packages/cli/**"
+      - "packages/ai-integrations/**"
+      - "docs/cli/**"
+      - "templates/**"
+      - "package.json"
+      - "pnpm-lock.yaml"
+      - "pnpm-workspace.yaml"
+      - ".github/workflows/cli.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            node: 20
+          - os: ubuntu-latest
+            node: 22
+          - os: ubuntu-latest
+            node: 24
+          - os: macos-latest
+            node: 22
+          - os: windows-latest
+            node: 22
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter mstack typecheck
+      - run: pnpm --filter mstack test
+      - run: pnpm --filter mstack build
+      - if: matrix.os == 'ubuntu-latest' && matrix.node == 22
+        run: |
+          pnpm --filter mstack docs:generate
+          git diff --exit-code -- docs/cli/command-reference.md
+      - run: npm pack --dry-run
+        working-directory: packages/cli
+
+  launchers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - uses: oven-sh/setup-bun@v2
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter mstack build
+      - name: Pack CLI
+        working-directory: packages/cli
+        run: |
+          npm pack --ignore-scripts
+          echo "PACKAGE_TARBALL=$PWD/mstack-$(node -p "require('./package.json').version").tgz" >> "$GITHUB_ENV"
+      - run: npx --yes --package "$PACKAGE_TARBALL" mstack --version
+      - run: pnpm dlx "$PACKAGE_TARBALL" --version
+      - run: corepack yarn dlx --quiet "mstack@file:$PACKAGE_TARBALL" --version
+      - run: bunx --package "$PACKAGE_TARBALL" mstack --version
