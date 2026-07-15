@@ -1,0 +1,32 @@
+name: Playbook improvement
+description: Improve the reasoning, clarity, consistency, or safety of Misbah's engineering playbook.
+title: "docs: "
+labels:
+  - documentation
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What is unclear, missing, inconsistent, or unsafe?
+    validations:
+      required: true
+  - type: textarea
+    id: reader
+    attributes:
+      label: Affected reader or workflow
+      description: Who encounters the problem, and at which stage of the lifecycle?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: What should the playbook say or show, and why does it fit the opinionated workflow?
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence or example
+      description: Add a concrete project scenario, source, cost, or trade-off if available.
