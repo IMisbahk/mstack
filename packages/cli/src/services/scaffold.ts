@@ -3,7 +3,7 @@ import { existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { CliError } from "../core/errors.js";
-import { pathExists, readJson, writeFileAtomic, writeJsonAtomic } from "../core/fs.js";
+import { pathExists, readJson, relativeRepositoryPath, writeFileAtomic, writeJsonAtomic } from "../core/fs.js";
 import type { PackageManager, Preferences, ProjectConfig } from "./config.js";
 import { projectConfigPath } from "./config.js";
 
@@ -75,8 +75,8 @@ export async function scaffoldProject(options: ScaffoldOptions): Promise<Scaffol
 
   if (options.dryRun) {
     return {
-      created: operations.filter((operation) => !operation.existed).map((operation) => path.relative(target, operation.destination)),
-      overwritten: operations.filter((operation) => operation.existed).map((operation) => path.relative(target, operation.destination)),
+      created: operations.filter((operation) => !operation.existed).map((operation) => relativeRepositoryPath(target, operation.destination)),
+      overwritten: operations.filter((operation) => operation.existed).map((operation) => relativeRepositoryPath(target, operation.destination)),
       preserved,
       unchanged,
       backups: [],
@@ -93,7 +93,7 @@ export async function scaffoldProject(options: ScaffoldOptions): Promise<Scaffol
       if (operation.existed && operation.previous) {
         const backup = `${operation.destination}.mstack-backup-${new Date().toISOString().replace(/[:.]/g, "-")}`;
         await writeFile(backup, operation.previous);
-        backups.push(path.relative(target, backup));
+        backups.push(relativeRepositoryPath(target, backup));
       }
       await writeFileAtomic(operation.destination, operation.content);
       completed.push(operation);
@@ -122,8 +122,8 @@ export async function scaffoldProject(options: ScaffoldOptions): Promise<Scaffol
   }
 
   return {
-    created: operations.filter((operation) => !operation.existed).map((operation) => path.relative(target, operation.destination)),
-    overwritten: operations.filter((operation) => operation.existed).map((operation) => path.relative(target, operation.destination)),
+    created: operations.filter((operation) => !operation.existed).map((operation) => relativeRepositoryPath(target, operation.destination)),
+    overwritten: operations.filter((operation) => operation.existed).map((operation) => relativeRepositoryPath(target, operation.destination)),
     preserved,
     unchanged,
     backups,

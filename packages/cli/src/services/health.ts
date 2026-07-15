@@ -70,7 +70,7 @@ export async function inspectRepository(start: string): Promise<RepositoryHealth
     setup,
     documents,
     integrations: manifest?.integrations ?? [],
-    manifest: manifest ? path.relative(root, path.join(root, ".mstack", "manifest.json")) : null,
+    manifest: manifest ? ".mstack/manifest.json" : null,
     next,
   };
 }

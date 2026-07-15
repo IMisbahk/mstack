@@ -1,4 +1,3 @@
-import path from "node:path";
 import type { Output } from "../core/output.js";
 import { inspectRepository } from "../services/health.js";
 
@@ -35,7 +34,7 @@ export async function explainCommand(cwd: string, output: Output, json: boolean)
   output.title("Misbah's Build Like This workflow in this repository");
   output.line("");
   for (const item of items) {
-    output.field(path.relative(report.root, path.join(report.root, item.path)), item.purpose);
+    output.field(item.path, item.purpose);
   }
   if (items.length === 0) output.line("  No planning documents are installed yet.");
   const suffix = report.next.path ? ` ${report.next.path}` : report.next.command ? ` ${output.command(report.next.command)}` : "";

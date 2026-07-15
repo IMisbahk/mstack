@@ -3,6 +3,7 @@ import os from "node:os";
 import path from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
 import { scaffoldProject } from "../src/services/scaffold.js";
+import { normalizeRepositoryPath } from "../src/core/fs.js";
 import { makeTemplates } from "./helpers.js";
 
 const temporary: string[] = [];
@@ -31,13 +32,17 @@ describe("scaffoldProject", () => {
     expect(result.created).toEqual([
       "docs/product.md",
       "docs/architecture.md",
-      path.join("docs", "features", "_template.md"),
-      path.join("docs", "decisions", "_template.md"),
+      "docs/features/_template.md",
+      "docs/decisions/_template.md",
     ]);
     expect(JSON.parse(await readFile(result.configPath, "utf8"))).toMatchObject({
       project: { name: "app", initializedAt: "2026-06-01T12:00:00.000Z" },
       preferences: { packageManager: "pnpm" },
     });
+  });
+
+  it("normalizes repository paths for cross-platform manifests and output", () => {
+    expect(normalizeRepositoryPath("docs\\features\\_template.md")).toBe("docs/features/_template.md");
   });
 
   it("preserves user-owned documents while adding missing files", async () => {

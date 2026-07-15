@@ -11,6 +11,14 @@ export async function pathExists(filePath: string): Promise<boolean> {
   }
 }
 
+export function normalizeRepositoryPath(filePath: string): string {
+  return filePath.replaceAll("\\", "/");
+}
+
+export function relativeRepositoryPath(root: string, target: string): string {
+  return normalizeRepositoryPath(path.relative(root, target));
+}
+
 export async function readJson<T>(filePath: string): Promise<T> {
   return JSON.parse(await readFile(filePath, "utf8")) as T;
 }
