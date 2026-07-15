@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "project": {
+    "name": "buildlikethis",
+    "initializedAt": "2026-07-15T20:29:59.787Z"
+  },
+  "preferences": {
+    "defaultBranch": "main",
+    "initializeGit": true,
+    "updateCheck": true,
+    "packageManager": "pnpm"
+  }
+}

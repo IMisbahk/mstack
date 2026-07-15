@@ -1,0 +1,755 @@
+{
+  "schemaVersion": 1,
+  "mstackVersion": "0.2.0",
+  "operationId": "6410d00c-b47e-4b3c-8b70-7e3850788898",
+  "updatedAt": "2026-07-15T20:30:35.114Z",
+  "integrations": [
+    "claude-code",
+    "codex",
+    "cursor"
+  ],
+  "files": [
+    {
+      "path": ".agents/skills/api-contract-design/SKILL.md",
+      "kind": "integration",
+      "owner": "codex",
+      "integrity": "content",
+      "sha256": "12b48b54087d17df8a96c2ac3d5b9bbd76b01ca129418bf1fe2e43404fd17ff4",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".agents/skills/architecture-assessment/SKILL.md",
+      "kind": "integration",
+      "owner": "codex",
+      "integrity": "content",
+      "sha256": "816d3022a2d8b4322530554ab17aa5e26c888c4d454a93434cd6759ed739925b",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".agents/skills/build-feature/SKILL.md",
+      "kind": "integration",
+      "owner": "codex",
+      "integrity": "content",
+      "sha256": "5b573b51a266295afe79cd72a785f31b43ae12f4d2e473e8a51c3ff2807ab0f8",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".agents/skills/database-modeling/SKILL.md",
+      "kind": "integration",
+      "owner": "codex",
+      "integrity": "content",
+      "sha256": "0f0124dea5a7061dabf1eca38c59d99e69cfbac732688191a6706de7bcf0a396",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".agents/skills/debug-failure/SKILL.md",
+      "kind": "integration",
+      "owner": "codex",
+      "integrity": "content",
+      "sha256": "814580fc244499869908bafdc7de68864132f74220320e949455c95277be9522",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".agents/skills/design-api/SKILL.md",
+      "kind": "integration",
+      "owner": "codex",
+      "integrity": "content",
+      "sha256": "672caf981be69886655c858e0e1b8c81befe4ecd977d668630d61b2fcd9fd748",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".agents/skills/feature-planning/SKILL.md",
+      "kind": "integration",
+      "owner": "codex",
+      "integrity": "content",
+      "sha256": "5bada587dcc52096c2c267e6ecaf11c1061437d06c743ee0e4c583c3450b346f",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".agents/skills/improve-documentation/SKILL.md",
+      "kind": "integration",
+      "owner": "codex",
+      "integrity": "content",
+      "sha256": "c9fb9d97ae6aa34735530980093d7efe8399772d5b6bc5717114f7fb389bbec2",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".agents/skills/performance-investigation/SKILL.md",
+      "kind": "integration",
+      "owner": "codex",
+      "integrity": "content",
+      "sha256": "67e1ecdf950064ab2165a531f783b27b0e40cbae10328caa40de7f69c9e85a99",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".agents/skills/plan-mvp/SKILL.md",
+      "kind": "integration",
+      "owner": "codex",
+      "integrity": "content",
+      "sha256": "c47b3aa5f25089ff3bdb5b671a18481d8a5878e551049c6a1a7d8fafc8bff5ad",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".agents/skills/production-readiness/SKILL.md",
+      "kind": "integration",
+      "owner": "codex",
+      "integrity": "content",
+      "sha256": "e2c9073816f1a610feedd703371a91a5ab44051d8976d9b607022c98ab09346e",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".agents/skills/refactor-module/SKILL.md",
+      "kind": "integration",
+      "owner": "codex",
+      "integrity": "content",
+      "sha256": "ee65fb4feb75c6faf58c4155e6487367f9719d3c57a661f811caa838dc98664d",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".agents/skills/release-readiness/SKILL.md",
+      "kind": "integration",
+      "owner": "codex",
+      "integrity": "content",
+      "sha256": "0832138d3138fc7dadb65cf62b2ca1b54c86f425476f3e15e61fa77e7945a5d7",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".agents/skills/repository-audit/SKILL.md",
+      "kind": "integration",
+      "owner": "codex",
+      "integrity": "content",
+      "sha256": "420a71fa7262b4272e14d099251afdc76a66b4f1e0003c3c587c7c7431b02847",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".agents/skills/review-architecture/SKILL.md",
+      "kind": "integration",
+      "owner": "codex",
+      "integrity": "content",
+      "sha256": "acfcb82f0cd8927eadadb8f8fab0b02c40b42719b0911af1c1aadd8c2652c93f",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".agents/skills/review-pull-request/SKILL.md",
+      "kind": "integration",
+      "owner": "codex",
+      "integrity": "content",
+      "sha256": "c244f8a505f61a85e49870a6f1afd66566f0315e855c11eec664f676146fdafa",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".agents/skills/safe-refactoring/SKILL.md",
+      "kind": "integration",
+      "owner": "codex",
+      "integrity": "content",
+      "sha256": "4e172a522bcce6524dbfbd49b7cccd67c3dda88cb5b57cebd45ea98e3890d311",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".agents/skills/systematic-debugging/SKILL.md",
+      "kind": "integration",
+      "owner": "codex",
+      "integrity": "content",
+      "sha256": "6f8af7507a2f66a0172edbe28fafa66a679853c1db1c0261e589eebf21d6f6bc",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".agents/skills/threat-model-review/SKILL.md",
+      "kind": "integration",
+      "owner": "codex",
+      "integrity": "content",
+      "sha256": "e926568826e5f7586e5d423df71aab56d25eac9297af3c23ca06534b303302e6",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".claude/agents/ai-engineer.md",
+      "kind": "integration",
+      "owner": "claude-code",
+      "integrity": "content",
+      "sha256": "340a29e56ac6dd9bbba49c9ab79eb5df86c3edc78ec9069a280251dd62cc0d6f",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".claude/agents/backend-engineer.md",
+      "kind": "integration",
+      "owner": "claude-code",
+      "integrity": "content",
+      "sha256": "a649c4ad002d50747b96abce433af868cdc001d82741f9fbb5f1c04fa7fee193",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".claude/agents/code-reviewer.md",
+      "kind": "integration",
+      "owner": "claude-code",
+      "integrity": "content",
+      "sha256": "e3786d674b965963165137dec43249bf0b51522c48271281feadc3dde2c608b5",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".claude/agents/database-engineer.md",
+      "kind": "integration",
+      "owner": "claude-code",
+      "integrity": "content",
+      "sha256": "0258fd8a7b3adf5d418f42a3989bd6ab5e6438d72134b7c0c5c94e27690646dc",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".claude/agents/debugging-specialist.md",
+      "kind": "integration",
+      "owner": "claude-code",
+      "integrity": "content",
+      "sha256": "0c8477701b856905f00cd4673256a2a533583b9d6a6c64c825344f85805c4d03",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".claude/agents/devops-engineer.md",
+      "kind": "integration",
+      "owner": "claude-code",
+      "integrity": "content",
+      "sha256": "1b96ea882c0277d285354b5d77b3fc6cef102e429e47f2db0668608a8a0548ff",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".claude/agents/frontend-engineer.md",
+      "kind": "integration",
+      "owner": "claude-code",
+      "integrity": "content",
+      "sha256": "d8a0bb2e09a94c2e91c679286f13d053d926a54a188e34ae17788cd58169477e",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".claude/agents/performance-engineer.md",
+      "kind": "integration",
+      "owner": "claude-code",
+      "integrity": "content",
+      "sha256": "b7b082cc276e9dbc954c6761a7564ac4865f73ee65f4b1cd1029228a425597ab",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".claude/agents/product-manager.md",
+      "kind": "integration",
+      "owner": "claude-code",
+      "integrity": "content",
+      "sha256": "cd7a62759277590c216a6ade4c5a006672d4643a8f84ef758197dd0363e7ab24",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".claude/agents/refactoring-specialist.md",
+      "kind": "integration",
+      "owner": "claude-code",
+      "integrity": "content",
+      "sha256": "bdb247666ea7aafd6a84650df7cf14a97243ea35220a7c53073d70e6e55d4eb5",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".claude/agents/security-reviewer.md",
+      "kind": "integration",
+      "owner": "claude-code",
+      "integrity": "content",
+      "sha256": "c5a171bbe717670dc9f938f42e7e3d20df53c3a9b2b67db3c582dad08547f6d0",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".claude/agents/software-architect.md",
+      "kind": "integration",
+      "owner": "claude-code",
+      "integrity": "content",
+      "sha256": "2e3496441754b2793337c5ceb96abdc06680b6d77da3470362d45148984beba3",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".claude/settings.json",
+      "kind": "integration",
+      "owner": "claude-code",
+      "integrity": "existence",
+      "sha256": "f2d9f7e9569934866eaa3949dc21008f7dbdf9118239e8722309d25bebac1219",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".claude/skills/api-contract-design/SKILL.md",
+      "kind": "integration",
+      "owner": "claude-code",
+      "integrity": "content",
+      "sha256": "12b48b54087d17df8a96c2ac3d5b9bbd76b01ca129418bf1fe2e43404fd17ff4",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".claude/skills/architecture-assessment/SKILL.md",
+      "kind": "integration",
+      "owner": "claude-code",
+      "integrity": "content",
+      "sha256": "816d3022a2d8b4322530554ab17aa5e26c888c4d454a93434cd6759ed739925b",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".claude/skills/build-feature/SKILL.md",
+      "kind": "integration",
+      "owner": "claude-code",
+      "integrity": "content",
+      "sha256": "6a68ec7bfc06c69c522978f9851396b69776fbf56937ebbf4f8a0280d6158c11",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".claude/skills/database-modeling/SKILL.md",
+      "kind": "integration",
+      "owner": "claude-code",
+      "integrity": "content",
+      "sha256": "0f0124dea5a7061dabf1eca38c59d99e69cfbac732688191a6706de7bcf0a396",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".claude/skills/debug-failure/SKILL.md",
+      "kind": "integration",
+      "owner": "claude-code",
+      "integrity": "content",
+      "sha256": "1e0c00ba0e26066742789e538c3f6dc1eab432b73a99bfcbe1f096ed857e59a4",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".claude/skills/design-api/SKILL.md",
+      "kind": "integration",
+      "owner": "claude-code",
+      "integrity": "content",
+      "sha256": "5344a5971d036228c767fb9cdd4a4ae95f391941c8245449ee6ccccec7ce7f02",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".claude/skills/feature-planning/SKILL.md",
+      "kind": "integration",
+      "owner": "claude-code",
+      "integrity": "content",
+      "sha256": "5bada587dcc52096c2c267e6ecaf11c1061437d06c743ee0e4c583c3450b346f",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".claude/skills/improve-documentation/SKILL.md",
+      "kind": "integration",
+      "owner": "claude-code",
+      "integrity": "content",
+      "sha256": "ec8f8f52cb78a95e45e3e0fe8bc17b73950ff14ec73da08547090c885cd9f5e2",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".claude/skills/performance-investigation/SKILL.md",
+      "kind": "integration",
+      "owner": "claude-code",
+      "integrity": "content",
+      "sha256": "67e1ecdf950064ab2165a531f783b27b0e40cbae10328caa40de7f69c9e85a99",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".claude/skills/plan-mvp/SKILL.md",
+      "kind": "integration",
+      "owner": "claude-code",
+      "integrity": "content",
+      "sha256": "0bb05553277224872b83b64eb9d25edb2ff9265435401f78998e7aed8ce92467",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".claude/skills/production-readiness/SKILL.md",
+      "kind": "integration",
+      "owner": "claude-code",
+      "integrity": "content",
+      "sha256": "302394c295c0747b9f7c646907dc39d883b3b6fcdf897d4b637f31db943ccfd5",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".claude/skills/refactor-module/SKILL.md",
+      "kind": "integration",
+      "owner": "claude-code",
+      "integrity": "content",
+      "sha256": "0fdd4d22e92b175e413ee7e07fd1193979dbd9f49bd7e6d5b60d86c6cb1c577d",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".claude/skills/release-readiness/SKILL.md",
+      "kind": "integration",
+      "owner": "claude-code",
+      "integrity": "content",
+      "sha256": "0832138d3138fc7dadb65cf62b2ca1b54c86f425476f3e15e61fa77e7945a5d7",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".claude/skills/repository-audit/SKILL.md",
+      "kind": "integration",
+      "owner": "claude-code",
+      "integrity": "content",
+      "sha256": "420a71fa7262b4272e14d099251afdc76a66b4f1e0003c3c587c7c7431b02847",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".claude/skills/review-architecture/SKILL.md",
+      "kind": "integration",
+      "owner": "claude-code",
+      "integrity": "content",
+      "sha256": "eb6c9721fbe2484e5184a05e8dad978f2339cc491450a37a1cb8f68a5a46181c",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".claude/skills/review-pull-request/SKILL.md",
+      "kind": "integration",
+      "owner": "claude-code",
+      "integrity": "content",
+      "sha256": "ed86a7adf5621c9bafababd5c59347923544edd72f4908f96166605bee646f0f",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".claude/skills/safe-refactoring/SKILL.md",
+      "kind": "integration",
+      "owner": "claude-code",
+      "integrity": "content",
+      "sha256": "4e172a522bcce6524dbfbd49b7cccd67c3dda88cb5b57cebd45ea98e3890d311",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".claude/skills/systematic-debugging/SKILL.md",
+      "kind": "integration",
+      "owner": "claude-code",
+      "integrity": "content",
+      "sha256": "6f8af7507a2f66a0172edbe28fafa66a679853c1db1c0261e589eebf21d6f6bc",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".claude/skills/threat-model-review/SKILL.md",
+      "kind": "integration",
+      "owner": "claude-code",
+      "integrity": "content",
+      "sha256": "e926568826e5f7586e5d423df71aab56d25eac9297af3c23ca06534b303302e6",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".codex/agents/ai-engineer.toml",
+      "kind": "integration",
+      "owner": "codex",
+      "integrity": "content",
+      "sha256": "780d65a8743345d3d5209a17892e2531947215da5ea0daeff26deb59febcf9c1",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".codex/agents/backend-engineer.toml",
+      "kind": "integration",
+      "owner": "codex",
+      "integrity": "content",
+      "sha256": "3475252a58caaa5d408ce1301715e52fda0bf13964a688408fc406bfe74b8f2e",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".codex/agents/code-reviewer.toml",
+      "kind": "integration",
+      "owner": "codex",
+      "integrity": "content",
+      "sha256": "7a55020cda4b7482ea65e5a56bf99e63650c781dbf418580273c787876f66236",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".codex/agents/database-engineer.toml",
+      "kind": "integration",
+      "owner": "codex",
+      "integrity": "content",
+      "sha256": "d688af458620866c2e086dfcd92c4eeefed99e4f9998b334fec9c91139c4b510",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".codex/agents/debugging-specialist.toml",
+      "kind": "integration",
+      "owner": "codex",
+      "integrity": "content",
+      "sha256": "d0157b2fcc9ba4a42188efad689bd5f4ad63a601d1c55f81cbe010ae8261744a",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".codex/agents/devops-engineer.toml",
+      "kind": "integration",
+      "owner": "codex",
+      "integrity": "content",
+      "sha256": "8fba0aa5f83eee5b369729a4c48c36f1db8ee720f9e412b60197673c02989ad8",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".codex/agents/frontend-engineer.toml",
+      "kind": "integration",
+      "owner": "codex",
+      "integrity": "content",
+      "sha256": "8c57f8f8b93c1be859f1f299ef5a6e467a2da24b1f5e8083e79b0b088638e4a4",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".codex/agents/performance-engineer.toml",
+      "kind": "integration",
+      "owner": "codex",
+      "integrity": "content",
+      "sha256": "4a4bd4e5c52bc580eb1f382dce482620de52586a5ab2440e387c44561655afeb",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".codex/agents/product-manager.toml",
+      "kind": "integration",
+      "owner": "codex",
+      "integrity": "content",
+      "sha256": "37de3dec3c69d253cb3222844e2c6c4bd7f8a0b35978b782282863c86ac3478e",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".codex/agents/refactoring-specialist.toml",
+      "kind": "integration",
+      "owner": "codex",
+      "integrity": "content",
+      "sha256": "962e77c3f812a81d1e3d2faae8fb4d83e250a8a86741b95512365de857289588",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".codex/agents/security-reviewer.toml",
+      "kind": "integration",
+      "owner": "codex",
+      "integrity": "content",
+      "sha256": "8d8994ce2b1407b7e73c85ec1945add9f73bd2873376bd286bd2cbe3ba17b070",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".codex/agents/software-architect.toml",
+      "kind": "integration",
+      "owner": "codex",
+      "integrity": "content",
+      "sha256": "dbb486843cddd52642503813d4954c6d0306475ce542c06b81e4d599e6afe2f2",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".codex/hooks.json",
+      "kind": "integration",
+      "owner": "codex",
+      "integrity": "existence",
+      "sha256": "f2d9f7e9569934866eaa3949dc21008f7dbdf9118239e8722309d25bebac1219",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".cursor/agents/ai-engineer.md",
+      "kind": "integration",
+      "owner": "cursor",
+      "integrity": "content",
+      "sha256": "340a29e56ac6dd9bbba49c9ab79eb5df86c3edc78ec9069a280251dd62cc0d6f",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".cursor/agents/backend-engineer.md",
+      "kind": "integration",
+      "owner": "cursor",
+      "integrity": "content",
+      "sha256": "a649c4ad002d50747b96abce433af868cdc001d82741f9fbb5f1c04fa7fee193",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".cursor/agents/code-reviewer.md",
+      "kind": "integration",
+      "owner": "cursor",
+      "integrity": "content",
+      "sha256": "e3786d674b965963165137dec43249bf0b51522c48271281feadc3dde2c608b5",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".cursor/agents/database-engineer.md",
+      "kind": "integration",
+      "owner": "cursor",
+      "integrity": "content",
+      "sha256": "0258fd8a7b3adf5d418f42a3989bd6ab5e6438d72134b7c0c5c94e27690646dc",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".cursor/agents/debugging-specialist.md",
+      "kind": "integration",
+      "owner": "cursor",
+      "integrity": "content",
+      "sha256": "0c8477701b856905f00cd4673256a2a533583b9d6a6c64c825344f85805c4d03",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".cursor/agents/devops-engineer.md",
+      "kind": "integration",
+      "owner": "cursor",
+      "integrity": "content",
+      "sha256": "1b96ea882c0277d285354b5d77b3fc6cef102e429e47f2db0668608a8a0548ff",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".cursor/agents/frontend-engineer.md",
+      "kind": "integration",
+      "owner": "cursor",
+      "integrity": "content",
+      "sha256": "d8a0bb2e09a94c2e91c679286f13d053d926a54a188e34ae17788cd58169477e",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".cursor/agents/performance-engineer.md",
+      "kind": "integration",
+      "owner": "cursor",
+      "integrity": "content",
+      "sha256": "b7b082cc276e9dbc954c6761a7564ac4865f73ee65f4b1cd1029228a425597ab",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".cursor/agents/product-manager.md",
+      "kind": "integration",
+      "owner": "cursor",
+      "integrity": "content",
+      "sha256": "cd7a62759277590c216a6ade4c5a006672d4643a8f84ef758197dd0363e7ab24",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".cursor/agents/refactoring-specialist.md",
+      "kind": "integration",
+      "owner": "cursor",
+      "integrity": "content",
+      "sha256": "bdb247666ea7aafd6a84650df7cf14a97243ea35220a7c53073d70e6e55d4eb5",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".cursor/agents/security-reviewer.md",
+      "kind": "integration",
+      "owner": "cursor",
+      "integrity": "content",
+      "sha256": "c5a171bbe717670dc9f938f42e7e3d20df53c3a9b2b67db3c582dad08547f6d0",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".cursor/agents/software-architect.md",
+      "kind": "integration",
+      "owner": "cursor",
+      "integrity": "content",
+      "sha256": "2e3496441754b2793337c5ceb96abdc06680b6d77da3470362d45148984beba3",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".cursor/hooks.json",
+      "kind": "integration",
+      "owner": "cursor",
+      "integrity": "existence",
+      "sha256": "04c81aabf0eda44ec69bed0e13821d8869535056ddc6b6d76cc19c3d97cbc779",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".cursor/rules/mstack.mdc",
+      "kind": "integration",
+      "owner": "cursor",
+      "integrity": "content",
+      "sha256": "e685354fa1f1892b3c2d14b67170da6d1ef8af6cc7da86e1f914c7837cfcb0ad",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".mstack/runtime/hooks/change-discipline.mjs",
+      "kind": "runtime",
+      "owner": "mstack",
+      "integrity": "content",
+      "sha256": "fa5432b69bb32635e4e2b9e6fe3736b6989d4b71d6193134d138bdb2f19cdde7",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".mstack/runtime/hooks/feature-completeness.mjs",
+      "kind": "runtime",
+      "owner": "mstack",
+      "integrity": "content",
+      "sha256": "7a734085df6a83c25fc275190e6d1bfbb9cce7980f7728d6375b4781b60dd71f",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".mstack/runtime/hooks/repository-health.mjs",
+      "kind": "runtime",
+      "owner": "mstack",
+      "integrity": "content",
+      "sha256": "8f6e91196ed596159d1a6e1f5d0c3c22375a7a89f2b149a4fdaec0a934d8db09",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".mstack/templates/adr.template.md",
+      "kind": "integration",
+      "owner": "mstack-runtime",
+      "integrity": "content",
+      "sha256": "3d2d02c9a62ec23040fe44ebb2b9e572bd7dc871fadaea6c5775db9ce578df48",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".mstack/templates/agent.template.md",
+      "kind": "integration",
+      "owner": "mstack-runtime",
+      "integrity": "content",
+      "sha256": "e2b11b0f9199c4a63f932532e8cd71ef70e0d8c551cd1e7451c306c8d64e4b63",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".mstack/templates/api.template.md",
+      "kind": "integration",
+      "owner": "mstack-runtime",
+      "integrity": "content",
+      "sha256": "a507f5af1f685db3ca617060929870302fb1622ab06faa9bd88e28ac3dbcca75",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".mstack/templates/architecture.template.md",
+      "kind": "integration",
+      "owner": "mstack-runtime",
+      "integrity": "content",
+      "sha256": "073b64e79a7d8a0ecbabe3af197cb9167b97c5b22bc6c05251f966f9d3e0325f",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".mstack/templates/feature.template.md",
+      "kind": "integration",
+      "owner": "mstack-runtime",
+      "integrity": "content",
+      "sha256": "868714769562c135964b3740d764745a98c527054a80ec560e07245ede846db8",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".mstack/templates/product.template.md",
+      "kind": "integration",
+      "owner": "mstack-runtime",
+      "integrity": "content",
+      "sha256": "413f369aeacd9e2ff24c22cb2d02bf61c7f497cc338ecb69cab7fa6fcba4a031",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".mstack/templates/prompt.template.md",
+      "kind": "integration",
+      "owner": "mstack-runtime",
+      "integrity": "content",
+      "sha256": "de5a6634ce24f65225df90e38899480f814c18f626468f35721aa88c821b75be",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": ".mstack/templates/repository.template.md",
+      "kind": "integration",
+      "owner": "mstack-runtime",
+      "integrity": "content",
+      "sha256": "54c0f647544c49a43e67170802038013662fe4e91b7ada01254ec52b9816bf6f",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": "AGENTS.md",
+      "kind": "integration",
+      "owner": "codex",
+      "integrity": "existence",
+      "sha256": "181b359f552d2f18d93b51f96e716e69e51e19888dbf1fbc8c71698f754f4c17",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": "CLAUDE.md",
+      "kind": "integration",
+      "owner": "claude-code",
+      "integrity": "existence",
+      "sha256": "c611806f851f3a89ec0e208b78344185bc5402c84688e2381aed000accfb5705",
+      "updatedAt": "2026-07-15T20:30:35.114Z"
+    },
+    {
+      "path": "docs/decisions/_template.md",
+      "kind": "template",
+      "owner": "build-like-this",
+      "sha256": "856ab34d0a2bea0ed58badfc3e1fcf383ca2b220f9f061cd422f3b7825cbe0ad",
+      "updatedAt": "2026-07-15T20:29:59.804Z"
+    },
+    {
+      "path": "docs/features/_template.md",
+      "kind": "template",
+      "owner": "build-like-this",
+      "sha256": "beb77d874424a7a5e25461cb185fdd468c8f86de58eadf2f34fc9c6888abc221",
+      "updatedAt": "2026-07-15T20:29:59.804Z"
+    }
+  ]
+}
