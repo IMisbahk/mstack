@@ -1,0 +1,203 @@
+.github/workflows/docs.yml
+  s_15742fdeac8e6e::t_c35a587a47e4be 23
+  s_15742fdeac8e6e::t_e78f0556693a7c 1-22,24
+.markdownlint.jsonc
+  s_15742fdeac8e6e::t_e78f0556693a7c 1-7
+docs/tech-stack.md
+  s_15742fdeac8e6e::t_9868a70e02d6a5 1,3,5-8,13,15,18-19,21,25,27-28,30-31,33,39,41,47,49,53,55-56,61,63,66-67,69,71,73,75,77,83,85-86,88-89,91,93,95,97-98,103,106-107,109,111,113,115-116,120-121,123,126-129,131,133,135-140,142
+  s_15742fdeac8e6e::t_6f8c6e2915c698 2,4,9-12,14,16-17,20,22-24,26,29,32,34-38,40,42-46,48,50-52,54,57-60,62,64-65,68,70,72,74,76,78-82,84,87,90,92,94,96,99-102,104-105,108,110,112,114,117-119,122,124-125,130,132,134,141
+.gitignore
+  s_67da17cd206f3c::t_3f376a83b47ddf 1,8
+  s_15742fdeac8e6e::t_e78f0556693a7c 2-4,9-11
+  s_67da17cd206f3c::t_4f81b79e00fa90 5-7
+templates/product.template.md
+  s_15742fdeac8e6e::t_e1b74e26c40f59 1-2,6-7,19-167
+  s_15742fdeac8e6e::t_d34b89457bb977 8-11
+  s_15742fdeac8e6e::t_c2d2bd54be89e8 12-18
+  s_15742fdeac8e6e::t_f428e9490393a7 3-5
+docs/engineering-rules.md
+  s_15742fdeac8e6e::t_6f8c6e2915c698 2,4,7-8,10,13,16,18,20,22,24,26,31,34,36-38,40,42,44,49,52,54,56,58,61,68,70,72,74,76,78,80-82,84
+  s_15742fdeac8e6e::t_9868a70e02d6a5 1,3,5-6,9,11-12,14-15,17,19,21,23,25,27-30,32-33,35,39,41,43,45-48,50-51,53,55,57,59-60,62-67,69,71,73,75,77,79,83,85-91
+examples/hackathon/product.md
+  s_15742fdeac8e6e::t_c4828975ba8707 10
+  s_15742fdeac8e6e::t_a407db57f851e9 1-2,5-6,11-82
+  s_15742fdeac8e6e::t_d34b89457bb977 7-9
+  s_15742fdeac8e6e::t_f428e9490393a7 3-4
+examples/web-app/architecture.md
+  s_15742fdeac8e6e::t_f428e9490393a7 3-4
+  s_15742fdeac8e6e::t_c4828975ba8707 10
+  s_15742fdeac8e6e::t_d34b89457bb977 7-9
+  s_15742fdeac8e6e::t_e00cd2bee5b7ad 1-2,5-6,11-88
+templates/architecture.template.md
+  s_15742fdeac8e6e::t_c35a587a47e4be 6
+  s_15742fdeac8e6e::t_f428e9490393a7 3-5
+  s_15742fdeac8e6e::t_c2d2bd54be89e8 12-18
+  s_15742fdeac8e6e::t_d34b89457bb977 8-11
+  s_15742fdeac8e6e::t_e1b74e26c40f59 1-2,7,19-237
+examples/startup/product.md
+  s_15742fdeac8e6e::t_f428e9490393a7 3-4
+  s_15742fdeac8e6e::t_d34b89457bb977 7-9
+  s_15742fdeac8e6e::t_c4828975ba8707 10
+  s_15742fdeac8e6e::t_551efa54e026b8 1-2,5-6,11-77
+examples/hackathon/README.md
+  s_15742fdeac8e6e::t_c4828975ba8707 3,5,7-14,18,20,23-28
+  s_15742fdeac8e6e::t_a407db57f851e9 1-2,4,6,15-17,19,21-22
+docs/product.md
+  s_15742fdeac8e6e::t_46fe932774ec63 2,4,7-10,12-14,16-17,20,22-24,26-28,30-32,34-35,42,44,46,48,50,58
+  s_15742fdeac8e6e::t_b41450a98d8487 1,3,5-6,11,15,18-19,21,25,29,33,36-41,43,45,47,49,51-57,59
+docs/lifecycle.md
+  s_15742fdeac8e6e::t_b41450a98d8487 1,3,5-6,8-9,11,13,15,19,21,23,25-26,29,31,33,35-36,39,41,43,47,49,51,55,57,59,62-63,65,67,69,73,75,77,81,83,85,89,91,93
+  s_15742fdeac8e6e::t_46fe932774ec63 2,4,7,10,12,14,16-18,20,22,24,27-28,30,32,34,37-38,40,42,44-46,48,50,52-54,56,58,60-61,64,66,68,70-72,74,76,78-80,82,84,86-88,90,92
+docs/README.md
+  s_67da17cd206f3c::t_1fb2727753c863 3-4
+  s_15742fdeac8e6e::t_46fe932774ec63 2,6,8,12,19,21,23-24,30,32,34,41,43
+  s_15742fdeac8e6e::t_b41450a98d8487 1,5,7,9-11,13-18,20,22,25-29,31,33,35-40,42,44
+.markdownlint-cli2.jsonc
+  s_15742fdeac8e6e::t_c35a587a47e4be 1-7
+examples/saas/README.md
+  s_15742fdeac8e6e::t_e00cd2bee5b7ad 1-2,4,6,15-16,18-19,21,23-24
+  s_15742fdeac8e6e::t_c4828975ba8707 3,5,7-14,17,20,22,25-27
+examples/ai-agent/architecture.md
+  s_15742fdeac8e6e::t_a407db57f851e9 1-2,5-6,11-94
+  s_15742fdeac8e6e::t_c4828975ba8707 10
+  s_15742fdeac8e6e::t_f428e9490393a7 3-4
+  s_15742fdeac8e6e::t_d34b89457bb977 7-9
+docs/features.md
+  s_15742fdeac8e6e::t_46fe932774ec63 2,4,7-8,10,12,14,16,18,20-24,27
+  s_15742fdeac8e6e::t_b41450a98d8487 1,3,5-6,9,11,13,15,17,19,25-26,28
+examples/saas/architecture.md
+  s_15742fdeac8e6e::t_c4828975ba8707 10
+  s_15742fdeac8e6e::t_d34b89457bb977 7-9
+  s_15742fdeac8e6e::t_e00cd2bee5b7ad 1-2,5-6,11-82
+  s_15742fdeac8e6e::t_f428e9490393a7 3-4
+templates/feature.template.md
+  s_15742fdeac8e6e::t_d34b89457bb977 8-11
+  s_15742fdeac8e6e::t_f428e9490393a7 3-5
+  s_15742fdeac8e6e::t_c2d2bd54be89e8 12
+  s_15742fdeac8e6e::t_e1b74e26c40f59 1-2,6-7,13-108
+CONTRIBUTING.md
+  s_15742fdeac8e6e::t_e600a056edcc21 1,3,5-6,8-19,21,23-28,30,32,34-38,40,45-48
+  s_15742fdeac8e6e::t_e78f0556693a7c 2,4,7,20,22,29,31,33,39,41-44,49-50
+docs/philosophy.md
+  s_15742fdeac8e6e::t_b41450a98d8487 1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33,35,37,39,41,43,45,47-72,79
+  s_15742fdeac8e6e::t_46fe932774ec63 2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,73-78
+docs/production.md
+  s_15742fdeac8e6e::t_6f8c6e2915c698 2,4,6,8,11,13,19,21,23,25,28-31,33,35,37-38,40,42-43,45,47,49,51,53,55,57,62-63,66-67,71,73,75
+  s_15742fdeac8e6e::t_9868a70e02d6a5 1,3,5,7,9-10,12,14-18,20,22,24,26-27,32,34,36,39,41,44,46,48,50,52,54,56,58-61,64-65,68-70,72,74,76
+AGENTS.md
+  s_15742fdeac8e6e::t_e600a056edcc21 1,3,5-6,8-9,11,25,40-41,95-96,136-137
+  s_15742fdeac8e6e::t_e78f0556693a7c 2,4,7,10,12-24,26-39,42-94,97-135
+SECURITY.md
+  s_15742fdeac8e6e::t_e78f0556693a7c 1-2,4,6
+  s_15742fdeac8e6e::t_e600a056edcc21 3,5,7-9
+CLAUDE.md
+  s_15742fdeac8e6e::t_e600a056edcc21 3,5-6,22,43
+  s_15742fdeac8e6e::t_e78f0556693a7c 1-2,4,7-21,23-42
+.github/PULL_REQUEST_TEMPLATE.md
+  s_15742fdeac8e6e::t_e600a056edcc21 3,11,18
+  s_15742fdeac8e6e::t_e78f0556693a7c 1-2,4-10,12-17,19-23
+examples/web-app/product.md
+  s_15742fdeac8e6e::t_d34b89457bb977 7-9
+  s_15742fdeac8e6e::t_e00cd2bee5b7ad 1-2,5-6,11-76
+  s_15742fdeac8e6e::t_f428e9490393a7 3-4
+  s_15742fdeac8e6e::t_c4828975ba8707 10
+LICENSE
+  s_15742fdeac8e6e::t_e78f0556693a7c 3
+  s_67da17cd206f3c::t_3f376a83b47ddf 1-2,4-21
+examples/startup/README.md
+  s_15742fdeac8e6e::t_c4828975ba8707 3,5,7-14,17-18,20,27
+  s_15742fdeac8e6e::t_551efa54e026b8 1-2,4,6,15-16,19,21-26
+docs/mstack-developer-experience.md
+  s_15742fdeac8e6e::t_4afcd5e9800001 386
+  s_15742fdeac8e6e::t_fdc00d9a7545d3 29-33
+  s_15742fdeac8e6e::t_6373ab80ac727c 94,168-169,206
+  s_87fc58ff2603bd::t_caa4e2820b4a64 248,251
+  s_87fc58ff2603bd::t_951b684c9686d8 2,4,8,14,38-40,45,47-57,61-93,95-167,170-205,207-247,249-250,252-385,387-406
+  s_15742fdeac8e6e::t_c2d2bd54be89e8 1,3,5-7,9-13,15-28,34-37,41-44,46,58-60
+examples/startup/architecture.md
+  s_15742fdeac8e6e::t_c4828975ba8707 10
+  s_15742fdeac8e6e::t_551efa54e026b8 1-2,5-6,11-77
+  s_15742fdeac8e6e::t_f428e9490393a7 3-4
+  s_15742fdeac8e6e::t_d34b89457bb977 7-9
+examples/saas/product.md
+  s_15742fdeac8e6e::t_c4828975ba8707 10
+  s_15742fdeac8e6e::t_d34b89457bb977 7-9
+  s_15742fdeac8e6e::t_f428e9490393a7 3-4
+  s_15742fdeac8e6e::t_e00cd2bee5b7ad 1-2,5-6,11-74
+docs/decisions.md
+  s_15742fdeac8e6e::t_6f8c6e2915c698 2,4,7-9,16,18,20
+  s_15742fdeac8e6e::t_9868a70e02d6a5 1,3,5-6,10-15,17,19,21
+README.md
+  s_15742fdeac8e6e::t_b41450a98d8487 3,5,7,9,11-23,25,27,29,36,38-47,49,51,53,55-61,63,65,67,69-73,77-78,80-122,124-125,127,129-133,135,137,139,141
+  s_15742fdeac8e6e::t_46fe932774ec63 1-2,4,6,30-35,37,48,50,52,54,62,64,66,68,74,76,126,128,134,136,138,140,142-143
+  s_67da17cd206f3c::t_690adb4a7f07e7 75,79,123
+  s_87fc58ff2603bd::t_caa4e2820b4a64 8,10,24,26,28
+examples/hackathon/architecture.md
+  s_15742fdeac8e6e::t_a407db57f851e9 1-2,5-6,12-80
+  s_15742fdeac8e6e::t_c4828975ba8707 11
+  s_15742fdeac8e6e::t_f428e9490393a7 3-4
+  s_15742fdeac8e6e::t_d34b89457bb977 7-10
+examples/web-app/README.md
+  s_15742fdeac8e6e::t_e00cd2bee5b7ad 2,4,6,15-17,19,21-22
+  s_15742fdeac8e6e::t_c4828975ba8707 1,3,5,7-14,18,20,23-27
+examples/ai-agent/product.md
+  s_15742fdeac8e6e::t_a407db57f851e9 1-2,5-6,11-80
+  s_15742fdeac8e6e::t_d34b89457bb977 7-9
+  s_15742fdeac8e6e::t_f428e9490393a7 3-4
+  s_15742fdeac8e6e::t_c4828975ba8707 10
+.github/ISSUE_TEMPLATE/documentation.yml
+  s_15742fdeac8e6e::t_e78f0556693a7c 3-24,26-31
+  s_15742fdeac8e6e::t_e600a056edcc21 1-2,25,32
+docs/project-organization.md
+  s_15742fdeac8e6e::t_6f8c6e2915c698 2,4,6,9-14,16-17,19,21,23-33,35,37-53,55,57,60,79,81,83,85,87,89,91,93
+  s_15742fdeac8e6e::t_9868a70e02d6a5 1,3,5,7-8,15,18,20,22,34,36,54,56,58-59,61-78,80,82,84,86,88,90,92,94
+docs/api-design.md
+  s_15742fdeac8e6e::t_9868a70e02d6a5 1,3,5,7-11,14,17,19-20,23-27,29,41-42,44,46,48,50-55,58,60,62,64-65,67,70-73
+  s_15742fdeac8e6e::t_6f8c6e2915c698 2,4,6,12-13,15-16,18,21-22,28,30-40,43,45,47,49,56-57,59,61,63,66,68-69
+.editorconfig
+  s_15742fdeac8e6e::t_e78f0556693a7c 1-11
+docs/anti-patterns.md
+  s_15742fdeac8e6e::t_9868a70e02d6a5 1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33,35,37,39,41,43,45,47,49,51,53,55,57,59,63,65,67,70-77,79,81,83
+  s_15742fdeac8e6e::t_6f8c6e2915c698 2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,60-62,64,66,68-69,78,80,82
+examples/ai-agent/README.md
+  s_15742fdeac8e6e::t_a407db57f851e9 1-2,4,6,15-17,19,21-22,25
+  s_15742fdeac8e6e::t_c4828975ba8707 3,5,7-14,18,20,23-24,26-27
+docs/architecture.md
+  s_15742fdeac8e6e::t_b41450a98d8487 1,3,5,11,13,15,17-18,21,25,29,31,33,35,37,40-45,47,49,51,53,55,57
+  s_15742fdeac8e6e::t_46fe932774ec63 2,4,6-10,12,14,16,19-20,22-24,26-28,30,32,34,36,38-39,46,48,50,52,54,56
+templates/adr.template.md
+  s_15742fdeac8e6e::t_c2d2bd54be89e8 8-11
+  s_15742fdeac8e6e::t_e1b74e26c40f59 1-7,12-62
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "4620e3e3325b42e22e308321a507fda5bf827c7c",
+  "prompts": {},
+  "sessions": {
+    "s_15742fdeac8e6e": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f669b-55ad-7452-8820-4091dc9d7dc4",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Misbah Khursheed <m.misbahkhursheed@gmail.com>"
+    },
+    "s_67da17cd206f3c": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f66a5-8e5e-7533-a508-b9b6cf46b562",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Misbah Khursheed <m.misbahkhursheed@gmail.com>"
+    },
+    "s_87fc58ff2603bd": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f66a6-7213-7732-a1f9-a9fd85799ef7",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Misbah Khursheed <m.misbahkhursheed@gmail.com>"
+    }
+  }
+}
