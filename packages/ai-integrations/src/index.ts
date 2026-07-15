@@ -7,8 +7,13 @@ export {
   cursorAdapter,
   geminiAdapter,
 } from "./adapters/index.js";
-export { applyIntegrationPlan, type ApplyOptions } from "./core/installer.js";
+export { applyIntegrationPlan, resumeIntegrationOperation, type ApplyOptions } from "./core/installer.js";
 export { createIntegrationPlan } from "./core/planner.js";
+export { normalizeIntegrationSpec } from "./core/normalization.js";
+export { inspectIntegrationRepository } from "./core/inspection.js";
+export { approveIntegrationPlan, createReconciliationPlan, createRemovalPlan, createUpgradePlan, type RemovalPlanOptions } from "./core/reconciliation.js";
+export { verifyIntegrationRuntime } from "./core/verification.js";
+export { hashContent } from "./core/safety.js";
 export { IntegrationRegistry } from "./core/registry.js";
 export { assertSafeRelativePath, validateIntegrationSpec } from "./core/validation.js";
 export { integrationFeatures } from "./types.js";

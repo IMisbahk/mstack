@@ -69,14 +69,17 @@ Setting up an AI coding environment repeatedly is tedious. The same planning doc
 `mstack` is the companion CLI for this playbook:
 
 ```sh
-npx mstack@latest init
+npm install -g @imisbahk/mstack
+mstack init
 ```
 
 It inspects a repository, previews its changes, preserves existing work, and installs the parts of the workflow that fit. It can configure reusable agents, prompts, hooks, skills, project templates, onboarding, and repository-level guidance for Claude Code, Codex, Cursor, Gemini CLI, Continue, and Aider. Run `mstack ai setup --dry-run` to inspect the exact runtime plan before installing it.
 
+The current platform includes 6 AI environments, 12 specialist agents, 10 reusable skills, 3 automation hooks, 9 prompt packs, and 8 runtime templates. It supports npm, pnpm, Yarn, and Bun, with versioned JSON output for automation.
+
 Projects such as [g-stack](https://github.com/garrytan/gstack) already approach AI development environments with broad capability and configuration. I respect that approach. Build Like This makes a different trade-off: fewer choices, stronger defaults, and a specific product-to-production workflow. The purpose of mstack is not to expose every possible setup. It is to get a repository ready for the process I would personally use.
 
-The [mstack CLI guide](docs/cli/README.md) covers installation and commands. The [developer experience contract](docs/mstack-developer-experience.md) defines how the CLI should feel, including inspection, consent, recovery, and diagnostics.
+Read the dedicated [mstack README](packages/cli/README.md) for capabilities, workflows, installation, every implemented command, terminal examples, statistics, and the roadmap. The [CLI guide](docs/cli/README.md) covers configuration and operations, while the [developer experience contract](docs/mstack-developer-experience.md) defines inspection, consent, recovery, and diagnostics.
 
 ## Who this is for
 
@@ -92,7 +95,7 @@ It is not a step-by-step coding tutorial and it is not a collection of fashionab
 
 ## Start a project this way
 
-1. Run `npx mstack@latest init`, or copy the files from [`templates/`](templates/).
+1. Install mstack with `npm install -g @imisbahk/mstack`, then run `mstack init` (or copy the files from [`templates/`](templates/)).
 2. Write `docs/product.md` using the [product template](templates/product.template.md).
 3. Write `docs/architecture.md` using the [architecture template](templates/architecture.template.md).
 4. Use the [feature template](templates/feature.template.md) only when a feature has enough uncertainty or risk to deserve one.

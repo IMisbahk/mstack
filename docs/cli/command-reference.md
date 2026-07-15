@@ -117,7 +117,8 @@ Options:
   -f, --force  replace conflicting generated targets (default: false)
   -h, --help   display help for command
   --json       print a versioned JSON result (default: false)
-  -y, --yes    use detected runtimes without prompting (default: false)
+  -y, --yes    accept the displayed runtime plan without prompting (default:
+               false)
 ```
 
 ## mstack ai list

@@ -1,5 +1,5 @@
 {
-  "name": "mstack",
+  "name": "@imisbahk/mstack",
   "version": "0.2.0",
   "description": "Install Misbah Khursheed's documentation-first engineering workflow in a repository",
   "type": "module",
@@ -42,13 +42,13 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/misbah-khursheed/buildlikethis.git",
+    "url": "git+https://github.com/IMisbahk/mstack.git",
     "directory": "packages/cli"
   },
   "bugs": {
-    "url": "https://github.com/misbah-khursheed/buildlikethis/issues"
+    "url": "https://github.com/IMisbahk/mstack/issues"
   },
-  "homepage": "https://github.com/misbah-khursheed/buildlikethis#readme",
+  "homepage": "https://github.com/IMisbahk/mstack#readme",
   "publishConfig": {
     "access": "public",
     "provenance": true

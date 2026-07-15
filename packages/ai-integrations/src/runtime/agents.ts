@@ -14,6 +14,10 @@ interface AgentSource {
 function defineAgent(source: AgentSource): AgentDefinition {
   return {
     id: source.id,
+    version: "1.0.0",
+    activation: "passive",
+    security: "content",
+    fallback: "degrade",
     description: source.description,
     instructions: [
       "This specialist operates inside Misbah Khursheed's Build Like This workflow. Use AI to accelerate explicit product and engineering judgment, never to replace it with plausible defaults.",

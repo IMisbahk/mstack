@@ -1,8 +1,8 @@
 # Feature: AI workspace runtime
 
-> Status: In progress
+> Status: Released
 > Owner: AI Runtime
-> Last updated: 2026-07-15
+> Last updated: 2026-07-16
 > Product need: Install a safe, production-quality AI development workspace into an existing repository
 
 ## Summary
@@ -74,17 +74,17 @@ Before an approved destructive edit, the runtime stores a repository-local backu
 
 ## Acceptance criteria
 
-- [ ] The public package API supports create, inspect, plan, approve, apply, verify, upgrade, and remove without CLI coupling.
-- [ ] Planning is read-only and classifies create, adopt, update, preserve, conflict, delete, and unchanged operations.
-- [ ] Existing unmanaged files are not replaced or deleted without explicit approval and a backup.
-- [ ] Privileged resources require resource-specific activation.
-- [ ] A target changed after inspection fails untouched.
-- [ ] Rerunning an unchanged installation produces no writes.
-- [ ] Upgrades and platform deselection remove only unchanged manifest-owned state.
-- [ ] User-modified managed state is preserved and reported as drift.
-- [ ] Filesystem safety and interrupted-operation recovery are tested.
-- [ ] All six adapters have supported and degraded behavior tests.
-- [ ] A clean package build imports successfully through its published export.
+- [x] The public package API supports create, inspect, plan, approve, apply, verify, upgrade, and remove without CLI coupling.
+- [x] Planning is read-only and classifies create, adopt, update, preserve, conflict, delete, and unchanged operations.
+- [x] Existing unmanaged files are not replaced or deleted without explicit approval and a backup.
+- [x] Privileged resources require resource-specific activation.
+- [x] A target changed after inspection fails untouched.
+- [x] Rerunning an unchanged installation produces no writes.
+- [x] Upgrades and platform deselection remove only unchanged manifest-owned state.
+- [x] User-modified managed state is preserved and reported as drift.
+- [x] Filesystem safety and interrupted-operation recovery are tested.
+- [x] All six adapters have supported and degraded behavior tests.
+- [x] A clean package build imports successfully through its published export.
 
 ## Test plan
 

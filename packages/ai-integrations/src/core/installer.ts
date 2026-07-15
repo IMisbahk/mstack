@@ -1,208 +1,118 @@
-import { access, chmod, mkdir, readFile, realpath, rename, rm, writeFile } from "node:fs/promises";
-import { dirname, isAbsolute, join, relative, resolve } from "node:path";
+import { chmod, copyFile, lstat, mkdir, readFile, rename, rm, writeFile } from "node:fs/promises";
+import { dirname, join } from "node:path";
 import type {
   AppliedArtifact,
   ApplyResult,
-  GeneratedArtifact,
   IntegrationPlan,
+  OperationJournal,
+  OperationJournalEntry,
+  ReconciliationChange,
+  ReconciliationPlan,
 } from "../types.js";
-import { assertSafeRelativePath } from "./validation.js";
+import { inspectIntegrationRepository } from "./inspection.js";
+import { writeRuntimeManifest } from "./manifest.js";
+import { createReconciliationPlan } from "./reconciliation.js";
+import { assertSafeTarget, canonicalRepositoryRoot, hashContent } from "./safety.js";
+import { validateIntegrationPlan, validateReconciliationPlan } from "./validation.js";
 
 export interface ApplyOptions {
   readonly dryRun?: boolean;
+  /** @deprecated force does not satisfy operation-specific approvals. */
   readonly force?: boolean;
+  /** Test-only deterministic fault injection after N durable boundaries. */
+  readonly failAfterDurableBoundary?: number;
 }
 
-export async function applyIntegrationPlan(
-  root: string,
-  plan: IntegrationPlan,
-  options: ApplyOptions = {},
-): Promise<ApplyResult> {
-  const repositoryRoot = await realpath(resolve(root));
-  const files: AppliedArtifact[] = [];
+export async function applyIntegrationPlan(root: string, input: IntegrationPlan | ReconciliationPlan, options: ApplyOptions = {}): Promise<ApplyResult> {
+  const repositoryRoot = await canonicalRepositoryRoot(root);
+  const plan = isReconciliationPlan(input) ? input : await legacyPlan(repositoryRoot, input);
+  validateReconciliationPlan(plan);
+  if (plan.root !== repositoryRoot) throw new Error(`Plan root does not match repository root`);
 
-  for (const artifact of plan.artifacts) {
-    assertSafeRelativePath(artifact.path, "artifact path");
-    const absolutePath = resolve(repositoryRoot, artifact.path);
-    if (!isInside(repositoryRoot, absolutePath)) {
-      throw new Error(`Artifact escapes repository root: ${artifact.path}`);
-    }
-    await assertParentInside(repositoryRoot, absolutePath, artifact.path);
+  const unresolved = plan.changes.flatMap((change) => change.approvalRequirements.filter((requirement) => !change.approvals.includes(requirement.id) && !change.denied));
+  if (unresolved.length > 0) {
+    return { files: plan.changes.map((change) => ({ path: change.path, status: change.approvalRequirements.some((item) => unresolved.includes(item)) ? "conflict" : previewStatus(change), ...(change.approvalRequirements.some((item) => unresolved.includes(item)) ? { message: `Approval required: ${change.approvalRequirements.filter((item) => unresolved.includes(item)).map((item) => item.kind).join(", ")}` } : {}) })), diagnostics: plan.diagnostics, operationId: plan.operationId, manifestPath: ".mstack/runtime/manifest.json" };
+  }
+  const files = plan.changes.map((change) => ({ path: change.path, status: change.denied ? "denied" as const : appliedStatus(change), ...(change.denied ? { message: "Resource was intentionally left absent by an explicit denial" } : {}) }));
+  if (options.dryRun === true) return { files, diagnostics: plan.diagnostics, operationId: plan.operationId, manifestPath: ".mstack/runtime/manifest.json" };
 
-    const current = await readOptional(absolutePath);
-    const next = mergeArtifact(current, artifact);
-    if (current === next) {
-      files.push({ path: artifact.path, status: "unchanged" });
-      continue;
-    }
+  await preflight(repositoryRoot, plan.changes.filter((change) => !change.denied));
+  const journalPath = `.mstack/runtime/operations/${plan.operationId}.json`;
+  const stagingRoot = `.mstack/runtime/staging/${plan.operationId}`;
+  const backupRoot = `.mstack/runtime/backups/${plan.operationId}`;
+  let boundaries = 0;
+  const fail = (): void => { boundaries += 1; if (options.failAfterDurableBoundary === boundaries) throw new Error(`Injected failure after durable boundary ${boundaries}`); };
 
-    const managed = current === undefined || isManaged(current, artifact);
-    if (!managed && artifact.mergeStrategy === "replace" && options.force !== true) {
-      files.push({
-        path: artifact.path,
-        status: "conflict",
-        message: "Existing unmanaged file was preserved. Pass force: true to replace it.",
-      });
-      continue;
-    }
+  const entries: OperationJournalEntry[] = plan.changes.filter(mutates).map((change) => ({ path: change.path, state: "pending", ...(change.previousHash === undefined ? {} : { previousHash: change.previousHash }), ...(change.nextHash === undefined ? {} : { nextHash: change.nextHash }) }));
+  let journal: OperationJournal = { schemaVersion: 1, operationId: plan.operationId, planKind: plan.kind, entries, manifestWritten: false };
+  await writeJournal(repositoryRoot, journalPath, journal); fail();
 
-    if (options.dryRun !== true) {
-      await mkdir(dirname(absolutePath), { recursive: true });
-      let backupPath: string | undefined;
-      if (!managed && artifact.mergeStrategy === "replace" && options.force === true && current !== undefined) {
-        backupPath = `${absolutePath}.mstack-backup-${new Date().toISOString().replace(/[:.]/g, "-")}`;
-        await writeFile(backupPath, current, "utf8");
+  try {
+    for (const change of plan.changes) {
+      if (!mutates(change) || change.denied) continue;
+      const target = await assertSafeTarget(repositoryRoot, change.path);
+      const entryIndex = journal.entries.findIndex((entry) => entry.path === change.path);
+      if (entryIndex < 0) throw new Error(`Operation journal is missing ${change.path}`);
+      let entry = journal.entries[entryIndex]!;
+      if (change.backupRequired && change.previousHash !== undefined) {
+        const backupRelative = `${backupRoot}/${change.path}`;
+        const backup = await assertSafeTarget(repositoryRoot, backupRelative);
+        await mkdir(dirname(backup), { recursive: true }); await copyFile(target, backup);
+        entry = { ...entry, state: "backed-up", backupPath: backupRelative };
+        journal = replaceEntry(journal, entryIndex, entry); await writeJournal(repositoryRoot, journalPath, journal); fail();
       }
-      await atomicWrite(absolutePath, next);
-      if (artifact.executable === true) await chmod(absolutePath, 0o755);
-      files.push({
-        path: artifact.path,
-        status: current === undefined ? "created" : "updated",
-        ...(backupPath === undefined ? {} : { message: `Backup created at ${relative(repositoryRoot, backupPath)}` }),
-      });
-      continue;
-    }
-    files.push({ path: artifact.path, status: current === undefined ? "created" : "updated" });
-  }
-
-  return { files, diagnostics: plan.diagnostics };
-}
-
-function mergeArtifact(current: string | undefined, artifact: GeneratedArtifact): string {
-  switch (artifact.mergeStrategy) {
-    case "replace":
-      return artifact.content;
-    case "managed-block":
-      return mergeManagedBlock(current, artifact.environment, artifact.content);
-    case "merge-json": {
-      const existing = current === undefined ? {} : parseObject(current, artifact.path);
-      const generated = parseObject(artifact.content, artifact.path);
-      return `${JSON.stringify(deepMerge(existing, generated), null, 2)}\n`;
-    }
-  }
-}
-
-function mergeManagedBlock(current: string | undefined, id: string, body: string): string {
-  const start = `<!-- mstack:${id}:start -->`;
-  const end = `<!-- mstack:${id}:end -->`;
-  const block = `${start}\n${body.trim()}\n${end}`;
-  if (current === undefined || current.trim().length === 0) return `${block}\n`;
-
-  const startIndex = current.indexOf(start);
-  const endIndex = current.indexOf(end);
-  if (startIndex >= 0 && endIndex >= startIndex) {
-    return `${current.slice(0, startIndex)}${block}${current.slice(endIndex + end.length)}`;
-  }
-  return `${current.trimEnd()}\n\n${block}\n`;
-}
-
-function isManaged(current: string, artifact: GeneratedArtifact): boolean {
-  return (
-    current.includes(`Generated by mstack from Misbah's Build Like This workflow for ${artifact.environment}`) ||
-    current.includes("Generated by mstack from Misbah's Build Like This workflow. Regenerate instead of editing.") ||
-    current.includes(`Generated by mstack for ${artifact.environment}`) ||
-    current.includes("Generated by mstack. Regenerate instead of editing.")
-  );
-}
-
-function parseObject(content: string, path: string): Record<string, unknown> {
-  let value: unknown;
-  try {
-    value = JSON.parse(content);
-  } catch (error) {
-    throw new Error(`Cannot merge invalid JSON at ${path}`, { cause: error });
-  }
-  if (value === null || Array.isArray(value) || typeof value !== "object") {
-    throw new Error(`Expected a JSON object at ${path}`);
-  }
-  return value as Record<string, unknown>;
-}
-
-function deepMerge(
-  left: Record<string, unknown>,
-  right: Record<string, unknown>,
-): Record<string, unknown> {
-  const result: Record<string, unknown> = { ...left };
-  for (const [key, value] of Object.entries(right)) {
-    const previous = result[key];
-    if (isObject(previous) && isObject(value)) {
-      result[key] = deepMerge(previous, value);
-    } else if (Array.isArray(previous) && Array.isArray(value)) {
-      const seen = new Set(previous.map(stableValue));
-      result[key] = [...previous, ...value.filter((item) => !seen.has(stableValue(item)))];
-    } else {
-      result[key] = value;
-    }
-  }
-  return result;
-}
-
-function isObject(value: unknown): value is Record<string, unknown> {
-  return value !== null && !Array.isArray(value) && typeof value === "object";
-}
-
-function stableValue(value: unknown): string {
-  return JSON.stringify(value, Object.keys(isObject(value) ? value : {}).sort());
-}
-
-async function readOptional(path: string): Promise<string | undefined> {
-  try {
-    return await readFile(path, "utf8");
-  } catch (error) {
-    if ((error as NodeJS.ErrnoException).code === "ENOENT") return undefined;
-    throw error;
-  }
-}
-
-async function assertParentInside(root: string, path: string, artifactPath: string): Promise<void> {
-  let candidate = dirname(path);
-  while (true) {
-    try {
-      const resolvedParent = await realpath(candidate);
-      if (!isInside(root, resolvedParent)) {
-        throw new Error(`Artifact parent resolves outside repository root: ${artifactPath}`);
+      await assertExpectedHash(target, change.previousHash);
+      await assertSafeTarget(repositoryRoot, change.path);
+      if ((change.action === "delete" || (change.action === "conflict" && change.nextHash === undefined)) && change.nextContent === undefined) await rm(target, { force: true });
+      else if (change.nextContent !== undefined) {
+        const stageRelative = `${stagingRoot}/${change.path}`; const stage = await assertSafeTarget(repositoryRoot, stageRelative);
+        await mkdir(dirname(stage), { recursive: true }); await writeFile(stage, change.nextContent, { encoding: "utf8", mode: change.nextMode ?? 0o644 });
+        await mkdir(dirname(target), { recursive: true }); await assertSafeTarget(repositoryRoot, change.path); await rename(stage, target);
+        if (change.nextMode !== undefined) await chmod(target, change.nextMode);
       }
-      return;
-    } catch (error) {
-      if ((error as NodeJS.ErrnoException).code !== "ENOENT") throw error;
-      const parent = dirname(candidate);
-      if (parent === candidate) throw error;
-      candidate = parent;
+      entry = { ...entry, state: "written" }; journal = replaceEntry(journal, entryIndex, entry); await writeJournal(repositoryRoot, journalPath, journal); fail();
+      await assertExpectedHash(target, change.nextHash);
+      entry = { ...entry, state: "verified" }; journal = replaceEntry(journal, entryIndex, entry); await writeJournal(repositoryRoot, journalPath, journal); fail();
+    }
+    await rm(join(repositoryRoot, stagingRoot), { recursive: true, force: true });
+    await writeRuntimeManifest(repositoryRoot, plan.manifest);
+    return { files, diagnostics: plan.diagnostics, operationId: plan.operationId, manifestPath: ".mstack/runtime/manifest.json", journalPath };
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    return { files: files.map((file) => journal.entries.find((entry) => entry.path === file.path)?.state === "verified" ? file : file.status === "unchanged" || file.status === "adopted" || file.status === "preserved" ? file : { ...file, status: "conflict", message }), diagnostics: plan.diagnostics, operationId: plan.operationId, journalPath, recovery: [message, ...journal.entries.filter((entry) => entry.state !== "verified").map((entry) => `${entry.path}: verify current hash before resuming${entry.backupPath === undefined ? "" : `; backup ${entry.backupPath}`}`)] };
+  }
+}
+
+export async function resumeIntegrationOperation(root: string, plan: ReconciliationPlan): Promise<ApplyResult> {
+  const repositoryRoot = await canonicalRepositoryRoot(root); validateReconciliationPlan(plan);
+  const remaining: ReconciliationChange[] = []; const manual: string[] = [];
+  for (const change of plan.changes) {
+    if (!mutates(change)) { remaining.push(change); continue; }
+    const target = await assertSafeTarget(repositoryRoot, change.path); const hash = await optionalHash(target);
+    if (hash === change.nextHash) remaining.push({ ...change, action: "unchanged", ...(hash === undefined ? {} : { previousHash: hash }), approvals: change.approvalRequirements.map((item) => item.id), backupRequired: false, recovery: "none" });
+    else if (hash === change.previousHash || (hash === undefined && change.previousHash === undefined)) remaining.push(change);
+    else manual.push(`${change.path}: expected ${change.previousHash ?? "missing"} or ${change.nextHash ?? "missing"}, found ${hash ?? "missing"}`);
+  }
+  if (manual.length > 0) return { files: plan.changes.map((change) => ({ path: change.path, status: "conflict", message: "Manual recovery required" })), diagnostics: plan.diagnostics, operationId: plan.operationId, recovery: manual };
+  return applyIntegrationPlan(repositoryRoot, { ...plan, changes: remaining });
+}
+
+async function legacyPlan(root: string, plan: IntegrationPlan): Promise<ReconciliationPlan> { validateIntegrationPlan(plan); const inspection = await inspectIntegrationRepository(root, plan); return createReconciliationPlan(plan, inspection); }
+function isReconciliationPlan(value: IntegrationPlan | ReconciliationPlan): value is ReconciliationPlan { return "changes" in value && "operationId" in value; }
+function mutates(change: ReconciliationChange): boolean { return !change.denied && ["create", "update", "conflict", "delete"].includes(change.action); }
+function previewStatus(change: ReconciliationChange): AppliedArtifact["status"] { const map: Record<ReconciliationChange["action"], AppliedArtifact["status"]> = { create: "created", adopt: "adopted", update: "updated", preserve: "preserved", conflict: "conflict", delete: "deleted", unchanged: "unchanged" }; return map[change.action]; }
+function appliedStatus(change: ReconciliationChange): AppliedArtifact["status"] { return change.action === "conflict" ? (change.nextHash === undefined ? "deleted" : change.previousHash === undefined ? "created" : "updated") : previewStatus(change); }
+
+async function preflight(root: string, changes: readonly ReconciliationChange[]): Promise<void> {
+  for (const change of changes) {
+    await assertSafeTarget(root, change.path);
+    if (mutates(change)) {
+      const target = join(root, change.path); await assertExpectedHash(target, change.previousHash);
+      if (change.nextContent !== undefined && hashContent(change.nextContent) !== change.nextHash) throw new Error(`Plan content hash is invalid for ${change.path}`);
     }
   }
 }
-
-function isInside(root: string, path: string): boolean {
-  const repositoryRelative = relative(root, path);
-  return (
-    repositoryRelative === "" ||
-    (repositoryRelative !== ".." &&
-      !repositoryRelative.startsWith("../") &&
-      !repositoryRelative.startsWith("..\\") &&
-      !isAbsolute(repositoryRelative))
-  );
-}
-
-async function atomicWrite(path: string, content: string): Promise<void> {
-  const suffix = `${process.pid}-${Date.now()}-${Math.random().toString(16).slice(2)}`;
-  const temporary = join(dirname(path), `.${suffix}.tmp`);
-  const backup = join(dirname(path), `.${suffix}.bak`);
-  let existed = true;
-  try { await access(path); } catch { existed = false; }
-  try {
-    await writeFile(temporary, content, "utf8");
-    if (existed) await rename(path, backup);
-    await rename(temporary, path);
-    if (existed) await rm(backup, { force: true });
-  } catch (error) {
-    let backupExists = true;
-    try { await access(backup); } catch { backupExists = false; }
-    let destinationExists = true;
-    try { await access(path); } catch { destinationExists = false; }
-    if (existed && backupExists && !destinationExists) await rename(backup, path);
-    throw error;
-  } finally {
-    await rm(temporary, { force: true }).catch(() => undefined);
-    await rm(backup, { force: true }).catch(() => undefined);
-  }
-}
+async function assertExpectedHash(path: string, expected: string | undefined): Promise<void> { const actual = await optionalHash(path); if (actual !== expected) throw new Error(`Target changed after inspection: ${path}`); }
+async function optionalHash(path: string): Promise<string | undefined> { try { const stats = await lstat(path); if (!stats.isFile() || stats.isSymbolicLink()) throw new Error(`Target is not a regular file: ${path}`); return hashContent(await readFile(path)); } catch (error) { if ((error as NodeJS.ErrnoException).code === "ENOENT") return undefined; throw error; } }
+async function writeJournal(root: string, relative: string, journal: OperationJournal): Promise<void> { const path = await assertSafeTarget(root, relative); await mkdir(dirname(path), { recursive: true }); const temporary = `${path}.${process.pid}.tmp`; await writeFile(temporary, `${JSON.stringify(journal, null, 2)}\n`, { encoding: "utf8", mode: 0o600 }); await rename(temporary, path); }
+function replaceEntry(journal: OperationJournal, index: number, entry: OperationJournalEntry): OperationJournal { return { ...journal, entries: journal.entries.map((current, currentIndex) => currentIndex === index ? entry : current) }; }

@@ -1,4 +1,5 @@
 import type { IntegrationAdapter } from "../types.js";
+import { validateAdapter } from "./validation.js";
 
 export class IntegrationRegistry {
   readonly #adapters = new Map<string, IntegrationAdapter>();
@@ -8,9 +9,7 @@ export class IntegrationRegistry {
   }
 
   register(adapter: IntegrationAdapter): void {
-    if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(adapter.id)) {
-      throw new Error(`Adapter id must be kebab-case: ${adapter.id}`);
-    }
+    validateAdapter(adapter);
     if (this.#adapters.has(adapter.id)) {
       throw new Error(`Adapter already registered: ${adapter.id}`);
     }

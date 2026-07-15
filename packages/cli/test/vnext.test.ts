@@ -44,7 +44,7 @@ describe("vNext developer experience", () => {
     await createProgram({ cwd: root, templatesDirectory: templates, output })
       .parseAsync(["node", "mstack", "ai", "setup", "codex", "continue", "--yes"]);
 
-    expect(await readFile(path.join(root, "AGENTS.md"), "utf8")).toContain("mstack:codex:start");
+    expect(await readFile(path.join(root, "AGENTS.md"), "utf8")).toContain("mstack:project-instructions:start");
     expect(await readFile(path.join(root, ".agents", "skills", "feature-planning", "SKILL.md"), "utf8")).toContain("Build Like This");
     expect(await readFile(path.join(root, ".continue", "prompts", "build-feature.md"), "utf8")).toContain("invokable: true");
     expect(await readFile(path.join(root, ".continue", "agents", "product-manager.md"), "utf8")).toContain("product and engineering judgment");
@@ -59,6 +59,17 @@ describe("vNext developer experience", () => {
       .parseAsync(["node", "mstack", "init", ".", "--yes", "--no-git"]);
     await createProgram({ cwd: root, templatesDirectory: templates, output })
       .parseAsync(["node", "mstack", "ai", "setup", "codex", "--dry-run", "--yes"]);
+    await expect(readFile(path.join(root, "AGENTS.md"))).rejects.toThrow();
+  });
+
+  it("requires explicit approval for privileged resources in non-interactive setup", async () => {
+    const { root, templates, output } = await fixture();
+    await createProgram({ cwd: root, templatesDirectory: templates, output })
+      .parseAsync(["node", "mstack", "init", ".", "--yes", "--no-git"]);
+
+    await expect(createProgram({ cwd: root, templatesDirectory: templates, output })
+      .parseAsync(["node", "mstack", "ai", "setup", "codex"]))
+      .rejects.toThrow("requires explicit approval");
     await expect(readFile(path.join(root, "AGENTS.md"))).rejects.toThrow();
   });
 

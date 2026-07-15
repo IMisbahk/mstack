@@ -7,12 +7,14 @@ import type {
 import {
   artifact,
   capability,
+  capabilityProfile,
   renderInstructionBody,
   renderPromptSkill,
   renderStandardSkillArtifacts,
   timeoutSeconds,
   tomlString,
   warning,
+  validateRenderedArtifacts,
 } from "./shared.js";
 
 const hookEvents: Record<HookEvent, string> = {
@@ -24,6 +26,10 @@ const hookEvents: Record<HookEvent, string> = {
   "session-end": "Stop",
 };
 
+const capabilities = capability({
+  prompts: ["native", "Reusable prompts are represented as Agent Skills."], hooks: ["experimental", "Approved repository hooks are rendered inline in .codex/config.toml."], skills: ["native", "Open Agent Skills are stored under .agents/skills."], instructions: ["native", "AGENTS.md is loaded as repository guidance."], "slash-commands": ["emulated", "Repo-scoped skills replace deprecated personal custom prompts."], agents: ["native", "Project agents are standalone TOML files in .codex/agents."], "automatic-context": ["emulated", "AGENTS.md directs Codex to load relevant context paths."], "repository-onboarding": ["native", "Repository setup is loaded through AGENTS.md."], mcp: ["experimental", "Project MCP configuration is privileged shared TOML."], permissions: ["experimental", "Trust, sandbox, and approval settings are privileged shared TOML."],
+});
+
 export const codexAdapter: IntegrationAdapter = {
   id: "codex",
   displayName: "OpenAI Codex",
@@ -32,16 +38,9 @@ export const codexAdapter: IntegrationAdapter = {
     projectMarkers: ["AGENTS.md", ".codex", ".agents/skills"],
     documentationUrl: "https://learn.chatgpt.com/docs/customization/overview",
   },
-  capabilities: capability({
-    prompts: ["native", "Reusable prompts are represented as Agent Skills."],
-    hooks: ["native", "Lifecycle hooks are stored in .codex/hooks.json."],
-    skills: ["native", "Open Agent Skills are stored under .agents/skills."],
-    instructions: ["native", "AGENTS.md is loaded as repository guidance."],
-    "slash-commands": ["emulated", "Repo-scoped skills replace deprecated personal custom prompts."],
-    agents: ["native", "Project agents are standalone TOML files in .codex/agents."],
-    "automatic-context": ["emulated", "AGENTS.md directs Codex to load relevant context paths."],
-    "repository-onboarding": ["native", "Repository setup is loaded through AGENTS.md."],
-  }),
+  capabilities,
+  profile: capabilityProfile("codex.2026-07-15", capabilities),
+  validate: (_root, artifacts) => validateRenderedArtifacts("codex", artifacts),
   render(spec: IntegrationSpec): AdapterRenderResult {
     const environment = "codex";
     const diagnostics = [];
@@ -87,19 +86,10 @@ export const codexAdapter: IntegrationAdapter = {
         ),
       );
     }
-    if ((spec.hooks?.length ?? 0) > 0) {
-      const hooks: Record<string, unknown[]> = {};
+    if ((spec.hooks?.length ?? 0) > 0 || (spec.mcpServers?.length ?? 0) > 0) {
+      const config: string[] = [];
       for (const hook of spec.hooks ?? []) {
-        (hooks[hookEvents[hook.event]] ??= []).push({
-          ...(hook.matcher === undefined ? {} : { matcher: hook.matcher }),
-          hooks: [
-            {
-              type: "command",
-              command: hook.command,
-              ...(hook.timeoutMs === undefined ? {} : { timeout: timeoutSeconds(hook.timeoutMs) }),
-            },
-          ],
-        });
+        config.push("[[hooks]]", `event = ${tomlString(hookEvents[hook.event])}`, `command = ${tomlString(hook.command)}`, ...(hook.matcher === undefined ? [] : [`matcher = ${tomlString(hook.matcher)}`]), ...(hook.timeoutMs === undefined ? [] : [`timeout_seconds = ${timeoutSeconds(hook.timeoutMs)}`]), "");
         if (hook.event === "session-end") {
           diagnostics.push(
             warning(
@@ -110,8 +100,11 @@ export const codexAdapter: IntegrationAdapter = {
           );
         }
       }
+      for (const server of spec.mcpServers ?? []) {
+        config.push(`[mcp_servers.${tomlString(server.id)}]`, `type = ${tomlString(server.type)}`, ...(server.url === undefined ? [] : [`url = ${tomlString(server.url)}`]), ...(server.command === undefined ? [] : [`command = ${tomlString(server.command)}`]), ...(server.args === undefined ? [] : [`args = ${JSON.stringify(server.args)}`]), "");
+      }
       artifacts.push(
-        artifact(environment, "hooks", ".codex/hooks.json", JSON.stringify({ hooks }, null, 2), "merge-json"),
+        { ...artifact(environment, (spec.hooks?.length ?? 0) > 0 ? "hooks" : "mcp", ".codex/config.toml", config.join("\n"), "manual"), security: (spec.mcpServers?.length ?? 0) > 0 ? "network" : "executable", activation: "privileged", constraints: { "executable-change": (spec.hooks?.length ?? 0) > 0 } },
       );
     }
     return { artifacts, diagnostics };

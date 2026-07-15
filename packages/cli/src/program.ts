@@ -124,7 +124,7 @@ export function createProgram(options: ProgramOptions = {}): Command {
     .option("--all", "configure every supported runtime", false)
     .option("--dry-run", "preview files and limitations without writing", false)
     .option("-f, --force", "replace conflicting generated targets", false)
-    .option("-y, --yes", "use detected runtimes without prompting", false)
+    .option("-y, --yes", "accept the displayed runtime plan without prompting", false)
     .option("--json", "print a versioned JSON result", false)
     .addHelpText("after", "\nRuntime IDs:\n  claude-code, codex, cursor, gemini-cli, continue, aider")
     .action(async (runtimes: string[], local: { all: boolean; dryRun: boolean; force: boolean; yes: boolean; json: boolean }, command: Command) => {

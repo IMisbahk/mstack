@@ -2,10 +2,14 @@ import type { AdapterRenderResult, IntegrationAdapter, IntegrationSpec } from ".
 import {
   artifact,
   capability,
+  capabilityProfile,
   generatedHeader,
   renderInstructionBody,
   warning,
+  validateRenderedArtifacts,
 } from "./shared.js";
+
+const capabilities = capability({ prompts: ["emulated", "Reusable prompts are collected in an always-read playbook."], hooks: ["unsupported", "Aider has no repository lifecycle hook surface."], skills: ["emulated", "Skill instructions are collected in an always-read playbook."], instructions: ["native", "CONVENTIONS.md is loaded through Aider's read configuration."], "slash-commands": ["unsupported", "Aider does not expose repository-defined slash commands."], agents: ["emulated", "Agent personas are collected in the playbook for manual adoption."], "automatic-context": ["native", "The read list loads configured project context."], "repository-onboarding": ["emulated", "Onboarding steps are included in CONVENTIONS.md."] });
 
 export const aiderAdapter: IntegrationAdapter = {
   id: "aider",
@@ -15,16 +19,9 @@ export const aiderAdapter: IntegrationAdapter = {
     projectMarkers: [".aider.conf.yml", "CONVENTIONS.md"],
     documentationUrl: "https://aider.chat/docs/usage/conventions.html",
   },
-  capabilities: capability({
-    prompts: ["emulated", "Reusable prompts are collected in an always-read playbook."],
-    hooks: ["unsupported", "Aider has no repository lifecycle hook surface."],
-    skills: ["emulated", "Skill instructions are collected in an always-read playbook."],
-    instructions: ["native", "CONVENTIONS.md is loaded through Aider's read configuration."],
-    "slash-commands": ["unsupported", "Aider does not expose repository-defined slash commands."],
-    agents: ["emulated", "Agent personas are collected in the playbook for manual adoption."],
-    "automatic-context": ["native", "The read list loads configured project context."],
-    "repository-onboarding": ["emulated", "Onboarding steps are included in CONVENTIONS.md."],
-  }),
+  capabilities,
+  profile: capabilityProfile("aider.2026-07-15", capabilities),
+  validate: (_root, artifacts) => validateRenderedArtifacts("aider", artifacts),
   render(spec: IntegrationSpec): AdapterRenderResult {
     const environment = "aider";
     const playbookSections: string[] = [
@@ -65,6 +62,7 @@ export const aiderAdapter: IntegrationAdapter = {
           "read:",
           ...readPaths.map((path) => `  - ${JSON.stringify(path)}`),
         ].join("\n"),
+        "manual",
       ),
       ...(playbookSections.length > 2
         ? [

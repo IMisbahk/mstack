@@ -2,20 +2,19 @@
 
 `mstack` installs and maintains Misbah Khursheed's Build Like This engineering workflow in a repository. It is safe to run against an existing project: setup previews its plan, adds missing assets, preserves user-owned documents by default, verifies the result, and records managed files in `.mstack/manifest.json`.
 
-## Start in one command
+## Install and start
 
-The preferred zero-install entry point is:
+Install mstack globally with npm:
 
 ```sh
-npx mstack
+npm install -g @imisbahk/mstack
+mstack init
 ```
 
-Equivalent launchers are supported:
+For a zero-install run, use:
 
 ```sh
-pnpm dlx mstack
-bunx mstack
-yarn dlx mstack
+npx @imisbahk/mstack@latest init
 ```
 
 Inside an existing repository, the standard journey is:

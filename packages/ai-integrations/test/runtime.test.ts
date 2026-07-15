@@ -6,14 +6,17 @@ import { spawnSync } from "node:child_process";
 import { test } from "node:test";
 import {
   applyIntegrationPlan,
+  approveIntegrationPlan,
   createBuildLikeThisRuntime,
   createDefaultRegistry,
   createIntegrationPlan,
+  createReconciliationPlan,
   engineeringAgents,
   engineeringHooks,
   engineeringPrompts,
   engineeringSkills,
   hookAssets,
+  inspectIntegrationRepository,
   runtimeTemplates,
 } from "../src/index.js";
 
@@ -122,7 +125,10 @@ test("runtime installs canonical resources and its health hook runs from the rep
     await writeFile(join(root, "package.json"), JSON.stringify({ name: "fixture" }), "utf8");
     const runtime = createBuildLikeThisRuntime({ projectName: "Fixture" });
     const plan = createIntegrationPlan(createDefaultRegistry(), runtime, ["codex"]);
-    const result = await applyIntegrationPlan(root, plan);
+    const inspection = await inspectIntegrationRepository(root, plan);
+    const reconciliation = createReconciliationPlan(plan, inspection);
+    const approved = approveIntegrationPlan(reconciliation, Object.fromEntries(reconciliation.changes.flatMap((change) => change.approvalRequirements.map((requirement) => [requirement.id, "approve" as const]))));
+    const result = await applyIntegrationPlan(root, approved);
     assert.ok(result.files.every((file) => file.status === "created"));
 
     const templateContent = await readFile(

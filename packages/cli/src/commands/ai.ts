@@ -1,9 +1,13 @@
 import * as prompts from "@clack/prompts";
 import {
   applyIntegrationPlan,
+  approveIntegrationPlan,
   createDefaultRegistry,
   createIntegrationPlan,
+  createReconciliationPlan,
+  inspectIntegrationRepository,
   type ApplyResult,
+  type ApprovalRequirement,
 } from "../../../ai-integrations/src/index.js";
 import type { Output } from "../core/output.js";
 import { CliError, errorMessage } from "../core/errors.js";
@@ -95,18 +99,32 @@ export async function aiSetupCommand(options: AiSetupOptions): Promise<void> {
   } catch (error) {
     throw new CliError(`Could not create the AI runtime plan: ${errorMessage(error)}`, { cause: error });
   }
-  const preview = await applyIntegrationPlan(health.root, plan, { dryRun: true, force: options.force });
-  const conflicts = preview.files.filter((file) => file.status === "conflict");
+  const inspection = await inspectIntegrationRepository(health.root, plan);
+  const reconciliation = createReconciliationPlan(plan, inspection);
+  const conflicts = reconciliation.changes.filter((change) => change.action === "conflict");
   if (conflicts.length > 0) {
-    throw new CliError(`Setup would replace ${conflicts.length} user-owned file${conflicts.length === 1 ? "" : "s"}.`, {
+    if (!options.force) throw new CliError(`Setup would replace ${conflicts.length} user-owned file${conflicts.length === 1 ? "" : "s"}.`, {
       exitCode: 3,
       hints: [`Preserved: ${conflicts.map((file) => file.path).join(", ")}`, "Review those files, or pass --force to replace them intentionally."],
     });
   }
+  const requirements = reconciliation.changes.flatMap((change) => change.approvalRequirements);
+  if (!options.dryRun && !interactive && !options.yes && requirements.length > 0) {
+    throw new CliError("AI runtime setup requires explicit approval for privileged or conflicting resources.", {
+      exitCode: 3,
+      hints: ["Review the plan with mstack ai setup --dry-run, then rerun with --yes."],
+    });
+  }
+  const approved = approveIntegrationPlan(reconciliation, requirements.map((requirement) => ({
+    requirementId: requirement.id,
+    decision: "approve" as const,
+    decidedBy: "mstack-cli",
+  })));
+  const preview = await applyIntegrationPlan(health.root, approved, { dryRun: true });
 
   const displayNames = selected.map((id) => registry.get(id).displayName);
   if (!options.json) {
-    outputPlan(options.output, displayNames, preview, plan.artifacts, plan.diagnostics.length, options.dryRun);
+    outputPlan(options.output, displayNames, preview, plan.artifacts, plan.diagnostics.length, requirements, options.dryRun);
     for (const diagnostic of plan.diagnostics) options.output.warn(`${registry.get(diagnostic.environment).displayName}: ${diagnostic.message}`);
   }
   if (options.dryRun) {
@@ -120,7 +138,7 @@ export async function aiSetupCommand(options: AiSetupOptions): Promise<void> {
 
   const progress = interactive ? prompts.spinner() : undefined;
   progress?.start("Installing AI runtime pack");
-  const applied = await applyIntegrationPlan(health.root, plan, { force: options.force });
+  const applied = await applyIntegrationPlan(health.root, approved);
   progress?.stop("AI runtime pack installed");
   const managedFiles = applied.files.filter((file) => file.status !== "conflict").map((file) => ({
     path: file.path,
@@ -147,6 +165,7 @@ function outputPlan(
   preview: ApplyResult,
   artifacts: readonly { feature: string }[],
   warnings: number,
+  approvals: readonly ApprovalRequirement[],
   dryRun: boolean,
 ): void {
   const counts = new Map<string, number>();
@@ -158,7 +177,21 @@ function outputPlan(
   output.field("Create", String(preview.files.filter((file) => file.status === "created").length));
   output.field("Update", String(preview.files.filter((file) => file.status === "updated").length));
   output.field("Unchanged", String(preview.files.filter((file) => file.status === "unchanged").length));
+  if (approvals.length > 0) {
+    output.field("Approvals", String(approvals.length));
+    for (const [path, kinds] of approvalSummary(approvals)) output.warn(`${path}: ${kinds.join(", ")}`);
+  }
   if (warnings > 0) output.field("Limitations", String(warnings));
+}
+
+function approvalSummary(requirements: readonly ApprovalRequirement[]): Map<string, string[]> {
+  const byPath = new Map<string, string[]>();
+  for (const requirement of requirements) {
+    const kinds = byPath.get(requirement.path) ?? [];
+    if (!kinds.includes(requirement.kind)) kinds.push(requirement.kind);
+    byPath.set(requirement.path, kinds);
+  }
+  return byPath;
 }
 
 function aiResult(mode: "dry-run" | "applied", runtimes: readonly string[], result: ApplyResult, diagnostics: ApplyResult["diagnostics"]): object {

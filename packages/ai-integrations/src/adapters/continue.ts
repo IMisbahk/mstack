@@ -2,11 +2,15 @@ import type { AdapterRenderResult, IntegrationAdapter, IntegrationSpec } from ".
 import {
   artifact,
   capability,
+  capabilityProfile,
   generatedHeader,
   renderInstructionBody,
   warning,
   yamlString,
+  validateRenderedArtifacts,
 } from "./shared.js";
+
+const capabilities = capability({ prompts: ["native", "Invokable files under .continue/prompts provide reusable prompts."], hooks: ["unsupported", "Continue has no repository lifecycle hook surface."], skills: ["emulated", "Conditional rules provide on-demand instructions without bundled resources."], instructions: ["native", "Always-applied workspace rules provide project instructions."], "slash-commands": ["native", "Prompts with invokable: true appear as slash commands."], agents: ["native", "Project agents are stored under .continue/agents."], "automatic-context": ["emulated", "The workspace rule directs the agent to read relevant paths."], "repository-onboarding": ["native", "An always-applied workspace rule carries onboarding steps."] });
 
 export const continueAdapter: IntegrationAdapter = {
   id: "continue",
@@ -16,16 +20,9 @@ export const continueAdapter: IntegrationAdapter = {
     projectMarkers: [".continue"],
     documentationUrl: "https://docs.continue.dev/customize/deep-dives/rules",
   },
-  capabilities: capability({
-    prompts: ["native", "Invokable files under .continue/prompts provide reusable prompts."],
-    hooks: ["unsupported", "Continue has no repository lifecycle hook surface."],
-    skills: ["emulated", "Conditional rules provide on-demand instructions without bundled resources."],
-    instructions: ["native", "Always-applied workspace rules provide project instructions."],
-    "slash-commands": ["native", "Prompts with invokable: true appear as slash commands."],
-    agents: ["native", "Project agents are stored under .continue/agents."],
-    "automatic-context": ["emulated", "The workspace rule directs the agent to read relevant paths."],
-    "repository-onboarding": ["native", "An always-applied workspace rule carries onboarding steps."],
-  }),
+  capabilities,
+  profile: capabilityProfile("continue.2026-07-15", capabilities),
+  validate: (_root, artifacts) => validateRenderedArtifacts("continue", artifacts),
   render(spec: IntegrationSpec): AdapterRenderResult {
     const environment = "continue";
     const diagnostics = [];

@@ -50,6 +50,9 @@ export function createBuildLikeThisRuntime(options: BuildLikeThisRuntimeOptions)
     .join("\n\n");
 
   return {
+    schemaVersion: 1,
+    id: "build-like-this",
+    version: "1.0.0",
     project: {
       name: options.projectName.trim(),
       ...(options.projectDescription === undefined

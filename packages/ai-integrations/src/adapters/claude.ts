@@ -7,10 +7,12 @@ import type {
 import {
   artifact,
   capability,
+  capabilityProfile,
   renderAgentMarkdown,
   renderInstructionBody,
   renderStandardSkillArtifacts,
   timeoutSeconds,
+  validateRenderedArtifacts,
   yamlString,
 } from "./shared.js";
 
@@ -23,24 +25,21 @@ const hookEvents: Record<HookEvent, string> = {
   "session-end": "SessionEnd",
 };
 
+const capabilities = capability({
+  prompts: ["native", "Project skills provide reusable prompts."], hooks: ["native", "Lifecycle hooks are stored in .claude/settings.json."], skills: ["native", "Agent Skills are stored under .claude/skills."], instructions: ["native", "CLAUDE.md and .claude/CLAUDE.md are project guidance surfaces."], rules: ["native", "Modular project rules are stored below .claude/rules/build-like-this/."], "slash-commands": ["native", "User-invocable skills appear as slash commands."], agents: ["native", "Project subagents are stored under .claude/agents."], "automatic-context": ["native", "CLAUDE.md supports @path imports."], "repository-onboarding": ["native", "Project setup is loaded through CLAUDE.md."], mcp: ["native", "Approved project MCP entries are owned keys in .claude/settings.json."], permissions: ["native", "Approved settings entries use owned JSON keys."],
+});
+
 export const claudeAdapter: IntegrationAdapter = {
   id: "claude-code",
   displayName: "Claude Code",
   runtime: {
     commands: ["claude"],
-    projectMarkers: ["CLAUDE.md", ".claude"],
+    projectMarkers: ["CLAUDE.md", ".claude/CLAUDE.md", ".claude"],
     documentationUrl: "https://code.claude.com/docs/en/claude-directory",
   },
-  capabilities: capability({
-    prompts: ["native", "Project skills provide reusable prompts."],
-    hooks: ["native", "Lifecycle hooks are stored in .claude/settings.json."],
-    skills: ["native", "Agent Skills are stored under .claude/skills."],
-    instructions: ["native", "CLAUDE.md is loaded as project guidance."],
-    "slash-commands": ["native", "User-invocable skills appear as slash commands."],
-    agents: ["native", "Project subagents are stored under .claude/agents."],
-    "automatic-context": ["native", "CLAUDE.md supports @path imports."],
-    "repository-onboarding": ["native", "Project setup is loaded through CLAUDE.md."],
-  }),
+  capabilities,
+  profile: capabilityProfile("claude-code.2026-07-15", capabilities),
+  validate: (_root, artifacts) => validateRenderedArtifacts("claude-code", artifacts),
   render(spec: IntegrationSpec): AdapterRenderResult {
     const environment = "claude-code";
     const artifacts = [
@@ -48,9 +47,11 @@ export const claudeAdapter: IntegrationAdapter = {
         environment,
         "instructions",
         "CLAUDE.md",
-        renderInstructionBody(spec, (path) => `@${path}`),
+        `# ${spec.project.name}\n\n@.claude/rules/build-like-this/project.md`,
         "managed-block",
       ),
+      artifact(environment, "rules", ".claude/rules/build-like-this/project.md", renderInstructionBody(spec, (path) => `@${path}`)),
+      ...(spec.rules ?? []).map((rule) => artifact(environment, "rules", `.claude/rules/build-like-this/${rule.id}.md`, rule.content)),
       ...renderStandardSkillArtifacts(environment, ".claude/skills", spec.skills ?? []),
       ...(spec.prompts ?? []).map((prompt) =>
         artifact(
@@ -90,6 +91,7 @@ export const claudeAdapter: IntegrationAdapter = {
       const hooks: Record<string, unknown[]> = {};
       for (const hook of spec.hooks ?? []) {
         (hooks[hookEvents[hook.event]] ??= []).push({
+          name: hook.id,
           ...(hook.matcher === undefined ? {} : { matcher: hook.matcher }),
           hooks: [
             {
@@ -109,6 +111,10 @@ export const claudeAdapter: IntegrationAdapter = {
           "merge-json",
         ),
       );
+    }
+    if ((spec.mcpServers?.length ?? 0) > 0) {
+      const mcpServers = Object.fromEntries((spec.mcpServers ?? []).map((server) => [server.id, server.type === "stdio" ? { type: "stdio", command: server.command, ...(server.args === undefined ? {} : { args: server.args }) } : { type: server.type, url: server.url }]));
+      artifacts.push({ ...artifact(environment, "mcp", ".mcp.json", JSON.stringify({ mcpServers }, null, 2), "merge-json"), security: "network", activation: "privileged" });
     }
     return { artifacts, diagnostics: [] };
   },

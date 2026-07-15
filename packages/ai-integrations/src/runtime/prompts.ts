@@ -13,6 +13,10 @@ interface PromptSource {
 function definePrompt(source: PromptSource): PromptDefinition {
   return {
     id: source.id,
+    version: "1.0.0",
+    activation: "passive",
+    security: "content",
+    fallback: "degrade",
     description: source.description,
     argumentHint: source.argumentHint,
     prompt: [

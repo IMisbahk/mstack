@@ -7,12 +7,14 @@ import type {
 import {
   artifact,
   capability,
+  capabilityProfile,
   generatedHeader,
   renderAgentMarkdown,
   renderInstructionBody,
   renderPromptSkill,
   renderStandardSkillArtifacts,
   timeoutSeconds,
+  validateRenderedArtifacts,
 } from "./shared.js";
 
 const hookEvents: Record<HookEvent, string> = {
@@ -24,6 +26,8 @@ const hookEvents: Record<HookEvent, string> = {
   "session-end": "sessionEnd",
 };
 
+const capabilities = capability({ prompts: ["native", "Reusable prompts are represented as Agent Skills."], hooks: ["native", "Project hooks are stored in .cursor/hooks.json."], skills: ["native", "Open Agent Skills are stored under .agents/skills."], instructions: ["native", "A project rule is stored under .cursor/rules."], "slash-commands": ["native", "Skills can be invoked from Cursor commands."], agents: ["native", "Project subagents are stored under .cursor/agents."], "automatic-context": ["emulated", "An always-applied project rule lists relevant context."], "repository-onboarding": ["native", "The always-applied project rule carries onboarding steps."] });
+
 export const cursorAdapter: IntegrationAdapter = {
   id: "cursor",
   displayName: "Cursor",
@@ -32,16 +36,9 @@ export const cursorAdapter: IntegrationAdapter = {
     projectMarkers: [".cursor"],
     documentationUrl: "https://cursor.com/docs/rules",
   },
-  capabilities: capability({
-    prompts: ["native", "Reusable prompts are represented as Agent Skills."],
-    hooks: ["native", "Project hooks are stored in .cursor/hooks.json."],
-    skills: ["native", "Open Agent Skills are stored under .agents/skills."],
-    instructions: ["native", "A project rule is stored under .cursor/rules."],
-    "slash-commands": ["native", "Skills can be invoked from Cursor commands."],
-    agents: ["native", "Project subagents are stored under .cursor/agents."],
-    "automatic-context": ["emulated", "An always-applied project rule lists relevant context."],
-    "repository-onboarding": ["native", "The always-applied project rule carries onboarding steps."],
-  }),
+  capabilities,
+  profile: capabilityProfile("cursor.2026-07-15", capabilities),
+  validate: (_root, artifacts) => validateRenderedArtifacts("cursor", artifacts),
   render(spec: IntegrationSpec): AdapterRenderResult {
     const environment = "cursor";
     const artifacts = [
@@ -81,6 +78,7 @@ export const cursorAdapter: IntegrationAdapter = {
       const hooks: Record<string, unknown[]> = {};
       for (const hook of spec.hooks ?? []) {
         (hooks[hookEvents[hook.event]] ??= []).push({
+          name: hook.id,
           command: hook.command,
           ...(hook.matcher === undefined ? {} : { matcher: hook.matcher }),
           ...(hook.timeoutMs === undefined ? {} : { timeout: timeoutSeconds(hook.timeoutMs) }),

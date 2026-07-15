@@ -7,10 +7,12 @@ import type {
 import {
   artifact,
   capability,
+  capabilityProfile,
   renderAgentMarkdown,
   renderInstructionBody,
   renderStandardSkillArtifacts,
   tomlString,
+  validateRenderedArtifacts,
 } from "./shared.js";
 
 const hookEvents: Record<HookEvent, string> = {
@@ -22,6 +24,8 @@ const hookEvents: Record<HookEvent, string> = {
   "session-end": "SessionEnd",
 };
 
+const capabilities = capability({ prompts: ["native", "Project commands are TOML prompt definitions."], hooks: ["native", "Lifecycle hooks are owned entries in .gemini/settings.json."], skills: ["native", "Open Agent Skills are stored under .agents/skills."], instructions: ["native", "GEMINI.md is loaded as project context."], "slash-commands": ["native", "Project TOML commands become slash commands."], agents: ["native", "Project subagents are stored under .gemini/agents."], "automatic-context": ["native", "GEMINI.md supports @path imports."], "repository-onboarding": ["native", "Repository setup is loaded through GEMINI.md."], mcp: ["native", "MCP servers are owned settings entries with explicit type and url."] });
+
 export const geminiAdapter: IntegrationAdapter = {
   id: "gemini-cli",
   displayName: "Gemini CLI",
@@ -30,16 +34,9 @@ export const geminiAdapter: IntegrationAdapter = {
     projectMarkers: ["GEMINI.md", ".gemini"],
     documentationUrl: "https://geminicli.com/docs/cli/gemini-md",
   },
-  capabilities: capability({
-    prompts: ["native", "Project commands are TOML prompt definitions."],
-    hooks: ["native", "Lifecycle hooks are stored in .gemini/settings.json."],
-    skills: ["native", "Open Agent Skills are stored under .agents/skills."],
-    instructions: ["native", "GEMINI.md is loaded as project context."],
-    "slash-commands": ["native", "Project TOML commands become slash commands."],
-    agents: ["native", "Project subagents are stored under .gemini/agents."],
-    "automatic-context": ["native", "GEMINI.md supports @path imports."],
-    "repository-onboarding": ["native", "Repository setup is loaded through GEMINI.md."],
-  }),
+  capabilities,
+  profile: capabilityProfile("gemini-cli.2026-07-15", capabilities),
+  validate: (_root, artifacts) => validateRenderedArtifacts("gemini-cli", artifacts),
   render(spec: IntegrationSpec): AdapterRenderResult {
     const environment = "gemini-cli";
     const artifacts = [
@@ -73,10 +70,11 @@ export const geminiAdapter: IntegrationAdapter = {
       ),
     ];
 
-    if ((spec.hooks?.length ?? 0) > 0) {
+    if ((spec.hooks?.length ?? 0) > 0 || (spec.mcpServers?.length ?? 0) > 0) {
       const hooks: Record<string, unknown[]> = {};
       for (const hook of spec.hooks ?? []) {
         (hooks[hookEvents[hook.event]] ??= []).push({
+          name: hook.id,
           ...(hook.matcher === undefined ? {} : { matcher: hook.matcher }),
           hooks: [
             {
@@ -88,12 +86,13 @@ export const geminiAdapter: IntegrationAdapter = {
           ],
         });
       }
+      const mcpServers = Object.fromEntries((spec.mcpServers ?? []).map((server) => [server.id, server.type === "stdio" ? { type: "stdio", command: server.command, ...(server.args === undefined ? {} : { args: server.args }) } : { type: server.type, url: server.url }]));
       artifacts.push(
         artifact(
           environment,
           "hooks",
           ".gemini/settings.json",
-          JSON.stringify({ hooks }, null, 2),
+          JSON.stringify({ ...(Object.keys(hooks).length === 0 ? {} : { hooks }), ...(Object.keys(mcpServers).length === 0 ? {} : { mcpServers }) }, null, 2),
           "merge-json",
         ),
       );

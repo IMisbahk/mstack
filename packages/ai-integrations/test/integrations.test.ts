@@ -5,8 +5,11 @@ import { join } from "node:path";
 import { test } from "node:test";
 import {
   applyIntegrationPlan,
+  approveIntegrationPlan,
   createDefaultRegistry,
   createIntegrationPlan,
+  createReconciliationPlan,
+  inspectIntegrationRepository,
   type IntegrationSpec,
 } from "../src/index.js";
 
@@ -71,7 +74,7 @@ test("built-in adapters declare and render all target environments", () => {
     "AGENTS.md",
     "GEMINI.md",
     ".claude/settings.json",
-    ".codex/hooks.json",
+    ".codex/config.toml",
     ".cursor/hooks.json",
     ".gemini/settings.json",
     ".continue/rules/00-mstack.md",
@@ -93,13 +96,14 @@ test("built-in adapters declare and render all target environments", () => {
     1,
   );
   assert.match(
-    plan.artifacts.find((artifact) => artifact.path === ".codex/hooks.json")?.content ?? "",
-    /"timeout": 10/,
+    plan.artifacts.find((artifact) => artifact.path === ".codex/config.toml")?.content ?? "",
+    /timeout_seconds = 10/,
   );
   assert.match(
     plan.artifacts.find((artifact) => artifact.path === ".gemini/settings.json")?.content ?? "",
     /"timeout": 10000/,
   );
+  assert.ok(registry.list().every((adapter) => adapter.profile?.verifiedAt === "2026-07-15"));
 });
 
 test("unsupported features degrade with diagnostics instead of aborting", () => {
@@ -118,15 +122,15 @@ test("installer preserves unmanaged files and updates managed blocks", async () 
   try {
     await writeFile(join(root, "AGENTS.md"), "# Existing guidance\n", "utf8");
     const firstPlan = createIntegrationPlan(createDefaultRegistry(), fullSpec, ["codex"]);
-    const first = await applyIntegrationPlan(root, firstPlan);
+    const first = await applyApproved(root, firstPlan);
     assert.ok(first.files.every((file) => file.status !== "conflict"));
 
     const instructions = await readFile(join(root, "AGENTS.md"), "utf8");
     assert.match(instructions, /# Existing guidance/);
-    assert.match(instructions, /mstack:codex:start/);
+    assert.match(instructions, /mstack:project-instructions:start/);
     assert.match(instructions, /npm test/);
 
-    const second = await applyIntegrationPlan(root, firstPlan);
+    const second = await applyApproved(root, firstPlan);
     assert.ok(second.files.every((file) => file.status === "unchanged"));
 
     const changedPlan = createIntegrationPlan(
@@ -142,7 +146,7 @@ test("installer preserves unmanaged files and updates managed blocks", async () 
       },
       ["codex"],
     );
-    const changed = await applyIntegrationPlan(root, changedPlan);
+    const changed = await applyApproved(root, changedPlan);
     assert.equal(
       changed.files.find((file) => file.path === ".agents/skills/ship-safely/SKILL.md")?.status,
       "updated",
@@ -155,9 +159,10 @@ test("installer preserves unmanaged files and updates managed blocks", async () 
       "conflict",
     );
     const forced = await applyIntegrationPlan(root, firstPlan, { force: true });
-    const forcedAgent = forced.files.find((file) => file.path === ".codex/agents/security-reviewer.toml");
-    assert.equal(forcedAgent?.status, "updated");
-    assert.match(forcedAgent?.message ?? "", /Backup created/);
+    assert.equal(forced.files.find((file) => file.path === ".codex/agents/security-reviewer.toml")?.status, "conflict", "force cannot replace a decision-specific approval");
+    const approved = await applyApproved(root, firstPlan);
+    assert.equal(approved.files.find((file) => file.path === ".codex/agents/security-reviewer.toml")?.status, "updated");
+    assert.equal(await readFile(join(root, ".codex/agents/security-reviewer.toml"), "utf8"), firstPlan.artifacts.find((artifact) => artifact.path === ".codex/agents/security-reviewer.toml")?.content);
   } finally {
     await rm(root, { recursive: true, force: true });
   }
@@ -232,9 +237,16 @@ test("installer rejects repository paths redirected through symlinks", async () 
     await mkdir(join(root, ".codex"), { recursive: true });
     await symlink(outside, join(root, ".codex/agents"));
     const plan = createIntegrationPlan(createDefaultRegistry(), fullSpec, ["codex"]);
-    await assert.rejects(() => applyIntegrationPlan(root, plan), /parent resolves outside repository root/);
+    await assert.rejects(() => applyIntegrationPlan(root, plan), /parent must not be a symlink|parent resolves outside repository root/);
   } finally {
     await rm(root, { recursive: true, force: true });
     await rm(outside, { recursive: true, force: true });
   }
 });
+
+async function applyApproved(root: string, plan: ReturnType<typeof createIntegrationPlan>) {
+  const inspection = await inspectIntegrationRepository(root, plan);
+  const reconciliation = createReconciliationPlan(plan, inspection);
+  const decisions = Object.fromEntries(reconciliation.changes.flatMap((change) => change.approvalRequirements.map((requirement) => [requirement.id, "approve" as const])));
+  return applyIntegrationPlan(root, approveIntegrationPlan(reconciliation, decisions));
+}

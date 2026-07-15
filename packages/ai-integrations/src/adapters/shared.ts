@@ -1,5 +1,7 @@
 import type {
   AgentDefinition,
+  AdapterValidationFinding,
+  CapabilityProfile,
   CapabilityMap,
   GeneratedArtifact,
   IntegrationDiagnostic,
@@ -10,11 +12,31 @@ import type {
 } from "../types.js";
 
 export function capability(
-  values: Record<IntegrationFeature, readonly ["native" | "emulated" | "unsupported", string]>,
+  values: Partial<Record<IntegrationFeature, readonly ["native" | "emulated" | "experimental" | "unsupported", string]>>,
 ): CapabilityMap {
-  return Object.fromEntries(
-    Object.entries(values).map(([feature, [level, detail]]) => [feature, { level, detail }]),
-  ) as unknown as CapabilityMap;
+  return Object.fromEntries(integrationFeatureNames.map((feature) => {
+    const value = values[feature];
+    const level = value?.[0] ?? "unsupported";
+    const detail = value?.[1] ?? `${feature} has no verified project-local surface in this profile.`;
+    return [feature, { level, detail, ...(level === "native" ? {} : { limitations: [detail] }), ...(["hooks", "mcp", "permissions"].includes(feature) && level !== "unsupported" ? { requiresTrust: true, requiresActivation: true } : level === "experimental" ? { requiresActivation: true } : {}) }];
+  })) as unknown as CapabilityMap;
+}
+
+const integrationFeatureNames: readonly IntegrationFeature[] = ["prompts", "hooks", "skills", "instructions", "rules", "slash-commands", "agents", "automatic-context", "repository-onboarding", "templates", "mcp", "permissions", "assets"];
+
+export function capabilityProfile(id: string, capabilities: CapabilityMap): CapabilityProfile {
+  return { id, verifiedAt: "2026-07-15", platformVersion: "verified-current", capabilities };
+}
+
+export function validateRenderedArtifacts(environment: string, artifacts: readonly GeneratedArtifact[]): readonly AdapterValidationFinding[] {
+  const findings: AdapterValidationFinding[] = [];
+  for (const artifact of artifacts) {
+    if (!(artifact.environments ?? [artifact.environment]).includes(environment)) findings.push({ level: "error", path: artifact.path, message: `Artifact does not retain contributing adapter '${environment}'` });
+    if (artifact.path.endsWith(".json")) { try { JSON.parse(artifact.content); } catch { findings.push({ level: "error", path: artifact.path, message: "Generated JSON is invalid" }); } }
+    if (/CLAUDE\.local\.md$/.test(artifact.path)) findings.push({ level: "error", path: artifact.path, message: "CLAUDE.local.md must never be generated" });
+    if (artifact.content.includes("httpUrl")) findings.push({ level: "error", path: artifact.path, message: "MCP configuration must use url with an explicit type" });
+  }
+  return findings;
 }
 
 export function artifact(

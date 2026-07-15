@@ -13,6 +13,10 @@ interface SkillSource {
 function defineSkill(source: SkillSource): SkillDefinition {
   return {
     id: source.id,
+    version: "1.0.0",
+    activation: "passive",
+    security: "content",
+    fallback: "degrade",
     description: source.description,
     instructions: [
       `# ${source.id}`,
