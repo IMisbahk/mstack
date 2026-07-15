@@ -1,0 +1,61 @@
+packages/cli/src/commands/catalog.ts
+  s_692f3cf26d6301::t_67c222aa65f35f 30-35,38,41,46
+  s_692f3cf26d6301::t_de6450b43d0cc7 61-62
+  s_692f3cf26d6301::t_8ba5971b8873cb 27-29
+  s_692f3cf26d6301::t_1f12579231682b 36-37
+  s_692f3cf26d6301::t_2a2c3d82dd6c5b 39-40
+  s_692f3cf26d6301::t_31db9a7df479b6 42-45
+  s_692f3cf26d6301::t_25516d411e5f01 47-49,58-60
+  s_692f3cf26d6301::t_e173068ed52f55 63-65
+  s_692f3cf26d6301::t_b29394723e06b6 1-26,50-57,66-69
+packages/ai-integrations/src/runtime/templates.ts
+  s_692f3cf26d6301::t_3490e9f0358530 11
+docs/features/cli-validation-and-catalog.md
+  s_692f3cf26d6301::t_a717ae3a81b693 1-2,4-42,51-53
+  s_692f3cf26d6301::t_63d5da2b36a743 3,43-50
+  s_692f3cf26d6301::t_5cfc6ccc303f08 54
+packages/cli/src/core/output.ts
+  s_692f3cf26d6301::t_de6450b43d0cc7 52-53
+packages/cli/src/program.ts
+  s_692f3cf26d6301::t_67c222aa65f35f 1
+  s_692f3cf26d6301::t_de6450b43d0cc7 25,46,58
+  s_692f3cf26d6301::t_d84194dcf52ce5 10,223-224
+  s_692f3cf26d6301::t_1a8d6c9644f772 30,57,59
+  s_692f3cf26d6301::t_d4c2f9da36830d 2
+  s_692f3cf26d6301::t_83a20dfc366bf8 26-29
+  s_692f3cf26d6301::t_7deb20adfa9e58 15-16,55,163-183
+packages/ai-integrations/test/runtime.test.ts
+  s_692f3cf26d6301::t_3490e9f0358530 29
+packages/cli/src/commands/ai.ts
+  s_692f3cf26d6301::t_03476a730a9ac5 189
+  s_692f3cf26d6301::t_3490e9f0358530 173,176,187-188
+  s_692f3cf26d6301::t_e0199a1eab2162 190-191
+packages/cli/test/catalog-validation.test.ts
+  s_692f3cf26d6301::t_1374f4f6bc4c21 7,79-85
+  s_692f3cf26d6301::t_1c179458a4e328 1-6,8-78,86-87
+packages/cli/src/index.ts
+  s_692f3cf26d6301::t_d84194dcf52ce5 9-10
+packages/cli/src/commands/status.ts
+  s_692f3cf26d6301::t_a941acc688eef0 13-15
+packages/cli/src/commands/doctor.ts
+  s_692f3cf26d6301::t_1374f4f6bc4c21 29
+  s_692f3cf26d6301::t_d84194dcf52ce5 11,18-28,30-33,41,49-50,59-62,73
+packages/cli/src/commands/validate.ts
+  s_692f3cf26d6301::t_53abf9e2ea8aca 1-111
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "15461b4a27f2a1781f4a26402b8bfb14950ca63a",
+  "prompts": {},
+  "sessions": {
+    "s_692f3cf26d6301": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f6741-5144-7382-bdd3-18bef5f09177",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Misbah Khursheed <m.misbahkhursheed@gmail.com>"
+    }
+  }
+}
