@@ -4,7 +4,7 @@ import {
   capability,
   capabilityProfile,
   generatedHeader,
-  renderInstructionBody,
+  renderManagedInstructionBody,
   warning,
   validateRenderedArtifacts,
 } from "./shared.js";
@@ -50,7 +50,7 @@ export const aiderAdapter: IntegrationAdapter = {
         environment,
         "instructions",
         "CONVENTIONS.md",
-        renderInstructionBody(spec, (path) => `\`${path}\``),
+        renderManagedInstructionBody(spec, (path) => `\`${path}\``),
         "managed-block",
       ),
       artifact(

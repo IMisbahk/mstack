@@ -31,6 +31,7 @@ test("Claude, Codex, and Gemini render corrected project-local surfaces", () => 
   assert.ok(claude.artifacts.some((artifact) => artifact.path === ".claude/rules/build-like-this/project.md"));
   assert.ok(claude.artifacts.some((artifact) => artifact.path === ".mcp.json"));
   assert.ok(claude.artifacts.every((artifact) => artifact.path !== "CLAUDE.local.md"));
+  assert.doesNotMatch(claude.artifacts.find((artifact) => artifact.path === "CLAUDE.md")!.content, /^#\s/m);
 
   const codex = createIntegrationPlan(registry, platformSpec, ["codex"]);
   const config = codex.artifacts.find((artifact) => artifact.path === ".codex/config.toml")!;
@@ -39,12 +40,17 @@ test("Claude, Codex, and Gemini render corrected project-local surfaces", () => 
   assert.match(config.content, /\[\[hooks\]\]/);
   assert.match(config.content, /\[mcp_servers\."local-docs"\]/);
   assert.ok(codex.artifacts.every((artifact) => artifact.path !== ".codex/hooks.json"));
+  assert.doesNotMatch(codex.artifacts.find((artifact) => artifact.path === "AGENTS.md")!.content, /^#\s/m);
 
   const gemini = createIntegrationPlan(registry, platformSpec, ["gemini-cli"]);
   const settings = gemini.artifacts.find((artifact) => artifact.path === ".gemini/settings.json")!;
   assert.match(settings.content, /"type": "http"/);
   assert.match(settings.content, /"url": "https:\/\/example.com\/mcp"/);
   assert.doesNotMatch(settings.content, /httpUrl/);
+  assert.doesNotMatch(gemini.artifacts.find((artifact) => artifact.path === "GEMINI.md")!.content, /^#\s/m);
+
+  const aider = createIntegrationPlan(registry, platformSpec, ["aider"]);
+  assert.doesNotMatch(aider.artifacts.find((artifact) => artifact.path === "CONVENTIONS.md")!.content, /^#\s/m);
 });
 
 test("unsupported resources skip or fail according to fallback and shared YAML stays manual", () => {

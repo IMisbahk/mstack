@@ -47,7 +47,7 @@ export const claudeAdapter: IntegrationAdapter = {
         environment,
         "instructions",
         "CLAUDE.md",
-        `# ${spec.project.name}\n\n@.claude/rules/build-like-this/project.md`,
+        `## ${spec.project.name}\n\n@.claude/rules/build-like-this/project.md`,
         "managed-block",
       ),
       artifact(environment, "rules", ".claude/rules/build-like-this/project.md", renderInstructionBody(spec, (path) => `@${path}`)),

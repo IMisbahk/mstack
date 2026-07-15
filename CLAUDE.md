@@ -43,7 +43,7 @@ End with:
 Do not claim completion when required validation is failing or when the implementation and documentation disagree. Code generation is the middle of the workflow, not the definition of completion.
 
 <!-- mstack:claude-code:start -->
-# buildlikethis
+## buildlikethis
 
 This repository follows Misbah Khursheed's Build Like This workflow: product reasoning before implementation, explicit backend contracts, modular architecture, and verified delivery.
 

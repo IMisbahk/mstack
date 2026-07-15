@@ -25,6 +25,7 @@ All notable changes to mstack are documented here. This project follows [Semanti
 - Normalized repository-relative paths to forward slashes on Windows for stable manifests, JSON, and terminal output.
 - Made runtime test discovery portable across the supported Node.js 20, 22, and 24 release matrix.
 - Preserved explicit executable-mode intent in manifests while avoiding false mode-drift failures on Windows filesystems.
+- Made managed instruction blocks heading-safe when merged into existing repository guidance.
 - Aligned status terminology, installation instructions, runtime counts, and command documentation with shipped behavior.
 
 ### Security

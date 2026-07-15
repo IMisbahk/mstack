@@ -137,7 +137,7 @@ Before declaring completion, confirm:
 The standard is not "the agent produced working code." The standard is that the repository remains understandable and the documented user outcome is safer to ship.
 
 <!-- mstack:codex:start -->
-# buildlikethis
+## buildlikethis
 
 This repository follows Misbah Khursheed's Build Like This workflow: product reasoning before implementation, explicit backend contracts, modular architecture, and verified delivery.
 

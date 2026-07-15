@@ -97,6 +97,22 @@ export function renderInstructionBody(
   return sections.join("\n\n");
 }
 
+export function renderManagedInstructionBody(
+  spec: IntegrationSpec,
+  contextRenderer: (path: string) => string,
+): string {
+  const lines = renderInstructionBody(spec, contextRenderer).split("\n");
+  let fence: "```" | "~~~" | undefined;
+  return lines.map((line) => {
+    const marker = line.trimStart().slice(0, 3);
+    if (marker === "```" || marker === "~~~") {
+      fence = fence === marker ? undefined : fence ?? marker;
+      return line;
+    }
+    return fence === undefined && /^#{1,5}\s/.test(line) ? `#${line}` : line;
+  }).join("\n");
+}
+
 export function renderStandardSkill(skill: SkillDefinition): string {
   return [
     "---",
