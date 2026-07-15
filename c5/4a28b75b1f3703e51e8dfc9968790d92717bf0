@@ -1,0 +1,57 @@
+docs/decisions/0001-ai-runtime-ownership-and-reconciliation.md
+  s_96ad2ed13f95f5::t_31575dae8658f6 6
+  s_96ad2ed13f95f5::t_7109c357b9f7a2 1-5,7-79
+docs/cli/command-reference.md
+  s_96ad2ed13f95f5::t_134a2ed696ba98 1-252
+.github/workflows/cli.yml
+  s_67da17cd206f3c::t_8fbba332b1f131 7-8,19-20,34-45,62-76,78-84
+  s_67da17cd206f3c::t_06d931dc6208f7 1-6,9-18,21-33,46-56,61,77
+  s_67da17cd206f3c::t_663a41a5aed0e5 57-60
+docs/cli/migrations.md
+  s_67da17cd206f3c::t_1fb2727753c863 1-25
+docs/cli/ai-runtimes.md
+  s_67da17cd206f3c::t_1fb2727753c863 1-47
+docs/cli/configuration.md
+  s_67da17cd206f3c::t_1fb2727753c863 1-39
+docs/features/ai-runtime.md
+  s_15742fdeac8e6e::t_f428e9490393a7 3-5
+  s_96ad2ed13f95f5::t_b06206d28aaa67 1-2,6-98
+docs/cli/troubleshooting.md
+  s_67da17cd206f3c::t_1fb2727753c863 1-58
+.github/workflows/cli-publish.yml
+  s_67da17cd206f3c::t_06d931dc6208f7 1-32
+docs/cli/README.md
+  s_67da17cd206f3c::t_1fb2727753c863 1-75
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "c54a28b75b1f3703e51e8dfc9968790d92717bf0",
+  "prompts": {},
+  "sessions": {
+    "s_15742fdeac8e6e": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f669b-55ad-7452-8820-4091dc9d7dc4",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Misbah Khursheed <m.misbahkhursheed@gmail.com>"
+    },
+    "s_67da17cd206f3c": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f66a5-8e5e-7533-a508-b9b6cf46b562",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Misbah Khursheed <m.misbahkhursheed@gmail.com>"
+    },
+    "s_96ad2ed13f95f5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7f4cf45d-6389-47cd-afbe-a8d47c0507ab",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Misbah Khursheed <m.misbahkhursheed@gmail.com>"
+    }
+  }
+}
