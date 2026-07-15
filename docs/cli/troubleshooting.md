@@ -6,6 +6,8 @@ Start with:
 mstack doctor
 ```
 
+Use `mstack validate` when the CLI runs correctly but repository or AI runtime state may have drifted. Add `--strict` in CI to treat incomplete planning documents and missing optional setup as failures.
+
 For support tooling or CI, use `mstack doctor --json`. Reports include the CLI and Node versions, platform, repository detection, Git availability, write permissions, configuration, and managed-file integrity. Secrets and environment values are not included.
 
 ## Repository is not initialized
@@ -53,6 +55,11 @@ Use a command's `--json` option without interactive prompts. Warnings and human 
 
 ## A generated runtime file changed
 
-`mstack doctor` reports integrity changes only for fully managed content. Review local edits, preserve anything intentional elsewhere, then rerun `mstack ai setup` to regenerate the selected runtime pack.
+`mstack validate` reports runtime ownership drift and includes affected paths in `--json` output. Review local edits, preserve anything intentional elsewhere, then preview reconciliation before writing:
+
+```sh
+mstack validate --json
+mstack ai setup --dry-run
+```
 
 Set `MSTACK_DEBUG=1` only when a stack trace is necessary for local diagnosis. Do not include secrets or sensitive repository content in bug reports.

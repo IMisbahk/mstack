@@ -22,7 +22,7 @@ Inside an existing repository, the standard journey is:
 ```sh
 mstack init
 mstack ai setup
-mstack status
+mstack validate
 ```
 
 `mstack init --dry-run` previews repository changes. `mstack ai setup --dry-run` previews every runtime artifact and limitation. In automation, pass `--yes` plus explicit runtime IDs or `--all`.
@@ -45,6 +45,8 @@ Existing planning documents are preserved. `--force` is the only path that inten
 | `mstack explain` | Walk through the repository's installed workflow |
 | `mstack ai setup` | Configure detected or selected AI coding runtimes |
 | `mstack ai list` | Inspect runtime support and detection |
+| `mstack catalog` | Discover agents, skills, prompts, hooks, and templates |
+| `mstack validate` | Verify planning readiness, ownership, and runtime integrity |
 | `mstack doctor` | Diagnose runtime, repository, permissions, and manifest health |
 | `mstack config` | Inspect or change layered configuration |
 | `mstack plugins` | Inspect installed capability contributions |
@@ -54,7 +56,7 @@ See the generated [command reference](command-reference.md) for every option.
 
 ## Output and automation
 
-Interactive terminals receive color, progress, and one safe confirmation. Redirected output is stable and contains no animation. Use `--no-color` for plain terminal output and `--json` on setup, status, explain, doctor, AI, and configuration inspection commands for a versioned machine-readable result.
+Interactive terminals receive color, progress, and one safe confirmation. Redirected output is stable and contains no animation. Use `--no-color` for plain terminal output and `--json` on setup, status, explain, doctor, validation, catalog, AI, and configuration inspection commands for a versioned machine-readable result.
 
 Exit codes are stable:
 
@@ -64,7 +66,7 @@ Exit codes are stable:
 | `1` | Operational or unexpected failure |
 | `2` | Invalid input or configuration |
 | `3` | A required non-interactive decision is missing |
-| `4` | Reserved for completed operations with unresolved verification issues |
+| `4` | Repository validation failed |
 
 ## More information
 

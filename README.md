@@ -75,6 +75,8 @@ mstack init
 
 It inspects a repository, previews its changes, preserves existing work, and installs the parts of the workflow that fit. It can configure reusable agents, prompts, hooks, skills, project templates, onboarding, and repository-level guidance for Claude Code, Codex, Cursor, Gemini CLI, Continue, and Aider. Run `mstack ai setup --dry-run` to inspect the exact runtime plan before installing it.
 
+Use `mstack catalog` to discover the installed engineering resources and `mstack validate --strict` to verify planning readiness, managed ownership, and AI runtime integrity in CI.
+
 The current platform includes 6 AI environments, 12 specialist agents, 10 reusable skills, 3 automation hooks, 9 prompt packs, and 8 runtime templates. It supports npm, pnpm, Yarn, and Bun, with versioned JSON output for automation.
 
 Projects such as [g-stack](https://github.com/garrytan/gstack) already approach AI development environments with broad capability and configuration. I respect that approach. Build Like This makes a different trade-off: fewer choices, stronger defaults, and a specific product-to-production workflow. The purpose of mstack is not to expose every possible setup. It is to get a repository ready for the process I would personally use.

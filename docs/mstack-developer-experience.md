@@ -1,6 +1,6 @@
 # Why mstack Exists and How It Should Feel
 
-> Status: Proposed UX contract · Owner: Misbah Khursheed · Last updated: 2026-07-15
+> Status: Active UX contract · Owner: Misbah Khursheed · Last updated: 2026-07-16
 
 I built the Build Like This playbook because better context produces better
 software. I started mstack because recreating that context in every repository
@@ -25,12 +25,13 @@ are the intended public surface; some are not implemented yet.
 
 ## Current boundary
 
-The current CLI can initialize a project, install the planning templates,
-preserve existing files, report repository status, explain the workflow,
-configure supported AI coding environments, store project configuration,
-inspect the environment, and manage updates. Resumable operations and undo
-describe the direction of the experience, not a promise that they are available
-in the published version today.
+The current CLI can initialize a project, install planning templates, preserve
+existing files, report repository status, explain the workflow, discover the
+runtime catalog, validate repository and AI runtime integrity, configure
+supported AI coding environments, store project configuration, inspect the
+environment, and manage updates. Resumable CLI operations and undo describe the
+direction of the experience, not a promise that those commands are available in
+the published version today.
 
 This distinction matters. I want the documentation to make room for the system
 mstack can become without describing future work as shipped behavior.
@@ -89,7 +90,7 @@ merely decorate them.
 For a standard interactive run, show a compact plan and ask once:
 
 ```text
-mstack 0.1.0
+mstack 0.3.0
 
 Install Misbah's Build Like This workflow in ~/code/acme
 
@@ -241,7 +242,7 @@ mstack consumes:
 ```text
 mstack doctor
 
-  ✓ CLI             0.1.0
+  ✓ CLI             0.3.0
   ✓ Runtime         Node.js 22.4.1
   ✓ Repository      ~/code/acme
   ✓ Permissions     writable
@@ -258,10 +259,14 @@ Diagnostics must:
 - redact tokens, credentials, user names, query strings, and sensitive path
   segments by default;
 - support `mstack doctor --json` for automation and support tooling;
-- support `mstack doctor --copy` only after showing exactly what will be copied;
 - include CLI version, operating system, runtime, repository state, relevant
-  configuration sources, failing check IDs, and recent sanitized error IDs;
+  configuration sources, and stable check IDs;
 - never upload a report without explicit confirmation.
+
+`mstack validate` complements diagnostics with a repository quality gate. It
+checks product and architecture readiness, manifest ownership, and AI runtime
+drift. Exit code `4` means validation failed; `--strict` also treats warnings as
+failures.
 
 ## Errors
 
@@ -325,14 +330,18 @@ If atomic rollback is supported by the underlying system, offer it explicitly:
 `mstack undo <operation-id>`. Otherwise, do not promise rollback; enumerate the
 files that are safe to remove and the files that must be reviewed.
 
-## Updates
+## Future background update behavior
+
+The shipped `mstack update` command performs an explicit registry check and
+asks before changing the global installation. A future background notice, if
+added, must follow this contract:
 
 Check for updates asynchronously and never delay the requested command. Show at
 most one notice every seven days, after the command result:
 
 ```text
-Update available 0.1.0 → 0.2.0
-Run `mstack update` · notes: mstack.dev/releases/0.2.0
+Update available 0.2.0 → 0.3.0
+Run `mstack update`
 ```
 
 Security-critical notices may appear immediately but must still follow the main
@@ -341,7 +350,7 @@ package-manager ownership, prerelease channels, and disabled update checks.
 
 ## Output contract
 
-All commands support three presentation modes:
+Commands that expose structured reports support three presentation modes:
 
 | Mode | Trigger | Contract |
 | --- | --- | --- |
@@ -362,21 +371,19 @@ is not part of the result, and diagnostics. Exit codes are stable and grouped:
 | `1` | Unexpected or operational failure |
 | `2` | Invalid command or input |
 | `3` | Required decision unavailable in non-interactive mode |
-| `4` | Completed with unresolved verification issues |
+| `4` | Repository validation failed |
 
 ## Installation experience
 
-Official installation instructions begin with one preferred command, followed
-by alternatives. Immediately after installation, print only:
+Official installation instructions begin with one preferred command:
 
 ```text
-✓ Installed mstack 0.1.0
-Run `mstack init` inside a repository to get started.
+npm install -g @imisbahk/mstack
+mstack init
 ```
 
-The installer verifies the binary, makes the command discoverable in the
-current shell when possible, and diagnoses `PATH` problems with a copyable fix.
-It must not modify a shell profile without preview and consent.
+The zero-install alternative is `npx @imisbahk/mstack@latest init`. mstack does
+not modify shell profiles or global configuration during repository setup.
 
 Uninstallation removes only mstack-owned global files. Repository artifacts
 remain because they are user work; say so before uninstalling.

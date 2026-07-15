@@ -1,37 +1,39 @@
 # mstack command reference
 
-> Generated from mstack 0.2.0. Run `pnpm --filter mstack build && pnpm --filter mstack docs:generate` after changing the command surface.
+> Generated from mstack 0.3.0. Run `pnpm --filter @imisbahk/mstack build && pnpm --filter @imisbahk/mstack docs:generate` after changing the command surface.
 
 ## Global command
 
 ```text
 Usage: mstack [options] [command]
 
-Install Misbah Khursheed's documentation-first engineering workflow in a
-repository
+Install the Build Like This AI engineering workflow in any repository
 
 Options:
-  -C, --cwd <directory>       run as if mstack was started in this directory
-                              (default: ".")
-  -h, --help                  display help for command
-  --no-color                  disable terminal colors
-  -q, --quiet                 suppress non-error output (default: false)
-  -v, --version               output the version number
+  -C, --cwd <directory>           run as if mstack was started in this directory
+  -h, --help                      display help for command
+  --no-color                      disable terminal colors
+  -q, --quiet                     suppress non-error output (default: false)
+  -v, --version                   output the version number
 
 Commands:
-  ai                          configure AI coding environments for this
-                              repository
-  config                      inspect or change mstack configuration
-  doctor [options]            inspect the runtime and current project
-  explain [options]           walk through Misbah's Build Like This workflow in
-                              this repository
-  help [command]              display help for command
-  init [options] [directory]  install Misbah's Build Like This workflow or
-                              bootstrap a project
-  plugins                     inspect installed mstack capability plugins
-  status [options]            show repository readiness and the next recommended
-                              action
-  update [options]            check for and apply mstack updates
+  ai                              configure AI coding environments for this
+                                  repository
+  catalog [options] [kind]        discover agents, skills, prompts, hooks, and
+                                  templates
+  config                          inspect or change mstack configuration
+  doctor [options]                inspect the runtime and current project
+  explain [options]               walk through Misbah's Build Like This workflow
+                                  in this repository
+  help [command]                  display help for command
+  init [options] [directory]      install Misbah's Build Like This workflow or
+                                  bootstrap a project
+  plugins                         inspect installed mstack capability plugins
+  status [options]                show repository readiness and the next
+                                  recommended action
+  update [options]                check for and apply mstack updates
+  validate [options] [directory]  verify repository readiness and managed AI
+                                  runtime integrity
 ```
 
 ## mstack init
@@ -158,6 +160,35 @@ show plugin contributions
 Options:
   -h, --help  display help for command
   --json      print a versioned JSON report (default: false)
+```
+
+## mstack catalog
+
+```text
+Usage: mstack catalog [options] [kind]
+
+discover agents, skills, prompts, hooks, and templates
+
+Arguments:
+  kind        limit results to one resource kind (choices: "agents", "skills",
+              "prompts", "hooks", "templates")
+
+Options:
+  -h, --help  display help for command
+  --json      print a versioned JSON catalog (default: false)
+```
+
+## mstack validate
+
+```text
+Usage: mstack validate [options] [directory]
+
+verify repository readiness and managed AI runtime integrity
+
+Options:
+  -h, --help  display help for command
+  --json      print a versioned JSON report (default: false)
+  --strict    treat warnings as validation failures (default: false)
 ```
 
 ## mstack config

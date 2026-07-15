@@ -25,7 +25,7 @@ Build Like This defines the engineering method. mstack installs it consistently.
 | Copy agents, prompts, skills, hooks, and templates | Install one versioned engineering pack |
 | Guess what a repository already contains | Detect project state, runtimes, and conflicts |
 | Risk replacing existing guidance | Preserve user-owned files by default |
-| Recheck setup manually | Use manifests, `status`, `doctor`, and versioned JSON output |
+| Recheck setup manually | Use manifests, `status`, `validate`, `doctor`, and versioned JSON output |
 | Use one assistant for every concern | Hand work between bounded engineering specialists |
 
 ## Capabilities
@@ -117,6 +117,24 @@ Eight runtime templates keep engineering decisions durable:
 | Prompt | Reusable, verifiable task workflows |
 
 `mstack init` installs the four core planning templates—product, architecture, feature, and ADR. `mstack ai setup` installs the complete runtime library.
+
+### Catalog and validation
+
+The runtime catalog is discoverable without inspecting generated directories:
+
+```sh
+mstack catalog
+mstack catalog agents
+mstack catalog hooks --json
+```
+
+Repository validation checks planning readiness, managed-file integrity, and AI runtime drift. Normal mode allows actionable warnings; strict mode turns them into CI failures.
+
+```sh
+mstack validate
+mstack validate --strict
+mstack validate --json
+```
 
 ## Multi-agent workflows
 
@@ -229,7 +247,7 @@ The standard onboarding journey is:
 ```sh
 mstack init
 mstack ai setup
-mstack status
+mstack validate
 ```
 
 Preview everything before changing an established repository:
@@ -244,7 +262,7 @@ Use explicit runtimes and versioned JSON in automation:
 ```sh
 mstack init --yes
 mstack ai setup codex continue --yes
-mstack status --json
+mstack validate --strict --json
 ```
 
 ### Initialize
@@ -293,7 +311,7 @@ AI coding runtimes
 $ mstack ai setup codex
 AI runtime setup
   Runtimes      OpenAI Codex
-  Contents      agents · skills · prompts · hooks · templates
+  Files         skill files · prompt files · agent files · hook files · template files
 
 ✓ Configured OpenAI Codex
   Manifest      .mstack/manifest.json
@@ -318,7 +336,7 @@ Next
 ```text
 $ mstack doctor
 mstack doctor
-  ✓ CLI         0.2.0
+  ✓ CLI         0.3.0
   ✓ RUNTIME     Node.js 22.4.1
   ✓ GIT         available
   ✓ REPOSITORY  ~/code/acme
@@ -328,12 +346,24 @@ mstack doctor
 No issues found
 ```
 
+```text
+$ mstack validate
+mstack validate
+  ✓ SETUP        Build Like This is initialized
+  ✓ PRODUCT      docs/product.md is ready
+  ✓ ARCHITECTURE docs/architecture.md is ready
+  ✓ MANIFEST     .mstack/manifest.json is consistent
+  ✓ AI_RUNTIME   44 managed runtime resources verified
+
+✓ Repository validation passed.
+```
+
 ### Update
 
 ```text
 $ mstack update
 Checking the npm registry…
-✓ mstack 0.2.0 is up to date.
+✓ mstack 0.3.0 is up to date.
 ```
 
 ## Commands
@@ -347,6 +377,8 @@ Every command below is implemented. `mstack ai`, `mstack config`, and `mstack pl
 | `explain` | Walk through the installed workflow | `mstack explain [--json]`<br>`mstack explain` | Describes the planning documents that exist and points to the first incomplete step. Makes no changes. |
 | `ai setup` | Install the AI engineering pack | `mstack ai setup [runtimes...] [options]`<br>`mstack ai setup claude-code codex --dry-run` | Detects or accepts runtimes, renders supported capabilities, reports limitations and conflicts, confirms before applying, and updates the manifest. Supports `--all`, `--yes`, `--force`, and `--json`. |
 | `ai list` | Inspect runtime support and detection | `mstack ai list [--json]`<br>`mstack ai list` | Shows every environment as available, detected, or configured with native and adapted capability counts. Makes no changes. |
+| `catalog` | Discover runtime resources | `mstack catalog [kind] [--json]`<br>`mstack catalog agents` | Lists source-backed agents, skills, prompts, hooks, and templates with exact catalog totals. Makes no changes. |
+| `validate` | Verify repository and runtime integrity | `mstack validate [directory] [--strict] [--json]`<br>`mstack validate --strict` | Checks planning readiness, repository ownership, and AI runtime drift. Exits with code `4` on errors, or on warnings in strict mode. Makes no changes. |
 | `plugins list` | Inspect capability plugins | `mstack plugins list [--json]`<br>`mstack plugins list --json` | Lists plugin metadata and integration, template, and generator contributions. Makes no changes. |
 | `config list` | Print resolved configuration | `mstack config list [--json]`<br>`mstack config list` | Merges user and project preferences, then prints the resolved values. Makes no changes. |
 | `config get` | Read one setting | `mstack config get <key>`<br>`mstack config get packageManager` | Prints the resolved value or gives guidance for an unknown or unset key. |
@@ -363,10 +395,10 @@ The following command families describe the platform direction. **They are plann
 
 | Planned command | Direction |
 | --- | --- |
-| `mstack agent` | Discover and work with installed specialists |
-| `mstack prompt` | Browse and apply prompt packs |
-| `mstack hook` | Inspect and manage approved hooks |
-| `mstack skill` | Discover and manage engineering skills |
+| `mstack agent` | Invoke and coordinate installed specialists |
+| `mstack prompt` | Apply and compose prompt packs |
+| `mstack hook` | Manage activation of approved hooks |
+| `mstack skill` | Install or update individual engineering skills |
 | `mstack runtime` | Inspect and reconcile AI runtime state |
 | `mstack migrate` | Apply explicit config and manifest migrations |
 | `mstack template` | Browse and install individual templates |
@@ -400,6 +432,6 @@ mstack is evolving toward a complete repository-local AI engineering platform: a
 
 The direction is incremental. The current release installs and maintains the workflow; it does not provide hosted model inference or an autonomous agent execution service. Orchestration will require explicit contracts, permission boundaries, recovery behavior, and evidence that it improves real engineering work before it becomes a shipped promise.
 
-Read the [Build Like This playbook](https://github.com/IMisbahk/mstack#readme), the [complete CLI guide](https://github.com/IMisbahk/mstack/tree/main/docs/cli), and the [developer experience contract](https://github.com/IMisbahk/mstack/blob/main/docs/mstack-developer-experience.md).
+Read the [Build Like This playbook](https://github.com/IMisbahk/mstack#readme), the [complete CLI guide](https://github.com/IMisbahk/mstack/tree/main/docs/cli), the [changelog](https://github.com/IMisbahk/mstack/blob/main/CHANGELOG.md), and the [developer experience contract](https://github.com/IMisbahk/mstack/blob/main/docs/mstack-developer-experience.md).
 
 Released under the [MIT License](LICENSE).

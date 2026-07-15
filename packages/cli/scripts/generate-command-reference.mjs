@@ -17,7 +17,7 @@ function visit(command, parents = []) {
 visit(program);
 const content = `# mstack command reference
 
-> Generated from mstack ${program.version()}. Run \`pnpm --filter mstack build && pnpm --filter mstack docs:generate\` after changing the command surface.
+> Generated from mstack ${program.version()}. Run \`pnpm --filter @imisbahk/mstack build && pnpm --filter @imisbahk/mstack docs:generate\` after changing the command surface.
 
 ## Global command
 

@@ -1,6 +1,6 @@
 {
   "name": "@mstack/ai-integrations",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "private": true,
   "description": "Adapters that carry the Build Like This workflow into AI coding environments",
   "author": "Misbah Khursheed",

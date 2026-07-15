@@ -51,12 +51,12 @@ jobs:
           node-version: ${{ matrix.node }}
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm --filter mstack typecheck
-      - run: pnpm --filter mstack test
-      - run: pnpm --filter mstack build
+      - run: pnpm typecheck
+      - run: pnpm test
+      - run: pnpm build
       - if: matrix.os == 'ubuntu-latest' && matrix.node == 22
         run: |
-          pnpm --filter mstack docs:generate
+          pnpm --filter @imisbahk/mstack docs:generate
           git diff --exit-code -- docs/cli/command-reference.md
       - run: npm pack --dry-run
         working-directory: packages/cli
@@ -72,12 +72,12 @@ jobs:
           cache: pnpm
       - uses: oven-sh/setup-bun@v2
       - run: pnpm install --frozen-lockfile
-      - run: pnpm --filter mstack build
+      - run: pnpm build
       - name: Pack CLI
         working-directory: packages/cli
         run: |
-          npm pack --ignore-scripts
-          echo "PACKAGE_TARBALL=$PWD/mstack-$(node -p "require('./package.json').version").tgz" >> "$GITHUB_ENV"
+          PACKAGE_TARBALL="$(npm pack --ignore-scripts --silent)"
+          echo "PACKAGE_TARBALL=$PWD/$PACKAGE_TARBALL" >> "$GITHUB_ENV"
       - run: npx --yes --package "$PACKAGE_TARBALL" mstack --version
       - run: pnpm dlx "$PACKAGE_TARBALL" --version
       - run: corepack yarn dlx --quiet "mstack@file:$PACKAGE_TARBALL" --version

@@ -1,7 +1,7 @@
 {
   "name": "@imisbahk/mstack",
-  "version": "0.2.0",
-  "description": "Install Misbah Khursheed's documentation-first engineering workflow in a repository",
+  "version": "0.3.0",
+  "description": "Install the Build Like This AI engineering workflow in any repository",
   "type": "module",
   "bin": {
     "mstack": "dist/cli.js"
@@ -33,10 +33,17 @@
     "release:check": "npm run prepublishOnly && npm pack --dry-run"
   },
   "keywords": [
+    "ai",
+    "ai-agents",
     "cli",
+    "coding-agents",
     "developer-tools",
+    "developer-experience",
     "project-scaffold",
-    "buildlikethis"
+    "buildlikethis",
+    "claude-code",
+    "codex",
+    "cursor"
   ],
   "author": "Misbah Khursheed",
   "license": "MIT",
