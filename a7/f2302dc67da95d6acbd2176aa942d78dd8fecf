@@ -1,0 +1,23 @@
+packages/ai-integrations/test/reconciliation.test.ts
+  s_692f3cf26d6301::t_10410bb6931c33 142-144
+CHANGELOG.md
+  s_692f3cf26d6301::t_10410bb6931c33 27
+packages/ai-integrations/src/core/verification.ts
+  s_692f3cf26d6301::t_10410bb6931c33 24
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "a7f2302dc67da95d6acbd2176aa942d78dd8fecf",
+  "prompts": {},
+  "sessions": {
+    "s_692f3cf26d6301": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f6741-5144-7382-bdd3-18bef5f09177",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Misbah Khursheed <m.misbahkhursheed@gmail.com>"
+    }
+  }
+}
