@@ -26,6 +26,7 @@ test("runtime ships a focused, structurally complete engineering library", () =>
   assert.equal(engineeringPrompts.length, 9);
   assert.equal(engineeringHooks.length, 3);
   assert.equal(runtimeTemplates.length, 8);
+  assert.ok(runtimeTemplates.every((item) => item.feature === "templates"));
 
   const allIds = [
     ...engineeringAgents.map((item) => item.id),

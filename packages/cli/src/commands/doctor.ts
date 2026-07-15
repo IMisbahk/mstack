@@ -8,14 +8,29 @@ import { inspectRepository } from "../services/health.js";
 import { verifyManifest } from "../services/manifest.js";
 import { VERSION } from "../meta.js";
 
-interface Check {
+export interface DoctorCheck {
   id: string;
   status: "ok" | "warning" | "error";
   detail: string;
   fix?: string;
 }
 
-export async function doctorCommand(cwd: string, output: Output, json: boolean): Promise<void> {
+export interface DoctorReport {
+  readonly schemaVersion: 1;
+  readonly mstack: string;
+  readonly runtime: string;
+  readonly platform: string;
+  readonly project: Awaited<ReturnType<typeof detectProject>>;
+  readonly preferences: Awaited<ReturnType<ConfigStore["resolved"]>>;
+  readonly checks: readonly DoctorCheck[];
+  readonly integrity: Awaited<ReturnType<typeof verifyManifest>>;
+}
+
+export function hasBlockingDoctorIssue(report: Pick<DoctorReport, "checks">): boolean {
+  return report.checks.some((check) => check.status === "error");
+}
+
+export async function doctorCommand(cwd: string, output: Output, json: boolean): Promise<DoctorReport> {
   const project = await detectProject(cwd);
   const config = new ConfigStore({ cwd });
   const health = await inspectRepository(cwd);
@@ -23,7 +38,7 @@ export async function doctorCommand(cwd: string, output: Output, json: boolean):
   const integrity = await verifyManifest(health.root);
   let writable = true;
   try { await access(health.root, constants.W_OK); } catch { writable = false; }
-  const checks: Check[] = [
+  const checks: DoctorCheck[] = [
     { id: "CLI", status: "ok", detail: VERSION },
     { id: "RUNTIME", status: Number(process.versions.node.split(".")[0]) >= 20 ? "ok" : "error", detail: `Node.js ${process.versions.node}`, fix: "Install Node.js 20.11 or newer." },
     { id: "GIT", status: git ? "ok" : "warning", detail: git ? "available" : "not found", fix: "Install Git or initialize with --no-git." },
@@ -31,8 +46,8 @@ export async function doctorCommand(cwd: string, output: Output, json: boolean):
     { id: "PERMISSIONS", status: writable ? "ok" : "error", detail: writable ? "repository is writable" : "repository is not writable", fix: `Grant the current user write access to ${health.root}.` },
     { id: "MANIFEST", status: integrity.length === 0 ? "ok" : "warning", detail: integrity.length === 0 ? health.manifest ?? "not installed" : `${integrity.length} managed file${integrity.length === 1 ? "" : "s"} changed`, fix: "Review mstack status and rerun the relevant setup command." },
   ];
-  const report = {
-    schemaVersion: 1,
+  const report: DoctorReport = {
+    schemaVersion: 1 as const,
     mstack: VERSION,
     runtime: `Node ${process.versions.node}`,
     platform: `${process.platform} ${process.arch}`,
@@ -41,7 +56,10 @@ export async function doctorCommand(cwd: string, output: Output, json: boolean):
     checks,
     integrity,
   };
-  if (json) return output.json(report);
+  if (json) {
+    output.json(report);
+    return report;
+  }
 
   output.title("mstack doctor");
   output.line("");
@@ -52,4 +70,5 @@ export async function doctorCommand(cwd: string, output: Output, json: boolean):
   const issues = checks.filter((check) => check.status !== "ok");
   output.line(`\n${issues.length === 0 ? "No issues found" : `${issues.length} issue${issues.length === 1 ? "" : "s"} found`}`);
   for (const issue of issues) if (issue.fix) output.line(`Fix: ${issue.fix}`);
+  return report;
 }

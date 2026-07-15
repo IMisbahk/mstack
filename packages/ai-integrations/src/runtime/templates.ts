@@ -8,7 +8,7 @@ function template(name: string, content: string): RuntimeAsset {
     version: "1.0.0",
     activation: "passive",
     security: "content",
-    feature: "repository-onboarding",
+    feature: "templates",
     path: `.mstack/templates/${name}.template.md`,
     content: `${marker}\n\n${content.trim()}`,
   };

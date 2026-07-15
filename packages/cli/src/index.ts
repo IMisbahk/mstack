@@ -6,4 +6,6 @@ export { scaffoldProject, type ScaffoldOptions, type ScaffoldResult } from "./se
 export { fetchLatestVersion, hasUpdate, updateCommand } from "./services/packages.js";
 export { inspectRepository, type DocumentHealth, type RepositoryHealth } from "./services/health.js";
 export { readManifest, updateManifest, verifyManifest, type MstackManifest } from "./services/manifest.js";
+export { buildCatalog, CATALOG_KINDS, type CatalogItem, type CatalogKind, type CatalogReport } from "./commands/catalog.js";
+export { validateRepository, type ValidationCheck, type ValidationReport, type ValidationStatus } from "./commands/validate.js";
 export { VERSION } from "./meta.js";

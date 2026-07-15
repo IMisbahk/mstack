@@ -49,8 +49,8 @@ export class Output {
     this.line(this.colors.bold(message));
   }
 
-  field(label: string, value: string): void {
-    this.line(`  ${this.colors.dim(label.padEnd(13))} ${value}`);
+  field(label: string, value: string, width = 13): void {
+    this.line(`  ${this.colors.dim(label.padEnd(width))} ${value}`);
   }
 
   next(message: string): void {

@@ -10,7 +10,9 @@ export async function statusCommand(cwd: string, output: Output, json: boolean):
   output.field("Setup", report.setup === "complete" ? "complete" : report.setup.replace("-", " "));
   for (const document of report.documents) {
     const label = document.id === "product" ? "Product" : "Architecture";
-    const detail = document.state === "draft" ? `draft · ${document.placeholders} placeholders remaining` : document.state;
+    const detail = document.state === "draft"
+      ? `draft · ${document.placeholders} placeholders remaining`
+      : document.state === "ready" ? "complete" : document.state;
     output.field(label, `${detail} · ${document.path}`);
   }
   output.field("AI runtimes", report.integrations.length > 0 ? report.integrations.join(", ") : "not configured");

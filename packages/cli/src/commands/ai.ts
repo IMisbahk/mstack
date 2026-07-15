@@ -170,10 +170,10 @@ function outputPlan(
 ): void {
   const counts = new Map<string, number>();
   for (const artifact of artifacts) counts.set(artifact.feature, (counts.get(artifact.feature) ?? 0) + 1);
-  const contents = [...counts.entries()].map(([feature, count]) => `${count} ${feature}`).join(" · ");
+  const contents = [...counts.entries()].map(([feature, count]) => `${count} ${artifactLabel(feature, count)}`).join(" · ");
   output.title(dryRun ? "AI runtime setup · dry run" : "AI runtime setup");
   output.field("Runtimes", displayNames.join(", "));
-  output.field("Contents", contents);
+  output.field("Files", contents);
   output.field("Create", String(preview.files.filter((file) => file.status === "created").length));
   output.field("Update", String(preview.files.filter((file) => file.status === "updated").length));
   output.field("Unchanged", String(preview.files.filter((file) => file.status === "unchanged").length));
@@ -182,6 +182,11 @@ function outputPlan(
     for (const [path, kinds] of approvalSummary(approvals)) output.warn(`${path}: ${kinds.join(", ")}`);
   }
   if (warnings > 0) output.field("Limitations", String(warnings));
+}
+
+function artifactLabel(feature: string, count: number): string {
+  const singular = feature === "instructions" ? "instruction" : feature.endsWith("s") ? feature.slice(0, -1) : feature;
+  return `${singular} file${count === 1 ? "" : "s"}`;
 }
 
 function approvalSummary(requirements: readonly ApprovalRequirement[]): Map<string, string[]> {

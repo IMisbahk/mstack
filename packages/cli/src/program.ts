@@ -1,4 +1,5 @@
-import { Command, Option } from "commander";
+import path from "node:path";
+import { Argument, Command, Option } from "commander";
 import pc from "picocolors";
 import { Output } from "./core/output.js";
 import { ConfigStore } from "./services/config.js";
@@ -6,11 +7,13 @@ import { DESCRIPTION, VERSION } from "./meta.js";
 import { packagedTemplatesDirectory } from "./services/scaffold.js";
 import { initCommand } from "./commands/init.js";
 import { configGetCommand, configListCommand, configSetCommand, configUnsetCommand } from "./commands/config.js";
-import { doctorCommand } from "./commands/doctor.js";
+import { doctorCommand, hasBlockingDoctorIssue } from "./commands/doctor.js";
 import { updateCommandHandler } from "./commands/update.js";
 import { explainCommand, statusCommand } from "./commands/status.js";
 import { aiListCommand, aiSetupCommand } from "./commands/ai.js";
 import { pluginsCommand } from "./commands/plugins.js";
+import { catalogCommand, CATALOG_KINDS, type CatalogKind } from "./commands/catalog.js";
+import { validateCommand } from "./commands/validate.js";
 
 export interface ProgramOptions {
   cwd?: string;
@@ -19,6 +22,12 @@ export interface ProgramOptions {
 }
 
 interface Globals {
+  cwd?: string;
+  quiet: boolean;
+  color: boolean;
+}
+
+interface ResolvedGlobals {
   cwd: string;
   quiet: boolean;
   color: boolean;
@@ -34,7 +43,7 @@ export function createProgram(options: ProgramOptions = {}): Command {
     .name("mstack")
     .description(DESCRIPTION)
     .version(VERSION, "-v, --version")
-    .option("-C, --cwd <directory>", "run as if mstack was started in this directory", defaultCwd)
+    .option("-C, --cwd <directory>", "run as if mstack was started in this directory")
     .option("-q, --quiet", "suppress non-error output", false)
     .option("--no-color", "disable terminal colors")
     .showSuggestionAfterError(true)
@@ -43,10 +52,11 @@ export function createProgram(options: ProgramOptions = {}): Command {
       sortSubcommands: true,
       sortOptions: true,
     })
-    .addHelpText("after", `\nExamples:\n  $ mstack init\n  $ mstack status\n  $ mstack ai setup\n  $ mstack doctor --json`);
+    .addHelpText("after", `\nExamples:\n  $ mstack init\n  $ mstack ai setup\n  $ mstack catalog agents\n  $ mstack validate --strict\n  $ mstack doctor --json`);
 
-  const globals = (command: Command): { values: Globals; output: Output } => {
-    const values = command.optsWithGlobals<Globals>();
+  const globals = (command: Command): { values: ResolvedGlobals; output: Output } => {
+    const raw = command.optsWithGlobals<Globals>();
+    const values: ResolvedGlobals = { cwd: raw.cwd ?? defaultCwd, quiet: raw.quiet, color: raw.color };
     return { values, output: suppliedOutput ?? new Output({ quiet: values.quiet, color: values.color }) };
   };
 
@@ -150,6 +160,27 @@ export function createProgram(options: ProgramOptions = {}): Command {
       pluginsCommand(context.output, local.json);
     });
 
+  program
+    .command("catalog")
+    .description("discover agents, skills, prompts, hooks, and templates")
+    .addArgument(new Argument("[kind]", "limit results to one resource kind").choices([...CATALOG_KINDS]))
+    .option("--json", "print a versioned JSON catalog", false)
+    .action((kind: CatalogKind | undefined, local: { json: boolean }, command: Command) => {
+      const context = globals(command);
+      catalogCommand(context.output, kind, local.json);
+    });
+
+  program
+    .command("validate [directory]")
+    .description("verify repository readiness and managed AI runtime integrity")
+    .option("--strict", "treat warnings as validation failures", false)
+    .option("--json", "print a versioned JSON report", false)
+    .action(async (directory: string | undefined, local: { strict: boolean; json: boolean }, command: Command) => {
+      const context = globals(command);
+      const report = await validateCommand(path.resolve(context.values.cwd, directory ?? "."), context.output, local);
+      if (!report.valid) process.exitCode = 4;
+    });
+
   const config = program.command("config").description("inspect or change mstack configuration");
   config
     .command("list", { isDefault: true })
@@ -189,7 +220,8 @@ export function createProgram(options: ProgramOptions = {}): Command {
     .option("--json", "print JSON", false)
     .action(async (local: { json: boolean }, command: Command) => {
       const context = globals(command);
-      await doctorCommand(context.values.cwd, context.output, local.json);
+      const report = await doctorCommand(context.values.cwd, context.output, local.json);
+      if (hasBlockingDoctorIssue(report)) process.exitCode = 1;
     });
 
   program
