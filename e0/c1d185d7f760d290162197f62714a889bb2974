@@ -1,0 +1,202 @@
+.agents/skills/design-api/SKILL.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-39
+.mstack/templates/architecture.template.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-88
+.cursor/hooks.json
+  s_692f3cf26d6301::t_9132235c53a3cb 1-23
+.claude/agents/performance-engineer.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-46
+.cursor/agents/backend-engineer.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-46
+.claude/skills/production-readiness/SKILL.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-42
+.codex/agents/software-architect.toml
+  s_692f3cf26d6301::t_9132235c53a3cb 1-4
+.codex/agents/database-engineer.toml
+  s_692f3cf26d6301::t_9132235c53a3cb 1-4
+.cursor/agents/devops-engineer.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-46
+.claude/skills/debug-failure/SKILL.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-42
+.claude/agents/code-reviewer.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-46
+.claude/skills/build-feature/SKILL.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-43
+.mstack/runtime/hooks/feature-completeness.mjs
+  s_692f3cf26d6301::t_9132235c53a3cb 1-37
+.claude/skills/safe-refactoring/SKILL.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-45
+.agents/skills/release-readiness/SKILL.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-45
+.claude/skills/threat-model-review/SKILL.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-45
+.claude/skills/refactor-module/SKILL.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-42
+.cursor/agents/code-reviewer.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-46
+.claude/agents/ai-engineer.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-46
+.mstack/runtime/hooks/repository-health.mjs
+  s_692f3cf26d6301::t_9132235c53a3cb 1-80
+.agents/skills/debug-failure/SKILL.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-39
+.claude/settings.json
+  s_692f3cf26d6301::t_9132235c53a3cb 1-37
+.cursor/agents/ai-engineer.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-46
+.agents/skills/review-pull-request/SKILL.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-39
+.agents/skills/safe-refactoring/SKILL.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-45
+.codex/agents/debugging-specialist.toml
+  s_692f3cf26d6301::t_9132235c53a3cb 1-4
+.agents/skills/repository-audit/SKILL.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-45
+.claude/skills/feature-planning/SKILL.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-45
+.claude/agents/software-architect.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-46
+.agents/skills/improve-documentation/SKILL.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-39
+.codex/agents/performance-engineer.toml
+  s_692f3cf26d6301::t_9132235c53a3cb 1-4
+.codex/agents/refactoring-specialist.toml
+  s_692f3cf26d6301::t_9132235c53a3cb 1-4
+.claude/agents/product-manager.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-46
+.claude/agents/frontend-engineer.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-46
+.cursor/agents/software-architect.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-46
+.claude/agents/refactoring-specialist.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-46
+.codex/agents/backend-engineer.toml
+  s_692f3cf26d6301::t_9132235c53a3cb 1-4
+.claude/skills/review-pull-request/SKILL.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-42
+.agents/skills/systematic-debugging/SKILL.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-45
+.codex/agents/product-manager.toml
+  s_692f3cf26d6301::t_9132235c53a3cb 1-4
+.cursor/agents/refactoring-specialist.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-46
+.agents/skills/api-contract-design/SKILL.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-45
+.mstack/templates/repository.template.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-67
+CLAUDE.md
+  s_692f3cf26d6301::t_9132235c53a3cb 44-85
+.claude/agents/backend-engineer.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-46
+.claude/agents/security-reviewer.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-46
+.claude/agents/debugging-specialist.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-46
+AGENTS.md
+  s_692f3cf26d6301::t_9132235c53a3cb 138-179
+.agents/skills/architecture-assessment/SKILL.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-45
+.codex/agents/ai-engineer.toml
+  s_692f3cf26d6301::t_9132235c53a3cb 1-4
+.mstack/manifest.json
+  s_692f3cf26d6301::t_9132235c53a3cb 4-740,746-747
+  s_692f3cf26d6301::t_fab9ab66ba7817 1-3,741-745,748-755
+.agents/skills/performance-investigation/SKILL.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-45
+.agents/skills/build-feature/SKILL.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-40
+.claude/skills/api-contract-design/SKILL.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-45
+.agents/skills/database-modeling/SKILL.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-45
+.cursor/agents/debugging-specialist.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-46
+.agents/skills/review-architecture/SKILL.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-39
+.claude/skills/improve-documentation/SKILL.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-42
+.agents/skills/refactor-module/SKILL.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-39
+.codex/agents/devops-engineer.toml
+  s_692f3cf26d6301::t_9132235c53a3cb 1-4
+.claude/skills/performance-investigation/SKILL.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-45
+.claude/skills/architecture-assessment/SKILL.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-45
+.codex/agents/frontend-engineer.toml
+  s_692f3cf26d6301::t_9132235c53a3cb 1-4
+.mstack/templates/prompt.template.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-39
+.claude/skills/plan-mvp/SKILL.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-42
+.claude/skills/repository-audit/SKILL.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-45
+.cursor/agents/performance-engineer.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-46
+.claude/skills/systematic-debugging/SKILL.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-45
+.mstack/templates/agent.template.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-48
+.codex/agents/security-reviewer.toml
+  s_692f3cf26d6301::t_9132235c53a3cb 1-4
+.claude/agents/database-engineer.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-46
+.codex/hooks.json
+  s_692f3cf26d6301::t_9132235c53a3cb 1-37
+.mstack/templates/adr.template.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-62
+.mstack/runtime/hooks/change-discipline.mjs
+  s_692f3cf26d6301::t_9132235c53a3cb 1-53
+.cursor/agents/security-reviewer.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-46
+.mstack/templates/product.template.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-72
+.agents/skills/production-readiness/SKILL.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-39
+.cursor/agents/database-engineer.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-46
+.mstack/templates/api.template.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-79
+.mstack/templates/feature.template.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-66
+.codex/agents/code-reviewer.toml
+  s_692f3cf26d6301::t_9132235c53a3cb 1-4
+.cursor/rules/mstack.mdc
+  s_692f3cf26d6301::t_9132235c53a3cb 1-45
+.claude/skills/release-readiness/SKILL.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-45
+.agents/skills/threat-model-review/SKILL.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-45
+.agents/skills/feature-planning/SKILL.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-45
+.cursor/agents/product-manager.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-46
+.claude/skills/review-architecture/SKILL.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-42
+.agents/skills/plan-mvp/SKILL.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-39
+.cursor/agents/frontend-engineer.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-46
+.claude/skills/design-api/SKILL.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-42
+.claude/skills/database-modeling/SKILL.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-45
+.claude/agents/devops-engineer.md
+  s_692f3cf26d6301::t_9132235c53a3cb 1-46
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "e0c1d185d7f760d290162197f62714a889bb2974",
+  "prompts": {},
+  "sessions": {
+    "s_692f3cf26d6301": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f6741-5144-7382-bdd3-18bef5f09177",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Misbah Khursheed <m.misbahkhursheed@gmail.com>"
+    }
+  }
+}
