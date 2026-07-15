@@ -23,6 +23,7 @@ All notable changes to mstack are documented here. This project follows [Semanti
 - Prevented stale-file writes, symlink escapes, unsafe paths, malformed ownership manifests, and accidental deletion of user-modified managed state.
 - Corrected scoped-package release scripts, workspace filters, npm tarball detection, generated command documentation, and launcher verification.
 - Normalized repository-relative paths to forward slashes on Windows for stable manifests, JSON, and terminal output.
+- Made runtime test discovery portable across the supported Node.js 20, 22, and 24 release matrix.
 - Aligned status terminology, installation instructions, runtime counts, and command documentation with shipped behavior.
 
 ### Security
