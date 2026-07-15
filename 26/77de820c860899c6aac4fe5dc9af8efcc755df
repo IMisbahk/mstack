@@ -1,0 +1,30 @@
+packages/cli/src/commands/status.ts
+  s_692f3cf26d6301::t_49563e46602bb9 37
+packages/cli/src/services/health.ts
+  s_692f3cf26d6301::t_49563e46602bb9 73
+CHANGELOG.md
+  s_692f3cf26d6301::t_4fd3f729cfaa75 25
+packages/cli/test/scaffold.test.ts
+  s_692f3cf26d6301::t_49563e46602bb9 6,35-36,44-45
+  s_692f3cf26d6301::t_05301ea41b66b9 46-47
+packages/cli/src/services/scaffold.ts
+  s_692f3cf26d6301::t_49563e46602bb9 6,78-79,96,125-126
+packages/cli/src/core/fs.ts
+  s_692f3cf26d6301::t_49563e46602bb9 14-21
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "2677de820c860899c6aac4fe5dc9af8efcc755df",
+  "prompts": {},
+  "sessions": {
+    "s_692f3cf26d6301": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f6741-5144-7382-bdd3-18bef5f09177",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Misbah Khursheed <m.misbahkhursheed@gmail.com>"
+    }
+  }
+}
