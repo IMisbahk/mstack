@@ -1,0 +1,170 @@
+packages/ai-integrations/src/runtime/prompts.ts
+  s_b734b8c74f11d9::t_4ac3502cc7718f 16-19
+packages/ai-integrations/src/adapters/gemini.ts
+  s_b734b8c74f11d9::t_d4413ec3894d51 77
+  s_b734b8c74f11d9::t_f32a08869078c7 10,27-28,37-38,73,89,95
+  s_b734b8c74f11d9::t_9359962c53321b 15,39
+packages/ai-integrations/src/core/registry.ts
+  s_b734b8c74f11d9::t_d2a56445d634c0 2,12
+packages/ai-integrations/src/index.ts
+  s_b734b8c74f11d9::t_5f6875926e811f 10,12-16
+packages/ai-integrations/src/core/verification.ts
+  s_b734b8c74f11d9::t_03646b802e5f38 7-8,18-23,57-78
+  s_b734b8c74f11d9::t_5f6875926e811f 1-6,9-17,24-56
+packages/ai-integrations/src/runtime/skills.ts
+  s_b734b8c74f11d9::t_4ac3502cc7718f 16-19
+packages/ai-integrations/src/runtime/agents.ts
+  s_b734b8c74f11d9::t_4ac3502cc7718f 17-20
+docs/cli/README.md
+  s_692f3cf26d6301::t_eed76bd3e8bcf9 5,7,10-11,14,17
+docs/features/ai-runtime.md
+  s_b734b8c74f11d9::t_fd5806268c18a8 3,5,77-87
+packages/cli/test/vnext.test.ts
+  s_692f3cf26d6301::t_be18e0e037d2d3 65-75
+  s_692f3cf26d6301::t_b3c65c31a2d65d 47
+packages/ai-integrations/src/core/validation.ts
+  s_b734b8c74f11d9::t_4ac3502cc7718f 75,88,104,169,186
+  s_b734b8c74f11d9::t_5cce8c716ea552 8,22-28,45,48-52,102-103,107,114,118,131-134,143-144,150,154-160,163,170
+  s_b734b8c74f11d9::t_bc95393954d536 1-7,9-16,18,20-21,31-35,38-39,41,43,46-47,55-59,61,64-65,67-69,73-74,76,79-84,86-87,92,95-101,105-106,108-113,115-117,119-120,122-130,135-137,140-142,145,147-149,151-153,161,164-168,171-184
+  s_692f3cf26d6301::t_738933f0b5609a 44,146
+packages/ai-integrations/src/core/owned-json.ts
+  s_b734b8c74f11d9::t_e6cb478a07cb90 29,32
+  s_b734b8c74f11d9::t_136a57dcfb4772 36,105-115
+  s_b734b8c74f11d9::t_d4413ec3894d51 55-56
+  s_b734b8c74f11d9::t_3fdc9db53fb7ac 1-28,30-31,33-35,37-54,57-104,116
+packages/ai-integrations/src/types.ts
+  s_b734b8c74f11d9::t_db2d685d5d915b 6,11-14,18-47,52-56,61-69,73,80-81,86,101,109,117-118,124-125,131-132,137-178,182-184,198-208,211-217,221-224,229-233,235-236,242,244,252-257,266,269-271,275-277,281-430,441-459
+packages/cli/README.md
+  s_692f3cf26d6301::t_35c5621d0255f5 3-210,213-214,217,220-230,235-403,405
+packages/ai-integrations/src/adapters/shared.ts
+  s_b734b8c74f11d9::t_9359962c53321b 3,29-39
+  s_b734b8c74f11d9::t_7b8099228f4d6d 4,15,17-18,22-27
+  s_b734b8c74f11d9::t_ef78bc2c8a1568 19-21,28
+README.md
+  s_692f3cf26d6301::t_54c5f2230b2ab6 78-79,82
+  s_692f3cf26d6301::t_72946e6f736f84 72-73,98
+packages/ai-integrations/src/core/managed-text.ts
+  s_b734b8c74f11d9::t_3fdc9db53fb7ac 1-77
+packages/ai-integrations/test/runtime.test.ts
+  s_b734b8c74f11d9::t_80a882a9164b6a 9,13,19,128-131
+packages/ai-integrations/src/adapters/cursor.ts
+  s_b734b8c74f11d9::t_9359962c53321b 17,41
+  s_b734b8c74f11d9::t_f32a08869078c7 10,29-30,39-40
+  s_b734b8c74f11d9::t_d4413ec3894d51 81
+docs/cli/command-reference.md
+  s_692f3cf26d6301::t_b6e0d9b93a7b8f 120-121
+packages/ai-integrations/src/core/inspection.ts
+  s_b734b8c74f11d9::t_0d6015c3f188f9 20
+  s_b734b8c74f11d9::t_46332bad095856 1-19,21-51
+packages/ai-integrations/src/runtime/hooks.ts
+  s_b734b8c74f11d9::t_5f6875926e811f 192-195,202-205,212-215,224-227,233-236,242-245
+packages/ai-integrations/test/adapters.test.ts
+  s_b734b8c74f11d9::t_3d305238e9067e 57
+  s_b734b8c74f11d9::t_4d851d1c679d98 1-56,58-62
+packages/ai-integrations/test/ownership.test.ts
+  s_b734b8c74f11d9::t_d4413ec3894d51 1-84
+packages/cli/package.json
+  s_96f7faef483ee3::t_039ffca171b674 45,49,51
+  s_96f7faef483ee3::t_509334388070fd 2
+packages/ai-integrations/src/adapters/continue.ts
+  s_b734b8c74f11d9::t_f32a08869078c7 5,13-14,23-24
+  s_b734b8c74f11d9::t_9359962c53321b 10,25
+packages/cli/src/commands/ai.ts
+  s_692f3cf26d6301::t_be18e0e037d2d3 4,7-8,10,102-104,106,111-123,127,141,168,180-183,187-194
+  s_692f3cf26d6301::t_3d6dbce6ab370a 195-196
+packages/ai-integrations/src/core/reconciliation.ts
+  s_b734b8c74f11d9::t_fbe942ec2498e9 1-32,34,40-69,71-74,76-100,102-109,111-122,131-139,141-142,145-150,157-184,195
+  s_b734b8c74f11d9::t_89a1f071f858ee 125
+  s_b734b8c74f11d9::t_6f3246a6f4471f 70,75,101
+  s_b734b8c74f11d9::t_4ac3502cc7718f 143-144
+  s_b734b8c74f11d9::t_7bd8ef70103ffa 151-156
+  s_b734b8c74f11d9::t_7634c78fcdb8b2 123-124,126-130
+  s_b734b8c74f11d9::t_690e813a8de6ba 185-194
+  s_b734b8c74f11d9::t_03646b802e5f38 33,35-39
+  s_b734b8c74f11d9::t_5cce8c716ea552 140
+  s_b734b8c74f11d9::t_e6cb478a07cb90 110
+packages/ai-integrations/test/reconciliation.test.ts
+  s_b734b8c74f11d9::t_e6cb478a07cb90 1,3-105,107-110,149-150
+  s_b734b8c74f11d9::t_098c15eface7b9 128-148
+  s_b734b8c74f11d9::t_e4676dc45d5e2c 2
+  s_b734b8c74f11d9::t_bdc5c441b864a9 106,111-127
+packages/ai-integrations/src/adapters/aider.ts
+  s_b734b8c74f11d9::t_f32a08869078c7 5,12-13,22-23
+  s_b734b8c74f11d9::t_9359962c53321b 9,24
+  s_b734b8c74f11d9::t_01c5a3ce145941 65
+packages/ai-integrations/src/core/installer.ts
+  s_b734b8c74f11d9::t_0d6015c3f188f9 92
+  s_b734b8c74f11d9::t_8beb36c3aafbf2 81-82
+  s_b734b8c74f11d9::t_95ecf4f09311ed 36
+  s_b734b8c74f11d9::t_e6cb478a07cb90 66,104
+  s_b734b8c74f11d9::t_1b75abe43adcac 1-2,7-10,12-16,20,22-23,26-30,32-34,37,39-44,46-48,51-65,67-75,77-79,86-91,93-94,96-97,100-103,105-112,115-118
+packages/ai-integrations/src/core/manifest.ts
+  s_b734b8c74f11d9::t_46332bad095856 1-27,29-30,32-45
+  s_b734b8c74f11d9::t_8beb36c3aafbf2 31
+  s_b734b8c74f11d9::t_4cd1d580388d65 28
+packages/cli/src/program.ts
+  s_692f3cf26d6301::t_be18e0e037d2d3 127
+packages/ai-integrations/test/integrations.test.ts
+  s_b734b8c74f11d9::t_95ecf4f09311ed 164
+  s_b734b8c74f11d9::t_80a882a9164b6a 8,11-12,77,99-100,106,125,130,133,149,162-163,165,240,246-252
+packages/ai-integrations/src/runtime/index.ts
+  s_b734b8c74f11d9::t_5f6875926e811f 53-55
+packages/ai-integrations/src/adapters/codex.ts
+  s_b734b8c74f11d9::t_f32a08869078c7 10,29-32,41-42
+  s_b734b8c74f11d9::t_89a1f071f858ee 107
+  s_b734b8c74f11d9::t_4b8565de4bc481 89-90,92,103-105
+  s_b734b8c74f11d9::t_9359962c53321b 17,43
+packages/ai-integrations/src/core/planner.ts
+  s_b734b8c74f11d9::t_83be6de547bd03 120-121,123-134
+  s_b734b8c74f11d9::t_40dcda6f959719 7,35,110-119
+  s_b734b8c74f11d9::t_fbe942ec2498e9 2,8,11-13,15-17,23,37,40,42-44,48-49,51-56,58,60,71-75,77-92,94-109
+  s_b734b8c74f11d9::t_1a1e622714fb41 93
+  s_b734b8c74f11d9::t_01c5a3ce145941 63-70
+  s_b734b8c74f11d9::t_9a365a917e912f 24-34,38-39
+packages/ai-integrations/src/runtime/templates.ts
+  s_b734b8c74f11d9::t_5f6875926e811f 7-10
+packages/ai-integrations/src/core/safety.ts
+  s_b734b8c74f11d9::t_bc95393954d536 1-125
+packages/ai-integrations/src/core/normalization.ts
+  s_b734b8c74f11d9::t_01c5a3ce145941 76-77
+  s_b734b8c74f11d9::t_9a365a917e912f 23,31
+  s_b734b8c74f11d9::t_1ab5af8c44100b 1-22,25-30,32-75,78-113
+  s_b734b8c74f11d9::t_690e813a8de6ba 24
+packages/ai-integrations/src/adapters/claude.ts
+  s_b734b8c74f11d9::t_4b8565de4bc481 115-118
+  s_b734b8c74f11d9::t_9359962c53321b 15,42
+  s_b734b8c74f11d9::t_f32a08869078c7 10,28-31,37,40-41,50,53-54
+  s_b734b8c74f11d9::t_d4413ec3894d51 94
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "8ea8a9e2f87579f5b1ba3cc5ccf1e56c4cdc60ff",
+  "prompts": {},
+  "sessions": {
+    "s_692f3cf26d6301": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f6741-5144-7382-bdd3-18bef5f09177",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Misbah Khursheed <m.misbahkhursheed@gmail.com>"
+    },
+    "s_96f7faef483ee3": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f6729-39b2-71b2-b713-088a0aa01704",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Misbah Khursheed <m.misbahkhursheed@gmail.com>"
+    },
+    "s_b734b8c74f11d9": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f6723-e759-7e21-8e2a-b16f81036ee3",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Misbah Khursheed <m.misbahkhursheed@gmail.com>"
+    }
+  }
+}
