@@ -356,7 +356,7 @@ Next
 ```text
 $ mstack doctor
 mstack doctor
-  ✓ CLI         0.3.1
+  ✓ CLI         0.4.0
   ✓ RUNTIME     Node.js 22.4.1
   ✓ GIT         available
   ✓ REPOSITORY  ~/code/acme
@@ -383,7 +383,7 @@ mstack validate
 ```text
 $ mstack update
 Checking the npm registry…
-✓ mstack 0.3.1 is up to date.
+✓ mstack 0.4.0 is up to date.
 ```
 
 ## Commands

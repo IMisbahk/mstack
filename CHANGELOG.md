@@ -2,6 +2,27 @@
 
 All notable changes to mstack are documented here. This project follows [Semantic Versioning](https://semver.org/).
 
+## [0.4.0] - 2026-07-16
+
+### Added
+
+- Add a complete ten-phase Build Like This lifecycle from idea validation through continuous improvement, with one reusable skill and full-task prompt per phase.
+- Add seven specialist roles for workflow coordination, product and user research, product design, testing, analysis, and release management.
+- Add discovery and experiment reference templates plus phase-gated delegation rules for parallel work with a single integration owner.
+
+### Changed
+
+- Identify the receiving repository as the host project across every adapter; treat Build Like This as the method, mstack as the installer, project documentation as authoritative, and `.mstack/templates/` as reference-only.
+- Route incomplete products through evidence gathering and product definition before architecture, while allowing contract-safe backend and frontend overlap.
+- Keep Aider's expanded catalog on demand behind a compact index and disclose its sequential persona fallback.
+- Separate repository initialization from AI runtime setup throughout onboarding, CLI output, documentation, and the website.
+
+### Fixed
+
+- Preserve privileged approvals across no-op reconciliation, repair legacy missing approval records, retain previously configured runtimes, and remove deleted paths from the top-level manifest.
+- Upgrade unchanged Aider configuration safely and migrate legacy unnamed Claude and Cursor hooks without duplicate execution or loss of user-owned hooks.
+- Keep local runtime backups, operation journals, and staging data out of Git while retaining trackable manifests and hooks.
+
 ## [0.3.1] - 2026-07-16
 
 ### Fixed
@@ -45,5 +66,6 @@ All notable changes to mstack are documented here. This project follows [Semanti
 - Privileged hooks, executable changes, network resources, trust changes, and policy changes now require recorded operation-specific approval.
 - Runtime manifests exclude secrets, absolute paths, and user content; generated hooks remain local, deterministic, bounded, and reviewable.
 
+[0.4.0]: https://github.com/IMisbahk/mstack/compare/mstack-v0.3.1...mstack-v0.4.0
 [0.3.1]: https://github.com/IMisbahk/mstack/compare/mstack-v0.3.0...mstack-v0.3.1
 [0.3.0]: https://github.com/IMisbahk/mstack/compare/c54a28b...mstack-v0.3.0

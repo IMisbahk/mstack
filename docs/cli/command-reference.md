@@ -1,6 +1,6 @@
 # mstack command reference
 
-> Generated from mstack 0.3.1. Run `pnpm --filter @imisbahk/mstack build && pnpm --filter @imisbahk/mstack docs:generate` after changing the command surface.
+> Generated from mstack 0.4.0. Run `pnpm --filter @imisbahk/mstack build && pnpm --filter @imisbahk/mstack docs:generate` after changing the command surface.
 
 ## Global command
 

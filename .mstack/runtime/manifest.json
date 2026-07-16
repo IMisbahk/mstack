@@ -1,8 +1,8 @@
 {
   "recovery": {
-    "backupRoot": ".mstack/runtime/backups/op.1ce4243640e4d0fd7330",
-    "journalPath": ".mstack/runtime/operations/op.1ce4243640e4d0fd7330.json",
-    "operationId": "op.1ce4243640e4d0fd7330"
+    "backupRoot": ".mstack/runtime/backups/op.a6c6ef9755135c0872cc",
+    "journalPath": ".mstack/runtime/operations/op.a6c6ef9755135c0872cc.json",
+    "operationId": "op.a6c6ef9755135c0872cc"
   },
   "resources": [
     {
