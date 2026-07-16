@@ -1,0 +1,35 @@
+packages/cli/README.md
+  s_e15ad722b3efc0::t_a93b32c837b925 359,386
+docs/cli/command-reference.md
+  s_e15ad722b3efc0::t_047795a91465f0 3
+.mstack/runtime/manifest.json
+  s_e15ad722b3efc0::t_8d3c63b5816f2b 3-5
+packages/cli/package.json
+  s_e15ad722b3efc0::t_a93b32c837b925 3
+docs/mstack-developer-experience.md
+  s_e15ad722b3efc0::t_a93b32c837b925 101,259,359
+package.json
+  s_e15ad722b3efc0::t_a93b32c837b925 3
+packages/ai-integrations/package.json
+  s_e15ad722b3efc0::t_a93b32c837b925 3
+CHANGELOG.md
+  s_e15ad722b3efc0::t_a93b32c837b925 5-25,69
+.mstack/manifest.json
+  s_e15ad722b3efc0::t_8d3c63b5816f2b 3-5,18,26,34,42,50,58,66,74,82,90,98,106,114,122,130,138,146,154,162,170,178,186,194,202,210,218,226,234,242,250,258,266,274,282,290,298,306,314,322,330,338,346,354,362,370,378,386,394,402,410,418,426,434,442,450,458,466,474,482,490,498,506,514,522,530,538,546,554,562,570,578,586,594,602,610,618,626,634,642,650,658,666,674,682,690,698,706,714,722,730,738,746,754,762,770,778,786,794,802,810,818,826,834,842,850,858,866,874,882,890,898,906,914,922,930,938,946,954,962,978,986,994,1002,1010,1018,1026,1034,1042,1050,1058,1066,1074,1082,1090,1098,1106,1114,1122,1130,1138,1146,1154,1162,1170,1178,1186,1194,1202,1210,1218,1226,1234,1242,1250,1258,1266
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "6b06c07cc8ad3f3eacee89c78243f38b5aac552b",
+  "prompts": {},
+  "sessions": {
+    "s_e15ad722b3efc0": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f6b7d-4f87-7cc1-85be-f797183b8939",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Misbah Khursheed <m.misbahkhursheed@gmail.com>"
+    }
+  }
+}
