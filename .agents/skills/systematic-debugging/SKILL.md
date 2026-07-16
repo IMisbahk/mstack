@@ -9,6 +9,12 @@ description: "Move from symptom to reproducible causal mechanism, narrow fix, an
 
 This skill is part of Misbah Khursheed's Build Like This workflow. Thinking, evidence, and explicit trade-offs come before generated output.
 
+## Project identity and sources of truth
+
+The repository where this skill is installed is the host project being built. Build Like This is the method used to build it; mstack only installs and reconciles method resources. Do not assume mstack or Build Like This is the product unless project-owned sources explicitly identify this repository as mstack itself.
+
+Use project-owned docs/, decisions, executable code, and tests as sources of truth. .mstack/templates/ are reference scaffolds to copy and adapt into project-owned documents, not product requirements and not a replacement for docs/.
+
 ## Purpose
 
 Resolve defects efficiently by reducing uncertainty through controlled experiments instead of accumulating speculative patches.
@@ -41,5 +47,13 @@ If a missing input would materially change the result, state the gap and obtain 
 - Do not suppress an exception, loosen validation, or weaken a test to remove the symptom.
 - Do not change several independent variables in one experiment without stating the ambiguity.
 - Do not mutate production state without explicit authorization and recovery planning.
+
+## Delegation and parallel safety
+
+- Material lifecycle work must delegate at least one bounded specialist lane when subagents are available. Prefer two or more concurrent lanes only for independent evidence gathering, analysis, or non-overlapping file ownership.
+- The active lead owns integration and acceptance. Supporting agents do not recursively delegate unless explicitly promoted to lead a named lane.
+- Assign distinct outputs and ownership. Serialize shared docs, contracts, schemas, migrations, deployments, external writes, and overlapping file edits.
+- When subagents are unavailable, perform the same named specialist passes sequentially and state that constraint instead of implying parallel verification.
+- Delegation never grants permission for outreach, consequential external actions, destructive changes, paid resources, or production operations.
 
 End with the evidence gathered, verification performed, and any residual risk or unresolved decision.

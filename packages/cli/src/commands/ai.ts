@@ -1,3 +1,4 @@
+import path from "node:path";
 import * as prompts from "@clack/prompts";
 import {
   applyIntegrationPlan,
@@ -12,6 +13,7 @@ import {
 import type { Output } from "../core/output.js";
 import { CliError, errorMessage } from "../core/errors.js";
 import { createDefaultPluginRegistry } from "../plugins/index.js";
+import { ConfigStore } from "../services/config.js";
 import { inspectRepository } from "../services/health.js";
 import { updateManifest } from "../services/manifest.js";
 import { detectRuntimes } from "../services/runtimes.js";
@@ -89,10 +91,16 @@ export async function aiSetupCommand(options: AiSetupOptions): Promise<void> {
       hints: ["Choose one explicitly, for example: mstack ai setup codex cursor"],
     });
   }
+  selected = [...new Set([
+    ...health.integrations.filter((runtime) => known.has(runtime)),
+    ...selected,
+  ])];
 
   const pluginRegistry = createDefaultPluginRegistry();
   const pack = pluginRegistry.integrationPack("build-like-this");
-  const spec = pack.createSpec({ root: health.root, projectName: health.root.split(/[\\/]/).at(-1) ?? "Project" });
+  const project = await new ConfigStore({ cwd: health.root }).project();
+  const projectName = project?.project?.name?.trim() || path.basename(health.root) || "Project";
+  const spec = pack.createSpec({ root: health.root, projectName });
   let plan;
   try {
     plan = createIntegrationPlan(registry, spec, selected);
@@ -156,7 +164,12 @@ export async function aiSetupCommand(options: AiSetupOptions): Promise<void> {
   if (selected.some((id) => ["claude-code", "codex", "cursor", "gemini-cli"].includes(id))) {
     options.output.warn("Project hooks require runtime trust. Review the generated hook configuration before enabling it.");
   }
-  options.output.next(`Check repository readiness with ${options.output.command("mstack status")}`);
+  const product = health.documents.find((document) => document.id === "product");
+  if (product?.state === "draft") {
+    options.output.next(`In your AI runtime, invoke ${options.output.command("research-idea")} if product evidence is missing, then ${options.output.command("write-product-definition")}.`);
+  } else {
+    options.output.next(`Check repository readiness with ${options.output.command("mstack status")}`);
+  }
 }
 
 function outputPlan(

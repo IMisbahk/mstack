@@ -21,12 +21,17 @@ import {
 } from "../src/index.js";
 
 test("runtime ships a focused, structurally complete engineering library", () => {
-  assert.equal(engineeringAgents.length, 12);
-  assert.equal(engineeringSkills.length, 10);
-  assert.equal(engineeringPrompts.length, 9);
+  assert.equal(engineeringAgents.length, 19);
+  assert.equal(engineeringSkills.length, 20);
+  assert.equal(engineeringPrompts.length, 19);
   assert.equal(engineeringHooks.length, 3);
-  assert.equal(runtimeTemplates.length, 8);
+  assert.equal(runtimeTemplates.length, 10);
   assert.ok(runtimeTemplates.every((item) => item.feature === "templates"));
+  assert.ok(
+    [...engineeringAgents, ...engineeringSkills, ...engineeringPrompts, ...runtimeTemplates].every(
+      (item) => item.version === "1.1.0",
+    ),
+  );
 
   const allIds = [
     ...engineeringAgents.map((item) => item.id),
@@ -37,12 +42,14 @@ test("runtime ships a focused, structurally complete engineering library", () =>
   assert.equal(new Set(allIds).size, allIds.length, "runtime component ids must be globally unique");
 
   const agentSections = [
+    "## Project identity and sources of truth",
     "## Responsibility",
     "## Strict boundaries",
     "## Engineering philosophy",
     "## Preferred workflow",
     "## Expected inputs",
     "## Expected outputs",
+    "## Delegation and parallel safety",
   ];
   for (const agent of engineeringAgents) {
     assert.ok(agent.instructions.length > 1_500, `${agent.id} is too shallow`);
@@ -51,7 +58,14 @@ test("runtime ships a focused, structurally complete engineering library", () =>
 
   for (const skill of engineeringSkills) {
     assert.ok(skill.instructions.length > 1_500, `${skill.id} is too shallow`);
-    for (const section of ["## Required inputs", "## Process", "## Output contract", "## Guardrails"]) {
+    for (const section of [
+      "## Project identity and sources of truth",
+      "## Required inputs",
+      "## Process",
+      "## Output contract",
+      "## Guardrails",
+      "## Delegation and parallel safety",
+    ]) {
       assert.match(skill.instructions, new RegExp(section));
     }
   }
@@ -60,7 +74,46 @@ test("runtime ships a focused, structurally complete engineering library", () =>
     assert.ok(prompt.prompt.length > 1_400, `${prompt.id} is too shallow`);
     assert.match(prompt.prompt, /Discover local instructions/);
     assert.match(prompt.prompt, /exact verification evidence/);
+    assert.match(prompt.prompt, /## Project identity and sources of truth/);
+    assert.match(prompt.prompt, /## Delegation and parallel safety/);
     assert.ok(prompt.argumentHint);
+  }
+});
+
+test("runtime maps all ten lifecycle phases to distinct skills, prompts, and accountable leads", () => {
+  const phases = [
+    ["idea-validation", "research-idea", "product-manager"],
+    ["target-user-definition", "identify-target-users", "product-manager"],
+    ["user-needs-research", "research-user-needs", "user-researcher"],
+    ["feature-design", "design-features", "product-manager"],
+    ["product-definition", "write-product-definition", "product-manager"],
+    ["architecture-design", "design-architecture", "software-architect"],
+    ["backend-delivery", "build-backend", "backend-engineer"],
+    ["frontend-delivery", "build-frontend", "frontend-engineer"],
+    ["deployment-delivery", "deploy-product", "release-manager"],
+    ["continuous-improvement", "improve-product", "product-manager"],
+  ] as const;
+
+  for (const [skillId, promptId, leadId] of phases) {
+    const skill = engineeringSkills.find((item) => item.id === skillId);
+    const prompt = engineeringPrompts.find((item) => item.id === promptId);
+    assert.ok(skill, `missing lifecycle skill ${skillId}`);
+    assert.ok(prompt, `missing lifecycle prompt ${promptId}`);
+    assert.ok(engineeringAgents.some((item) => item.id === leadId), `missing lead ${leadId}`);
+    assert.match(prompt.prompt, new RegExp(skillId));
+    assert.match(prompt.prompt, new RegExp(leadId));
+  }
+
+  for (const id of [
+    "workflow-coordinator",
+    "product-researcher",
+    "user-researcher",
+    "product-designer",
+    "test-engineer",
+    "product-analyst",
+    "release-manager",
+  ]) {
+    assert.ok(engineeringAgents.some((item) => item.id === id), `missing lifecycle agent ${id}`);
   }
 });
 
@@ -74,6 +127,15 @@ test("runtime composes once and renders through every adapter without duplicated
   const environments = createDefaultRegistry().list().map((adapter) => adapter.id);
   const plan = createIntegrationPlan(createDefaultRegistry(), runtime, environments);
 
+  assert.equal(runtime.version, "1.1.0");
+  const runtimeInstructions = runtime.instructions?.content;
+  assert.ok(runtimeInstructions);
+  assert.match(runtimeInstructions, /You are building \*\*Example\*\*, the host project/);
+  assert.match(runtimeInstructions, /mstack installs and reconciles/);
+  assert.match(runtimeInstructions, /\.mstack\/templates\/.*reference scaffolds/s);
+  assert.match(runtimeInstructions, /## Ten-phase lifecycle/);
+  assert.match(runtimeInstructions, /## Delegation and parallel safety/);
+
   for (const asset of [...hookAssets, ...runtimeTemplates]) {
     assert.equal(
       plan.artifacts.filter((artifact) => artifact.path === asset.path).length,
@@ -82,11 +144,17 @@ test("runtime composes once and renders through every adapter without duplicated
     );
   }
   assert.ok(plan.artifacts.some((artifact) => artifact.path === ".claude/agents/product-manager.md"));
+  assert.ok(plan.artifacts.some((artifact) => artifact.path === ".claude/agents/workflow-coordinator.md"));
   assert.ok(plan.artifacts.some((artifact) => artifact.path === ".codex/agents/software-architect.toml"));
   assert.ok(plan.artifacts.some((artifact) => artifact.path === ".agents/skills/feature-planning/SKILL.md"));
+  assert.ok(plan.artifacts.some((artifact) => artifact.path === ".agents/skills/idea-validation/SKILL.md"));
   assert.ok(plan.artifacts.some((artifact) => artifact.path === ".gemini/commands/build-feature.toml"));
+  assert.ok(plan.artifacts.some((artifact) => artifact.path === ".gemini/commands/research-idea.toml"));
   assert.ok(plan.artifacts.some((artifact) => artifact.path === ".continue/prompts/design-api.md"));
-  assert.ok(plan.artifacts.some((artifact) => artifact.path === ".mstack/aider-playbook.md"));
+  assert.ok(plan.artifacts.some((artifact) => artifact.path === ".mstack/aider/index.md"));
+  assert.ok(plan.artifacts.some((artifact) => artifact.path === ".mstack/runtime/.gitignore"));
+  assert.ok(plan.artifacts.some((artifact) => artifact.path === ".mstack/templates/discovery.template.md"));
+  assert.ok(plan.artifacts.some((artifact) => artifact.path === ".mstack/templates/experiment.template.md"));
 });
 
 test("installed hook scripts are valid JavaScript and remain advisory", async () => {
@@ -137,6 +205,18 @@ test("runtime installs canonical resources and its health hook runs from the rep
       "utf8",
     );
     assert.match(templateContent, /## Security boundaries/);
+    const discoveryTemplate = await readFile(
+      join(root, ".mstack/templates/discovery.template.md"),
+      "utf8",
+    );
+    assert.match(discoveryTemplate, /docs\/research/);
+    assert.match(discoveryTemplate, /What this research does \*\*not\*\* establish/);
+    const experimentTemplate = await readFile(
+      join(root, ".mstack/templates/experiment.template.md"),
+      "utf8",
+    );
+    assert.match(experimentTemplate, /docs\/experiments/);
+    assert.match(experimentTemplate, /Authorization, safety, and data/);
 
     const hookPath = join(root, ".mstack/runtime/hooks/repository-health.mjs");
     const executed = spawnSync(process.execPath, [hookPath], {
@@ -169,8 +249,8 @@ test("runtime can omit optional automation assets without weakening content", ()
     includeTemplates: false,
   });
   assert.deepEqual(runtime.hooks, []);
-  assert.deepEqual(runtime.assets, []);
-  assert.equal(runtime.agents?.length, 12);
-  assert.equal(runtime.skills?.length, 10);
-  assert.equal(runtime.prompts?.length, 9);
+  assert.deepEqual(runtime.assets?.map((asset) => asset.path), [".mstack/runtime/.gitignore"]);
+  assert.equal(runtime.agents?.length, 19);
+  assert.equal(runtime.skills?.length, 20);
+  assert.equal(runtime.prompts?.length, 19);
 });

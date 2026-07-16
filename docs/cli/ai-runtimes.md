@@ -1,6 +1,6 @@
 # AI runtime support
 
-mstack installs one platform-neutral Build Like This pack and renders it through runtime adapters. The pack currently contains specialist engineering agents, reusable prompts, skills, repository guidance, safe lifecycle checks, and reusable templates. Adapter capability metadata is the source of truth, so a new runtime can be registered without adding CLI conditionals.
+mstack installs one platform-neutral Build Like This pack and renders it through runtime adapters. The host repository remains the project being built: Build Like This is the engineering method and mstack is the installer. The pack contains specialist engineering agents, one skill and prompt for each of the ten lifecycle phases, repository guidance, safe lifecycle checks, and reusable templates. Adapter capability metadata is the source of truth, so a new runtime can be registered without adding CLI conditionals.
 
 ## Support matrix
 
@@ -11,9 +11,17 @@ mstack installs one platform-neutral Build Like This pack and renders it through
 | Cursor | Native rules | Native skills/commands | Native | Native | Native | `.cursor/`, `.agents/skills/` |
 | Gemini CLI | Native | Native TOML commands | Native | Native | Native | `GEMINI.md`, `.gemini/`, `.agents/skills/` |
 | Continue | Native rules | Native invokable prompts | Emulated as conditional rules | Native | Unsupported | `.continue/` |
-| Aider | Native conventions | Emulated as an always-read playbook | Emulated | Emulated personas | Unsupported | `CONVENTIONS.md`, `.aider.conf.yml` |
+| Aider | Native conventions | On-demand indexed files | On-demand indexed files | Sequential indexed personas | Unsupported | `CONVENTIONS.md`, `.aider.conf.yml`, `.mstack/aider/` |
 
 Unsupported capabilities are skipped with a warning; mstack does not generate fictional configuration. Shared Open Agent Skills use `.agents/skills/` where runtimes support that interoperable location.
+
+## Agent delegation and fallback
+
+Every material lifecycle prompt delegates at least one bounded specialist lane. Claude Code, Codex, Cursor, Gemini CLI, and Continue use their native project-agent surfaces; independent lanes may run concurrently while one lead owns synthesis. Shared documents, contracts, migrations, overlapping files, deployments, and other consequential actions stay serialized and retain their normal authorization requirements.
+
+Aider has no native project subagent or slash-command execution model. Its always-read resource catalog is therefore a compact index, with full prompt, skill, and persona bodies stored under `.mstack/aider/` for explicit loading. Aider performs those named lanes sequentially and must not claim that it spawned agents or ran them concurrently.
+
+When `docs/product.md` is missing or still a template, the installed guidance routes work through `research-idea` and `write-product-definition`. `.mstack/templates/` is reference scaffolding only; project-owned documents, code, tests, feature specifications, and ADRs remain authoritative.
 
 ## Install runtimes
 

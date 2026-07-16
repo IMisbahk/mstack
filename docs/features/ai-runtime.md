@@ -14,16 +14,20 @@ Developers need one coherent engineering workflow across the AI coding tools the
 ### Included
 
 - Project-local instructions, rules, prompts, skills, agents, hooks, context, templates, MCP declarations, and permission recommendations.
+- A complete ten-phase Build Like This catalog from idea validation through continuous improvement.
+- Explicit host-project identity and source-of-truth routing for repositories with complete, draft, or missing product context.
+- Phase-gated multi-agent handoffs with native parallel delegation where the selected runtime supports subagents.
 - Claude Code, Codex CLI, Cursor, Gemini CLI, Continue, and Aider adapters.
 - Read-only inspection, deterministic planning, explicit approvals, recoverable application, reconciliation, and verification.
 - Manifest-backed ownership for safe upgrades and removal.
 
 ### Not included
 
-- CLI arguments, terminal prompts, or command output.
+- New CLI commands or arguments; existing onboarding copy may guide users through the separate initialization and AI runtime setup commands.
 - Model inference, provider SDKs, hosted agents, or an agent execution loop.
 - User-level configuration, credentials, or implicit repository trust.
 - Unsupported cross-platform feature parity.
+- A hosted orchestration loop or permission for mstack to contact users, deploy, or mutate external systems.
 
 ## Primary flow
 
@@ -43,6 +47,29 @@ Unsupported resources are skipped with diagnostics. Emulation is allowed only wh
 
 Hooks, executable assets, MCP endpoints, trust changes, and permission broadening are privileged. They are never activated by a safe default and require a decision specific to that resource and path.
 
+## Host-project and lifecycle contract
+
+The repository receiving the runtime is the project being built. Build Like This is the engineering method and mstack is its installer; neither becomes the product unless the project-owned documentation explicitly says so. The runtime routes agents to `docs/product.md`, `docs/architecture.md`, feature specifications, ADRs, code, and tests as the relevant sources of truth. Files under `.mstack/templates/` are reference scaffolds to adapt into project-owned documents, not specifications or requirements.
+
+When product context is missing or still contains template placeholders, agents must treat the idea, users, and needs as unknown. They begin with discovery, preserve sourced findings under `docs/research/`, label assumptions, and avoid architecture or implementation until the product gate is satisfied.
+
+Each phase has a dedicated skill, end-to-end prompt, decision lead, and bounded supporting lanes:
+
+| Phase | Skill | Prompt | Decision lead |
+| --- | --- | --- | --- |
+| Idea | `idea-validation` | `research-idea` | Product Manager |
+| Target users | `target-user-definition` | `identify-target-users` | Product Manager |
+| User needs | `user-needs-research` | `research-user-needs` | User Researcher |
+| Feature design | `feature-design` | `design-features` | Product Manager |
+| Product definition | `product-definition` | `write-product-definition` | Product Manager |
+| Architecture | `architecture-design` | `design-architecture` | Software Architect |
+| Backend | `backend-delivery` | `build-backend` | Backend Engineer |
+| Frontend | `frontend-delivery` | `build-frontend` | Frontend Engineer |
+| Deployment | `deployment-delivery` | `deploy-product` | Release Manager |
+| Continuous improvement | `continuous-improvement` | `improve-product` | Product Manager |
+
+Every material lifecycle invocation delegates at least one bounded lane. Independent research, design, implementation, or review lanes run concurrently when the runtime supports native subagents. Shared contracts, project documents, migrations, production changes, and overlapping files have one owner and remain serialized. Supporting agents do not recursively delegate unless the active lead explicitly promotes them to a coordination role.
+
 ## Lifecycle states
 
 | State | Meaning | Safe behavior |
@@ -61,7 +88,7 @@ Hooks, executable assets, MCP endpoints, trust changes, and permission broadenin
 
 Whole files are deleted only when the manifest owns them and their current hash matches the installed hash. Shared files remove only the owned block or structured entry. User-modified managed content is preserved as drift.
 
-Before an approved destructive edit, the runtime stores a repository-local backup and operation journal. The manifest is written last. On interruption, the runtime resumes or reports exact recovery steps; it does not claim universal rollback when safe restoration cannot be proven.
+Before an approved destructive edit, the runtime stores a repository-local backup and operation journal. The manifest is written last. On interruption, the runtime resumes or reports exact recovery steps; it does not claim universal rollback when safe restoration cannot be proven. A managed `.mstack/runtime/.gitignore` keeps local backups, operation journals, and staging data out of Git while leaving the runtime manifest and installed hooks trackable.
 
 ## Security and privacy
 
@@ -85,12 +112,19 @@ Before an approved destructive edit, the runtime stores a repository-local backu
 - [x] Filesystem safety and interrupted-operation recovery are tested.
 - [x] All six adapters have supported and degraded behavior tests.
 - [x] A clean package build imports successfully through its published export.
+- [x] Generated guidance distinguishes the host project, Build Like This method, mstack installer, project-owned documentation, and reference-only templates.
+- [x] Every lifecycle phase has an installed skill, prompt, decision lead, and safe parallel handoff.
+- [x] Draft or idea-less repositories route to discovery without fabricating product evidence.
+- [x] Native subagent runtimes delegate bounded work while non-native runtimes disclose a sequential persona fallback.
+- [x] Aider loads a compact resource index instead of the full expanded catalog on every request.
 
 ## Test plan
 
 - **Unit:** schemas, capabilities, ownership, merges, approvals, hashes, and path safety.
 - **Integration:** inspect-plan-apply-verify, rerun, upgrade, drift, removal, and interrupted writes in temporary repositories.
 - **Contract:** golden output and diagnostics for each platform capability profile.
+- **Lifecycle:** phase coverage, unique IDs, delegation depth, handoff ownership, and research/deployment authorization boundaries.
+- **Onboarding:** configured project-name propagation plus draft/no-idea routing through init, AI setup, status, and explain.
 - **Distribution:** clean build, package archive inspection, and import from a temporary consumer.
 
 ## Rollout and recovery

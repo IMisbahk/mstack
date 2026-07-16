@@ -149,9 +149,20 @@ export async function initCommand(options: InitOptions): Promise<void> {
   if (result.backups.length > 0) options.output.field("Backups", result.backups.join(", "));
   if (result.created.length + result.overwritten.length === 0 && result.unchanged.length > 0) options.output.field("Templates", "already current");
   options.output.field("Manifest", ".mstack/manifest.json");
-  options.output.next(`1. ${health.next.message} ${health.next.path ?? health.next.command ?? ""}`.trimEnd());
-  options.output.line(`  2. Configure AI runtimes  ${options.output.command("mstack ai setup")}`);
-  options.output.line(`  3. Check repository      ${options.output.command("mstack status")}`);
+  if (health.next.command === "mstack ai setup") {
+    options.output.next(`1. Configure AI runtimes       ${options.output.command("mstack ai setup")}`);
+    const product = health.documents.find((document) => document.id === "product");
+    if (product?.state !== "ready") {
+      options.output.line(`  2. In your AI runtime, invoke ${options.output.command("research-idea")} or ${options.output.command("write-product-definition")}`);
+    } else {
+      options.output.line(`  2. In your AI runtime, invoke ${options.output.command("design-architecture")}`);
+    }
+    options.output.line(`  3. Check repository            ${options.output.command("mstack status")}`);
+  } else {
+    options.output.next(`1. ${health.next.message} ${health.next.path ?? health.next.command ?? ""}`.trimEnd());
+    options.output.line(`  2. Configure AI runtimes  ${options.output.command("mstack ai setup")}`);
+    options.output.line(`  3. Check repository      ${options.output.command("mstack status")}`);
+  }
   if (interactive) prompts.outro(`Ready in ${path.relative(options.cwd, target) || "."}`);
 }
 

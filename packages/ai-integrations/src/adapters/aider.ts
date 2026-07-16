@@ -9,7 +9,36 @@ import {
   validateRenderedArtifacts,
 } from "./shared.js";
 
-const capabilities = capability({ prompts: ["emulated", "Reusable prompts are collected in an always-read playbook."], hooks: ["unsupported", "Aider has no repository lifecycle hook surface."], skills: ["emulated", "Skill instructions are collected in an always-read playbook."], instructions: ["native", "CONVENTIONS.md is loaded through Aider's read configuration."], "slash-commands": ["unsupported", "Aider does not expose repository-defined slash commands."], agents: ["emulated", "Agent personas are collected in the playbook for manual adoption."], "automatic-context": ["native", "The read list loads configured project context."], "repository-onboarding": ["emulated", "Onboarding steps are included in CONVENTIONS.md."] });
+const capabilities = capability({
+  prompts: [
+    "emulated",
+    "Reusable prompt files are indexed for manual, on-demand reads instead of being loaded automatically.",
+  ],
+  hooks: ["unsupported", "Aider has no repository lifecycle hook surface."],
+  skills: [
+    "emulated",
+    "Standalone skill files are indexed for manual, on-demand reads instead of being loaded automatically.",
+  ],
+  instructions: ["native", "CONVENTIONS.md is loaded through Aider's read configuration."],
+  "slash-commands": ["unsupported", "Aider does not expose repository-defined slash commands."],
+  agents: [
+    "emulated",
+    "Persona files support manual, sequential passes; Aider cannot spawn subagents or run personas in parallel.",
+  ],
+  "automatic-context": [
+    "native",
+    "The read list loads CONVENTIONS.md, a compact resource index, and configured project context while resource bodies remain on demand.",
+  ],
+  "repository-onboarding": ["emulated", "Onboarding steps are included in CONVENTIONS.md."],
+});
+
+interface IndexedResource {
+  readonly id: string;
+  readonly description: string;
+  readonly path: string;
+}
+
+const resourceIndexPath = ".mstack/aider/index.md";
 
 export const aiderAdapter: IntegrationAdapter = {
   id: "aider",
@@ -24,27 +53,28 @@ export const aiderAdapter: IntegrationAdapter = {
   validate: (_root, artifacts) => validateRenderedArtifacts("aider", artifacts),
   render(spec: IntegrationSpec): AdapterRenderResult {
     const environment = "aider";
-    const playbookSections: string[] = [
-      generatedHeader(environment),
-      "# Misbah's Build Like This playbook",
-    ];
-    for (const prompt of spec.prompts ?? []) {
-      playbookSections.push(`## Prompt: ${prompt.id}\n\n${prompt.description}\n\n${prompt.prompt.trim()}`);
-    }
-    for (const skill of spec.skills ?? []) {
-      playbookSections.push(`## Skill: ${skill.id}\n\n${skill.description}\n\n${skill.instructions.trim()}`);
-    }
-    for (const agent of spec.agents ?? []) {
-      playbookSections.push(
-        `## Persona: ${agent.id}\n\n${agent.description}\n\n${agent.instructions.trim()}`,
-      );
-    }
+    const prompts: IndexedResource[] = (spec.prompts ?? []).map((prompt) => ({
+      id: prompt.id,
+      description: prompt.description,
+      path: `.mstack/aider/prompts/${prompt.id}.md`,
+    }));
+    const skills: IndexedResource[] = (spec.skills ?? []).map((skill) => ({
+      id: skill.id,
+      description: skill.description,
+      path: `.mstack/aider/skills/${skill.id}.md`,
+    }));
+    const agents: IndexedResource[] = (spec.agents ?? []).map((agent) => ({
+      id: agent.id,
+      description: agent.description,
+      path: `.mstack/aider/agents/${agent.id}.md`,
+    }));
+    const indexedResources = [...prompts, ...skills, ...agents];
 
-    const readPaths = [
+    const readPaths = [...new Set([
       "CONVENTIONS.md",
-      ...(playbookSections.length > 2 ? [".mstack/aider-playbook.md"] : []),
+      ...(indexedResources.length > 0 ? [resourceIndexPath] : []),
       ...(spec.context ?? []).map((source) => source.path),
-    ];
+    ])];
     const artifacts = [
       artifact(
         environment,
@@ -64,16 +94,80 @@ export const aiderAdapter: IntegrationAdapter = {
         ].join("\n"),
         "manual",
       ),
-      ...(playbookSections.length > 2
+      ...(indexedResources.length > 0
         ? [
-            artifact(
-              environment,
-              "prompts",
-              ".mstack/aider-playbook.md",
-              playbookSections.join("\n\n"),
-            ),
+            {
+              ...artifact(
+                environment,
+                "automatic-context",
+                resourceIndexPath,
+                renderResourceIndex(environment, { prompts, skills, agents }),
+              ),
+              resourceId: "aider-resource-index",
+              resourceVersion: spec.version ?? "0.0.0",
+            },
           ]
         : []),
+      ...(spec.prompts ?? []).map((prompt) =>
+        ({
+          ...artifact(
+            environment,
+            "prompts",
+            `.mstack/aider/prompts/${prompt.id}.md`,
+            [
+              generatedHeader(environment),
+              `# Prompt: ${prompt.id}`,
+              compact(prompt.description),
+              "## Instructions",
+              prompt.prompt.trim(),
+              "Apply arguments supplied by the user as task-specific input.",
+            ].join("\n\n"),
+          ),
+          resourceId: prompt.id,
+          resourceVersion: prompt.version ?? spec.version ?? "0.0.0",
+        }),
+      ),
+      ...(spec.skills ?? []).map((skill) =>
+        ({
+          ...artifact(
+            environment,
+            "skills",
+            `.mstack/aider/skills/${skill.id}.md`,
+            [
+              generatedHeader(environment),
+              `# Skill: ${skill.id}`,
+              compact(skill.description),
+              "## Instructions",
+              skill.instructions.trim(),
+              ...(skill.resources ?? []).flatMap((resource) => [
+                `## Bundled resource: ${resource.path}`,
+                resource.content.trim(),
+              ]),
+            ].join("\n\n"),
+          ),
+          resourceId: skill.id,
+          resourceVersion: skill.version ?? spec.version ?? "0.0.0",
+        }),
+      ),
+      ...(spec.agents ?? []).map((agent) =>
+        ({
+          ...artifact(
+            environment,
+            "agents",
+            `.mstack/aider/agents/${agent.id}.md`,
+            [
+              generatedHeader(environment),
+              `# Persona: ${agent.id}`,
+              compact(agent.description),
+              "## Persona instructions",
+              agent.instructions.trim(),
+              "Use this persona as one manual, sequential review pass. Aider cannot spawn it as a subagent or run it in parallel.",
+            ].join("\n\n"),
+          ),
+          resourceId: agent.id,
+          resourceVersion: agent.version ?? spec.version ?? "0.0.0",
+        }),
+      ),
     ];
     const diagnostics = [];
     if ((spec.hooks?.length ?? 0) > 0) {
@@ -86,10 +180,61 @@ export const aiderAdapter: IntegrationAdapter = {
         warning(
           environment,
           "slash-commands",
-          "Aider loads generated prompts as a playbook; users invoke them conversationally, not as slash commands.",
+          "Aider indexes generated prompt files for manual, on-demand use; it does not expose repository-defined slash commands.",
+        ),
+      );
+    }
+    if ((spec.skills?.length ?? 0) > 0) {
+      diagnostics.push(
+        warning(
+          environment,
+          "skills",
+          "Aider indexes generated skill files for manual, on-demand reads because it has no native project skill loader.",
+        ),
+      );
+    }
+    if ((spec.agents?.length ?? 0) > 0) {
+      diagnostics.push(
+        warning(
+          environment,
+          "agents",
+          "Aider cannot spawn subagents or run personas in parallel; use indexed persona files as manual, sequential passes.",
         ),
       );
     }
     return { artifacts, diagnostics };
   },
 };
+
+function renderResourceIndex(
+  environment: string,
+  resources: Readonly<Record<"prompts" | "skills" | "agents", readonly IndexedResource[]>>,
+): string {
+  const sections = [
+    generatedHeader(environment),
+    "# mstack resources for Aider",
+    [
+      "Aider does not provide native repository prompts, skills, or subagent spawning.",
+      "Ask Aider to read the exact file for the resource you need; the resource bodies are intentionally not loaded automatically.",
+      "Run persona files as manual, sequential passes: Aider cannot spawn these personas or run them in parallel.",
+    ].join(" "),
+  ];
+  for (const [title, items] of [
+    ["Prompts", resources.prompts],
+    ["Skills", resources.skills],
+    ["Personas", resources.agents],
+  ] as const) {
+    if (items.length === 0) continue;
+    sections.push(
+      `## ${title}`,
+      items
+        .map((item) => `- ID: \`${item.id}\`; description: ${compact(item.description)}; path: \`${item.path}\``)
+        .join("\n"),
+    );
+  }
+  return sections.join("\n\n");
+}
+
+function compact(value: string): string {
+  return value.replace(/\s+/g, " ").trim();
+}

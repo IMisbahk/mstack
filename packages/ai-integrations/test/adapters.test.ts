@@ -26,6 +26,8 @@ test("verified adapter profiles expose honest native, emulated, experimental, an
   assert.equal(registry.get("codex").capabilities.hooks.level, "experimental");
   assert.equal(registry.get("continue").capabilities.hooks.level, "unsupported");
   assert.equal(registry.get("aider").capabilities.skills.level, "emulated");
+  assert.match(registry.get("aider").capabilities.prompts.detail, /on-demand reads/);
+  assert.match(registry.get("aider").capabilities.agents.detail, /cannot spawn subagents.*parallel/);
   assert.equal(registry.get("gemini-cli").capabilities.mcp.level, "native");
 });
 
@@ -35,7 +37,10 @@ test("Claude, Codex, and Gemini render corrected project-local surfaces", () => 
   assert.ok(claude.artifacts.some((artifact) => artifact.path === ".claude/rules/build-like-this/project.md"));
   assert.ok(claude.artifacts.some((artifact) => artifact.path === ".mcp.json"));
   assert.ok(claude.artifacts.every((artifact) => artifact.path !== "CLAUDE.local.md"));
-  assert.doesNotMatch(claude.artifacts.find((artifact) => artifact.path === "CLAUDE.md")!.content, /^#\s/m);
+  const claudeInstructions = claude.artifacts.find((artifact) => artifact.path === "CLAUDE.md")!.content;
+  assert.doesNotMatch(claudeInstructions, /^#\s/m);
+  assert.match(claudeInstructions, /Platforms is the host project/);
+  assert.match(claudeInstructions, /Build Like This is the engineering method and mstack is its installer/);
 
   const codex = createIntegrationPlan(registry, platformSpec, ["codex"]);
   const config = codex.artifacts.find((artifact) => artifact.path === ".codex/config.toml")!;

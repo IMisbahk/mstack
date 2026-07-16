@@ -7,9 +7,10 @@ mstack is the companion CLI for [Build Like This](https://github.com/IMisbahk/ms
 ```sh
 npm install -g @imisbahk/mstack
 mstack init
+mstack ai setup
 ```
 
-This is more than scaffolding. mstack installs the context required for responsible AI engineering: product and architecture documents, repository instructions, specialist agents, reusable skills and prompts, advisory hooks, templates, onboarding, and health checks. It previews changes, preserves existing work, and records generated-file ownership.
+`mstack init` installs the planning documents, project configuration, and ownership manifest. `mstack ai setup` then installs the capability-aware repository instructions, specialist agents, reusable skills and prompts, advisory hooks, and reference templates for selected coding environments. Both preview changes, preserve existing work, and record generated-file ownership.
 
 ## Why mstack exists
 
@@ -54,7 +55,7 @@ See the [AI runtime support matrix](https://github.com/IMisbahk/mstack/blob/main
 
 ### Multi-agent system
 
-Build Like This includes **12 specialist agents**. Each has a defined responsibility, strict boundaries, preferred workflow, required inputs, and expected outputs.
+Build Like This includes **19 specialist agents**. Each has a defined responsibility, strict boundaries, preferred workflow, required inputs, expected outputs, and safe handoff rules.
 
 | Specialist | Owns |
 | --- | --- |
@@ -70,14 +71,21 @@ Build Like This includes **12 specialist agents**. Each has a defined responsibi
 | Security Reviewer | Trust boundaries, abuse cases, and exploitable failures |
 | DevOps Engineer | Delivery, observability, rollback, and recovery |
 | Debugging Specialist | Reproduction, causal diagnosis, and regression evidence |
+| Workflow Coordinator | Phase gates, dependency lanes, delegation, and result integration |
+| Product Researcher | Sourced problem, alternative, and market evidence |
+| User Researcher | Ethical research plans and evidence synthesis |
+| Product Designer | User journeys, interaction states, content, and accessibility |
+| Test Engineer | Independent risk-based verification and acceptance evidence |
+| Product Analyst | Metrics, experiments, outcome interpretation, and learning |
+| Release Manager | Go/no-go coordination, rollout thresholds, and recovery ownership |
 
 Supported environments expose these specialists using their native agent or persona mechanisms.
 
 ### Skills
 
-The runtime includes **10 reusable engineering skills**:
+The runtime includes **20 reusable engineering skills**:
 
-`feature-planning` · `api-contract-design` · `database-modeling` · `repository-audit` · `architecture-assessment` · `threat-model-review` · `systematic-debugging` · `safe-refactoring` · `performance-investigation` · `release-readiness`
+`idea-validation` · `target-user-definition` · `user-needs-research` · `feature-design` · `product-definition` · `architecture-design` · `backend-delivery` · `frontend-delivery` · `deployment-delivery` · `continuous-improvement` · `feature-planning` · `api-contract-design` · `database-modeling` · `repository-audit` · `architecture-assessment` · `threat-model-review` · `systematic-debugging` · `safe-refactoring` · `performance-investigation` · `release-readiness`
 
 Skills turn broad requests into repeatable processes with explicit inputs, output contracts, and guardrails.
 
@@ -95,15 +103,15 @@ Hooks execute code and remain subject to each runtime's repository-trust control
 
 ### Prompt packs
 
-The runtime ships **9 complete task prompts**:
+The runtime ships **19 complete task prompts**:
 
-`build-feature` · `plan-mvp` · `review-architecture` · `review-pull-request` · `debug-failure` · `refactor-module` · `design-api` · `improve-documentation` · `production-readiness`
+`research-idea` · `identify-target-users` · `research-user-needs` · `design-features` · `write-product-definition` · `design-architecture` · `build-backend` · `build-frontend` · `deploy-product` · `improve-product` · `build-feature` · `plan-mvp` · `review-architecture` · `review-pull-request` · `debug-failure` · `refactor-module` · `design-api` · `improve-documentation` · `production-readiness`
 
 Each prompt discovers repository instructions, checks relevant sources of truth, defines boundaries, and requires exact verification evidence.
 
 ### Templates
 
-Eight runtime templates keep engineering decisions durable:
+Ten runtime templates keep engineering decisions durable:
 
 | Template | Purpose |
 | --- | --- |
@@ -115,8 +123,10 @@ Eight runtime templates keep engineering decisions durable:
 | API | Operations, schemas, authorization, errors, and compatibility |
 | Agent | Bounded specialist definitions |
 | Prompt | Reusable, verifiable task workflows |
+| Discovery | Sourced idea, user, alternative, and needs evidence |
+| Experiment | Hypothesis, baseline, threshold, result, and next decision |
 
-`mstack init` installs the four core planning templates—product, architecture, feature, and ADR. `mstack ai setup` installs the complete runtime library.
+`mstack init` installs project-owned product and architecture documents plus feature and ADR templates. `mstack ai setup` installs the selected environments' runtime library, including reference scaffolds under `.mstack/templates/`.
 
 ### Catalog and validation
 
@@ -130,6 +140,8 @@ mstack catalog hooks --json
 
 Repository validation checks planning readiness, managed-file integrity, and AI runtime drift. Normal mode allows actionable warnings; strict mode turns them into CI failures.
 
+The runtime manifest and installed hooks remain trackable. A managed `.mstack/runtime/.gitignore` excludes local backups, operation journals, and staging data from Git.
+
 ```sh
 mstack validate
 mstack validate --strict
@@ -138,26 +150,30 @@ mstack validate --json
 
 ## Multi-agent workflows
 
-mstack installs the specialists and shared methods; Build Like This defines the handoffs. The current release configures these roles inside supported AI environments. It does not operate a hosted autonomous agent loop.
+mstack installs the specialists and shared methods; Build Like This defines the handoffs. Every material lifecycle prompt delegates at least one bounded specialist lane, and independent lanes run concurrently where the AI environment supports native subagents. Shared contracts, documents, migrations, and production actions keep one owner. The current release configures these roles inside supported AI environments; it does not operate a hosted autonomous agent loop.
 
 ### Idea to production
 
 ```text
 Idea
   ↓
-Product Manager — user, evidence, scope, acceptance criteria
+Product Manager ─┬─ Product Researcher — sourced problem and alternatives
+                 ├─ User Researcher — target users and needs
+                 └─ Product Analyst — assumptions and success signals
+  ↓ synthesis gate
+Product definition
   ↓
-Software Architect — boundaries, contracts, data, failure modes
+Software Architect ─┬─ Database Engineer
+                    ├─ Security Reviewer
+                    └─ DevOps Engineer
+  ↓ contract gate
+Backend / Database / Test lanes with disjoint ownership
+  ↓ backend behavior and contract gate
+Frontend / Product Design / Test lanes with disjoint ownership
+  ↓ integration and release gate
+Release Manager + parallel read-only reviews
   ↓
-Backend Engineer — server behavior and contract implementation
-  ↓
-Frontend Engineer — accessible journey and complete UI states
-  ↓
-Code Reviewer — correctness, security, compatibility, tests
-  ↓
-Release Readiness — operations, recovery, rollout evidence
-  ↓
-Production
+Production and measured learning
 ```
 
 ### Bug report to deployment
@@ -205,11 +221,11 @@ These totals come from the runtime catalog, adapter registry, templates, and exa
 | Capability | Total |
 | --- | ---: |
 | Supported AI environments | 6 |
-| Specialist agents | 12 |
-| Reusable skills | 10 |
+| Specialist agents | 19 |
+| Reusable skills | 20 |
 | Automation hooks | 3 |
-| Prompt packs | 9 |
-| Runtime templates | 8 |
+| Prompt packs | 19 |
+| Runtime templates | 10 |
 | Worked example projects | 5 |
 | Supported package managers | 4 |
 
@@ -288,8 +304,8 @@ $ mstack init
   Manifest      .mstack/manifest.json
 
 Next
-  1. Complete the product document  docs/product.md
-  2. Configure AI runtimes          mstack ai setup
+  1. Configure AI runtimes          mstack ai setup
+  2. Research or define product     research-idea / write-product-definition
   3. Check repository               mstack status
 ```
 
@@ -316,6 +332,9 @@ AI runtime setup
 ✓ Configured OpenAI Codex
   Manifest      .mstack/manifest.json
 ! Project hooks require runtime trust. Review the generated hook configuration.
+
+Next
+  Run research-idea if product evidence is missing, then write-product-definition.
 ```
 
 ### Validate the repository
@@ -330,7 +349,8 @@ mstack status
   Manifest      .mstack/manifest.json
 
 Next
-  Complete the product document  docs/product.md
+  Use research-idea to validate the idea, then write-product-definition to
+  complete the product document (7 placeholders remain).  docs/product.md
 ```
 
 ```text
@@ -353,7 +373,7 @@ mstack validate
   ✓ PRODUCT      docs/product.md is ready
   ✓ ARCHITECTURE docs/architecture.md is ready
   ✓ MANIFEST     .mstack/manifest.json is consistent
-  ✓ AI_RUNTIME   44 managed runtime resources verified
+  ✓ AI_RUNTIME   74 managed runtime resources verified
 
 ✓ Repository validation passed.
 ```

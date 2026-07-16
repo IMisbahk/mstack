@@ -46,6 +46,79 @@ test("owned JSON entries preserve unowned settings, detect drift, and remove onl
   } finally { await rm(root, { recursive: true, force: true }); }
 });
 
+test("legacy unnamed Claude and Cursor hooks upgrade without duplicates or losing user hooks", async () => {
+  const root = await mkdtemp(join(tmpdir(), "mstack-legacy-hooks-"));
+  try {
+    const hook: IntegrationSpec["hooks"] = [
+      { id: "verify", version: "1.0.0", event: "after-response", command: "node verify.mjs" },
+    ];
+    const desired = createIntegrationPlan(
+      createDefaultRegistry(),
+      { project: { name: "Legacy hooks" }, hooks: hook },
+      ["claude-code", "cursor"],
+    );
+    const userClaudeHook = {
+      name: "user-claude-hook",
+      matcher: "Bash",
+      hooks: [{ type: "command", command: "node user-claude.mjs" }],
+    };
+    const userCursorHook = {
+      name: "user-cursor-hook",
+      command: "node user-cursor.mjs",
+    };
+
+    await mkdir(join(root, ".claude"), { recursive: true });
+    await mkdir(join(root, ".cursor"), { recursive: true });
+    await writeFile(join(root, ".claude/settings.json"), `${JSON.stringify({
+      permissions: { deny: ["Read(.env)"] },
+      hooks: {
+        Stop: [
+          { hooks: [{ type: "command", command: "node verify.mjs" }] },
+          userClaudeHook,
+        ],
+      },
+    }, null, 2)}\n`);
+    await writeFile(join(root, ".cursor/hooks.json"), `${JSON.stringify({
+      version: 1,
+      userSetting: true,
+      hooks: {
+        afterAgentResponse: [
+          { command: "node verify.mjs" },
+          userCursorHook,
+        ],
+      },
+    }, null, 2)}\n`);
+
+    const upgrade = createUpgradePlan(desired, await inspectIntegrationRepository(root, desired));
+    assert.equal(upgrade.changes.find((change) => change.path === ".claude/settings.json")?.action, "update");
+    assert.equal(upgrade.changes.find((change) => change.path === ".cursor/hooks.json")?.action, "update");
+    const applied = await applyIntegrationPlan(root, approveAll(upgrade));
+    assert.ok(applied.files.every((file) => file.status !== "conflict"));
+
+    const claude = JSON.parse(await readFile(join(root, ".claude/settings.json"), "utf8")) as {
+      permissions: { deny: string[] };
+      hooks: { Stop: Array<{ name?: string; matcher?: string; hooks: Array<{ type: string; command: string }> }> };
+    };
+    assert.deepEqual(claude.permissions, { deny: ["Read(.env)"] });
+    assert.equal(claude.hooks.Stop.filter((entry) => entry.hooks[0]?.command === "node verify.mjs").length, 1);
+    assert.equal(claude.hooks.Stop.find((entry) => entry.hooks[0]?.command === "node verify.mjs")?.name, "verify");
+    assert.deepEqual(claude.hooks.Stop.find((entry) => entry.name === userClaudeHook.name), userClaudeHook);
+
+    const cursor = JSON.parse(await readFile(join(root, ".cursor/hooks.json"), "utf8")) as {
+      userSetting: boolean;
+      hooks: { afterAgentResponse: Array<{ name?: string; command: string }> };
+    };
+    assert.equal(cursor.userSetting, true);
+    assert.equal(cursor.hooks.afterAgentResponse.filter((entry) => entry.command === "node verify.mjs").length, 1);
+    assert.equal(cursor.hooks.afterAgentResponse.find((entry) => entry.command === "node verify.mjs")?.name, "verify");
+    assert.deepEqual(cursor.hooks.afterAgentResponse.find((entry) => entry.name === userCursorHook.name), userCursorHook);
+
+    const converged = createUpgradePlan(desired, await inspectIntegrationRepository(root, desired));
+    assert.equal(converged.changes.find((change) => change.path === ".claude/settings.json")?.action, "unchanged");
+    assert.equal(converged.changes.find((change) => change.path === ".cursor/hooks.json")?.action, "unchanged");
+  } finally { await rm(root, { recursive: true, force: true }); }
+});
+
 test("managed text migrates one legacy adapter marker and conflicts on duplicate markers", async () => {
   const root = await mkdtemp(join(tmpdir(), "mstack-markers-"));
   try {

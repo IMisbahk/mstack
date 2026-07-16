@@ -36,10 +36,17 @@ the published version today.
 This distinction matters. I want the documentation to make room for the system
 mstack can become without describing future work as shipped behavior.
 
+`mstack init` owns the planning documents and project configuration. The
+separate `mstack ai setup` command installs repository instructions, agents,
+skills, prompts, hooks, and `.mstack/templates/`. The onboarding copy may
+present these as one journey, but it must not imply that init already installed
+the AI runtime.
+
 ## Experience promise
 
-A developer should be able to run one command, understand the proposed change,
-finish setup without first studying the tool, and know exactly what to do next.
+A developer should be able to complete repository initialization and AI runtime
+setup as two explicit commands, understand each proposed change without first
+studying the tool, and know exactly what to do next.
 I do not want automation that saves setup time by creating uncertainty. mstack
 must never leave someone wondering whether it is still working, which files it
 changed, or how to recover.
@@ -62,14 +69,15 @@ acting, make decisions visible, prefer reversible work, and verify the result.
 
 ## Primary journey
 
-The default entry point is:
+The complete standard journey uses two explicit commands:
 
 ```sh
 mstack init
+mstack ai setup
 ```
 
-It operates on the current repository. A path argument may target another
-directory: `mstack init ./my-app`. The successful journey is:
+Initialization operates on the current repository. A path argument may target
+another directory: `mstack init ./my-app`. The successful journey is:
 
 ```text
 invoke -> inspect -> confirm plan -> apply -> verify -> explain next steps
@@ -95,7 +103,7 @@ mstack 0.3.1
 Install Misbah's Build Like This workflow in ~/code/acme
 
   Project     TypeScript · Next.js · existing repository
-  Add         4 planning templates, contributor instructions
+  Add         4 planning templates, project configuration
   Preserve    docs/product.md, docs/architecture.md
 
 ? Apply this setup? (Y/n)
@@ -116,7 +124,7 @@ Show stable steps in place when the terminal supports it:
 ```text
   ✓ Inspected repository
   ✓ Added planning templates
-  ✓ Configured contributor guidance
+  ✓ Wrote project configuration and manifest
   ● Verifying setup
 ```
 
@@ -150,9 +158,9 @@ The success screen is a handoff, not a celebration banner:
   Manifest    .mstack/manifest.json
 
 Next
-  1. Define the product        docs/product.md
-  2. Design the system         docs/architecture.md
-  3. Review the repository     mstack explain
+  1. Configure AI runtimes       mstack ai setup
+  2. Research or define product  research-idea / write-product-definition
+  3. Review repository state     mstack status
 
 Details: mstack status
 ```
@@ -160,6 +168,12 @@ Details: mstack status
 Only show next steps that apply to the resulting repository. If the product
 document is already complete, do not tell the developer to create it. Keep the
 default screen to three actions; link to `mstack status` for the full report.
+
+When the developer has no validated idea, do not tell them to complete
+`docs/product.md` from imagination. After AI setup, route them to
+`research-idea`, preserve sourced findings in `docs/research/`, and then use
+`write-product-definition`. If evidence already exists, skip directly to the
+product-definition journey. Architecture remains a later step in both cases.
 
 ## First-run onboarding
 
@@ -174,9 +188,9 @@ Do not show a wizard, newsletter prompt, telemetry prompt, or release notes
 before the developer receives value. If consent is required, ask at the moment
 the relevant feature is first used and explain the consequence of each choice.
 
-The default path should require at most one confirmation. Additional prompts
-are permitted only for a real conflict, such as two existing documents that
-could both be the product source of truth.
+Each command's default path should require at most one confirmation. Additional
+prompts are permitted only for a real conflict, such as two existing documents
+that could both be the product source of truth.
 
 ## Interactive prompts
 
@@ -324,7 +338,9 @@ command. They still state whether files changed.
 Before replacing user-owned content, create a timestamped local backup and
 print its path. If the process is interrupted, the next run detects the
 incomplete operation and offers `Resume` as the default. Never call a partially
-applied run “complete.”
+applied run “complete.” Runtime backups, operation journals, and staging files
+are local recovery state ignored by Git; the ownership manifest and installed
+hooks remain trackable.
 
 If atomic rollback is supported by the underlying system, offer it explicitly:
 `mstack undo <operation-id>`. Otherwise, do not promise rollback; enumerate the
@@ -375,15 +391,18 @@ is not part of the result, and diagnostics. Exit codes are stable and grouped:
 
 ## Installation experience
 
-Official installation instructions begin with one preferred command:
+Official installation instructions show the complete two-command journey:
 
 ```text
 npm install -g @imisbahk/mstack
 mstack init
+mstack ai setup
 ```
 
-The zero-install alternative is `npx @imisbahk/mstack@latest init`. mstack does
-not modify shell profiles or global configuration during repository setup.
+The zero-install alternative runs the same two steps with
+`npx @imisbahk/mstack@latest init` followed by
+`npx @imisbahk/mstack@latest ai setup`. mstack does not modify shell profiles or
+global configuration during repository setup.
 
 Uninstallation removes only mstack-owned global files. Repository artifacts
 remain because they are user work; say so before uninstalling.
@@ -393,8 +412,8 @@ remain because they are user work; say so before uninstalling.
 I consider the experience ready when automated transcript tests and manual usability
 checks demonstrate that:
 
-- a new developer completes the standard setup with one command and no more
-  than one confirmation;
+- a new developer completes repository initialization and AI runtime setup with
+  two explicit commands and no more than one confirmation per command;
 - a successful run names every category of change and gives a relevant first
   next step;
 - an existing product or architecture document is never overwritten by
@@ -405,7 +424,13 @@ checks demonstrate that:
 - redirected and `NO_COLOR` output contain no ANSI control sequences;
 - JSON output remains parseable on success, warning, and failure paths;
 - diagnostics contain no seeded secret values in redaction tests;
-- update checks do not add perceptible latency to the primary command.
+- update checks do not add perceptible latency to the primary command;
+- generated AI guidance names the host project as the subject and clearly calls
+  Build Like This the method and mstack the installer;
+- a fresh repository without product evidence is routed through discovery
+  instead of being encouraged to fill templates with invented certainty;
+- native multi-agent workflows delegate bounded independent lanes while
+  shared artifacts and consequential external actions remain singly owned.
 
 Measure time to first successful setup, prompt count, setup completion rate,
 recovery success rate, repeated-run change rate, and diagnostic resolution

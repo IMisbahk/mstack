@@ -1,4 +1,4 @@
-import { mkdtemp, rm } from "node:fs/promises";
+import { mkdtemp, rm, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { Writable } from "node:stream";
@@ -8,7 +8,7 @@ import { hasBlockingDoctorIssue } from "../src/commands/doctor.js";
 import { validateRepository } from "../src/commands/validate.js";
 import { Output } from "../src/core/output.js";
 import { createProgram } from "../src/program.js";
-import { updateManifest } from "../src/services/manifest.js";
+import { readManifest, updateManifest } from "../src/services/manifest.js";
 import { makeTemplates } from "./helpers.js";
 
 const temporary: string[] = [];
@@ -34,13 +34,14 @@ async function initializedFixture(): Promise<{ root: string; templates: string }
 describe("runtime catalog", () => {
   it("derives complete counts and filtered resources from runtime exports", () => {
     const complete = buildCatalog();
-    expect(complete.counts).toEqual({ agents: 12, skills: 10, prompts: 9, hooks: 3, templates: 8 });
-    expect(complete.items).toHaveLength(42);
+    expect(complete.counts).toEqual({ agents: 19, skills: 20, prompts: 19, hooks: 3, templates: 10 });
+    expect(complete.items).toHaveLength(71);
 
     const agents = buildCatalog("agents");
-    expect(agents.items).toHaveLength(12);
+    expect(agents.items).toHaveLength(19);
     expect(agents.items.every((item) => item.kind === "agents")).toBe(true);
     expect(agents.items.some((item) => item.id === "product-manager")).toBe(true);
+    expect(agents.items.some((item) => item.id === "workflow-coordinator")).toBe(true);
   });
 
   it("emits a versioned JSON catalog through the public CLI", async () => {
@@ -52,6 +53,19 @@ describe("runtime catalog", () => {
 });
 
 describe("repository validation", () => {
+  it("removes an explicitly reconciled file that no longer exists from the project manifest", async () => {
+    const root = await mkdtemp(path.join(os.tmpdir(), "mstack-manifest-removal-"));
+    temporary.push(root);
+    const managedPath = path.join(root, "managed.txt");
+    const descriptor = { path: "managed.txt", kind: "integration" as const, owner: "aider" };
+    await writeFile(managedPath, "managed\n", "utf8");
+    await updateManifest(root, { files: [descriptor], integrations: ["aider"] });
+    await rm(managedPath);
+
+    await updateManifest(root, { files: [descriptor], integrations: ["aider"] });
+    expect((await readManifest(root))?.files.some((file) => file.path === descriptor.path)).toBe(false);
+  });
+
   it("passes a healthy initialized repository while reporting optional AI setup", async () => {
     const { root } = await initializedFixture();
     const report = await validateRepository(root);

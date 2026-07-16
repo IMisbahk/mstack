@@ -60,8 +60,8 @@ export const continueAdapter: IntegrationAdapter = {
           ].join("\n"),
         ),
       ),
-      ...(spec.skills ?? []).map((skill) =>
-        artifact(
+      ...(spec.skills ?? []).map((skill) => ({
+        ...artifact(
           environment,
           "skills",
           `.continue/rules/skill-${skill.id}.md`,
@@ -77,7 +77,9 @@ export const continueAdapter: IntegrationAdapter = {
             skill.instructions.trim(),
           ].join("\n"),
         ),
-      ),
+        resourceId: skill.id,
+        resourceVersion: skill.version ?? spec.version ?? "0.0.0",
+      })),
       ...(spec.agents ?? []).map((agent) =>
         artifact(
           environment,

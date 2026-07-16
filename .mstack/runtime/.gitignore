@@ -1,0 +1,4 @@
+# Local mstack recovery state; keep the manifest and installed hooks tracked.
+backups/
+operations/
+staging/

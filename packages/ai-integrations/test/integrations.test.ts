@@ -6,6 +6,7 @@ import { test } from "node:test";
 import {
   applyIntegrationPlan,
   approveIntegrationPlan,
+  createBuildLikeThisRuntime,
   createDefaultRegistry,
   createIntegrationPlan,
   createReconciliationPlan,
@@ -81,6 +82,10 @@ test("built-in adapters declare and render all target environments", () => {
     ".continue/prompts/review-change.md",
     ".continue/agents/security-reviewer.md",
     ".aider.conf.yml",
+    ".mstack/aider/index.md",
+    ".mstack/aider/prompts/review-change.md",
+    ".mstack/aider/skills/ship-safely.md",
+    ".mstack/aider/agents/security-reviewer.md",
     ".codex/agents/security-reviewer.toml",
     ".cursor/agents/security-reviewer.md",
     ".gemini/agents/security-reviewer.md",
@@ -104,6 +109,126 @@ test("built-in adapters declare and render all target environments", () => {
     /"timeout": 10000/,
   );
   assert.ok(registry.list().every((adapter) => adapter.profile?.verifiedAt === "2026-07-15"));
+});
+
+test("every adapter identifies the host project and keeps mstack templates reference-only", () => {
+  const registry = createDefaultRegistry();
+  const plan = createIntegrationPlan(
+    registry,
+    createBuildLikeThisRuntime({
+      projectName: "Acme",
+      context: [{ path: "docs/product.md" }, { path: "docs/architecture.md" }],
+    }),
+    registry.list().map((adapter) => adapter.id),
+  );
+
+  for (const path of [
+    "AGENTS.md",
+    ".claude/rules/build-like-this/project.md",
+    ".cursor/rules/mstack.mdc",
+    "GEMINI.md",
+    ".continue/rules/00-mstack.md",
+    "CONVENTIONS.md",
+  ]) {
+    const content = plan.artifacts.find((artifact) => artifact.path === path)?.content ?? "";
+    assert.match(content, /You are building \*\*Acme\*\*, the host project/);
+    assert.match(content, /Build Like This is the engineering method/);
+    assert.match(content, /mstack installs and reconciles/);
+    assert.match(content, /\.mstack\/templates\/.*reference scaffolds/s);
+  }
+
+  const claude = plan.artifacts.find((artifact) => artifact.path === "CLAUDE.md")?.content ?? "";
+  assert.match(claude, /Acme is the host project/);
+  assert.match(claude, /Build Like This is the engineering method and mstack is its installer/);
+
+  const continueSkill = plan.artifacts.find((artifact) => artifact.path === ".continue/rules/skill-idea-validation.md")!;
+  assert.equal(continueSkill.resourceId, "idea-validation");
+  assert.equal(continueSkill.resourceVersion, "1.1.0");
+});
+
+test("Aider keeps indexed prompt, skill, and persona bodies out of automatic context", () => {
+  const plan = createIntegrationPlan(createDefaultRegistry(), fullSpec, ["aider"]);
+  const config = plan.artifacts.find((artifact) => artifact.path === ".aider.conf.yml")!.content;
+  assert.match(config, /"CONVENTIONS\.md"/);
+  assert.match(config, /"\.mstack\/aider\/index\.md"/);
+  assert.match(config, /"docs\/architecture\.md"/);
+  assert.doesNotMatch(config, /\.mstack\/aider\/(?:prompts|skills|agents)\//);
+
+  const index = plan.artifacts.find((artifact) => artifact.path === ".mstack/aider/index.md")!;
+  assert.equal(index.resourceId, "aider-resource-index");
+  assert.match(index.content, /ID: `review-change`; description: Review the current change; path: `\.mstack\/aider\/prompts\/review-change\.md`/);
+  assert.match(index.content, /ID: `ship-safely`.*path: `\.mstack\/aider\/skills\/ship-safely\.md`/);
+  assert.match(index.content, /ID: `security-reviewer`.*path: `\.mstack\/aider\/agents\/security-reviewer\.md`/);
+  assert.match(index.content, /manual, sequential passes.*cannot spawn.*parallel/);
+  assert.doesNotMatch(index.content, /Review the current diff for correctness/);
+  assert.doesNotMatch(index.content, /Inspect trust boundaries and report actionable findings/);
+  assert.ok(plan.artifacts.every((artifact) => artifact.path !== ".mstack/aider-playbook.md"));
+
+  const prompt = plan.artifacts.find((artifact) => artifact.path === ".mstack/aider/prompts/review-change.md")!;
+  const skill = plan.artifacts.find((artifact) => artifact.path === ".mstack/aider/skills/ship-safely.md")!;
+  const persona = plan.artifacts.find((artifact) => artifact.path === ".mstack/aider/agents/security-reviewer.md")!;
+  assert.equal(prompt.resourceId, "review-change");
+  assert.equal(skill.resourceId, "ship-safely");
+  assert.equal(persona.resourceId, "security-reviewer");
+  assert.match(prompt.content, /Review the current diff for correctness and missing tests/);
+  assert.match(skill.content, /Run verification, summarize risk, and prepare the release/);
+  assert.match(skill.content, /## Bundled resource: references\/checklist\.md/);
+  assert.match(persona.content, /Inspect trust boundaries and report actionable findings/);
+  assert.ok(plan.diagnostics.some((item) => item.feature === "agents" && /cannot spawn subagents.*parallel/.test(item.message)));
+});
+
+test("Aider upgrades an unchanged owned playbook configuration to the indexed layout", async () => {
+  const root = await mkdtemp(join(tmpdir(), "mstack-aider-upgrade-"));
+  try {
+    const desired = createIntegrationPlan(createDefaultRegistry(), fullSpec, ["aider"]);
+    const desiredConfig = desired.artifacts.find((artifact) => artifact.path === ".aider.conf.yml")!;
+    const oldPlan = {
+      ...desired,
+      integrationVersion: "1.0.0",
+      artifacts: [
+        {
+          ...desiredConfig,
+          resourceVersion: "1.0.0",
+          content: [
+            "# Generated by mstack from Misbah's Build Like This workflow for aider. Regenerate instead of editing.",
+            "read:",
+            '  - "CONVENTIONS.md"',
+            '  - ".mstack/aider-playbook.md"',
+            '  - "docs/architecture.md"',
+            "",
+          ].join("\n"),
+        },
+        {
+          environment: "aider",
+          environments: ["aider"],
+          resourceId: "aider-playbook",
+          resourceVersion: "1.0.0",
+          feature: "prompts" as const,
+          path: ".mstack/aider-playbook.md",
+          content: "# Legacy full playbook\n",
+          mergeStrategy: "replace" as const,
+          management: "whole-file" as const,
+          security: "content" as const,
+          activation: "passive" as const,
+        },
+      ],
+    };
+    await applyIntegrationPlan(root, oldPlan);
+
+    const upgrade = createReconciliationPlan(desired, await inspectIntegrationRepository(root, desired));
+    assert.equal(upgrade.changes.find((change) => change.path === ".aider.conf.yml")?.action, "update");
+    assert.equal(upgrade.changes.find((change) => change.path === ".mstack/aider-playbook.md")?.action, "delete");
+    assert.equal(upgrade.changes.find((change) => change.path === ".mstack/aider/index.md")?.action, "create");
+    const applied = await applyIntegrationPlan(root, upgrade);
+    assert.ok(applied.files.every((file) => file.status !== "conflict"));
+    assert.match(await readFile(join(root, ".aider.conf.yml"), "utf8"), /\.mstack\/aider\/index\.md/);
+    await assert.rejects(() => readFile(join(root, ".mstack/aider-playbook.md"), "utf8"));
+
+    const second = createReconciliationPlan(desired, await inspectIntegrationRepository(root, desired));
+    assert.ok(second.changes.every((change) => change.action === "unchanged"));
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
 });
 
 test("unsupported features degrade with diagnostics instead of aborting", () => {

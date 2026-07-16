@@ -14,6 +14,12 @@ Debug the reported failure systematically and, when authorized, implement the na
 
 This prompt follows Misbah Khursheed's Build Like This workflow: establish the user outcome and reasoning before generating implementation, then preserve that reasoning in contracts, boundaries, tests, and documentation.
 
+## Project identity and sources of truth
+
+The repository where this prompt is installed is the host project being built. Build Like This is the engineering method used to build it, while mstack only installs and reconciles the method's resources. Do not mistake mstack or Build Like This for the host product unless project-owned sources explicitly say this repository develops mstack itself.
+
+Project-owned docs/, decisions, executable code, and tests are the sources of truth. .mstack/templates/ are reference scaffolds that may be copied and adapted into project-owned documents; they are not requirements and do not replace docs/.
+
 Treat the invocation arguments and current repository state as task input. Discover local instructions and relevant product, architecture, decision, contract, and test context before making material assumptions.
 
 ## Method
@@ -36,6 +42,14 @@ Treat the invocation arguments and current repository state as task input. Disco
 - Do not suppress errors, loosen validation, or weaken tests to make the symptom disappear.
 - Do not mutate external or production state without explicit authorization and recovery planning.
 - Do not call correlation a root cause.
+
+## Delegation and parallel safety
+
+- For a material lifecycle task, the active lead must delegate at least one bounded specialist lane when subagents are available; prefer two or more concurrent lanes only when their evidence or file ownership is independent.
+- The active lead owns acceptance criteria and final integration. Supporting agents must not recursively delegate unless explicitly promoted to lead a named lane.
+- Give each delegate distinct inputs, outputs, and ownership. Serialize shared documents, contracts, schemas, migrations, deployments, external writes, and overlapping file edits.
+- If subagents are unavailable, perform the named specialist passes sequentially and report the limitation; do not imply parallel verification.
+- Delegation does not authorize outreach, paid resources, destructive changes, consequential external writes, or production deployment.
 
 Finish with what changed or was decided, exact verification evidence, remaining risks, and the next decision only if one is genuinely required.
 

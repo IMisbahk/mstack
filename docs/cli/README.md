@@ -29,10 +29,13 @@ mstack validate
 
 ## What setup installs
 
-- Product, architecture, feature, and decision templates when missing.
-- `.mstack/config.json` for project preferences.
+`mstack init` installs:
+
+- product, architecture, feature, and decision templates when missing;
+- `.mstack/config.json` for project preferences;
 - `.mstack/manifest.json` for generated-file ownership and upgrade safety.
-- Optional repository guidance, prompts, skills, agents, hooks, and runtime templates for supported AI coding environments.
+
+`mstack ai setup` installs the selected environments' repository guidance, prompts, skills, agents, hooks, and `.mstack/templates/` reference library.
 
 Existing planning documents are preserved. `--force` is the only path that intentionally replaces conflicting generated targets, and should be used after reviewing the dry run.
 

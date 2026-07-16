@@ -72,6 +72,71 @@ test("force cannot replace unmanaged content but a path-specific approval create
   } finally { await rm(root, { recursive: true, force: true }); }
 });
 
+test("unchanged privileged resources preserve approvals and repair legacy missing records", async () => {
+  const root = await mkdtemp(join(tmpdir(), "mstack-approval-preservation-"));
+  try {
+    const spec: IntegrationSpec = {
+      id: "privileged-runtime",
+      version: "1.0.0",
+      project: { name: "Approval preservation" },
+      assets: [{
+        id: "approved-hook",
+        version: "1.0.0",
+        feature: "hooks",
+        path: ".mstack/runtime/hooks/approved.mjs",
+        content: "export {};",
+        executable: true,
+      }],
+    };
+    const desired = createIntegrationPlan(createDefaultRegistry(), spec, ["codex"]);
+    const install = createReconciliationPlan(desired, await inspectIntegrationRepository(root, desired));
+    const installed = approveIntegrationPlan(install, install.changes.flatMap((change) =>
+      change.approvalRequirements.map((requirement) => ({ requirementId: requirement.id, decision: "approve" as const })),
+    ));
+    await applyIntegrationPlan(root, installed);
+
+    const manifestPath = join(root, ".mstack/runtime/manifest.json");
+    const firstManifest = JSON.parse(await readFile(manifestPath, "utf8"));
+    const firstApprovals = firstManifest.resources.find((resource: { resourceId: string }) => resource.resourceId === "approved-hook")?.approvals;
+    assert.ok(Array.isArray(firstApprovals) && firstApprovals.length > 0);
+
+    const unchanged = createReconciliationPlan(desired, await inspectIntegrationRepository(root, desired));
+    const unchangedHook = unchanged.changes.find((change) => change.resourceId === "approved-hook")!;
+    assert.equal(unchangedHook.action, "unchanged");
+    assert.deepEqual(unchangedHook.approvalRequirements, []);
+    assert.deepEqual(unchangedHook.approvals, firstApprovals);
+    await applyIntegrationPlan(root, unchanged);
+    const preservedManifest = JSON.parse(await readFile(manifestPath, "utf8"));
+    assert.deepEqual(preservedManifest.resources.find((resource: { resourceId: string }) => resource.resourceId === "approved-hook")?.approvals, firstApprovals);
+
+    const brokenManifest = {
+      ...preservedManifest,
+      resources: preservedManifest.resources.map((resource: { resourceId: string }) =>
+        resource.resourceId === "approved-hook" ? { ...resource, approvals: [] } : resource,
+      ),
+    };
+    await writeFile(manifestPath, `${JSON.stringify(brokenManifest, null, 2)}\n`, "utf8");
+
+    const repair = createReconciliationPlan(desired, await inspectIntegrationRepository(root, desired));
+    const repairHook = repair.changes.find((change) => change.resourceId === "approved-hook")!;
+    assert.equal(repairHook.action, "unchanged");
+    assert.ok(repairHook.approvalRequirements.length > 0);
+    assert.match(repairHook.reason, /approval record is missing/);
+    const blocked = await applyIntegrationPlan(root, repair);
+    assert.equal(blocked.files.find((file) => file.path === repairHook.path)?.status, "conflict");
+
+    const repaired = approveIntegrationPlan(repair, repairHook.approvalRequirements.map((requirement) => ({
+      requirementId: requirement.id,
+      decision: "approve" as const,
+    })));
+    await applyIntegrationPlan(root, repaired);
+    const verification = await verifyIntegrationRuntime(root, desired, createDefaultRegistry());
+    assert.equal(verification.valid, true);
+    const repairedManifest = JSON.parse(await readFile(manifestPath, "utf8"));
+    assert.ok(repairedManifest.resources.find((resource: { resourceId: string }) => resource.resourceId === "approved-hook")?.approvals.length > 0);
+  } finally { await rm(root, { recursive: true, force: true }); }
+});
+
 test("drifted removal is blocked until its operation-specific deletion is approved", async () => {
   const root = await mkdtemp(join(tmpdir(), "mstack-remove-"));
   try {

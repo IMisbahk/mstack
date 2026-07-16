@@ -2,6 +2,7 @@
   "hooks": {
     "SessionStart": [
       {
+        "name": "repository-health",
         "hooks": [
           {
             "type": "command",
@@ -13,6 +14,7 @@
     ],
     "PreToolUse": [
       {
+        "name": "change-discipline",
         "hooks": [
           {
             "type": "command",
@@ -24,6 +26,7 @@
     ],
     "Stop": [
       {
+        "name": "feature-completeness",
         "hooks": [
           {
             "type": "command",

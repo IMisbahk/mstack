@@ -10,6 +10,20 @@ import { engineeringPrompts } from "./prompts.js";
 import { engineeringSkills } from "./skills.js";
 import { runtimeTemplates } from "./templates.js";
 
+const runtimeStateIgnore: RuntimeAsset = {
+  id: "runtime-state-gitignore",
+  version: "1.1.0",
+  activation: "passive",
+  security: "content",
+  fallback: "degrade",
+  feature: "assets",
+  path: ".mstack/runtime/.gitignore",
+  content: `# Local mstack recovery state; keep the manifest and installed hooks tracked.
+backups/
+operations/
+staging/`,
+};
+
 export interface BuildLikeThisRuntimeOptions {
   readonly projectName: string;
   readonly projectDescription?: string;
@@ -35,26 +49,57 @@ Work from outcomes to evidence:
 
 Prefer a modular monolith and explicit interfaces until measured constraints justify more operational systems. Keep domain behavior out of transports, UI, persistence models, and vendor adapters. Use reversible decisions, additive migrations, least privilege, safe defaults, and evidence-driven performance work.
 
-Use installed specialist agents for clearly bounded ownership, installed skills for repeatable workflows, and prompts for full task journeys. Do not delegate merely to simulate progress, and do not invoke several specialists for work one owner can complete coherently.`;
+## Ten-phase lifecycle
+
+Choose the earliest phase whose exit evidence is incomplete; do not treat installation or generated documents as proof that a product idea is ready to build.
+
+1. Idea — use idea-validation through research-idea.
+2. Users — use target-user-definition through identify-target-users.
+3. Needs — use user-needs-research through research-user-needs.
+4. Features — use feature-design through design-features.
+5. Product — use product-definition through write-product-definition.
+6. Architecture — use architecture-design through design-architecture.
+7. Backend — use backend-delivery through build-backend.
+8. Frontend — use frontend-delivery through build-frontend.
+9. Deploy — use deployment-delivery through deploy-product only with explicit environment authorization.
+10. Improve — use continuous-improvement through improve-product, then loop to the earliest affected phase.
+
+The phases are decision gates, not a ban on safe overlap. Once the backend contract, permissions, and error behavior are fixed, frontend work may proceed in parallel against a faithful contract mock while backend implementation continues; integration still waits for the verified server contract.
+
+## Delegation and parallel safety
+
+For every material lifecycle workflow, the active lead must delegate at least one concrete bounded lane when subagents are available. Prefer two or more concurrent lanes for independent research, analysis, review, or non-overlapping files. The lead owns acceptance criteria and final integration; supporting agents do not recursively delegate unless explicitly promoted. Serialize shared documents, contracts, schemas, migrations, deployments, external writes, and overlapping edits. If subagents are unavailable, perform the same named specialist passes sequentially and report the limitation. Delegation never expands authority for outreach, destructive or consequential external actions, paid resources, or production deployment.
+
+Use installed specialist agents for clearly bounded ownership, installed skills for repeatable workflows, and prompts for full task journeys. Parallelism must produce independent evidence or safely separated work, not activity for its own sake.`;
+
+function projectIdentity(projectName: string): string {
+  return `## Project identity and sources of truth
+
+You are building **${projectName}**, the host project in this repository. Build Like This is the engineering method used to build the project. mstack installs and reconciles the method's resources; mstack is not the product being built unless project-owned sources explicitly identify this repository as mstack itself.
+
+Use project-owned docs/, decisions, executable code, and tests as sources of truth. Files in .mstack/templates/ are reference scaffolds to copy and adapt into project-owned documents; they are not product requirements and do not replace docs/.`;
+}
 
 export function createBuildLikeThisRuntime(options: BuildLikeThisRuntimeOptions): IntegrationSpec {
-  if (options.projectName.trim().length === 0) throw new Error("projectName is required");
+  const projectName = options.projectName.trim();
+  if (projectName.length === 0) throw new Error("projectName is required");
   const includeHooks = options.includeHooks ?? true;
   const includeTemplates = options.includeTemplates ?? true;
   const assets: RuntimeAsset[] = [
+    runtimeStateIgnore,
     ...(includeHooks ? hookAssets : []),
     ...(includeTemplates ? runtimeTemplates : []),
   ];
-  const instructions = [buildLikeThisMethod, options.projectInstructions?.trim()]
+  const instructions = [projectIdentity(projectName), buildLikeThisMethod, options.projectInstructions?.trim()]
     .filter((value): value is string => Boolean(value))
     .join("\n\n");
 
   return {
     schemaVersion: 1,
     id: "build-like-this",
-    version: "1.0.0",
+    version: "1.1.0",
     project: {
-      name: options.projectName.trim(),
+      name: projectName,
       ...(options.projectDescription === undefined
         ? {}
         : { description: options.projectDescription.trim() }),

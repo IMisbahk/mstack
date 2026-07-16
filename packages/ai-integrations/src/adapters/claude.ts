@@ -47,7 +47,7 @@ export const claudeAdapter: IntegrationAdapter = {
         environment,
         "instructions",
         "CLAUDE.md",
-        `## ${spec.project.name}\n\n@.claude/rules/build-like-this/project.md`,
+        `## ${spec.project.name}\n\n${spec.project.name} is the host project. Build Like This is the engineering method and mstack is its installer; follow the imported project rule for project-owned sources of truth.\n\n@.claude/rules/build-like-this/project.md`,
         "managed-block",
       ),
       artifact(environment, "rules", ".claude/rules/build-like-this/project.md", renderInstructionBody(spec, (path) => `@${path}`)),

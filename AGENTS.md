@@ -136,14 +136,20 @@ Before declaring completion, confirm:
 
 The standard is not "the agent produced working code." The standard is that the repository remains understandable and the documented user outcome is safer to ship.
 
-<!-- mstack:codex:start -->
+<!-- mstack:project-instructions:start -->
 ## buildlikethis
 
-This repository follows Misbah Khursheed's Build Like This workflow: product reasoning before implementation, explicit backend contracts, modular architecture, and verified delivery.
+This host repository is the project being built. Build Like This is the engineering method, and mstack is the installer that adds the method to the project. They describe how to work, not what to build, unless project-owned documentation explicitly makes them the product.
 
-## Project instructions
+### Project instructions
 
-## Build Like This method
+### Project identity and sources of truth
+
+You are building **buildlikethis**, the host project in this repository. Build Like This is the engineering method used to build the project. mstack installs and reconciles the method's resources; mstack is not the product being built unless project-owned sources explicitly identify this repository as mstack itself.
+
+Use project-owned docs/, decisions, executable code, and tests as sources of truth. Files in .mstack/templates/ are reference scaffolds to copy and adapt into project-owned documents; they are not product requirements and do not replace docs/.
+
+### Build Like This method
 
 Work from outcomes to evidence:
 
@@ -158,22 +164,43 @@ Work from outcomes to evidence:
 
 Prefer a modular monolith and explicit interfaces until measured constraints justify more operational systems. Keep domain behavior out of transports, UI, persistence models, and vendor adapters. Use reversible decisions, additive migrations, least privilege, safe defaults, and evidence-driven performance work.
 
-Use installed specialist agents for clearly bounded ownership, installed skills for repeatable workflows, and prompts for full task journeys. Do not delegate merely to simulate progress, and do not invoke several specialists for work one owner can complete coherently.
+### Ten-phase lifecycle
 
-Read docs/product.md and docs/architecture.md before material implementation work. Preserve user-owned guidance and update affected sources of truth with behavioral changes.
+Choose the earliest phase whose exit evidence is incomplete; do not treat installation or generated documents as proof that a product idea is ready to build.
 
-## Required context
+1. Idea — use idea-validation through research-idea.
+2. Users — use target-user-definition through identify-target-users.
+3. Needs — use user-needs-research through research-user-needs.
+4. Features — use feature-design through design-features.
+5. Product — use product-definition through write-product-definition.
+6. Architecture — use architecture-design through design-architecture.
+7. Backend — use backend-delivery through build-backend.
+8. Frontend — use frontend-delivery through build-frontend.
+9. Deploy — use deployment-delivery through deploy-product only with explicit environment authorization.
+10. Improve — use continuous-improvement through improve-product, then loop to the earliest affected phase.
+
+The phases are decision gates, not a ban on safe overlap. Once the backend contract, permissions, and error behavior are fixed, frontend work may proceed in parallel against a faithful contract mock while backend implementation continues; integration still waits for the verified server contract.
+
+### Delegation and parallel safety
+
+For every material lifecycle workflow, the active lead must delegate at least one concrete bounded lane when subagents are available. Prefer two or more concurrent lanes for independent research, analysis, review, or non-overlapping files. The lead owns acceptance criteria and final integration; supporting agents do not recursively delegate unless explicitly promoted. Serialize shared documents, contracts, schemas, migrations, deployments, external writes, and overlapping edits. If subagents are unavailable, perform the same named specialist passes sequentially and report the limitation. Delegation never expands authority for outreach, destructive or consequential external actions, paid resources, or production deployment.
+
+Use installed specialist agents for clearly bounded ownership, installed skills for repeatable workflows, and prompts for full task journeys. Parallelism must produce independent evidence or safely separated work, not activity for its own sake.
+
+Treat the project's own docs/ directory, code, and tests as its sources of truth. Read docs/product.md and docs/architecture.md before material implementation work, preserve user-owned guidance, and update affected sources of truth with behavioral changes. Use .mstack/templates/ only as reference scaffolds: adapt them to this project, and never treat template text as a project requirement or evidence.
+
+### Required context
 
 - Load before relevant work: `docs/product.md` — product intent, users, scope, and success measures
 - Load before relevant work: `docs/architecture.md` — system boundaries, contracts, and operational decisions
 - Optional: `docs/features.md` — feature index when present
 
-## Repository onboarding
+### Repository onboarding
 
-Start with the product outcome, design system boundaries and backend contracts, then ship a verified vertical slice.
+If the idea is not validated, begin with the research-idea prompt. Then use write-product-definition and design-architecture to establish project intent and system boundaries before shipping a verified vertical slice.
 
-### Verify
+#### Verify
 
 - `mstack status`
 - `mstack doctor`
-<!-- mstack:codex:end -->
+<!-- mstack:project-instructions:end -->

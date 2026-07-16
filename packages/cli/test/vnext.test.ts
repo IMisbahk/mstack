@@ -37,6 +37,33 @@ describe("vNext developer experience", () => {
     expect((await inspectRepository(root)).manifest).toBe(".mstack/manifest.json");
   });
 
+  it("hands a fresh idea-less project to AI setup and discovery without duplicate next steps", async () => {
+    const { root, templates, output, stdout } = await fixture();
+    await writeFile(path.join(templates, "product.template.md"), "# Product\n\n[Describe the product]\n");
+    await writeFile(path.join(templates, "architecture.template.md"), "# Architecture\n\n[Describe the system]\n");
+    await createProgram({ cwd: root, templatesDirectory: templates, output })
+      .parseAsync(["node", "mstack", "init", ".", "--yes", "--no-git"]);
+
+    const transcript = stdout.join("");
+    expect(transcript.match(/mstack ai setup/g)).toHaveLength(1);
+    expect(transcript).toContain("research-idea");
+    expect(transcript).toContain("write-product-definition");
+    expect(transcript).not.toContain("Design the system");
+  });
+
+  it("routes a product-ready project with draft architecture to architecture design", async () => {
+    const { root, templates, output, stdout } = await fixture();
+    await writeFile(path.join(templates, "product.template.md"), "# Product\n\nA defined user need and outcome.\n");
+    await writeFile(path.join(templates, "architecture.template.md"), "# Architecture\n\n[Describe the system]\n");
+    await createProgram({ cwd: root, templatesDirectory: templates, output })
+      .parseAsync(["node", "mstack", "init", ".", "--yes", "--no-git"]);
+
+    const transcript = stdout.join("");
+    expect(transcript).toContain("design-architecture");
+    expect(transcript).not.toContain("research-idea");
+    expect(transcript).not.toContain("write-product-definition");
+  });
+
   it("installs a complete AI pack for selected runtimes", async () => {
     const { root, templates, output } = await fixture();
     await createProgram({ cwd: root, templatesDirectory: templates, output })
@@ -51,6 +78,65 @@ describe("vNext developer experience", () => {
     expect(await readFile(path.join(root, ".mstack", "runtime", "hooks", "repository-health.mjs"), "utf8")).toContain("repository health");
     const manifest = JSON.parse(await readFile(path.join(root, ".mstack", "manifest.json"), "utf8"));
     expect(manifest.integrations).toEqual(["codex", "continue"]);
+  });
+
+  it("retains previously configured runtimes when reconciling an explicit subset", async () => {
+    const { root, templates, output } = await fixture();
+    await createProgram({ cwd: root, templatesDirectory: templates, output })
+      .parseAsync(["node", "mstack", "init", ".", "--yes", "--no-git"]);
+    await createProgram({ cwd: root, templatesDirectory: templates, output })
+      .parseAsync(["node", "mstack", "ai", "setup", "codex", "continue", "--yes"]);
+    const continuePrompt = path.join(root, ".continue", "prompts", "build-feature.md");
+    const before = await readFile(continuePrompt, "utf8");
+
+    await createProgram({ cwd: root, templatesDirectory: templates, output })
+      .parseAsync(["node", "mstack", "ai", "setup", "codex", "--yes"]);
+
+    expect(await readFile(continuePrompt, "utf8")).toBe(before);
+    const manifest = JSON.parse(await readFile(path.join(root, ".mstack", "manifest.json"), "utf8"));
+    expect(manifest.integrations).toEqual(["codex", "continue"]);
+    const runtimeManifest = JSON.parse(await readFile(path.join(root, ".mstack", "runtime", "manifest.json"), "utf8"));
+    expect(runtimeManifest.resources.some((resource: { path: string }) => resource.path.startsWith(".continue/"))).toBe(true);
+  });
+
+  it("uses the configured project identity in generated runtime guidance", async () => {
+    const { root, templates, output } = await fixture();
+    await createProgram({ cwd: root, templatesDirectory: templates, output })
+      .parseAsync(["node", "mstack", "init", ".", "--name", "Acme", "--yes", "--no-git"]);
+    await createProgram({ cwd: root, templatesDirectory: templates, output })
+      .parseAsync(["node", "mstack", "ai", "setup", "codex", "--yes"]);
+
+    const instructions = await readFile(path.join(root, "AGENTS.md"), "utf8");
+    expect(instructions).toContain("# Acme");
+    expect(instructions).toContain("This host repository is the project being built");
+    expect(instructions).toContain("Build Like This is the engineering method");
+    expect(instructions).toContain("mstack is the installer");
+    expect(instructions).toContain("docs/ directory, code, and tests as its sources of truth");
+    expect(instructions).toContain(".mstack/templates/ only as reference scaffolds");
+  });
+
+  it("routes draft projects through idea, product, and architecture prompts", async () => {
+    const { root, templates, output } = await fixture();
+    await createProgram({ cwd: root, templatesDirectory: templates, output })
+      .parseAsync(["node", "mstack", "init", ".", "--yes", "--no-git"]);
+    await writeFile(path.join(root, "docs", "product.md"), "# Product\n\n[Describe the product]\n");
+    await writeFile(path.join(root, "docs", "architecture.md"), "# Architecture\n\n[Describe the system]\n");
+
+    const unconfigured = await inspectRepository(root);
+    expect(unconfigured.next.command).toBe("mstack ai setup");
+    expect(unconfigured.next.message).toContain("research-idea");
+
+    await createProgram({ cwd: root, templatesDirectory: templates, output })
+      .parseAsync(["node", "mstack", "ai", "setup", "codex", "--yes"]);
+    const productDraft = await inspectRepository(root);
+    expect(productDraft.next.path).toBe("docs/product.md");
+    expect(productDraft.next.message).toContain("research-idea");
+    expect(productDraft.next.message).toContain("write-product-definition");
+
+    await writeFile(path.join(root, "docs", "product.md"), "# Product\n\nA product for a defined user and need.\n");
+    const architectureDraft = await inspectRepository(root);
+    expect(architectureDraft.next.path).toBe("docs/architecture.md");
+    expect(architectureDraft.next.message).toContain("design-architecture");
   });
 
   it("keeps AI dry runs read-only", async () => {

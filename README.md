@@ -71,13 +71,14 @@ Setting up an AI coding environment repeatedly is tedious. The same planning doc
 ```sh
 npm install -g @imisbahk/mstack
 mstack init
+mstack ai setup
 ```
 
-It inspects a repository, previews its changes, preserves existing work, and installs the parts of the workflow that fit. It can configure reusable agents, prompts, hooks, skills, project templates, onboarding, and repository-level guidance for Claude Code, Codex, Cursor, Gemini CLI, Continue, and Aider. Run `mstack ai setup --dry-run` to inspect the exact runtime plan before installing it.
+`mstack init` inspects the repository, installs planning documents and project configuration, preserves existing work, and records ownership. `mstack ai setup` separately configures reusable agents, prompts, hooks, skills, reference templates, onboarding, and repository-level guidance for Claude Code, Codex, Cursor, Gemini CLI, Continue, and Aider. Run `mstack ai setup --dry-run` to inspect the exact runtime plan before installing it.
 
 Use `mstack catalog` to discover the installed engineering resources and `mstack validate --strict` to verify planning readiness, managed ownership, and AI runtime integrity in CI.
 
-The current platform includes 6 AI environments, 12 specialist agents, 10 reusable skills, 3 automation hooks, 9 prompt packs, and 8 runtime templates. It supports npm, pnpm, Yarn, and Bun, with versioned JSON output for automation.
+The current platform includes 6 AI environments, 19 specialist agents, 20 reusable skills, 3 automation hooks, 19 prompt packs, and 10 runtime templates. Its ten-phase workflow runs bounded specialist lanes in parallel where the AI environment supports subagents, while preserving one decision owner and safe sequential fallbacks elsewhere. It supports npm, pnpm, Yarn, and Bun, with versioned JSON output for automation.
 
 Projects such as [g-stack](https://github.com/garrytan/gstack) already approach AI development environments with broad capability and configuration. I respect that approach. Build Like This makes a different trade-off: fewer choices, stronger defaults, and a specific product-to-production workflow. The purpose of mstack is not to expose every possible setup. It is to get a repository ready for the process I would personally use.
 
@@ -98,12 +99,12 @@ It is not a step-by-step coding tutorial and it is not a collection of fashionab
 ## Start a project this way
 
 1. Install mstack with `npm install -g @imisbahk/mstack`, then run `mstack init` (or copy the files from [`templates/`](templates/)).
-2. Write `docs/product.md` using the [product template](templates/product.template.md).
-3. Write `docs/architecture.md` using the [architecture template](templates/architecture.template.md).
-4. Use the [feature template](templates/feature.template.md) only when a feature has enough uncertainty or risk to deserve one.
-5. Review [project organization](docs/project-organization.md), [my stack defaults](docs/tech-stack.md), and [the engineering rules](docs/engineering-rules.md).
-6. Implement the smallest complete journey, backend contract first.
-7. Deploy it, observe it, and update both the product and the architecture as you learn.
+2. Run `mstack ai setup` to install the phase skills, prompts, specialist agents, and reference templates for your AI environment.
+3. If the idea is still a hypothesis, run `research-idea`; otherwise write `docs/product.md` using the [product template](templates/product.template.md).
+4. Write `docs/architecture.md` only after the product intent is clear, using the [architecture template](templates/architecture.template.md).
+5. Use the [feature template](templates/feature.template.md) only when a feature has enough uncertainty or risk to deserve one.
+6. Review [project organization](docs/project-organization.md), [my stack defaults](docs/tech-stack.md), and [the engineering rules](docs/engineering-rules.md).
+7. Implement the smallest complete journey, backend contract first, then deploy, observe, and return to the earliest lifecycle phase affected by what you learn.
 
 Do not copy an example as a specification. The examples demonstrate the quality of reasoning I expect, not requirements for your product.
 

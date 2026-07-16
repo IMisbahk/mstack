@@ -88,14 +88,27 @@ function planDesired(operationId: string, artifact: GeneratedArtifact, previous:
     else { action = "conflict"; reason = "Existing file has no validated ownership"; }
   } else if (ownedStateUnchanged(previous, snapshot, artifact)) { action = "update"; reason = "Previously owned state is unchanged and can be reconciled"; }
   else { action = "conflict"; reason = "Previously owned state has drifted"; }
-  if (artifact.mergeStrategy === "manual" && snapshot.exists && currentHash !== nextHash) { action = "conflict"; reason = "Shared TOML/YAML requires manual reconciliation"; }
+  if (artifact.mergeStrategy === "manual" && snapshot.exists && currentHash !== nextHash && (previous === undefined || currentHash !== previous.installedHash)) {
+    action = "conflict"; reason = "Shared TOML/YAML requires manual reconciliation";
+  }
 
-  const requirements = requirementsFor(operationId, id, artifact.path, action, reason, artifact, previous !== undefined);
+  const applicablePreviousApprovals = action === "unchanged"
+    && previous?.resourceId === id
+    && previous.security === security
+    && previous.activation === activation
+    ? previous.approvals
+    : [];
+  const missingApprovalRecord = action === "unchanged"
+    && applicablePreviousApprovals.length === 0
+    && (artifact.security !== "content" || artifact.activation === "privileged");
+  if (missingApprovalRecord) reason = `${reason}; privileged approval record is missing`;
+  const requirements = requirementsFor(operationId, id, artifact.path, action, reason, artifact, previous);
   return {
     resourceId: id, resourceVersion: version, adapters: artifact.environments ?? [artifact.environment], feature: artifact.feature, path: artifact.path,
     action, reason, ...(currentHash === undefined ? {} : { previousHash: currentHash }), nextHash,
     ...(snapshot.mode === undefined ? {} : { previousMode: snapshot.mode }), nextMode: artifact.mode ?? (artifact.executable === true ? 0o755 : snapshot.mode ?? 0o644), nextContent,
-    mergeStrategy: artifact.mergeStrategy, security, activation, approvalRequirements: requirements, approvals: [], denied: false,
+    mergeStrategy: artifact.mergeStrategy, security, activation, approvalRequirements: requirements,
+    approvals: applicablePreviousApprovals, denied: false,
     backupRequired: snapshot.exists && action !== "unchanged" && action !== "adopt", recovery: !snapshot.exists ? "delete-created" : action === "unchanged" || action === "adopt" ? "none" : "restore-backup",
     ...(ownedEntries === undefined ? {} : { ownedEntries }),
   };
@@ -117,10 +130,17 @@ function planDeletion(operationId: string, previous: ManifestResource, snapshot:
   return { resourceId: previous.resourceId, resourceVersion: previous.resourceVersion, adapters: previous.adapters, feature: "assets", path: previous.path, action, reason, ...(snapshot.hash === undefined ? {} : { previousHash: snapshot.hash }), ...(nextHash === undefined ? {} : { nextHash }), ...(snapshot.mode === undefined ? {} : { previousMode: snapshot.mode }), ...(snapshot.mode === undefined ? {} : { nextMode: snapshot.mode }), ...(nextContent === undefined ? {} : { nextContent }), mergeStrategy: previous.mergeStrategy, security: previous.security, activation: previous.activation, approvalRequirements: requirements, approvals: [], denied: false, backupRequired: true, recovery: "restore-backup" };
 }
 
-function requirementsFor(operationId: string, id: string, path: string, action: ReconciliationAction, reason: string, artifact: GeneratedArtifact, previouslyOwned: boolean): ApprovalRequirement[] {
+function requirementsFor(operationId: string, id: string, path: string, action: ReconciliationAction, reason: string, artifact: GeneratedArtifact, previous: ManifestResource | undefined): ApprovalRequirement[] {
   const kinds: ApprovalKind[] = [];
-  if (action === "conflict") kinds.push(previouslyOwned ? "ownership-repair" : "unmanaged-replacement");
-  if (action !== "unchanged") {
+  if (action === "conflict") kinds.push(previous === undefined ? "unmanaged-replacement" : "ownership-repair");
+  const hasApplicablePreviousApproval = previous?.resourceId === id
+    && previous.security === artifact.security
+    && previous.activation === artifact.activation
+    && previous.approvals.length > 0;
+  const missingApprovalRecord = action === "unchanged"
+    && !hasApplicablePreviousApproval
+    && (artifact.security !== "content" || artifact.activation === "privileged");
+  if (action !== "unchanged" || missingApprovalRecord) {
     if (artifact.feature === "hooks") kinds.push("hook-activation");
     if (artifact.executable === true || artifact.security === "executable" || artifact.constraints?.["executable-change"] === true) kinds.push("executable-change");
     if (artifact.security === "network" || artifact.feature === "mcp") kinds.push("network-access");
@@ -168,7 +188,7 @@ function buildManifest(desired: IntegrationPlan, changes: readonly Reconciliatio
     const artifact = artifacts.get(`${change.resourceId}\0${change.path}`);
     if (artifact === undefined || change.nextHash === undefined) continue;
     const managedHash = artifact.mergeStrategy === "managed-block" ? hashContent(artifact.content.trim()) : undefined;
-    resources.push({ resourceId: change.resourceId, resourceVersion: change.resourceVersion, adapters: change.adapters, profileIds: artifact.profileId === undefined ? [] : [artifact.profileId], path: change.path, mergeStrategy: change.mergeStrategy, installedHash: change.nextHash, ...(managedHash === undefined ? {} : { managedHash }), ...(change.ownedEntries === undefined ? {} : { ownedEntries: change.ownedEntries }), ...(change.nextMode === undefined ? {} : { mode: change.nextMode }), security: change.security, activation: change.activation, approvals: change.approvalRequirements.map((item) => item.id) });
+    resources.push({ resourceId: change.resourceId, resourceVersion: change.resourceVersion, adapters: change.adapters, profileIds: artifact.profileId === undefined ? [] : [artifact.profileId], path: change.path, mergeStrategy: change.mergeStrategy, installedHash: change.nextHash, ...(managedHash === undefined ? {} : { managedHash }), ...(change.ownedEntries === undefined ? {} : { ownedEntries: change.ownedEntries }), ...(change.nextMode === undefined ? {} : { mode: change.nextMode }), security: change.security, activation: change.activation, approvals: change.approvalRequirements.length > 0 ? change.approvalRequirements.map((item) => item.id) : change.approvals });
   }
   return { schemaVersion: 1, runtimeId: desired.integrationId ?? "legacy.runtime", runtimeVersion: desired.integrationVersion ?? "0.0.0", resources, recovery: { operationId, journalPath: `.mstack/runtime/operations/${operationId}.json`, backupRoot: `.mstack/runtime/backups/${operationId}` } };
 }

@@ -46,7 +46,10 @@ export async function updateManifest(
   const files = new Map((existing?.files ?? []).map((file) => [file.path, file]));
   for (const file of update.files) {
     const absolute = path.join(root, file.path);
-    if (!(await pathExists(absolute))) continue;
+    if (!(await pathExists(absolute))) {
+      files.delete(file.path);
+      continue;
+    }
     files.set(file.path, {
       path: file.path,
       kind: file.kind,

@@ -4,6 +4,33 @@ This process is sequential in decisions and iterative in learning. I want to ans
 
 AI can help at every phase—research synthesis, contradiction checks, contract drafting, implementation, testing—but it should accelerate an explicit decision. It should not quietly make the decision because nobody wrote it down.
 
+## How the installed AI workflow maps to this lifecycle
+
+Build Like This is the method used to build the host project; mstack only installs the supporting workflow. The host project's `docs/`, code, tests, and recorded decisions define what is being built. `.mstack/templates/` contains reference scaffolds that must be copied and adapted into project-owned artifacts rather than treated as requirements.
+
+The installed runtime gives every phase a dedicated reusable method and task journey:
+
+| Phase | Skill | Prompt | Primary durable output |
+| --- | --- | --- | --- |
+| Idea | `idea-validation` | `research-idea` | `docs/research/<topic>.md` |
+| Target users | `target-user-definition` | `identify-target-users` | Updated discovery brief |
+| User needs | `user-needs-research` | `research-user-needs` | Evidence and needs synthesis |
+| Feature design | `feature-design` | `design-features` | Product scope or warranted feature spec |
+| Product definition | `product-definition` | `write-product-definition` | `docs/product.md` |
+| Architecture | `architecture-design` | `design-architecture` | `docs/architecture.md` and consequential ADRs |
+| Backend | `backend-delivery` | `build-backend` | Validated server contract, behavior, and tests |
+| Frontend | `frontend-delivery` | `build-frontend` | Accessible user journey and tests |
+| Deployment | `deployment-delivery` | `deploy-product` | Authorized rollout, evidence, and recovery record |
+| Continuous improvement | `continuous-improvement` | `improve-product` | Outcome review and next-phase decision |
+
+### Sequential decisions, parallel work
+
+The active phase lead must delegate at least one bounded specialist lane for a material lifecycle task. When two or more lanes are independent, launch them concurrently: for example, problem evidence, alternatives, and feasibility during discovery; data, security, and operations during architecture; or code, accessibility, and release reviews after implementation.
+
+Parallelism never removes decision gates or ownership. Product intent precedes architecture, contracts precede dependent implementation, and readiness precedes deployment. Do not let agents edit the same contract, document, migration, or file concurrently. One lead integrates the results, records conflicts and confidence, and verifies the combined result against the phase exit criteria. Runtimes without native subagents execute the same named lanes sequentially and state that limitation.
+
+Backend and frontend delivery may overlap after the backend contract, permissions, and stable errors are fixed: frontend works against a faithful contract mock while backend implementation continues, and integration waits for contract verification. This overlap does not let either lane redefine the shared contract independently.
+
 ## 1. Start with the idea
 
 I write the idea as a user outcome, not a solution pitch. "Help independent designers get overdue invoices paid" is useful. "Build an AI finance dashboard" has already jumped to a feature and a technology.

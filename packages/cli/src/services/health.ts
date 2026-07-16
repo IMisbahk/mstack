@@ -56,12 +56,19 @@ export async function inspectRepository(start: string): Promise<RepositoryHealth
   const initialized = manifest !== undefined || await findProjectRoot(root) !== undefined;
   const incomplete = documents.find((document) => document.state !== "ready");
   const setup = !initialized ? "not-initialized" : incomplete ? "needs-attention" : "complete";
+  const hasRuntime = (manifest?.integrations.length ?? 0) > 0;
   const next = !initialized
     ? { command: "mstack init", message: "Initialize Build Like This in this repository." }
     : incomplete?.state === "missing"
       ? { command: "mstack init", path: incomplete.path, message: `Add the missing ${incomplete.id} document.` }
-      : incomplete
-        ? { path: incomplete.path, message: `Complete the ${incomplete.id} document (${incomplete.placeholders} placeholders remain).` }
+      : incomplete?.id === "product" && !hasRuntime
+        ? { command: "mstack ai setup", message: `Configure an AI runtime, then use research-idea to validate the idea before write-product-definition (${incomplete.placeholders} placeholders remain).` }
+        : incomplete?.id === "product"
+          ? { path: incomplete.path, message: `Use research-idea to validate the idea, then write-product-definition to complete the product document (${incomplete.placeholders} placeholders remain).` }
+          : incomplete && !hasRuntime
+            ? { command: "mstack ai setup", message: `Configure an AI runtime, then use design-architecture to complete the architecture document (${incomplete.placeholders} placeholders remain).` }
+            : incomplete
+              ? { path: incomplete.path, message: `Use design-architecture to complete the architecture document (${incomplete.placeholders} placeholders remain).` }
         : { command: "mstack explain", message: "Review the repository workflow and begin the next delivery slice." };
   return {
     schemaVersion: 1,

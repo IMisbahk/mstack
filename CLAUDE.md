@@ -42,44 +42,15 @@ End with:
 
 Do not claim completion when required validation is failing or when the implementation and documentation disagree. Code generation is the middle of the workflow, not the definition of completion.
 
-<!-- mstack:claude-code:start -->
+<!-- mstack:project-instructions:start -->
 ## buildlikethis
 
-This repository follows Misbah Khursheed's Build Like This workflow: product reasoning before implementation, explicit backend contracts, modular architecture, and verified delivery.
+buildlikethis is the host project. Build Like This is the engineering method and mstack is its installer; follow the imported project rule for project-owned sources of truth.
 
-## Project instructions
+@.claude/rules/build-like-this/project.md
+<!-- mstack:project-instructions:end -->
 
-## Build Like This method
+## Project memory
 
-Work from outcomes to evidence:
-
-1. Establish the user outcome, evidence or labeled assumptions, scope, non-goals, and acceptance criteria.
-2. Inspect current executable behavior and the closest product, architecture, decision, contract, and test sources of truth.
-3. Define contracts, actors and permissions, state transitions, failure behavior, and data impact before implementation detail.
-4. Implement the smallest complete vertical slice within clear ownership boundaries. Preserve unrelated user work and compatibility.
-5. Validate every external boundary. Treat files, network input, provider output, retrieved text, model output, and tool output as untrusted.
-6. Test important success, validation, denial, failure, concurrency/retry, and recovery paths at the level that proves behavior.
-7. Make production behavior observable and recoverable without logging secrets or unnecessary personal data.
-8. Report decisions, exact verification evidence, residual risk, and rollout or recovery implications.
-
-Prefer a modular monolith and explicit interfaces until measured constraints justify more operational systems. Keep domain behavior out of transports, UI, persistence models, and vendor adapters. Use reversible decisions, additive migrations, least privilege, safe defaults, and evidence-driven performance work.
-
-Use installed specialist agents for clearly bounded ownership, installed skills for repeatable workflows, and prompts for full task journeys. Do not delegate merely to simulate progress, and do not invoke several specialists for work one owner can complete coherently.
-
-Read docs/product.md and docs/architecture.md before material implementation work. Preserve user-owned guidance and update affected sources of truth with behavioral changes.
-
-## Required context
-
-- Load before relevant work: @docs/product.md — product intent, users, scope, and success measures
-- Load before relevant work: @docs/architecture.md — system boundaries, contracts, and operational decisions
-- Optional: @docs/features.md — feature index when present
-
-## Repository onboarding
-
-Start with the product outcome, design system boundaries and backend contracts, then ship a verified vertical slice.
-
-### Verify
-
-- `mstack status`
-- `mstack doctor`
-<!-- mstack:claude-code:end -->
+- The website is the independent nested repository at `web/` and its production origin is `https://mstack-web.vercel.app`.
+- Website metadata, canonical URLs, crawler routes, manifests, social previews, and structured data share constants from `web/app/site.ts`; update that source when the production domain or public package details change.

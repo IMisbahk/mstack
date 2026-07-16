@@ -1,0 +1,2763 @@
+{
+  "recovery": {
+    "backupRoot": ".mstack/runtime/backups/op.1ce4243640e4d0fd7330",
+    "journalPath": ".mstack/runtime/operations/op.1ce4243640e4d0fd7330.json",
+    "operationId": "op.1ce4243640e4d0fd7330"
+  },
+  "resources": [
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "1ddbc1d1820b77fdd88b0448311bc4c2e09fc9599624331a13df51b9e148a219",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/api-contract-design/SKILL.md",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "api-contract-design",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "5b1352469d28b0b2ca65c25ad34b37464fa1f2aa688126982d4fb679e0a7be0c",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/architecture-assessment/SKILL.md",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "architecture-assessment",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "270fd4de1e442b97f073bb9b499c40ad025638e24e01907dfa340c599a4726e0",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/architecture-design/SKILL.md",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "architecture-design",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "3f5befe7cfe21527f1b9dd91bbf7ff8d1046bf604b8a26235fff29058810b904",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/backend-delivery/SKILL.md",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "backend-delivery",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "4e3d7a9b3a2d618ed18c631a2ec17c9cdf4808b0a653cf1cd5cfceedaf1778e0",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/build-backend/SKILL.md",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "build-backend",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "3431814ab4b2f91a4aa9c086165d2635bca15bc86f195a1d30c122061856ed7b",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/build-feature/SKILL.md",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "build-feature",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "3a86ed2dcf3c25dab78727a799868733931ce73da5b3d2cfbb46892d37ccb4b8",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/build-frontend/SKILL.md",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "build-frontend",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "8fb2e3a34cc6380f3edf6f58a2aa016d095a5896ed9c136ecad0d2c215618cc4",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/continuous-improvement/SKILL.md",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "continuous-improvement",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "fcf0c66137927248f2b2223f0de9390a1f7fb65823f245d84676a1e5afefb115",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/database-modeling/SKILL.md",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "database-modeling",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "a34afa285b77efd0033dd5272cf548fdcd391faafa997cc0fa0be1a58a014ed7",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/debug-failure/SKILL.md",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "debug-failure",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "311324af65982730c05c2e675e6e01d2468ccd01029972b28ca087583740712a",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/deploy-product/SKILL.md",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "deploy-product",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "c92eb4d6bdee7ff8936cf57dd580c23b12abe57a2fa0b8dc216c62633993876b",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/deployment-delivery/SKILL.md",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "deployment-delivery",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "8f1c9c9f4032c902700c61020ca2c7860abbe583e6548f49679b813b5e613eb6",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/design-api/SKILL.md",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "design-api",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "4691f4433137b03a6a1e756ffe0d3ffc6d03be3eb8f618c328e6c7c23497a45f",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/design-architecture/SKILL.md",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "design-architecture",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "f9a5004fe4bc660bda1a70b08804eabf848d3a144e0b53ec7a4ecf7de79e4fcb",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/design-features/SKILL.md",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "design-features",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "220879a356d4949df34ef63c07ad174ba26c7bb1474884715e6c11e05f3ce24e",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/feature-design/SKILL.md",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "feature-design",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "1e46533b298775f7dfae3c3d6a766fabce67fcd06d33ee235701722e4a317dc2",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/feature-planning/SKILL.md",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "feature-planning",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "eb2ceb4102beb95b042250369fa39e6e007f9142e49248b15609cb9efd0dc42b",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/frontend-delivery/SKILL.md",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "frontend-delivery",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "b4ef921df3fc4a1400f703b42fda3f466cb9042eb48b8914236c029868a1f1b3",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/idea-validation/SKILL.md",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "idea-validation",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "1c8841bd64d1a68740b4e5e440429bb642388f473eff09eba8c1f22a0f9ad482",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/identify-target-users/SKILL.md",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "identify-target-users",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "82e1af5c491a49f8e2dcd8d71123fc873e3bf43fd36699058fbe024d72788686",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/improve-documentation/SKILL.md",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "improve-documentation",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "218578d98d1f9a692d7b82c14c6d84f8366b868ac269cd58345b73dfa628dd54",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/improve-product/SKILL.md",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "improve-product",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "f7825754124194ac952e826a7e312329a5c179f7637ed0c4239a00b17b8cdced",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/performance-investigation/SKILL.md",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "performance-investigation",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "975beb13ea2d36fb099ccd3b6ff8b7104e5834d1e0981d7da30e02d6265f8a76",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/plan-mvp/SKILL.md",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "plan-mvp",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "a906425f9f3085ecd6818b03954eac596665fbc68c1d6689d278812eb8e630c3",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/product-definition/SKILL.md",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "product-definition",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "1d88141e7db1355cc2713fdf88cbfb82eecb4b454abe2c8e64a5ab444ce2c040",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/production-readiness/SKILL.md",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "production-readiness",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "13728bd0162a351d2d39eddcf972e4b0e55e597e057af3042f59f808313e3ed3",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/refactor-module/SKILL.md",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "refactor-module",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "3bf6bd24dc3e4a7eb1c6a232f15f0e0a4ae495e50760c93a071fa9e74971a7ab",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/release-readiness/SKILL.md",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "release-readiness",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "23832c3a3fdba9214b679533782929b775ce499c3ab0294ae5b68ea95d87db40",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/repository-audit/SKILL.md",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "repository-audit",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "dc902b792b36b2ba12f353eed30de0c8ecc57502c578d7e0b74518576f3dab06",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/research-idea/SKILL.md",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "research-idea",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "af8a6e921186b7a296fbf60c80992ae900c73ca5f00c2cce3c7a33803075e6a5",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/research-user-needs/SKILL.md",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "research-user-needs",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "b4505e2c0f4c33e6c7c34ed66ec5c9617f7f4bcc5f81e66225d36fed44e1e0a4",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/review-architecture/SKILL.md",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "review-architecture",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "9c1f3ed635034aa5ae1004dbb2bdea53a0743acdb4f21f11a796df5accd9817b",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/review-pull-request/SKILL.md",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "review-pull-request",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "311c2e7e43027c1191a57d70eaf32974b025204c72e804b280ae17107f41c1d1",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/safe-refactoring/SKILL.md",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "safe-refactoring",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "a8289e36050c7e89c6ceaec670460c5d5c3340900dd09d43d0e7fefb2438015b",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/systematic-debugging/SKILL.md",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "systematic-debugging",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "b4099a769ca18ef5be9f6319d465ec8fbfad3006c4a08154449135ba990e7517",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/target-user-definition/SKILL.md",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "target-user-definition",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "8011b57c48921688c539844a7d699fb9ff7b840fc2bd9bcce668684835fbfc9f",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/threat-model-review/SKILL.md",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "threat-model-review",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "f95e9f48f71abadf100233bb48e602de717af240b6786e842a2f41b723e9199d",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/user-needs-research/SKILL.md",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "user-needs-research",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "60b4b26122d991626be426c12a577e374ef373a3b0eb47c2b7b23e5417dc3b60",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/write-product-definition/SKILL.md",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "write-product-definition",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "8183ca654d07369feaddf0192242a42a389e12380d2d0ef7ca8dadd8b78efcf2",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/agents/ai-engineer.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "ai-engineer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "fd64ece500ba120de9c0ae222d60db0f0b81a107ccb0f123d2f5a61d7d635208",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/agents/backend-engineer.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "backend-engineer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "7becd9d09ccdaade6cd9af440b9110f99f3b6b75f6080a647c516d07b9b8a070",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/agents/code-reviewer.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "code-reviewer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "af1a4d35d4d8ecd7ee00cd84d6e34c6f614a2f8f7cffacd61577b408d17b3232",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/agents/database-engineer.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "database-engineer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "e40394ba97030af6e99bf9d34cced66478ff21f0e5fa84e73a536e1b908b5492",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/agents/debugging-specialist.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "debugging-specialist",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "2f061c258915880febc09a08925676598bd95be0c2a2934874d09eb3df93f3d3",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/agents/devops-engineer.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "devops-engineer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "5e014b633855d6c4cefe9c2669beaa16b11aad1b5e93dc1d93ee760784c06ecb",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/agents/frontend-engineer.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "frontend-engineer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "76cad88c661bd703ffd786b070d2adc542a273f5a65a08124f246017e0218c61",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/agents/performance-engineer.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "performance-engineer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "33abc7bd793af4e96c99a4f013b8989ac501d6361b9c67d43a4bcf97aab7be2a",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/agents/product-analyst.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "product-analyst",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "0adcfdd7ac2f9d4245932ecea7b57efb1f5204956ee8c9f138a5bd0f8e603e84",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/agents/product-designer.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "product-designer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "3de773680f835daba833188c95f6fdd871bbd7c222a2e298ddf0bead94bcd40d",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/agents/product-manager.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "product-manager",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "45016412711e2ed407d9bff8ce7757ff581b17343b1824e548d1a1d727213375",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/agents/product-researcher.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "product-researcher",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "6c20da40448800e5238c5a05062342444f2705e39746118291639a0dbd2fa7c9",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/agents/refactoring-specialist.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "refactoring-specialist",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "3dde87c317aeb3c188eddc33b7655c17774174802e603ceacfa073c6c86d0165",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/agents/release-manager.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "release-manager",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "3f3663a657f46ca8db67fef12a35d4e9a78e0feda73fb07eeebc72a953266f26",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/agents/security-reviewer.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "security-reviewer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "f9f75598a66ff9b00bed989e8aa587bc991f8b9be74b2807cdd8e490a9926545",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/agents/software-architect.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "software-architect",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "98c2774d25ac27d9e7c110eac9548711a0b75ad72242b2090faf7ed40fe29472",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/agents/test-engineer.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "test-engineer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "bf00719487533887ce7a3197f2ab6c66ba20d1c06ea4db4421bbb832c75a10b6",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/agents/user-researcher.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "user-researcher",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "f3fd65f3a23868c7b919290b09e223598f8a6cab21ba7d2995ce879ab1689865",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/agents/workflow-coordinator.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "workflow-coordinator",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "657000e5ed356f206cbc749c6728f14f88d394973d892746793e95c97abcd35d",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/rules/build-like-this/project.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "rules.76e4c28bb10e",
+      "resourceVersion": "0.0.0",
+      "security": "content"
+    },
+    {
+      "activation": "privileged",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [
+        "op.1ce4243640e4d0fd7330.hook-activation.dbf05075fb7d",
+        "op.1ce4243640e4d0fd7330.executable-change.dbf05075fb7d"
+      ],
+      "installedHash": "14cd97da4c43ebf368538692e55cff375ab75baa62b95a2bd8d4fc9c7542264e",
+      "mergeStrategy": "merge-json",
+      "mode": 420,
+      "ownedEntries": [
+        {
+          "identity": "name:repository-health",
+          "installedHash": "916d761696185698900150aeca5accfaa9412f2e36f5531cd97da13491705b6c",
+          "pointer": "/hooks/SessionStart"
+        },
+        {
+          "identity": "name:change-discipline",
+          "installedHash": "a0beff22b3f8349afbb9f85b427fc78bb2570135408d7647c040c33912faf32a",
+          "pointer": "/hooks/PreToolUse"
+        },
+        {
+          "identity": "name:feature-completeness",
+          "installedHash": "dfe221061c3cf10f6c002a19294448964195a950b8bf8d986e99e6a710f869c5",
+          "pointer": "/hooks/Stop"
+        }
+      ],
+      "path": ".claude/settings.json",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "hooks.f27ac6f39d89",
+      "resourceVersion": "0.0.0",
+      "security": "executable"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "1ddbc1d1820b77fdd88b0448311bc4c2e09fc9599624331a13df51b9e148a219",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/api-contract-design/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "api-contract-design",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "5b1352469d28b0b2ca65c25ad34b37464fa1f2aa688126982d4fb679e0a7be0c",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/architecture-assessment/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "architecture-assessment",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "270fd4de1e442b97f073bb9b499c40ad025638e24e01907dfa340c599a4726e0",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/architecture-design/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "architecture-design",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "3f5befe7cfe21527f1b9dd91bbf7ff8d1046bf604b8a26235fff29058810b904",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/backend-delivery/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "backend-delivery",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "6200c50c827107c16a9dff0e87836d51b41b0ffb29552142fc14c7093cae4339",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/build-backend/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "build-backend",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "bd2dafd1435a031a3e2015fa266eb1431aa2d36f23cbe7ece70554ffd7071d03",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/build-feature/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "build-feature",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "35109ab30dbf3fa3612bab630f7d38599390ec1060cf00ee7745cfceb473301e",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/build-frontend/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "build-frontend",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "8fb2e3a34cc6380f3edf6f58a2aa016d095a5896ed9c136ecad0d2c215618cc4",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/continuous-improvement/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "continuous-improvement",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "fcf0c66137927248f2b2223f0de9390a1f7fb65823f245d84676a1e5afefb115",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/database-modeling/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "database-modeling",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "15553413f84418f117ba91582b18df93c2b4e20780229deda4efa233929cfc30",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/debug-failure/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "debug-failure",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "85ea08d7be87325e33718cb94abcb29f9b6b15979dc864ad0a25e52424baa1fe",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/deploy-product/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "deploy-product",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "c92eb4d6bdee7ff8936cf57dd580c23b12abe57a2fa0b8dc216c62633993876b",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/deployment-delivery/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "deployment-delivery",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "bddb6d2e4fdf73f5b1a681af9354b7312077cf95fa8610f9c996be23272d6070",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/design-api/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "design-api",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "08f75cbd43298732bb03d7533c5f2202b7282f4ed002009ae74d3d7c583c9022",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/design-architecture/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "design-architecture",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "8d48d56262a693392588ff837e1cb25d850218512b28cb7d34b9e904e7b42cef",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/design-features/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "design-features",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "220879a356d4949df34ef63c07ad174ba26c7bb1474884715e6c11e05f3ce24e",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/feature-design/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "feature-design",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "1e46533b298775f7dfae3c3d6a766fabce67fcd06d33ee235701722e4a317dc2",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/feature-planning/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "feature-planning",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "eb2ceb4102beb95b042250369fa39e6e007f9142e49248b15609cb9efd0dc42b",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/frontend-delivery/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "frontend-delivery",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "b4ef921df3fc4a1400f703b42fda3f466cb9042eb48b8914236c029868a1f1b3",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/idea-validation/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "idea-validation",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "a5dd1455fe34b0a906146e8d96260b06b95e30081d34cad34567286692874de6",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/identify-target-users/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "identify-target-users",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "ff80b6b9ffe423574f621f3d8bb81efa5125757335d46db28eedfc2d9cde9a85",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/improve-documentation/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "improve-documentation",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "4b0f1c59f7079ffceca82fd97ea631959c2b8572651b02cc467208072aca28f7",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/improve-product/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "improve-product",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "f7825754124194ac952e826a7e312329a5c179f7637ed0c4239a00b17b8cdced",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/performance-investigation/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "performance-investigation",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "555798f79083afb361fe79d38633fbd14935ea3513e3a564cd534cf50f5684d7",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/plan-mvp/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "plan-mvp",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "a906425f9f3085ecd6818b03954eac596665fbc68c1d6689d278812eb8e630c3",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/product-definition/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "product-definition",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "817efcef61ef0cc8ae91f0cf4591271da8806cc4ad68857254f5f7a923c861e4",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/production-readiness/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "production-readiness",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "66855106a79db7949b9ffa48bf762c60c987252b8f820b83c2fd69f77b5489ec",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/refactor-module/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "refactor-module",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "3bf6bd24dc3e4a7eb1c6a232f15f0e0a4ae495e50760c93a071fa9e74971a7ab",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/release-readiness/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "release-readiness",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "23832c3a3fdba9214b679533782929b775ce499c3ab0294ae5b68ea95d87db40",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/repository-audit/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "repository-audit",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "7dc68fbdbf2d9857681eb5d44ee7d3e99629a691787396acca056a7591aaa10f",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/research-idea/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "research-idea",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "0cb7549333f8cf6ae43b4e62dd7befb042a324ff66a4b364e5d2c3492f87e23b",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/research-user-needs/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "research-user-needs",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "9a7cf8b073dae165df1969cdf0a1c6eb8565fd15e6ed033a9adca07ab2982c2d",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/review-architecture/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "review-architecture",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "e465ff721526f602625fda81833f807188297c44696e2fb59372934a05111a21",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/review-pull-request/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "review-pull-request",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "311c2e7e43027c1191a57d70eaf32974b025204c72e804b280ae17107f41c1d1",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/safe-refactoring/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "safe-refactoring",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "a8289e36050c7e89c6ceaec670460c5d5c3340900dd09d43d0e7fefb2438015b",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/systematic-debugging/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "systematic-debugging",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "b4099a769ca18ef5be9f6319d465ec8fbfad3006c4a08154449135ba990e7517",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/target-user-definition/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "target-user-definition",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "8011b57c48921688c539844a7d699fb9ff7b840fc2bd9bcce668684835fbfc9f",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/threat-model-review/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "threat-model-review",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "f95e9f48f71abadf100233bb48e602de717af240b6786e842a2f41b723e9199d",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/user-needs-research/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "user-needs-research",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "c33806e9d1ec1f7c60a25fff8695eb00fcd53a095501285a979a36d9a54c9a98",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/write-product-definition/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "write-product-definition",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex"
+      ],
+      "approvals": [],
+      "installedHash": "c8ce73cdf222aa8d37c965b6c152e4e6b6f18f39595603646b4bef3b681bb9b2",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".codex/agents/ai-engineer.toml",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "ai-engineer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex"
+      ],
+      "approvals": [],
+      "installedHash": "f4888c92753e33147ac456b5df69220b5b529dda80a87e533162dfec41f40de9",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".codex/agents/backend-engineer.toml",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "backend-engineer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex"
+      ],
+      "approvals": [],
+      "installedHash": "7ab27220c370eac6b13bfe997988e7628c8ac1711b172ce7076e62b82ee61c62",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".codex/agents/code-reviewer.toml",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "code-reviewer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex"
+      ],
+      "approvals": [],
+      "installedHash": "b093fd0c8b4584d12115444189e2cf60ac18554b908480d7cac6c21d703d6993",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".codex/agents/database-engineer.toml",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "database-engineer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex"
+      ],
+      "approvals": [],
+      "installedHash": "0e3eafe0ebb5c4c30825b94fc7bc06ee88bb15393186a05e2845c08af2e21139",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".codex/agents/debugging-specialist.toml",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "debugging-specialist",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex"
+      ],
+      "approvals": [],
+      "installedHash": "324a390b08294d0ad9d5eb68b36f677563b7e410b3ff79f2fec35afce5a9999d",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".codex/agents/devops-engineer.toml",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "devops-engineer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex"
+      ],
+      "approvals": [],
+      "installedHash": "ab2defd70cb029bc224b306743f3415721586baa1c6e0253a78600abb4afdbfb",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".codex/agents/frontend-engineer.toml",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "frontend-engineer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex"
+      ],
+      "approvals": [],
+      "installedHash": "abb51ee8e57b9ed042977526b078bf0835a93901ca0183a6aeb8945d38fc3daa",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".codex/agents/performance-engineer.toml",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "performance-engineer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex"
+      ],
+      "approvals": [],
+      "installedHash": "2d4a424ed73cef6ca1cc5541aa8ad5d74184a64d45a8216699b750850462235b",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".codex/agents/product-analyst.toml",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "product-analyst",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex"
+      ],
+      "approvals": [],
+      "installedHash": "82325a1f55e8fdf8c715884066a6317faa78c9bdb5c37d16c7c950191be54acf",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".codex/agents/product-designer.toml",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "product-designer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex"
+      ],
+      "approvals": [],
+      "installedHash": "c27e65ee4e2b25ef86b0eea6a6095361e021e1ac0a911dea89fc33b75ac7ea87",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".codex/agents/product-manager.toml",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "product-manager",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex"
+      ],
+      "approvals": [],
+      "installedHash": "1cb50a951ff8983d490d842be255f1a1f7cf8715d2b5e10ab1ca04dd8c49667c",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".codex/agents/product-researcher.toml",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "product-researcher",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex"
+      ],
+      "approvals": [],
+      "installedHash": "bad29b4b623e7b00602297d39611562e721f08712c8f2b22c4e21afb06957aa0",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".codex/agents/refactoring-specialist.toml",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "refactoring-specialist",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex"
+      ],
+      "approvals": [],
+      "installedHash": "c6ba3f8ed56a5f16d2a4e959a4b85f1bef8257bb8e63181afc6461706d6c35e7",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".codex/agents/release-manager.toml",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "release-manager",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex"
+      ],
+      "approvals": [],
+      "installedHash": "13dfd39db206b142738553693ae2cc64a155a9e0e101c9fb8078959aa24c5b58",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".codex/agents/security-reviewer.toml",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "security-reviewer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex"
+      ],
+      "approvals": [],
+      "installedHash": "7d2d9ecc95bf49c7d300194b540539ee7b8bfcc95fe88aefba8213817d55a4ed",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".codex/agents/software-architect.toml",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "software-architect",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex"
+      ],
+      "approvals": [],
+      "installedHash": "74c89448c7cb32ff91022dbf4ca949f6960512fe2e7ff93f32f2638a3aec4348",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".codex/agents/test-engineer.toml",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "test-engineer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex"
+      ],
+      "approvals": [],
+      "installedHash": "1b99a29a9fc33bdfbbf47bb5440ed86f21d809ce636bb8351a97b531f549620e",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".codex/agents/user-researcher.toml",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "user-researcher",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex"
+      ],
+      "approvals": [],
+      "installedHash": "992977b66bd4f5f6e38e8a24f179a57755bde112f7db72af59a5e6130c7b1e9b",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".codex/agents/workflow-coordinator.toml",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "workflow-coordinator",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "privileged",
+      "adapters": [
+        "codex"
+      ],
+      "approvals": [
+        "op.63e652542a5fc3649191.hook-activation.a81059fa48b8",
+        "op.63e652542a5fc3649191.executable-change.a81059fa48b8",
+        "op.63e652542a5fc3649191.experimental-activation.a81059fa48b8"
+      ],
+      "installedHash": "95c05bbb3b20f7393894784d10ac6f72445e519f2f5783842e6f55eafbba1e13",
+      "mergeStrategy": "manual",
+      "mode": 420,
+      "path": ".codex/config.toml",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "hooks.f32a51ab0e49",
+      "resourceVersion": "0.0.0",
+      "security": "executable"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "8183ca654d07369feaddf0192242a42a389e12380d2d0ef7ca8dadd8b78efcf2",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".cursor/agents/ai-engineer.md",
+      "profileIds": [
+        "cursor.2026-07-15"
+      ],
+      "resourceId": "ai-engineer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "fd64ece500ba120de9c0ae222d60db0f0b81a107ccb0f123d2f5a61d7d635208",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".cursor/agents/backend-engineer.md",
+      "profileIds": [
+        "cursor.2026-07-15"
+      ],
+      "resourceId": "backend-engineer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "7becd9d09ccdaade6cd9af440b9110f99f3b6b75f6080a647c516d07b9b8a070",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".cursor/agents/code-reviewer.md",
+      "profileIds": [
+        "cursor.2026-07-15"
+      ],
+      "resourceId": "code-reviewer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "af1a4d35d4d8ecd7ee00cd84d6e34c6f614a2f8f7cffacd61577b408d17b3232",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".cursor/agents/database-engineer.md",
+      "profileIds": [
+        "cursor.2026-07-15"
+      ],
+      "resourceId": "database-engineer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "e40394ba97030af6e99bf9d34cced66478ff21f0e5fa84e73a536e1b908b5492",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".cursor/agents/debugging-specialist.md",
+      "profileIds": [
+        "cursor.2026-07-15"
+      ],
+      "resourceId": "debugging-specialist",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "2f061c258915880febc09a08925676598bd95be0c2a2934874d09eb3df93f3d3",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".cursor/agents/devops-engineer.md",
+      "profileIds": [
+        "cursor.2026-07-15"
+      ],
+      "resourceId": "devops-engineer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "5e014b633855d6c4cefe9c2669beaa16b11aad1b5e93dc1d93ee760784c06ecb",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".cursor/agents/frontend-engineer.md",
+      "profileIds": [
+        "cursor.2026-07-15"
+      ],
+      "resourceId": "frontend-engineer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "76cad88c661bd703ffd786b070d2adc542a273f5a65a08124f246017e0218c61",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".cursor/agents/performance-engineer.md",
+      "profileIds": [
+        "cursor.2026-07-15"
+      ],
+      "resourceId": "performance-engineer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "33abc7bd793af4e96c99a4f013b8989ac501d6361b9c67d43a4bcf97aab7be2a",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".cursor/agents/product-analyst.md",
+      "profileIds": [
+        "cursor.2026-07-15"
+      ],
+      "resourceId": "product-analyst",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "0adcfdd7ac2f9d4245932ecea7b57efb1f5204956ee8c9f138a5bd0f8e603e84",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".cursor/agents/product-designer.md",
+      "profileIds": [
+        "cursor.2026-07-15"
+      ],
+      "resourceId": "product-designer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "3de773680f835daba833188c95f6fdd871bbd7c222a2e298ddf0bead94bcd40d",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".cursor/agents/product-manager.md",
+      "profileIds": [
+        "cursor.2026-07-15"
+      ],
+      "resourceId": "product-manager",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "45016412711e2ed407d9bff8ce7757ff581b17343b1824e548d1a1d727213375",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".cursor/agents/product-researcher.md",
+      "profileIds": [
+        "cursor.2026-07-15"
+      ],
+      "resourceId": "product-researcher",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "6c20da40448800e5238c5a05062342444f2705e39746118291639a0dbd2fa7c9",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".cursor/agents/refactoring-specialist.md",
+      "profileIds": [
+        "cursor.2026-07-15"
+      ],
+      "resourceId": "refactoring-specialist",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "3dde87c317aeb3c188eddc33b7655c17774174802e603ceacfa073c6c86d0165",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".cursor/agents/release-manager.md",
+      "profileIds": [
+        "cursor.2026-07-15"
+      ],
+      "resourceId": "release-manager",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "3f3663a657f46ca8db67fef12a35d4e9a78e0feda73fb07eeebc72a953266f26",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".cursor/agents/security-reviewer.md",
+      "profileIds": [
+        "cursor.2026-07-15"
+      ],
+      "resourceId": "security-reviewer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "f9f75598a66ff9b00bed989e8aa587bc991f8b9be74b2807cdd8e490a9926545",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".cursor/agents/software-architect.md",
+      "profileIds": [
+        "cursor.2026-07-15"
+      ],
+      "resourceId": "software-architect",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "98c2774d25ac27d9e7c110eac9548711a0b75ad72242b2090faf7ed40fe29472",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".cursor/agents/test-engineer.md",
+      "profileIds": [
+        "cursor.2026-07-15"
+      ],
+      "resourceId": "test-engineer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "bf00719487533887ce7a3197f2ab6c66ba20d1c06ea4db4421bbb832c75a10b6",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".cursor/agents/user-researcher.md",
+      "profileIds": [
+        "cursor.2026-07-15"
+      ],
+      "resourceId": "user-researcher",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "f3fd65f3a23868c7b919290b09e223598f8a6cab21ba7d2995ce879ab1689865",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".cursor/agents/workflow-coordinator.md",
+      "profileIds": [
+        "cursor.2026-07-15"
+      ],
+      "resourceId": "workflow-coordinator",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "privileged",
+      "adapters": [
+        "cursor"
+      ],
+      "approvals": [
+        "op.1ce4243640e4d0fd7330.hook-activation.b11dd91a04c6",
+        "op.1ce4243640e4d0fd7330.executable-change.b11dd91a04c6"
+      ],
+      "installedHash": "cfca336f9f4d3d7451aaacade1bfb18b6f9351e7e6a2ca66aa7f7e140d477631",
+      "mergeStrategy": "merge-json",
+      "mode": 420,
+      "ownedEntries": [
+        {
+          "identity": "$value",
+          "installedHash": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+          "pointer": "/version"
+        },
+        {
+          "identity": "name:repository-health",
+          "installedHash": "761fe2cb49a2021531a706d171c3d73a4865c658d6819be3d2189d6e6aad0bd9",
+          "pointer": "/hooks/sessionStart"
+        },
+        {
+          "identity": "name:change-discipline",
+          "installedHash": "38cfbf141438b1e9d1267bd60d1964919e822e1fc380a9972b45809fbd46c536",
+          "pointer": "/hooks/preToolUse"
+        },
+        {
+          "identity": "name:feature-completeness",
+          "installedHash": "832a7c0640419c455586fbcdea77e18f7eb1267aa99b905760ffeb3d3f8bada7",
+          "pointer": "/hooks/afterAgentResponse"
+        }
+      ],
+      "path": ".cursor/hooks.json",
+      "profileIds": [
+        "cursor.2026-07-15"
+      ],
+      "resourceId": "hooks.2190b3739f11",
+      "resourceVersion": "0.0.0",
+      "security": "executable"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "23f0a2da859f88c946c7595bd76a24e85eb77be6f510a66cad3b420339a0b3f8",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".cursor/rules/mstack.mdc",
+      "profileIds": [
+        "cursor.2026-07-15"
+      ],
+      "resourceId": "project-instructions",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "mstack-runtime"
+      ],
+      "approvals": [],
+      "installedHash": "b095caf4117d9a23484b32fadf36c3c157aaa0f205072eab94b3db88fbebb0c6",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".mstack/runtime/.gitignore",
+      "profileIds": [
+        "mstack-runtime.2026-07-15"
+      ],
+      "resourceId": "runtime-state-gitignore",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "privileged",
+      "adapters": [
+        "mstack-runtime"
+      ],
+      "approvals": [
+        "op.63e652542a5fc3649191.hook-activation.59e88531a1c0",
+        "op.63e652542a5fc3649191.executable-change.59e88531a1c0"
+      ],
+      "installedHash": "fa5432b69bb32635e4e2b9e6fe3736b6989d4b71d6193134d138bdb2f19cdde7",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".mstack/runtime/hooks/change-discipline.mjs",
+      "profileIds": [
+        "mstack-runtime.2026-07-15"
+      ],
+      "resourceId": "change-discipline-hook",
+      "resourceVersion": "1.0.0",
+      "security": "executable"
+    },
+    {
+      "activation": "privileged",
+      "adapters": [
+        "mstack-runtime"
+      ],
+      "approvals": [
+        "op.63e652542a5fc3649191.hook-activation.f7c24637cba3",
+        "op.63e652542a5fc3649191.executable-change.f7c24637cba3"
+      ],
+      "installedHash": "7a734085df6a83c25fc275190e6d1bfbb9cce7980f7728d6375b4781b60dd71f",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".mstack/runtime/hooks/feature-completeness.mjs",
+      "profileIds": [
+        "mstack-runtime.2026-07-15"
+      ],
+      "resourceId": "feature-completeness-hook",
+      "resourceVersion": "1.0.0",
+      "security": "executable"
+    },
+    {
+      "activation": "privileged",
+      "adapters": [
+        "mstack-runtime"
+      ],
+      "approvals": [
+        "op.63e652542a5fc3649191.hook-activation.5577a9ce7da2",
+        "op.63e652542a5fc3649191.executable-change.5577a9ce7da2"
+      ],
+      "installedHash": "8f6e91196ed596159d1a6e1f5d0c3c22375a7a89f2b149a4fdaec0a934d8db09",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".mstack/runtime/hooks/repository-health.mjs",
+      "profileIds": [
+        "mstack-runtime.2026-07-15"
+      ],
+      "resourceId": "repository-health-hook",
+      "resourceVersion": "1.0.0",
+      "security": "executable"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "mstack-runtime"
+      ],
+      "approvals": [],
+      "installedHash": "3d2d02c9a62ec23040fe44ebb2b9e572bd7dc871fadaea6c5775db9ce578df48",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".mstack/templates/adr.template.md",
+      "profileIds": [
+        "mstack-runtime.2026-07-15"
+      ],
+      "resourceId": "adr-template",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "mstack-runtime"
+      ],
+      "approvals": [],
+      "installedHash": "e2b11b0f9199c4a63f932532e8cd71ef70e0d8c551cd1e7451c306c8d64e4b63",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".mstack/templates/agent.template.md",
+      "profileIds": [
+        "mstack-runtime.2026-07-15"
+      ],
+      "resourceId": "agent-template",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "mstack-runtime"
+      ],
+      "approvals": [],
+      "installedHash": "a507f5af1f685db3ca617060929870302fb1622ab06faa9bd88e28ac3dbcca75",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".mstack/templates/api.template.md",
+      "profileIds": [
+        "mstack-runtime.2026-07-15"
+      ],
+      "resourceId": "api-template",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "mstack-runtime"
+      ],
+      "approvals": [],
+      "installedHash": "073b64e79a7d8a0ecbabe3af197cb9167b97c5b22bc6c05251f966f9d3e0325f",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".mstack/templates/architecture.template.md",
+      "profileIds": [
+        "mstack-runtime.2026-07-15"
+      ],
+      "resourceId": "architecture-template",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "mstack-runtime"
+      ],
+      "approvals": [],
+      "installedHash": "74d6b3cae427f96eb29b2ef7354d0c306a4522f6a998beed42b815339105de0f",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".mstack/templates/discovery.template.md",
+      "profileIds": [
+        "mstack-runtime.2026-07-15"
+      ],
+      "resourceId": "discovery-template",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "mstack-runtime"
+      ],
+      "approvals": [],
+      "installedHash": "566d0ca1a2362dd34910407fcd4ed1a77bd63158db482d9c46f09deca1afd015",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".mstack/templates/experiment.template.md",
+      "profileIds": [
+        "mstack-runtime.2026-07-15"
+      ],
+      "resourceId": "experiment-template",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "mstack-runtime"
+      ],
+      "approvals": [],
+      "installedHash": "868714769562c135964b3740d764745a98c527054a80ec560e07245ede846db8",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".mstack/templates/feature.template.md",
+      "profileIds": [
+        "mstack-runtime.2026-07-15"
+      ],
+      "resourceId": "feature-template",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "mstack-runtime"
+      ],
+      "approvals": [],
+      "installedHash": "413f369aeacd9e2ff24c22cb2d02bf61c7f497cc338ecb69cab7fa6fcba4a031",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".mstack/templates/product.template.md",
+      "profileIds": [
+        "mstack-runtime.2026-07-15"
+      ],
+      "resourceId": "product-template",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "mstack-runtime"
+      ],
+      "approvals": [],
+      "installedHash": "de5a6634ce24f65225df90e38899480f814c18f626468f35721aa88c821b75be",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".mstack/templates/prompt.template.md",
+      "profileIds": [
+        "mstack-runtime.2026-07-15"
+      ],
+      "resourceId": "prompt-template",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "mstack-runtime"
+      ],
+      "approvals": [],
+      "installedHash": "54c0f647544c49a43e67170802038013662fe4e91b7ada01254ec52b9816bf6f",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".mstack/templates/repository.template.md",
+      "profileIds": [
+        "mstack-runtime.2026-07-15"
+      ],
+      "resourceId": "repository-template",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "codex"
+      ],
+      "approvals": [],
+      "installedHash": "0788ca4514dec2670083a42e47f737e0c7f7a013ca4beb6d857e8573481c58f3",
+      "managedHash": "49d0abc4f996e53f6f21d83631d497faf59cdefefe8cf00d6d87c57041d08d57",
+      "mergeStrategy": "managed-block",
+      "mode": 420,
+      "path": "AGENTS.md",
+      "profileIds": [
+        "codex.2026-07-15"
+      ],
+      "resourceId": "project-instructions",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "882f3b0916ed516a764eed437058226859a43db35dd8ddf4f46aa024a990e671",
+      "managedHash": "738e487bfc79ea93268d056cd658acbc3fcd4b7bb4b47dde408b1a31578a02d1",
+      "mergeStrategy": "managed-block",
+      "mode": 420,
+      "path": "CLAUDE.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "project-instructions",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    }
+  ],
+  "runtimeId": "build-like-this",
+  "runtimeVersion": "1.1.0",
+  "schemaVersion": 1
+}

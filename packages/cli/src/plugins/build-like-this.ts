@@ -3,7 +3,7 @@ import type { MstackPlugin } from "./types.js";
 
 export const buildLikeThisPlugin: MstackPlugin = {
   id: "build-like-this",
-  version: "1.0.0",
+  version: "1.1.0",
   displayName: "Build Like This",
   description: "Misbah Khursheed's opinionated product-to-production engineering workflow",
   templates: [
@@ -23,15 +23,15 @@ export const buildLikeThisPlugin: MstackPlugin = {
       description: "Project guidance, specialist agents, reusable prompts, skills, hooks, and templates",
       createSpec: ({ projectName }) => createBuildLikeThisRuntime({
         projectName,
-        projectDescription: "This repository follows Misbah Khursheed's Build Like This workflow: product reasoning before implementation, explicit backend contracts, modular architecture, and verified delivery.",
-        projectInstructions: "Read docs/product.md and docs/architecture.md before material implementation work. Preserve user-owned guidance and update affected sources of truth with behavioral changes.",
+        projectDescription: "This host repository is the project being built. Build Like This is the engineering method, and mstack is the installer that adds the method to the project. They describe how to work, not what to build, unless project-owned documentation explicitly makes them the product.",
+        projectInstructions: "Treat the project's own docs/ directory, code, and tests as its sources of truth. Read docs/product.md and docs/architecture.md before material implementation work, preserve user-owned guidance, and update affected sources of truth with behavioral changes. Use .mstack/templates/ only as reference scaffolds: adapt them to this project, and never treat template text as a project requirement or evidence.",
         context: [
           { path: "docs/product.md", description: "product intent, users, scope, and success measures" },
           { path: "docs/architecture.md", description: "system boundaries, contracts, and operational decisions" },
           { path: "docs/features.md", description: "feature index when present", required: false },
         ],
         onboarding: {
-          summary: "Start with the product outcome, design system boundaries and backend contracts, then ship a verified vertical slice.",
+          summary: "If the idea is not validated, begin with the research-idea prompt. Then use write-product-definition and design-architecture to establish project intent and system boundaries before shipping a verified vertical slice.",
           verificationCommands: ["mstack status", "mstack doctor"],
         },
         includeHooks: true,

@@ -57,7 +57,12 @@ function reconcileObject(result: Record<string, unknown>, desired: Record<string
       }
       for (const desiredItem of desiredValue) {
         const itemIdentity = identity(desiredItem);
-        const collision = array.find((item) => identity(item) === itemIdentity);
+        let collisionIndex = array.findIndex((item) => identity(item) === itemIdentity);
+        if (collisionIndex < 0) {
+          const legacyIndex = legacyNamedItemIndex(array, desiredItem);
+          if (legacyIndex !== undefined) array.splice(legacyIndex, 1);
+        }
+        const collision = collisionIndex < 0 ? undefined : array[collisionIndex];
         if (collision !== undefined && hashValue(collision) !== hashValue(desiredItem)) conflicts.push(`${pointer}#${itemIdentity}`);
         if (collision === undefined || hashValue(collision) !== hashValue(desiredItem)) array.push(desiredItem);
         entries.push({ pointer, identity: itemIdentity, installedHash: hashValue(desiredItem) });
@@ -80,6 +85,20 @@ function identity(value: unknown): string {
     if (Array.isArray(hooks) && isObject(hooks[0]) && typeof hooks[0].command === "string") return `command:${hooks[0].command}`;
   }
   return `hash:${hashValue(value)}`;
+}
+
+function legacyNamedItemIndex(array: readonly unknown[], desired: unknown): number | undefined {
+  if (!isObject(desired) || typeof desired.name !== "string" || !hasCommand(desired)) return undefined;
+  const legacy = structuredClone(desired);
+  delete legacy.name;
+  const legacyHash = hashValue(legacy);
+  const matches = array.flatMap((item, index) => hashValue(item) === legacyHash ? [index] : []);
+  return matches.length === 1 ? matches[0] : undefined;
+}
+
+function hasCommand(value: Record<string, unknown>): boolean {
+  if (typeof value.command === "string") return true;
+  return Array.isArray(value.hooks) && isObject(value.hooks[0]) && typeof value.hooks[0].command === "string";
 }
 
 function hashValue(value: unknown): string { return hashContent(stableStringify(value)); }
