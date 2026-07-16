@@ -1,6 +1,6 @@
 {
   "name": "buildlikethis",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "private": true,
   "description": "Misbah Khursheed's opinionated engineering playbook and the mstack CLI that installs it",
   "author": "Misbah Khursheed",

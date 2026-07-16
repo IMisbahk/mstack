@@ -90,7 +90,7 @@ merely decorate them.
 For a standard interactive run, show a compact plan and ask once:
 
 ```text
-mstack 0.3.0
+mstack 0.3.1
 
 Install Misbah's Build Like This workflow in ~/code/acme
 
@@ -242,7 +242,7 @@ mstack consumes:
 ```text
 mstack doctor
 
-  ✓ CLI             0.3.0
+  ✓ CLI             0.3.1
   ✓ Runtime         Node.js 22.4.1
   ✓ Repository      ~/code/acme
   ✓ Permissions     writable
@@ -340,7 +340,7 @@ Check for updates asynchronously and never delay the requested command. Show at
 most one notice every seven days, after the command result:
 
 ```text
-Update available 0.2.0 → 0.3.0
+Update available 0.3.0 → 0.3.1
 Run `mstack update`
 ```
 

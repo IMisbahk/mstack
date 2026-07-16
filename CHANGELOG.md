@@ -2,6 +2,18 @@
 
 All notable changes to mstack are documented here. This project follows [Semantic Versioning](https://semver.org/).
 
+## [0.3.1] - 2026-07-16
+
+### Fixed
+
+- Render Codex lifecycle hooks with the current event-keyed `[hooks]` schema, nested command definitions, and supported `timeout` field.
+- Stop emitting the unsupported `type` field for Codex MCP server configuration.
+- Verify generated Codex configuration with the installed Codex CLI when it is available during the test run.
+
+### Migration
+
+- `0.3.0` users who configured Codex should upgrade and rerun `mstack ai setup codex` to replace the invalid `.codex/config.toml` hook configuration.
+
 ## [0.3.0] - 2026-07-16
 
 ### Added
@@ -33,4 +45,5 @@ All notable changes to mstack are documented here. This project follows [Semanti
 - Privileged hooks, executable changes, network resources, trust changes, and policy changes now require recorded operation-specific approval.
 - Runtime manifests exclude secrets, absolute paths, and user content; generated hooks remain local, deterministic, bounded, and reviewable.
 
+[0.3.1]: https://github.com/IMisbahk/mstack/compare/mstack-v0.3.0...mstack-v0.3.1
 [0.3.0]: https://github.com/IMisbahk/mstack/compare/c54a28b...mstack-v0.3.0
