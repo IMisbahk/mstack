@@ -89,7 +89,17 @@ export const codexAdapter: IntegrationAdapter = {
     if ((spec.hooks?.length ?? 0) > 0 || (spec.mcpServers?.length ?? 0) > 0) {
       const config: string[] = [];
       for (const hook of spec.hooks ?? []) {
-        config.push("[[hooks]]", `event = ${tomlString(hookEvents[hook.event])}`, `command = ${tomlString(hook.command)}`, ...(hook.matcher === undefined ? [] : [`matcher = ${tomlString(hook.matcher)}`]), ...(hook.timeoutMs === undefined ? [] : [`timeout_seconds = ${timeoutSeconds(hook.timeoutMs)}`]), "");
+        const event = hookEvents[hook.event];
+        config.push(
+          `[[hooks.${event}]]`,
+          ...(hook.matcher === undefined ? [] : [`matcher = ${tomlString(hook.matcher)}`]),
+          "",
+          `[[hooks.${event}.hooks]]`,
+          `type = ${tomlString("command")}`,
+          `command = ${tomlString(hook.command)}`,
+          ...(hook.timeoutMs === undefined ? [] : [`timeout = ${timeoutSeconds(hook.timeoutMs)}`]),
+          "",
+        );
         if (hook.event === "session-end") {
           diagnostics.push(
             warning(
@@ -101,7 +111,13 @@ export const codexAdapter: IntegrationAdapter = {
         }
       }
       for (const server of spec.mcpServers ?? []) {
-        config.push(`[mcp_servers.${tomlString(server.id)}]`, `type = ${tomlString(server.type)}`, ...(server.url === undefined ? [] : [`url = ${tomlString(server.url)}`]), ...(server.command === undefined ? [] : [`command = ${tomlString(server.command)}`]), ...(server.args === undefined ? [] : [`args = ${JSON.stringify(server.args)}`]), "");
+        config.push(
+          `[mcp_servers.${tomlString(server.id)}]`,
+          ...(server.url === undefined ? [] : [`url = ${tomlString(server.url)}`]),
+          ...(server.command === undefined ? [] : [`command = ${tomlString(server.command)}`]),
+          ...(server.args === undefined ? [] : [`args = ${JSON.stringify(server.args)}`]),
+          "",
+        );
       }
       artifacts.push(
         { ...artifact(environment, (spec.hooks?.length ?? 0) > 0 ? "hooks" : "mcp", ".codex/config.toml", config.join("\n"), "manual"), security: (spec.mcpServers?.length ?? 0) > 0 ? "network" : "executable", activation: "privileged", constraints: { "executable-change": (spec.hooks?.length ?? 0) > 0 } },

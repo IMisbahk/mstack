@@ -10,6 +10,17 @@ Use `mstack validate` when the CLI runs correctly but repository or AI runtime s
 
 For support tooling or CI, use `mstack doctor --json`. Reports include the CLI and Node versions, platform, repository detection, Git availability, write permissions, configuration, and managed-file integrity. Secrets and environment values are not included.
 
+## Codex reports `expected struct HooksToml`
+
+mstack `0.3.0` generated an obsolete flat hook array in `.codex/config.toml`. Upgrade to `0.3.1` or newer, then regenerate the Codex integration:
+
+```sh
+npm install -g @imisbahk/mstack@latest
+mstack ai setup codex
+```
+
+Review and approve the `.codex/config.toml` replacement when prompted. The corrected configuration uses Codex's event-keyed hook tables and preserves the repository-local advisory hook behavior.
+
 ## Repository is not initialized
 
 Run `mstack init` from the repository root or pass a target explicitly:

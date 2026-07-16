@@ -97,7 +97,7 @@ test("built-in adapters declare and render all target environments", () => {
   );
   assert.match(
     plan.artifacts.find((artifact) => artifact.path === ".codex/config.toml")?.content ?? "",
-    /timeout_seconds = 10/,
+    /timeout = 10/,
   );
   assert.match(
     plan.artifacts.find((artifact) => artifact.path === ".gemini/settings.json")?.content ?? "",
