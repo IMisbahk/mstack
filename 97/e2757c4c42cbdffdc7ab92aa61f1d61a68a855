@@ -1,0 +1,27 @@
+packages/ai-integrations/test/adapters.test.ts
+  s_692f3cf26d6301::t_6d3afb8ba84ab1 2-5,44-48,50,65-75,81,83-93
+  s_692f3cf26d6301::t_57977e0073427b 76-80,82
+  s_692f3cf26d6301::t_a15157e4c7aed5 94-95
+packages/ai-integrations/src/adapters/codex.ts
+  s_692f3cf26d6301::t_6d3afb8ba84ab1 92-102,114-120
+packages/ai-integrations/test/integrations.test.ts
+  s_692f3cf26d6301::t_6d3afb8ba84ab1 100
+docs/cli/troubleshooting.md
+  s_692f3cf26d6301::t_ab264a46fe5358 13-23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "97e2757c4c42cbdffdc7ab92aa61f1d61a68a855",
+  "prompts": {},
+  "sessions": {
+    "s_692f3cf26d6301": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f6741-5144-7382-bdd3-18bef5f09177",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Misbah Khursheed <m.misbahkhursheed@gmail.com>"
+    }
+  }
+}
