@@ -1,15 +1,377 @@
 {
   "recovery": {
-    "backupRoot": ".mstack/runtime/backups/op.fc03d01079d67201f735",
-    "journalPath": ".mstack/runtime/operations/op.fc03d01079d67201f735.json",
-    "operationId": "op.fc03d01079d67201f735"
+    "backupRoot": ".mstack/runtime/backups/op.a91195f6a5ccbfb477fd",
+    "journalPath": ".mstack/runtime/operations/op.a91195f6a5ccbfb477fd.json",
+    "operationId": "op.a91195f6a5ccbfb477fd"
   },
   "resources": [
     {
       "activation": "passive",
       "adapters": [
+        "antigravity"
+      ],
+      "approvals": [],
+      "installedHash": "8183ca654d07369feaddf0192242a42a389e12380d2d0ef7ca8dadd8b78efcf2",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/agents/ai-engineer/agent.md",
+      "profileIds": [
+        "antigravity.2026-07-18"
+      ],
+      "resourceId": "ai-engineer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "antigravity"
+      ],
+      "approvals": [],
+      "installedHash": "fd64ece500ba120de9c0ae222d60db0f0b81a107ccb0f123d2f5a61d7d635208",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/agents/backend-engineer/agent.md",
+      "profileIds": [
+        "antigravity.2026-07-18"
+      ],
+      "resourceId": "backend-engineer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "antigravity"
+      ],
+      "approvals": [],
+      "installedHash": "7becd9d09ccdaade6cd9af440b9110f99f3b6b75f6080a647c516d07b9b8a070",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/agents/code-reviewer/agent.md",
+      "profileIds": [
+        "antigravity.2026-07-18"
+      ],
+      "resourceId": "code-reviewer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "antigravity"
+      ],
+      "approvals": [],
+      "installedHash": "af1a4d35d4d8ecd7ee00cd84d6e34c6f614a2f8f7cffacd61577b408d17b3232",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/agents/database-engineer/agent.md",
+      "profileIds": [
+        "antigravity.2026-07-18"
+      ],
+      "resourceId": "database-engineer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "antigravity"
+      ],
+      "approvals": [],
+      "installedHash": "e40394ba97030af6e99bf9d34cced66478ff21f0e5fa84e73a536e1b908b5492",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/agents/debugging-specialist/agent.md",
+      "profileIds": [
+        "antigravity.2026-07-18"
+      ],
+      "resourceId": "debugging-specialist",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "antigravity"
+      ],
+      "approvals": [],
+      "installedHash": "2f061c258915880febc09a08925676598bd95be0c2a2934874d09eb3df93f3d3",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/agents/devops-engineer/agent.md",
+      "profileIds": [
+        "antigravity.2026-07-18"
+      ],
+      "resourceId": "devops-engineer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "antigravity"
+      ],
+      "approvals": [],
+      "installedHash": "5e014b633855d6c4cefe9c2669beaa16b11aad1b5e93dc1d93ee760784c06ecb",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/agents/frontend-engineer/agent.md",
+      "profileIds": [
+        "antigravity.2026-07-18"
+      ],
+      "resourceId": "frontend-engineer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "antigravity"
+      ],
+      "approvals": [],
+      "installedHash": "76cad88c661bd703ffd786b070d2adc542a273f5a65a08124f246017e0218c61",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/agents/performance-engineer/agent.md",
+      "profileIds": [
+        "antigravity.2026-07-18"
+      ],
+      "resourceId": "performance-engineer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "antigravity"
+      ],
+      "approvals": [],
+      "installedHash": "33abc7bd793af4e96c99a4f013b8989ac501d6361b9c67d43a4bcf97aab7be2a",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/agents/product-analyst/agent.md",
+      "profileIds": [
+        "antigravity.2026-07-18"
+      ],
+      "resourceId": "product-analyst",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "antigravity"
+      ],
+      "approvals": [],
+      "installedHash": "0adcfdd7ac2f9d4245932ecea7b57efb1f5204956ee8c9f138a5bd0f8e603e84",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/agents/product-designer/agent.md",
+      "profileIds": [
+        "antigravity.2026-07-18"
+      ],
+      "resourceId": "product-designer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "antigravity"
+      ],
+      "approvals": [],
+      "installedHash": "3de773680f835daba833188c95f6fdd871bbd7c222a2e298ddf0bead94bcd40d",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/agents/product-manager/agent.md",
+      "profileIds": [
+        "antigravity.2026-07-18"
+      ],
+      "resourceId": "product-manager",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "antigravity"
+      ],
+      "approvals": [],
+      "installedHash": "45016412711e2ed407d9bff8ce7757ff581b17343b1824e548d1a1d727213375",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/agents/product-researcher/agent.md",
+      "profileIds": [
+        "antigravity.2026-07-18"
+      ],
+      "resourceId": "product-researcher",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "antigravity"
+      ],
+      "approvals": [],
+      "installedHash": "6c20da40448800e5238c5a05062342444f2705e39746118291639a0dbd2fa7c9",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/agents/refactoring-specialist/agent.md",
+      "profileIds": [
+        "antigravity.2026-07-18"
+      ],
+      "resourceId": "refactoring-specialist",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "antigravity"
+      ],
+      "approvals": [],
+      "installedHash": "3dde87c317aeb3c188eddc33b7655c17774174802e603ceacfa073c6c86d0165",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/agents/release-manager/agent.md",
+      "profileIds": [
+        "antigravity.2026-07-18"
+      ],
+      "resourceId": "release-manager",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "antigravity"
+      ],
+      "approvals": [],
+      "installedHash": "3f3663a657f46ca8db67fef12a35d4e9a78e0feda73fb07eeebc72a953266f26",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/agents/security-reviewer/agent.md",
+      "profileIds": [
+        "antigravity.2026-07-18"
+      ],
+      "resourceId": "security-reviewer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "antigravity"
+      ],
+      "approvals": [],
+      "installedHash": "f9f75598a66ff9b00bed989e8aa587bc991f8b9be74b2807cdd8e490a9926545",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/agents/software-architect/agent.md",
+      "profileIds": [
+        "antigravity.2026-07-18"
+      ],
+      "resourceId": "software-architect",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "antigravity"
+      ],
+      "approvals": [],
+      "installedHash": "98c2774d25ac27d9e7c110eac9548711a0b75ad72242b2090faf7ed40fe29472",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/agents/test-engineer/agent.md",
+      "profileIds": [
+        "antigravity.2026-07-18"
+      ],
+      "resourceId": "test-engineer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "antigravity"
+      ],
+      "approvals": [],
+      "installedHash": "bf00719487533887ce7a3197f2ab6c66ba20d1c06ea4db4421bbb832c75a10b6",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/agents/user-researcher/agent.md",
+      "profileIds": [
+        "antigravity.2026-07-18"
+      ],
+      "resourceId": "user-researcher",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "antigravity"
+      ],
+      "approvals": [],
+      "installedHash": "f3fd65f3a23868c7b919290b09e223598f8a6cab21ba7d2995ce879ab1689865",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/agents/workflow-coordinator/agent.md",
+      "profileIds": [
+        "antigravity.2026-07-18"
+      ],
+      "resourceId": "workflow-coordinator",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "privileged",
+      "adapters": [
+        "antigravity"
+      ],
+      "approvals": [
+        "op.a91195f6a5ccbfb477fd.hook-activation.9d97210c9c7c",
+        "op.a91195f6a5ccbfb477fd.executable-change.9d97210c9c7c"
+      ],
+      "installedHash": "5adcd66aa506ab662a119b2c66d8e8cafe7c9829fa15c748e64d39a1af877d6b",
+      "mergeStrategy": "merge-json",
+      "mode": 420,
+      "ownedEntries": [
+        {
+          "identity": "command:node -e \"const f=require('node:fs'),p=require('node:path'),u=require('node:url');let d=process.cwd(),s;for(;;){s=p.join(d,'.mstack','runtime','hooks','change-discipline.mjs');if(f.existsSync(s))break;const n=p.dirname(d);if(n===d)process.exit(0);d=n};import(u.pathToFileURL(s).href)\"",
+          "installedHash": "2c6116068258b9d2686c41e2fe54b7d7a7325a559979bc84c5750b9364b8f8a8",
+          "pointer": "/change-discipline/PreToolUse"
+        },
+        {
+          "identity": "command:node -e \"const f=require('node:fs'),p=require('node:path'),u=require('node:url');let d=process.cwd(),s;for(;;){s=p.join(d,'.mstack','runtime','hooks','risk-review.mjs');if(f.existsSync(s))break;const n=p.dirname(d);if(n===d)process.exit(0);d=n};import(u.pathToFileURL(s).href)\"",
+          "installedHash": "003d43bcdeb639e5099c898a79cec5b9b1db6089da64be5ddfdbddfb04cd8349",
+          "pointer": "/risk-review/PreToolUse"
+        },
+        {
+          "identity": "command:node -e \"const f=require('node:fs'),p=require('node:path'),u=require('node:url');let d=process.cwd(),s;for(;;){s=p.join(d,'.mstack','runtime','hooks','feature-completeness.mjs');if(f.existsSync(s))break;const n=p.dirname(d);if(n===d)process.exit(0);d=n};import(u.pathToFileURL(s).href)\"",
+          "installedHash": "f721fb6799989374f11c563335d66ddf733233b921bf96e9aa8f3dfe75b29c59",
+          "pointer": "/feature-completeness/PostInvocation"
+        }
+      ],
+      "path": ".agents/hooks.json",
+      "profileIds": [
+        "antigravity.2026-07-18"
+      ],
+      "resourceId": "hooks.e50be5fa1f6e",
+      "resourceVersion": "0.0.0",
+      "security": "executable"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "antigravity",
         "codex",
-        "cursor"
+        "cursor",
+        "opencode"
       ],
       "approvals": [],
       "installedHash": "1ddbc1d1820b77fdd88b0448311bc4c2e09fc9599624331a13df51b9e148a219",
@@ -17,8 +379,10 @@
       "mode": 420,
       "path": ".agents/skills/api-contract-design/SKILL.md",
       "profileIds": [
+        "antigravity.2026-07-18",
         "codex.2026-07-15",
-        "cursor.2026-07-15"
+        "cursor.2026-07-15",
+        "opencode.2026-07-18"
       ],
       "resourceId": "api-contract-design",
       "resourceVersion": "1.1.0",
@@ -27,8 +391,10 @@
     {
       "activation": "passive",
       "adapters": [
+        "antigravity",
         "codex",
-        "cursor"
+        "cursor",
+        "opencode"
       ],
       "approvals": [],
       "installedHash": "5b1352469d28b0b2ca65c25ad34b37464fa1f2aa688126982d4fb679e0a7be0c",
@@ -36,8 +402,10 @@
       "mode": 420,
       "path": ".agents/skills/architecture-assessment/SKILL.md",
       "profileIds": [
+        "antigravity.2026-07-18",
         "codex.2026-07-15",
-        "cursor.2026-07-15"
+        "cursor.2026-07-15",
+        "opencode.2026-07-18"
       ],
       "resourceId": "architecture-assessment",
       "resourceVersion": "1.1.0",
@@ -46,8 +414,10 @@
     {
       "activation": "passive",
       "adapters": [
+        "antigravity",
         "codex",
-        "cursor"
+        "cursor",
+        "opencode"
       ],
       "approvals": [],
       "installedHash": "270fd4de1e442b97f073bb9b499c40ad025638e24e01907dfa340c599a4726e0",
@@ -55,8 +425,10 @@
       "mode": 420,
       "path": ".agents/skills/architecture-design/SKILL.md",
       "profileIds": [
+        "antigravity.2026-07-18",
         "codex.2026-07-15",
-        "cursor.2026-07-15"
+        "cursor.2026-07-15",
+        "opencode.2026-07-18"
       ],
       "resourceId": "architecture-design",
       "resourceVersion": "1.1.0",
@@ -65,8 +437,10 @@
     {
       "activation": "passive",
       "adapters": [
+        "antigravity",
         "codex",
-        "cursor"
+        "cursor",
+        "opencode"
       ],
       "approvals": [],
       "installedHash": "3f5befe7cfe21527f1b9dd91bbf7ff8d1046bf604b8a26235fff29058810b904",
@@ -74,8 +448,10 @@
       "mode": 420,
       "path": ".agents/skills/backend-delivery/SKILL.md",
       "profileIds": [
+        "antigravity.2026-07-18",
         "codex.2026-07-15",
-        "cursor.2026-07-15"
+        "cursor.2026-07-15",
+        "opencode.2026-07-18"
       ],
       "resourceId": "backend-delivery",
       "resourceVersion": "1.1.0",
@@ -84,6 +460,7 @@
     {
       "activation": "passive",
       "adapters": [
+        "antigravity",
         "codex",
         "cursor"
       ],
@@ -93,6 +470,7 @@
       "mode": 420,
       "path": ".agents/skills/build-backend/SKILL.md",
       "profileIds": [
+        "antigravity.2026-07-18",
         "codex.2026-07-15",
         "cursor.2026-07-15"
       ],
@@ -103,6 +481,7 @@
     {
       "activation": "passive",
       "adapters": [
+        "antigravity",
         "codex",
         "cursor"
       ],
@@ -112,6 +491,7 @@
       "mode": 420,
       "path": ".agents/skills/build-feature/SKILL.md",
       "profileIds": [
+        "antigravity.2026-07-18",
         "codex.2026-07-15",
         "cursor.2026-07-15"
       ],
@@ -122,6 +502,7 @@
     {
       "activation": "passive",
       "adapters": [
+        "antigravity",
         "codex",
         "cursor"
       ],
@@ -131,6 +512,7 @@
       "mode": 420,
       "path": ".agents/skills/build-frontend/SKILL.md",
       "profileIds": [
+        "antigravity.2026-07-18",
         "codex.2026-07-15",
         "cursor.2026-07-15"
       ],
@@ -141,8 +523,10 @@
     {
       "activation": "passive",
       "adapters": [
+        "antigravity",
         "codex",
-        "cursor"
+        "cursor",
+        "opencode"
       ],
       "approvals": [],
       "installedHash": "8fb2e3a34cc6380f3edf6f58a2aa016d095a5896ed9c136ecad0d2c215618cc4",
@@ -150,8 +534,10 @@
       "mode": 420,
       "path": ".agents/skills/continuous-improvement/SKILL.md",
       "profileIds": [
+        "antigravity.2026-07-18",
         "codex.2026-07-15",
-        "cursor.2026-07-15"
+        "cursor.2026-07-15",
+        "opencode.2026-07-18"
       ],
       "resourceId": "continuous-improvement",
       "resourceVersion": "1.1.0",
@@ -160,8 +546,10 @@
     {
       "activation": "passive",
       "adapters": [
+        "antigravity",
         "codex",
-        "cursor"
+        "cursor",
+        "opencode"
       ],
       "approvals": [],
       "installedHash": "fcf0c66137927248f2b2223f0de9390a1f7fb65823f245d84676a1e5afefb115",
@@ -169,8 +557,10 @@
       "mode": 420,
       "path": ".agents/skills/database-modeling/SKILL.md",
       "profileIds": [
+        "antigravity.2026-07-18",
         "codex.2026-07-15",
-        "cursor.2026-07-15"
+        "cursor.2026-07-15",
+        "opencode.2026-07-18"
       ],
       "resourceId": "database-modeling",
       "resourceVersion": "1.1.0",
@@ -179,6 +569,7 @@
     {
       "activation": "passive",
       "adapters": [
+        "antigravity",
         "codex",
         "cursor"
       ],
@@ -188,6 +579,7 @@
       "mode": 420,
       "path": ".agents/skills/debug-failure/SKILL.md",
       "profileIds": [
+        "antigravity.2026-07-18",
         "codex.2026-07-15",
         "cursor.2026-07-15"
       ],
@@ -198,6 +590,7 @@
     {
       "activation": "passive",
       "adapters": [
+        "antigravity",
         "codex",
         "cursor"
       ],
@@ -207,6 +600,7 @@
       "mode": 420,
       "path": ".agents/skills/deploy-product/SKILL.md",
       "profileIds": [
+        "antigravity.2026-07-18",
         "codex.2026-07-15",
         "cursor.2026-07-15"
       ],
@@ -217,8 +611,10 @@
     {
       "activation": "passive",
       "adapters": [
+        "antigravity",
         "codex",
-        "cursor"
+        "cursor",
+        "opencode"
       ],
       "approvals": [],
       "installedHash": "c92eb4d6bdee7ff8936cf57dd580c23b12abe57a2fa0b8dc216c62633993876b",
@@ -226,8 +622,10 @@
       "mode": 420,
       "path": ".agents/skills/deployment-delivery/SKILL.md",
       "profileIds": [
+        "antigravity.2026-07-18",
         "codex.2026-07-15",
-        "cursor.2026-07-15"
+        "cursor.2026-07-15",
+        "opencode.2026-07-18"
       ],
       "resourceId": "deployment-delivery",
       "resourceVersion": "1.1.0",
@@ -236,6 +634,7 @@
     {
       "activation": "passive",
       "adapters": [
+        "antigravity",
         "codex",
         "cursor"
       ],
@@ -245,6 +644,7 @@
       "mode": 420,
       "path": ".agents/skills/design-api/SKILL.md",
       "profileIds": [
+        "antigravity.2026-07-18",
         "codex.2026-07-15",
         "cursor.2026-07-15"
       ],
@@ -255,6 +655,7 @@
     {
       "activation": "passive",
       "adapters": [
+        "antigravity",
         "codex",
         "cursor"
       ],
@@ -264,6 +665,7 @@
       "mode": 420,
       "path": ".agents/skills/design-architecture/SKILL.md",
       "profileIds": [
+        "antigravity.2026-07-18",
         "codex.2026-07-15",
         "cursor.2026-07-15"
       ],
@@ -274,6 +676,7 @@
     {
       "activation": "passive",
       "adapters": [
+        "antigravity",
         "codex",
         "cursor"
       ],
@@ -283,6 +686,7 @@
       "mode": 420,
       "path": ".agents/skills/design-features/SKILL.md",
       "profileIds": [
+        "antigravity.2026-07-18",
         "codex.2026-07-15",
         "cursor.2026-07-15"
       ],
@@ -293,8 +697,10 @@
     {
       "activation": "passive",
       "adapters": [
+        "antigravity",
         "codex",
-        "cursor"
+        "cursor",
+        "opencode"
       ],
       "approvals": [],
       "installedHash": "220879a356d4949df34ef63c07ad174ba26c7bb1474884715e6c11e05f3ce24e",
@@ -302,8 +708,10 @@
       "mode": 420,
       "path": ".agents/skills/feature-design/SKILL.md",
       "profileIds": [
+        "antigravity.2026-07-18",
         "codex.2026-07-15",
-        "cursor.2026-07-15"
+        "cursor.2026-07-15",
+        "opencode.2026-07-18"
       ],
       "resourceId": "feature-design",
       "resourceVersion": "1.1.0",
@@ -312,8 +720,10 @@
     {
       "activation": "passive",
       "adapters": [
+        "antigravity",
         "codex",
-        "cursor"
+        "cursor",
+        "opencode"
       ],
       "approvals": [],
       "installedHash": "1e46533b298775f7dfae3c3d6a766fabce67fcd06d33ee235701722e4a317dc2",
@@ -321,8 +731,10 @@
       "mode": 420,
       "path": ".agents/skills/feature-planning/SKILL.md",
       "profileIds": [
+        "antigravity.2026-07-18",
         "codex.2026-07-15",
-        "cursor.2026-07-15"
+        "cursor.2026-07-15",
+        "opencode.2026-07-18"
       ],
       "resourceId": "feature-planning",
       "resourceVersion": "1.1.0",
@@ -331,8 +743,10 @@
     {
       "activation": "passive",
       "adapters": [
+        "antigravity",
         "codex",
-        "cursor"
+        "cursor",
+        "opencode"
       ],
       "approvals": [],
       "installedHash": "eb2ceb4102beb95b042250369fa39e6e007f9142e49248b15609cb9efd0dc42b",
@@ -340,8 +754,10 @@
       "mode": 420,
       "path": ".agents/skills/frontend-delivery/SKILL.md",
       "profileIds": [
+        "antigravity.2026-07-18",
         "codex.2026-07-15",
-        "cursor.2026-07-15"
+        "cursor.2026-07-15",
+        "opencode.2026-07-18"
       ],
       "resourceId": "frontend-delivery",
       "resourceVersion": "1.1.0",
@@ -350,8 +766,10 @@
     {
       "activation": "passive",
       "adapters": [
+        "antigravity",
         "codex",
-        "cursor"
+        "cursor",
+        "opencode"
       ],
       "approvals": [],
       "installedHash": "b4ef921df3fc4a1400f703b42fda3f466cb9042eb48b8914236c029868a1f1b3",
@@ -359,8 +777,10 @@
       "mode": 420,
       "path": ".agents/skills/idea-validation/SKILL.md",
       "profileIds": [
+        "antigravity.2026-07-18",
         "codex.2026-07-15",
-        "cursor.2026-07-15"
+        "cursor.2026-07-15",
+        "opencode.2026-07-18"
       ],
       "resourceId": "idea-validation",
       "resourceVersion": "1.1.0",
@@ -369,6 +789,7 @@
     {
       "activation": "passive",
       "adapters": [
+        "antigravity",
         "codex",
         "cursor"
       ],
@@ -378,6 +799,7 @@
       "mode": 420,
       "path": ".agents/skills/identify-target-users/SKILL.md",
       "profileIds": [
+        "antigravity.2026-07-18",
         "codex.2026-07-15",
         "cursor.2026-07-15"
       ],
@@ -388,6 +810,7 @@
     {
       "activation": "passive",
       "adapters": [
+        "antigravity",
         "codex",
         "cursor"
       ],
@@ -397,6 +820,7 @@
       "mode": 420,
       "path": ".agents/skills/improve-documentation/SKILL.md",
       "profileIds": [
+        "antigravity.2026-07-18",
         "codex.2026-07-15",
         "cursor.2026-07-15"
       ],
@@ -407,6 +831,7 @@
     {
       "activation": "passive",
       "adapters": [
+        "antigravity",
         "codex",
         "cursor"
       ],
@@ -416,6 +841,7 @@
       "mode": 420,
       "path": ".agents/skills/improve-product/SKILL.md",
       "profileIds": [
+        "antigravity.2026-07-18",
         "codex.2026-07-15",
         "cursor.2026-07-15"
       ],
@@ -426,8 +852,10 @@
     {
       "activation": "passive",
       "adapters": [
+        "antigravity",
         "codex",
-        "cursor"
+        "cursor",
+        "opencode"
       ],
       "approvals": [],
       "installedHash": "f7825754124194ac952e826a7e312329a5c179f7637ed0c4239a00b17b8cdced",
@@ -435,8 +863,10 @@
       "mode": 420,
       "path": ".agents/skills/performance-investigation/SKILL.md",
       "profileIds": [
+        "antigravity.2026-07-18",
         "codex.2026-07-15",
-        "cursor.2026-07-15"
+        "cursor.2026-07-15",
+        "opencode.2026-07-18"
       ],
       "resourceId": "performance-investigation",
       "resourceVersion": "1.1.0",
@@ -445,6 +875,7 @@
     {
       "activation": "passive",
       "adapters": [
+        "antigravity",
         "codex",
         "cursor"
       ],
@@ -454,6 +885,7 @@
       "mode": 420,
       "path": ".agents/skills/plan-mvp/SKILL.md",
       "profileIds": [
+        "antigravity.2026-07-18",
         "codex.2026-07-15",
         "cursor.2026-07-15"
       ],
@@ -464,8 +896,10 @@
     {
       "activation": "passive",
       "adapters": [
+        "antigravity",
         "codex",
-        "cursor"
+        "cursor",
+        "opencode"
       ],
       "approvals": [],
       "installedHash": "a906425f9f3085ecd6818b03954eac596665fbc68c1d6689d278812eb8e630c3",
@@ -473,8 +907,10 @@
       "mode": 420,
       "path": ".agents/skills/product-definition/SKILL.md",
       "profileIds": [
+        "antigravity.2026-07-18",
         "codex.2026-07-15",
-        "cursor.2026-07-15"
+        "cursor.2026-07-15",
+        "opencode.2026-07-18"
       ],
       "resourceId": "product-definition",
       "resourceVersion": "1.1.0",
@@ -483,6 +919,7 @@
     {
       "activation": "passive",
       "adapters": [
+        "antigravity",
         "codex",
         "cursor"
       ],
@@ -492,6 +929,7 @@
       "mode": 420,
       "path": ".agents/skills/production-readiness/SKILL.md",
       "profileIds": [
+        "antigravity.2026-07-18",
         "codex.2026-07-15",
         "cursor.2026-07-15"
       ],
@@ -502,6 +940,7 @@
     {
       "activation": "passive",
       "adapters": [
+        "antigravity",
         "codex",
         "cursor"
       ],
@@ -511,6 +950,7 @@
       "mode": 420,
       "path": ".agents/skills/refactor-module/SKILL.md",
       "profileIds": [
+        "antigravity.2026-07-18",
         "codex.2026-07-15",
         "cursor.2026-07-15"
       ],
@@ -521,8 +961,10 @@
     {
       "activation": "passive",
       "adapters": [
+        "antigravity",
         "codex",
-        "cursor"
+        "cursor",
+        "opencode"
       ],
       "approvals": [],
       "installedHash": "3bf6bd24dc3e4a7eb1c6a232f15f0e0a4ae495e50760c93a071fa9e74971a7ab",
@@ -530,8 +972,10 @@
       "mode": 420,
       "path": ".agents/skills/release-readiness/SKILL.md",
       "profileIds": [
+        "antigravity.2026-07-18",
         "codex.2026-07-15",
-        "cursor.2026-07-15"
+        "cursor.2026-07-15",
+        "opencode.2026-07-18"
       ],
       "resourceId": "release-readiness",
       "resourceVersion": "1.1.0",
@@ -540,8 +984,10 @@
     {
       "activation": "passive",
       "adapters": [
+        "antigravity",
         "codex",
-        "cursor"
+        "cursor",
+        "opencode"
       ],
       "approvals": [],
       "installedHash": "23832c3a3fdba9214b679533782929b775ce499c3ab0294ae5b68ea95d87db40",
@@ -549,8 +995,10 @@
       "mode": 420,
       "path": ".agents/skills/repository-audit/SKILL.md",
       "profileIds": [
+        "antigravity.2026-07-18",
         "codex.2026-07-15",
-        "cursor.2026-07-15"
+        "cursor.2026-07-15",
+        "opencode.2026-07-18"
       ],
       "resourceId": "repository-audit",
       "resourceVersion": "1.1.0",
@@ -559,6 +1007,7 @@
     {
       "activation": "passive",
       "adapters": [
+        "antigravity",
         "codex",
         "cursor"
       ],
@@ -568,6 +1017,7 @@
       "mode": 420,
       "path": ".agents/skills/research-idea/SKILL.md",
       "profileIds": [
+        "antigravity.2026-07-18",
         "codex.2026-07-15",
         "cursor.2026-07-15"
       ],
@@ -578,6 +1028,7 @@
     {
       "activation": "passive",
       "adapters": [
+        "antigravity",
         "codex",
         "cursor"
       ],
@@ -587,6 +1038,7 @@
       "mode": 420,
       "path": ".agents/skills/research-user-needs/SKILL.md",
       "profileIds": [
+        "antigravity.2026-07-18",
         "codex.2026-07-15",
         "cursor.2026-07-15"
       ],
@@ -597,6 +1049,7 @@
     {
       "activation": "passive",
       "adapters": [
+        "antigravity",
         "codex",
         "cursor"
       ],
@@ -606,6 +1059,7 @@
       "mode": 420,
       "path": ".agents/skills/review-architecture/SKILL.md",
       "profileIds": [
+        "antigravity.2026-07-18",
         "codex.2026-07-15",
         "cursor.2026-07-15"
       ],
@@ -616,6 +1070,7 @@
     {
       "activation": "passive",
       "adapters": [
+        "antigravity",
         "codex",
         "cursor"
       ],
@@ -625,6 +1080,7 @@
       "mode": 420,
       "path": ".agents/skills/review-pull-request/SKILL.md",
       "profileIds": [
+        "antigravity.2026-07-18",
         "codex.2026-07-15",
         "cursor.2026-07-15"
       ],
@@ -635,8 +1091,10 @@
     {
       "activation": "passive",
       "adapters": [
+        "antigravity",
         "codex",
-        "cursor"
+        "cursor",
+        "opencode"
       ],
       "approvals": [],
       "installedHash": "311c2e7e43027c1191a57d70eaf32974b025204c72e804b280ae17107f41c1d1",
@@ -644,8 +1102,10 @@
       "mode": 420,
       "path": ".agents/skills/safe-refactoring/SKILL.md",
       "profileIds": [
+        "antigravity.2026-07-18",
         "codex.2026-07-15",
-        "cursor.2026-07-15"
+        "cursor.2026-07-15",
+        "opencode.2026-07-18"
       ],
       "resourceId": "safe-refactoring",
       "resourceVersion": "1.1.0",
@@ -654,8 +1114,10 @@
     {
       "activation": "passive",
       "adapters": [
+        "antigravity",
         "codex",
-        "cursor"
+        "cursor",
+        "opencode"
       ],
       "approvals": [],
       "installedHash": "a8289e36050c7e89c6ceaec670460c5d5c3340900dd09d43d0e7fefb2438015b",
@@ -663,8 +1125,10 @@
       "mode": 420,
       "path": ".agents/skills/systematic-debugging/SKILL.md",
       "profileIds": [
+        "antigravity.2026-07-18",
         "codex.2026-07-15",
-        "cursor.2026-07-15"
+        "cursor.2026-07-15",
+        "opencode.2026-07-18"
       ],
       "resourceId": "systematic-debugging",
       "resourceVersion": "1.1.0",
@@ -673,8 +1137,10 @@
     {
       "activation": "passive",
       "adapters": [
+        "antigravity",
         "codex",
-        "cursor"
+        "cursor",
+        "opencode"
       ],
       "approvals": [],
       "installedHash": "b4099a769ca18ef5be9f6319d465ec8fbfad3006c4a08154449135ba990e7517",
@@ -682,8 +1148,10 @@
       "mode": 420,
       "path": ".agents/skills/target-user-definition/SKILL.md",
       "profileIds": [
+        "antigravity.2026-07-18",
         "codex.2026-07-15",
-        "cursor.2026-07-15"
+        "cursor.2026-07-15",
+        "opencode.2026-07-18"
       ],
       "resourceId": "target-user-definition",
       "resourceVersion": "1.1.0",
@@ -692,8 +1160,10 @@
     {
       "activation": "passive",
       "adapters": [
+        "antigravity",
         "codex",
-        "cursor"
+        "cursor",
+        "opencode"
       ],
       "approvals": [],
       "installedHash": "8011b57c48921688c539844a7d699fb9ff7b840fc2bd9bcce668684835fbfc9f",
@@ -701,8 +1171,10 @@
       "mode": 420,
       "path": ".agents/skills/threat-model-review/SKILL.md",
       "profileIds": [
+        "antigravity.2026-07-18",
         "codex.2026-07-15",
-        "cursor.2026-07-15"
+        "cursor.2026-07-15",
+        "opencode.2026-07-18"
       ],
       "resourceId": "threat-model-review",
       "resourceVersion": "1.1.0",
@@ -711,8 +1183,10 @@
     {
       "activation": "passive",
       "adapters": [
+        "antigravity",
         "codex",
-        "cursor"
+        "cursor",
+        "opencode"
       ],
       "approvals": [],
       "installedHash": "f95e9f48f71abadf100233bb48e602de717af240b6786e842a2f41b723e9199d",
@@ -720,8 +1194,10 @@
       "mode": 420,
       "path": ".agents/skills/user-needs-research/SKILL.md",
       "profileIds": [
+        "antigravity.2026-07-18",
         "codex.2026-07-15",
-        "cursor.2026-07-15"
+        "cursor.2026-07-15",
+        "opencode.2026-07-18"
       ],
       "resourceId": "user-needs-research",
       "resourceVersion": "1.1.0",
@@ -730,6 +1206,7 @@
     {
       "activation": "passive",
       "adapters": [
+        "antigravity",
         "codex",
         "cursor"
       ],
@@ -739,6 +1216,7 @@
       "mode": 420,
       "path": ".agents/skills/write-product-definition/SKILL.md",
       "profileIds": [
+        "antigravity.2026-07-18",
         "codex.2026-07-15",
         "cursor.2026-07-15"
       ],
@@ -2792,7 +3270,655 @@
     {
       "activation": "passive",
       "adapters": [
-        "codex"
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "06808046f7dff59f573e8171d5be8b26f9de07dc1e6d1c2700a8c2f4c50bf3c6",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/agents/ai-engineer.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "ai-engineer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "c8a51391b3d9984652164ae109100a6f1f5c2d63e028ef24520dd67b3d9c8852",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/agents/backend-engineer.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "backend-engineer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "926febe49a397d25a5996196df29823d1a5464bf21d7a1a4f5a2e22849dd20d5",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/agents/code-reviewer.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "code-reviewer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "c525877c469716bb10406e76e103e6fb758be6927eda6d14182d83506608eb3f",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/agents/database-engineer.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "database-engineer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "a0caf9ae4223fe27b1c4bdfdaa5487985c89515f4083c7c3e6d568947fc6cb0b",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/agents/debugging-specialist.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "debugging-specialist",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "d38a5c089348ca7c4b01dbaebde5fbd489f85bdf9cf21d7128dc88f9816c46dc",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/agents/devops-engineer.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "devops-engineer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "2a92148c233b0e2e8d99893270b6cef3c40e95d91df2806838fc386dad20d3ba",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/agents/frontend-engineer.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "frontend-engineer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "9eddfb5db637231bc00f22190487eeef4aa0cfdfeb353663c33aa9330ec42b38",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/agents/performance-engineer.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "performance-engineer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "afe1638dbe9448d007f95dbfc95cf379e26c3ecb4c647d62f37a63829b37ef19",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/agents/product-analyst.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "product-analyst",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "03ef608cd6ed86462fa8cafdca1e149ef819cd0761c06dbcf146bc02918beb82",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/agents/product-designer.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "product-designer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "2026a650b3d1d2e7bb2ea0446d16bcfaa78cbe13d33da33df9706cd8ea5844e4",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/agents/product-manager.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "product-manager",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "dd995bc059e51294533a43620170bf21d216e845e26eec33790de77b2f7c9ac8",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/agents/product-researcher.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "product-researcher",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "e8b13e4f3e845fa941b3b7c5085f095578bed276d25f5002931a6bb7a8b83c76",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/agents/refactoring-specialist.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "refactoring-specialist",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "b509427fd7aa7daeb5f04ecc36e9e6f6b4a5b6358a0c0d44370fa53c4b8793ee",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/agents/release-manager.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "release-manager",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "8bc973097199c8cc1ce70b3454e86afa96b450ca510a4cbc462ef66b047c76a2",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/agents/security-reviewer.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "security-reviewer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "f2feca168b9b9940ed61918fd7cca29a75f63da143a1665405bccd4e102482de",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/agents/software-architect.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "software-architect",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "ec03fe3a76e959bf455e0c0b0209a03dafc1f280a2723a4bcee759741985fbe6",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/agents/test-engineer.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "test-engineer",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "248042f95248eb1a526d9b9e9faf04e6a36937e487f0e0e7ca6abbac7e52dadf",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/agents/user-researcher.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "user-researcher",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "3f1a4f5967bb4e0e5ce8168c3c016cf7a32784eaeccd0cd2a3421148fb634669",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/agents/workflow-coordinator.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "workflow-coordinator",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "f2717e627d0d777debcb0026a82203438c93df6f1da04d7998c86510be49f9c1",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/commands/build-backend.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "build-backend",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "6fadfd28b056ff9952bc936c816a58269f32784cb837d6e8fb5bc5fca78d0129",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/commands/build-feature.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "build-feature",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "3a23955be710dae98bd40f77c30a402195e09f3e85e5ae2f1c742dc42313e4b3",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/commands/build-frontend.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "build-frontend",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "9202870fe8e80333db8dc07ceb647b733f6b592916be0138a24b4e82edd5759b",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/commands/debug-failure.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "debug-failure",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "4abf41d92e7f67c9f189c612c50f9b56d11bdce28538c8b164756244e67adeb4",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/commands/deploy-product.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "deploy-product",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "ab3af8e57668f6365133098f80451a5623427455c21f6930815c5c18517888e6",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/commands/design-api.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "design-api",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "11e064a4ce08815aeb6fe767990d8fd9a2fa22ca5b9509181f790985f619fc94",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/commands/design-architecture.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "design-architecture",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "86332ae31c04261d31c3338166bcd65e8925dcda8eaf59bb430d657ef007d167",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/commands/design-features.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "design-features",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "17017c40b4280a002316a92372ace3e75835d1b0f996fb0e2efdf27582f3031e",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/commands/identify-target-users.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "identify-target-users",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "9a435d794a1697850a27ae4f0c90046fc9e9d4134d888d06e804b3dc0848607a",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/commands/improve-documentation.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "improve-documentation",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "9ef692788892285a23015ea8f70cf5a059ff53023a285773dfe01264096a6006",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/commands/improve-product.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "improve-product",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "e9dcd27a28674b8f926ebb4375d3cf766dca2edb5df8c22f45149c0c297088df",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/commands/plan-mvp.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "plan-mvp",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "0ba9f156d929968374c9ccdee9332b0ae753ba84e8f29d06ff3830f89e6a18c4",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/commands/production-readiness.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "production-readiness",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "f3bb527e97f3da97924ea82ea4d47d872f5f78496e5446e24682aaaf539ed185",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/commands/refactor-module.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "refactor-module",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "743924e9c8c2397ba110ee3c0e59129666ecaf6da7a44ed0eb6dd8c6e1247967",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/commands/research-idea.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "research-idea",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "2aeaeabbab45730f4d82ae67591140c17b8f09547e808da933d19d1c6c96a0f0",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/commands/research-user-needs.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "research-user-needs",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "cd838344ce59e38e740737bf5623ded0a894bc12c76049db7ebf6fad5886cd57",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/commands/review-architecture.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "review-architecture",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "4566049dcf87b8c8f00205c9922dcc6aad9f96e5147de79eff2bedd078c10941",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/commands/review-pull-request.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "review-pull-request",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "c0ac27687ea95e80e1ae303dce8fc7d17ef0a2f7e93deb033eac55ec46d2f1e7",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/commands/write-product-definition.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "write-product-definition",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "antigravity",
+        "codex",
+        "opencode"
       ],
       "approvals": [],
       "installedHash": "0788ca4514dec2670083a42e47f737e0c7f7a013ca4beb6d857e8573481c58f3",
@@ -2801,7 +3927,9 @@
       "mode": 420,
       "path": "AGENTS.md",
       "profileIds": [
-        "codex.2026-07-15"
+        "antigravity.2026-07-18",
+        "codex.2026-07-15",
+        "opencode.2026-07-18"
       ],
       "resourceId": "project-instructions",
       "resourceVersion": "1.1.0",
