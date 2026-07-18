@@ -1,0 +1,21 @@
+script.sh
+  s_0eec98ed8ed8fb::t_e039cd8376bfc1 17,118
+docs/decisions/0002-local-release-publisher.md
+  s_0eec98ed8ed8fb::t_e039cd8376bfc1 23-25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "d3b469531c1a924dc363004cf0e59500a9d87260",
+  "prompts": {},
+  "sessions": {
+    "s_0eec98ed8ed8fb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f74f6-122e-76d0-8062-1c5b198d7de7",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "Misbah Khursheed <m.misbahkhursheed@gmail.com>"
+    }
+  }
+}
