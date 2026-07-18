@@ -220,6 +220,11 @@ export interface GeneratedArtifact {
   readonly environment: string;
   readonly environments?: readonly string[];
   readonly profileId?: string;
+  readonly profileIds?: readonly string[];
+  readonly profileContributors?: readonly {
+    readonly environment: string;
+    readonly profileId: string;
+  }[];
   readonly resourceId?: string;
   readonly resourceVersion?: string;
   readonly feature: IntegrationFeature;

@@ -35,7 +35,7 @@ export const codexAdapter: IntegrationAdapter = {
   displayName: "OpenAI Codex",
   runtime: {
     commands: ["codex"],
-    projectMarkers: ["AGENTS.md", ".codex", ".agents/skills"],
+    projectMarkers: [".codex"],
     documentationUrl: "https://learn.chatgpt.com/docs/customization/overview",
   },
   capabilities,

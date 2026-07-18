@@ -74,11 +74,15 @@ mstack init
 mstack ai setup
 ```
 
-`mstack init` inspects the repository, installs planning documents and project configuration, preserves existing work, and records ownership. `mstack ai setup` separately configures reusable agents, prompts, hooks, skills, reference templates, onboarding, and repository-level guidance for Claude Code, Codex, Cursor, Gemini CLI, Continue, and Aider. Run `mstack ai setup --dry-run` to inspect the exact runtime plan before installing it.
+`mstack init` inspects the repository, installs planning documents and project configuration, preserves existing work, and records ownership. `mstack ai setup` separately configures reusable agents, prompts, hooks, skills, reference templates, onboarding, and repository-level guidance for 15 environments: Claude Code, Codex, Cursor, Gemini CLI, Continue, Aider, Antigravity, Kimi Code, GitHub Copilot, OpenCode, Kiro, Qwen Code, Junie, Cline, and Roo Code. Run `mstack ai setup --dry-run` to inspect the exact runtime plan before installing it.
 
 Use `mstack catalog` to discover the installed engineering resources and `mstack validate --strict` to verify planning readiness, managed ownership, and AI runtime integrity in CI.
 
-The current platform includes 6 AI environments, 19 specialist agents, 20 reusable skills, 3 automation hooks, 19 prompt packs, and 10 runtime templates. Its ten-phase workflow runs bounded specialist lanes in parallel where the AI environment supports subagents, while preserving one decision owner and safe sequential fallbacks elsewhere. It supports npm, pnpm, Yarn, and Bun, with versioned JSON output for automation.
+### Release locally
+
+From a clean `main` checkout, run `./script.sh major`, `./script.sh minor`, or `./script.sh patch`. The script validates the package, updates all workspace versions, regenerates the command reference, runs the release checks, creates and pushes the `mstack-v<version>` commit and tag, then opens npm's web login when needed and publishes `@imisbahk/mstack`. If publishing fails after the git push, rerun the printed `npm publish` command; do not create another version.
+
+The current platform includes 15 AI environments, 19 specialist agents, 20 reusable skills, 4 automation hooks, 19 prompt packs, and 10 runtime templates. Its ten-phase workflow runs bounded specialist lanes in parallel where the AI environment supports subagents, while preserving one decision owner and safe sequential fallbacks elsewhere. It supports npm, pnpm, Yarn, and Bun, with versioned JSON output for automation.
 
 Projects such as [g-stack](https://github.com/garrytan/gstack) already approach AI development environments with broad capability and configuration. I respect that approach. Build Like This makes a different trade-off: fewer choices, stronger defaults, and a specific product-to-production workflow. The purpose of mstack is not to expose every possible setup. It is to get a repository ready for the process I would personally use.
 

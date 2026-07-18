@@ -36,7 +36,18 @@ export function createRemovalPlan(inspection: RepositoryInspection, options: Rem
     if (selectedIds === undefined && selectedEnvironments === undefined) return [];
     if (selectedEnvironments === undefined) return [artifact];
     const remaining = (artifact.environments ?? [artifact.environment]).filter((adapter) => !selectedEnvironments.has(adapter));
-    return remaining.length === 0 ? [] : [{ ...artifact, environment: remaining[0]!, environments: remaining }];
+    if (remaining.length === 0) return [];
+    if (artifact.profileContributors === undefined) return [{ ...artifact, environment: remaining[0]!, environments: remaining }];
+    const profileContributors = artifact.profileContributors.filter((profile) => remaining.includes(profile.environment));
+    const profileIds = [...new Set(profileContributors.map((profile) => profile.profileId))].sort();
+    const { profileId: _profileId, profileIds: _profileIds, profileContributors: _profileContributors, ...base } = artifact;
+    void _profileId; void _profileIds; void _profileContributors;
+    return [{
+      ...base,
+      environment: remaining[0]!,
+      environments: remaining,
+      ...(profileIds.length === 0 ? {} : { profileId: profileIds[0], profileIds, profileContributors }),
+    }];
   });
   const desired: IntegrationPlan = { schemaVersion: 1, integrationId: inspection.manifest?.runtimeId ?? "legacy.runtime", integrationVersion: inspection.manifest?.runtimeVersion ?? "0.0.0", environments: [], artifacts: retained, diagnostics: [] };
   return createPlan("remove", desired, inspection);
@@ -188,7 +199,7 @@ function buildManifest(desired: IntegrationPlan, changes: readonly Reconciliatio
     const artifact = artifacts.get(`${change.resourceId}\0${change.path}`);
     if (artifact === undefined || change.nextHash === undefined) continue;
     const managedHash = artifact.mergeStrategy === "managed-block" ? hashContent(artifact.content.trim()) : undefined;
-    resources.push({ resourceId: change.resourceId, resourceVersion: change.resourceVersion, adapters: change.adapters, profileIds: artifact.profileId === undefined ? [] : [artifact.profileId], path: change.path, mergeStrategy: change.mergeStrategy, installedHash: change.nextHash, ...(managedHash === undefined ? {} : { managedHash }), ...(change.ownedEntries === undefined ? {} : { ownedEntries: change.ownedEntries }), ...(change.nextMode === undefined ? {} : { mode: change.nextMode }), security: change.security, activation: change.activation, approvals: change.approvalRequirements.length > 0 ? change.approvalRequirements.map((item) => item.id) : change.approvals });
+    resources.push({ resourceId: change.resourceId, resourceVersion: change.resourceVersion, adapters: [...change.adapters].sort(), profileIds: [...(artifact.profileIds ?? (artifact.profileId === undefined ? [] : [artifact.profileId]))].sort(), path: change.path, mergeStrategy: change.mergeStrategy, installedHash: change.nextHash, ...(managedHash === undefined ? {} : { managedHash }), ...(change.ownedEntries === undefined ? {} : { ownedEntries: change.ownedEntries }), ...(change.nextMode === undefined ? {} : { mode: change.nextMode }), security: change.security, activation: change.activation, approvals: change.approvalRequirements.length > 0 ? change.approvalRequirements.map((item) => item.id) : change.approvals });
   }
   return { schemaVersion: 1, runtimeId: desired.integrationId ?? "legacy.runtime", runtimeVersion: desired.integrationVersion ?? "0.0.0", resources, recovery: { operationId, journalPath: `.mstack/runtime/operations/${operationId}.json`, backupRoot: `.mstack/runtime/backups/${operationId}` } };
 }

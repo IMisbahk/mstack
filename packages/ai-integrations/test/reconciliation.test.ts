@@ -211,7 +211,9 @@ test("adapter deselection retains shared contributors and executable modes are e
     const removal = createRemovalPlan(await inspectIntegrationRepository(root, desired), { environments: ["codex"] });
     await applyIntegrationPlan(root, removal);
     await access(join(root, ".agents/skills/shared-skill/SKILL.md"));
-    const manifest = JSON.parse(await readFile(join(root, ".mstack/runtime/manifest.json"), "utf8")) as { resources: Array<{ path: string; adapters: string[] }> };
-    assert.deepEqual(manifest.resources.find((resource) => resource.path === ".agents/skills/shared-skill/SKILL.md")?.adapters, ["cursor"]);
+    const manifest = JSON.parse(await readFile(join(root, ".mstack/runtime/manifest.json"), "utf8")) as { resources: Array<{ path: string; adapters: string[]; profileIds: string[] }> };
+    const shared = manifest.resources.find((resource) => resource.path === ".agents/skills/shared-skill/SKILL.md");
+    assert.deepEqual(shared?.adapters, ["cursor"]);
+    assert.deepEqual(shared?.profileIds, ["cursor.2026-07-15"]);
   } finally { await rm(root, { recursive: true, force: true }); }
 });

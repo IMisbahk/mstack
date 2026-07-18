@@ -151,7 +151,7 @@ export async function aiSetupCommand(options: AiSetupOptions): Promise<void> {
   const managedFiles = applied.files.filter((file) => file.status !== "conflict").map((file) => ({
     path: file.path,
     kind: file.path.startsWith(".mstack/runtime/") ? "runtime" as const : "integration" as const,
-    owner: file.path.startsWith(".mstack/runtime/") ? "mstack" : plan.artifacts.find((artifact) => artifact.path === file.path)?.environment ?? "mstack",
+    owner: file.path.startsWith(".mstack/runtime/") ? "mstack" : "mstack-ai-runtime",
     integrity: plan.artifacts.find((artifact) => artifact.path === file.path)?.mergeStrategy === "replace" ? "content" as const : "existence" as const,
   }));
   const manifest = await updateManifest(health.root, { files: managedFiles, integrations: selected });
@@ -161,7 +161,7 @@ export async function aiSetupCommand(options: AiSetupOptions): Promise<void> {
   options.output.success(`Configured ${displayNames.join(", ")}`);
   options.output.field("Changed", `${changed} file${changed === 1 ? "" : "s"}`);
   options.output.field("Manifest", ".mstack/manifest.json");
-  if (selected.some((id) => ["claude-code", "codex", "cursor", "gemini-cli"].includes(id))) {
+  if (plan.artifacts.some((artifact) => artifact.feature === "hooks" && artifact.environment !== "mstack-runtime")) {
     options.output.warn("Project hooks require runtime trust. Review the generated hook configuration before enabling it.");
   }
   const product = health.documents.find((document) => document.id === "product");

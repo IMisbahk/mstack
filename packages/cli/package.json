@@ -43,7 +43,11 @@
     "buildlikethis",
     "claude-code",
     "codex",
-    "cursor"
+    "cursor",
+    "antigravity",
+    "kimi-code",
+    "github-copilot",
+    "opencode"
   ],
   "author": "Misbah Khursheed",
   "license": "MIT",

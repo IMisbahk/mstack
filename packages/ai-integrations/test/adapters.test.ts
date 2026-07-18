@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
 import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
 import { test } from "node:test";
 import { createDefaultRegistry, createIntegrationPlan, type IntegrationSpec } from "../src/index.js";
 
@@ -19,7 +19,7 @@ const platformSpec: IntegrationSpec = {
 test("verified adapter profiles expose honest native, emulated, experimental, and unsupported support", () => {
   const registry = createDefaultRegistry();
   for (const adapter of registry.list()) {
-    assert.equal(adapter.profile?.verifiedAt, "2026-07-15");
+    assert.match(adapter.profile?.verifiedAt ?? "", /^2026-07-(?:15|18)$/);
     assert.equal(adapter.profile?.capabilities, adapter.capabilities);
     assert.ok(Object.values(adapter.capabilities).every((capability) => capability.detail.length > 0));
   }
@@ -29,6 +29,34 @@ test("verified adapter profiles expose honest native, emulated, experimental, an
   assert.match(registry.get("aider").capabilities.prompts.detail, /on-demand reads/);
   assert.match(registry.get("aider").capabilities.agents.detail, /cannot spawn subagents.*parallel/);
   assert.equal(registry.get("gemini-cli").capabilities.mcp.level, "native");
+  assert.equal(registry.get("antigravity").capabilities.hooks.level, "native");
+  assert.equal(registry.get("kimi-code").capabilities.agents.level, "emulated");
+  assert.equal(registry.get("kimi-code").capabilities.hooks.level, "unsupported");
+  assert.equal(registry.get("opencode").capabilities.agents.level, "native");
+  assert.deepEqual(registry.get("roo-code").runtime.commands, []);
+});
+
+test("Antigravity renders only verified project hooks, agents, rules, and MCP fields", () => {
+  const plan = createIntegrationPlan(createDefaultRegistry(), platformSpec, ["antigravity"]);
+  assert.ok(plan.artifacts.some((artifact) => artifact.path === "AGENTS.md"));
+  assert.ok(plan.artifacts.some((artifact) => artifact.path === ".agents/rules/build-like-this/security-rule.md"));
+  const hooks = plan.artifacts.find((artifact) => artifact.path === ".agents/hooks.json")!;
+  assert.equal(hooks.activation, "privileged");
+  assert.match(hooks.content, /"PostInvocation"/);
+  assert.doesNotMatch(hooks.content, /SessionStart/);
+  const mcp = plan.artifacts.find((artifact) => artifact.path === ".agents/mcp_config.json")!;
+  assert.match(mcp.content, /"serverUrl": "https:\/\/example.com\/mcp"/);
+  assert.doesNotMatch(mcp.content, /"url"|"httpUrl"/);
+});
+
+test("content-compatible adapters do not inherit Claude privileged configuration", () => {
+  for (const environment of ["kimi-code", "github-copilot", "opencode", "kiro", "qwen-code", "junie", "cline", "roo-code"]) {
+    const plan = createIntegrationPlan(createDefaultRegistry(), platformSpec, [environment]);
+    assert.ok(plan.artifacts.every((artifact) => !artifact.path.startsWith(".claude/")), environment);
+    assert.ok(plan.artifacts.every((artifact) => artifact.path !== ".mcp.json"), environment);
+    assert.ok(plan.diagnostics.some((diagnostic) => diagnostic.feature === "hooks"), environment);
+    assert.ok(plan.diagnostics.some((diagnostic) => diagnostic.feature === "mcp"), environment);
+  }
 });
 
 test("Claude, Codex, and Gemini render corrected project-local surfaces", () => {
@@ -93,6 +121,48 @@ test("generated Codex configuration is accepted by an installed Codex CLI", asyn
       env: { ...process.env, CODEX_HOME: codexHome },
     });
     assert.equal(parsed.status, 0, parsed.stderr || parsed.stdout);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("generated OpenCode commands, agents, and shared skills are discovered by an installed CLI", async (context) => {
+  const available = spawnSync("opencode", ["--version"], { encoding: "utf8" });
+  if (available.error !== undefined || available.status !== 0) {
+    context.skip("OpenCode is not installed in this environment");
+    return;
+  }
+
+  const root = await mkdtemp(join(tmpdir(), "mstack-opencode-config-"));
+  try {
+    const plan = createIntegrationPlan(createDefaultRegistry(), {
+      id: "opencode-fixture",
+      version: "1.0.0",
+      project: { name: "OpenCode fixture" },
+      instructions: { content: "Use the repository contract." },
+      prompts: [{ id: "review-change", description: "Review the change", prompt: "Review the current diff." }],
+      skills: [{ id: "ship-safely", description: "Ship safely", instructions: "Verify the release." }],
+      agents: [{ id: "security-reviewer", description: "Review security", instructions: "Inspect trust boundaries." }],
+    }, ["opencode"]);
+    for (const artifact of plan.artifacts) {
+      const target = join(root, artifact.path);
+      await mkdir(dirname(target), { recursive: true });
+      await writeFile(target, artifact.content, "utf8");
+    }
+    const environment = {
+      ...process.env,
+      XDG_CONFIG_HOME: join(root, ".config"),
+      OPENCODE_DISABLE_CLAUDE_CODE: "1",
+    };
+    const config = spawnSync("opencode", ["--pure", "debug", "config"], { cwd: root, encoding: "utf8", env: environment });
+    assert.equal(config.status, 0, config.stderr || config.stdout);
+    assert.match(config.stdout, /review-change/);
+    const agent = spawnSync("opencode", ["--pure", "debug", "agent", "security-reviewer"], { cwd: root, encoding: "utf8", env: environment });
+    assert.equal(agent.status, 0, agent.stderr || agent.stdout);
+    assert.match(agent.stdout, /Inspect trust boundaries/);
+    const skills = spawnSync("opencode", ["--pure", "debug", "skill"], { cwd: root, encoding: "utf8", env: environment });
+    assert.equal(skills.status, 0, skills.stderr || skills.stdout);
+    assert.match(skills.stdout, /ship-safely/);
   } finally {
     await rm(root, { recursive: true, force: true });
   }

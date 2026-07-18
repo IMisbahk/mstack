@@ -34,8 +34,8 @@ async function initializedFixture(): Promise<{ root: string; templates: string }
 describe("runtime catalog", () => {
   it("derives complete counts and filtered resources from runtime exports", () => {
     const complete = buildCatalog();
-    expect(complete.counts).toEqual({ agents: 19, skills: 20, prompts: 19, hooks: 3, templates: 10 });
-    expect(complete.items).toHaveLength(71);
+    expect(complete.counts).toEqual({ agents: 19, skills: 20, prompts: 19, hooks: 4, templates: 10 });
+    expect(complete.items).toHaveLength(72);
 
     const agents = buildCatalog("agents");
     expect(agents.items).toHaveLength(19);
@@ -48,7 +48,7 @@ describe("runtime catalog", () => {
     const stdout: string[] = [];
     const output = new Output({ stdout: memoryStream(stdout), stderr: memoryStream([]), color: false });
     await createProgram({ output }).parseAsync(["node", "mstack", "catalog", "hooks", "--json"]);
-    expect(JSON.parse(stdout.join(""))).toMatchObject({ schemaVersion: 1, counts: { hooks: 3 } });
+    expect(JSON.parse(stdout.join(""))).toMatchObject({ schemaVersion: 1, counts: { hooks: 4 } });
   });
 });
 

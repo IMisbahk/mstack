@@ -34,7 +34,7 @@ export const claudeAdapter: IntegrationAdapter = {
   displayName: "Claude Code",
   runtime: {
     commands: ["claude"],
-    projectMarkers: ["CLAUDE.md", ".claude/CLAUDE.md", ".claude"],
+    projectMarkers: [".claude/settings.json"],
     documentationUrl: "https://code.claude.com/docs/en/claude-directory",
   },
   capabilities,

@@ -22,6 +22,16 @@
             "timeout": 2
           }
         ]
+      },
+      {
+        "name": "risk-review",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node -e \"const f=require('node:fs'),p=require('node:path'),u=require('node:url');let d=process.cwd(),s;for(;;){s=p.join(d,'.mstack','runtime','hooks','risk-review.mjs');if(f.existsSync(s))break;const n=p.dirname(d);if(n===d)process.exit(0);d=n};import(u.pathToFileURL(s).href)\"",
+            "timeout": 2
+          }
+        ]
       }
     ],
     "Stop": [

@@ -7,6 +7,7 @@ import { createProgram } from "../src/program.js";
 import { Output } from "../src/core/output.js";
 import { inspectRepository } from "../src/services/health.js";
 import { detectRuntimes } from "../src/services/runtimes.js";
+import { updateManifest } from "../src/services/manifest.js";
 import { createDefaultRegistry } from "../../ai-integrations/src/index.js";
 import { makeTemplates } from "./helpers.js";
 
@@ -78,6 +79,32 @@ describe("vNext developer experience", () => {
     expect(await readFile(path.join(root, ".mstack", "runtime", "hooks", "repository-health.mjs"), "utf8")).toContain("repository health");
     const manifest = JSON.parse(await readFile(path.join(root, ".mstack", "manifest.json"), "utf8"));
     expect(manifest.integrations).toEqual(["codex", "continue"]);
+  });
+
+  it("installs every verified native and portable compatibility surface together", async () => {
+    const { root, templates, output } = await fixture();
+    await createProgram({ cwd: root, templatesDirectory: templates, output })
+      .parseAsync(["node", "mstack", "init", ".", "--yes", "--no-git"]);
+    await createProgram({ cwd: root, templatesDirectory: templates, output })
+      .parseAsync(["node", "mstack", "ai", "setup", "--all", "--yes"]);
+
+    expect(await readFile(path.join(root, "AGENTS.md"), "utf8")).toContain("mstack:project-instructions:start");
+    expect(await readFile(path.join(root, ".agents", "hooks.json"), "utf8")).toContain("PostInvocation");
+    expect(await readFile(path.join(root, ".agents", "agents", "product-manager", "agent.md"), "utf8")).toContain("name: \"product-manager\"");
+    expect(await readFile(path.join(root, ".github", "prompts", "build-feature.prompt.md"), "utf8")).toContain("Build the requested feature");
+    expect(await readFile(path.join(root, ".opencode", "agents", "software-architect.md"), "utf8")).toContain("mode: subagent");
+    expect(await readFile(path.join(root, ".kiro", "skills", "build-feature", "SKILL.md"), "utf8")).toContain("Build the requested feature");
+    expect(await readFile(path.join(root, ".qwen", "commands", "build-feature.md"), "utf8")).toContain("Build the requested feature");
+    expect(await readFile(path.join(root, ".junie", "agents", "backend-engineer.md"), "utf8")).toContain("backend application behavior");
+    expect(await readFile(path.join(root, ".cline", "skills", "mstack-agent-code-reviewer", "SKILL.md"), "utf8")).toContain("code-reviewer specialist pass");
+    expect(await readFile(path.join(root, ".roo", "commands", "build-feature.md"), "utf8")).toContain("Build the requested feature");
+
+    const manifest = JSON.parse(await readFile(path.join(root, ".mstack", "manifest.json"), "utf8"));
+    expect(manifest.integrations).toEqual([
+      "aider", "antigravity", "claude-code", "cline", "codex", "continue", "cursor", "gemini-cli",
+      "github-copilot", "junie", "kimi-code", "kiro", "opencode", "qwen-code", "roo-code",
+    ]);
+    expect(manifest.files.find((file: { path: string }) => file.path === "AGENTS.md")?.owner).toBe("mstack-ai-runtime");
   });
 
   it("retains previously configured runtimes when reconciling an explicit subset", async () => {
@@ -165,6 +192,26 @@ describe("vNext developer experience", () => {
     const detected = await detectRuntimes(root, createDefaultRegistry(), async (command) => command === "codex");
     expect(detected.find((runtime) => runtime.id === "codex")?.installed).toBe(true);
     expect(detected.find((runtime) => runtime.id === "cursor")?.configured).toBe(true);
+  });
+
+  it("uses manifest ownership instead of shared compatibility files for configured detection", async () => {
+    const { root } = await fixture();
+    await mkdir(path.join(root, ".agents", "skills"), { recursive: true });
+    await mkdir(path.join(root, ".claude", "rules"), { recursive: true });
+    await writeFile(path.join(root, "AGENTS.md"), "# Shared guidance\n");
+    await writeFile(path.join(root, "CLAUDE.md"), "# Compatible guidance\n");
+
+    const before = await detectRuntimes(root, createDefaultRegistry(), async () => false);
+    for (const id of ["claude-code", "codex", "kimi-code", "github-copilot", "opencode", "roo-code"]) {
+      expect(before.find((runtime) => runtime.id === id)?.configured).toBe(false);
+    }
+    expect(before.find((runtime) => runtime.id === "roo-code")?.installed).toBe(false);
+
+    await updateManifest(root, { files: [], integrations: ["kimi-code", "roo-code"] });
+    const after = await detectRuntimes(root, createDefaultRegistry(), async () => false);
+    expect(after.find((runtime) => runtime.id === "kimi-code")?.configured).toBe(true);
+    expect(after.find((runtime) => runtime.id === "roo-code")?.configured).toBe(true);
+    expect(after.find((runtime) => runtime.id === "codex")?.configured).toBe(false);
   });
 
   it("emits stable plain output without ANSI escapes", async () => {

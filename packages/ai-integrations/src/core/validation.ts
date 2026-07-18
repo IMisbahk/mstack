@@ -109,7 +109,8 @@ export function validateIntegrationSpec(spec: IntegrationSpec): void {
 
 export function validateAdapter(adapter: IntegrationAdapter): void {
   assertIdentifier(adapter.id, "adapter id"); requireText(adapter.displayName, "adapter displayName"); assertHttpsUrl(adapter.runtime.documentationUrl, `adapter '${adapter.id}' documentationUrl`);
-  if (adapter.runtime.commands.length === 0) throw new Error(`adapter '${adapter.id}' must declare a command`);
+  if (adapter.runtime.commands.length === 0 && adapter.runtime.projectMarkers.length === 0) throw new Error(`adapter '${adapter.id}' must declare a command or provider-unique project marker`);
+  for (const command of adapter.runtime.commands) validateCommand(command, `adapter '${adapter.id}' command`);
   for (const marker of adapter.runtime.projectMarkers) assertSafeRelativePath(marker, `adapter '${adapter.id}' project marker`);
   for (const feature of features) if (adapter.capabilities[feature as keyof typeof adapter.capabilities] === undefined) throw new Error(`adapter '${adapter.id}' is missing capability '${feature}'`);
   for (const [feature, capability] of Object.entries(adapter.capabilities)) {
@@ -134,6 +135,13 @@ export function validateArtifact(artifact: GeneratedArtifact): void {
   if (artifact.activation !== undefined && !activationModes.has(artifact.activation)) throw new Error(`artifact '${artifact.path}' has invalid activation`);
   if (artifact.resourceId !== undefined) assertIdentifier(artifact.resourceId, "artifact resourceId");
   if (artifact.resourceVersion !== undefined) assertVersion(artifact.resourceVersion, "artifact resourceVersion");
+  if (artifact.profileId !== undefined) assertIdentifier(artifact.profileId, "artifact profile id");
+  for (const profileId of artifact.profileIds ?? []) assertIdentifier(profileId, "artifact profile id");
+  for (const contributor of artifact.profileContributors ?? []) {
+    assertIdentifier(contributor.environment, "artifact profile environment");
+    assertIdentifier(contributor.profileId, "artifact profile id");
+    if (!(artifact.environments ?? [artifact.environment]).includes(contributor.environment)) throw new Error(`artifact '${artifact.path}' has a profile for non-contributing environment '${contributor.environment}'`);
+  }
   validateMode(artifact.mode, artifact.path);
 }
 

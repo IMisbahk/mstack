@@ -45,6 +45,23 @@ A prose marker remains useful for humans but is not ownership authority. Shared 
 
 Hooks, MCP servers, trust, executable state, and permission expansion are separate privileged resources. Rendering support does not imply activation approval.
 
+### Compatibility amendment (2026-07-18)
+
+Treat every supported tool as a named capability adapter, including tools that
+consume an interoperable `AGENTS.md`, `.agents/skills/`, or `.claude/` surface.
+Adapters may co-own byte-identical files, but they must not use symlinks or
+inherit another tool's hooks, MCP configuration, permissions, or trust behavior
+without independent verification.
+
+Provider detection uses provider-unique project markers and the mstack
+manifest. Shared compatibility paths are never sufficient evidence that a
+specific provider is configured. Environments without a reliable executable,
+such as editor extensions, remain explicitly selectable and detectable from
+their unique project state or the manifest.
+
+Shared artifacts store every sorted adapter and capability-profile contributor
+so desired state and safe removal do not depend on selection order.
+
 ## Consequences
 
 ### Positive

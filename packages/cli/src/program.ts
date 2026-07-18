@@ -14,6 +14,7 @@ import { aiListCommand, aiSetupCommand } from "./commands/ai.js";
 import { pluginsCommand } from "./commands/plugins.js";
 import { catalogCommand, CATALOG_KINDS, type CatalogKind } from "./commands/catalog.js";
 import { validateCommand } from "./commands/validate.js";
+import { createDefaultRegistry } from "../../ai-integrations/src/index.js";
 
 export interface ProgramOptions {
   cwd?: string;
@@ -38,6 +39,7 @@ export function createProgram(options: ProgramOptions = {}): Command {
   const templatesDirectory = options.templatesDirectory ?? packagedTemplatesDirectory();
   const suppliedOutput = options.output;
   const program = new Command();
+  const runtimeIds = createDefaultRegistry().list().map((adapter) => adapter.id).join(", ");
 
   program
     .name("mstack")
@@ -136,7 +138,7 @@ export function createProgram(options: ProgramOptions = {}): Command {
     .option("-f, --force", "replace conflicting generated targets", false)
     .option("-y, --yes", "accept the displayed runtime plan without prompting", false)
     .option("--json", "print a versioned JSON result", false)
-    .addHelpText("after", "\nRuntime IDs:\n  claude-code, codex, cursor, gemini-cli, continue, aider")
+    .addHelpText("after", `\nRuntime IDs:\n  ${runtimeIds}`)
     .action(async (runtimes: string[], local: { all: boolean; dryRun: boolean; force: boolean; yes: boolean; json: boolean }, command: Command) => {
       const context = globals(command);
       await aiSetupCommand({ cwd: context.values.cwd, runtimes, ...local, output: context.output });

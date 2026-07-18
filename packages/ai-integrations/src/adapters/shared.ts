@@ -24,8 +24,13 @@ export function capability(
 
 const integrationFeatureNames: readonly IntegrationFeature[] = ["prompts", "hooks", "skills", "instructions", "rules", "slash-commands", "agents", "automatic-context", "repository-onboarding", "templates", "mcp", "permissions", "assets"];
 
-export function capabilityProfile(id: string, capabilities: CapabilityMap): CapabilityProfile {
-  return { id, verifiedAt: "2026-07-15", platformVersion: "verified-current", capabilities };
+export function capabilityProfile(
+  id: string,
+  capabilities: CapabilityMap,
+  verifiedAt = "2026-07-15",
+  platformVersion = "verified-current",
+): CapabilityProfile {
+  return { id, verifiedAt, platformVersion, capabilities };
 }
 
 export function validateRenderedArtifacts(environment: string, artifacts: readonly GeneratedArtifact[]): readonly AdapterValidationFinding[] {
@@ -140,6 +145,58 @@ export function renderStandardSkillArtifacts(
       ),
     ];
   });
+}
+
+export function renderAgentsCompatibleArtifacts(
+  environment: string,
+  spec: IntegrationSpec,
+  skillBase = ".agents/skills",
+  includePrompts = true,
+): GeneratedArtifact[] {
+  return [
+    artifact(
+      environment,
+      "instructions",
+      "AGENTS.md",
+      renderManagedInstructionBody(spec, (path) => `\`${path}\``),
+      "managed-block",
+    ),
+    ...renderStandardSkillArtifacts(environment, skillBase, spec.skills ?? []),
+    ...(includePrompts ? spec.prompts ?? [] : []).map((prompt) =>
+      artifact(
+        environment,
+        "prompts",
+        `${skillBase}/${prompt.id}/SKILL.md`,
+        renderPromptSkill(prompt),
+      ),
+    ),
+  ];
+}
+
+export function renderPersonaSkillArtifacts(
+  environment: string,
+  base: string,
+  agents: readonly AgentDefinition[],
+  version: string,
+): GeneratedArtifact[] {
+  return agents.map((agent) => ({
+    ...artifact(
+      environment,
+      "agents",
+      `${base}/mstack-agent-${agent.id}/SKILL.md`,
+      renderStandardSkill({
+        id: `mstack-agent-${agent.id}`,
+        description: `Provides the ${agent.id} specialist persona for bounded work: ${oneLine(agent.description)}`,
+        instructions: [
+          `Use this skill to perform a bounded ${agent.id} specialist pass or to give the same persona to a generic subagent when the runtime supports delegation.`,
+          "",
+          agent.instructions.trim(),
+        ].join("\n"),
+      }),
+    ),
+    resourceId: agent.id,
+    resourceVersion: agent.version ?? version,
+  }));
 }
 
 export function renderPromptSkill(prompt: PromptDefinition): string {

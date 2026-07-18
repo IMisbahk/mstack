@@ -1,8 +1,8 @@
 {
   "recovery": {
-    "backupRoot": ".mstack/runtime/backups/op.a6c6ef9755135c0872cc",
-    "journalPath": ".mstack/runtime/operations/op.a6c6ef9755135c0872cc.json",
-    "operationId": "op.a6c6ef9755135c0872cc"
+    "backupRoot": ".mstack/runtime/backups/op.fc03d01079d67201f735",
+    "journalPath": ".mstack/runtime/operations/op.fc03d01079d67201f735.json",
+    "operationId": "op.fc03d01079d67201f735"
   },
   "resources": [
     {
@@ -17,7 +17,8 @@
       "mode": 420,
       "path": ".agents/skills/api-contract-design/SKILL.md",
       "profileIds": [
-        "codex.2026-07-15"
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
       ],
       "resourceId": "api-contract-design",
       "resourceVersion": "1.1.0",
@@ -35,7 +36,8 @@
       "mode": 420,
       "path": ".agents/skills/architecture-assessment/SKILL.md",
       "profileIds": [
-        "codex.2026-07-15"
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
       ],
       "resourceId": "architecture-assessment",
       "resourceVersion": "1.1.0",
@@ -53,7 +55,8 @@
       "mode": 420,
       "path": ".agents/skills/architecture-design/SKILL.md",
       "profileIds": [
-        "codex.2026-07-15"
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
       ],
       "resourceId": "architecture-design",
       "resourceVersion": "1.1.0",
@@ -71,7 +74,8 @@
       "mode": 420,
       "path": ".agents/skills/backend-delivery/SKILL.md",
       "profileIds": [
-        "codex.2026-07-15"
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
       ],
       "resourceId": "backend-delivery",
       "resourceVersion": "1.1.0",
@@ -89,7 +93,8 @@
       "mode": 420,
       "path": ".agents/skills/build-backend/SKILL.md",
       "profileIds": [
-        "codex.2026-07-15"
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
       ],
       "resourceId": "build-backend",
       "resourceVersion": "1.1.0",
@@ -107,7 +112,8 @@
       "mode": 420,
       "path": ".agents/skills/build-feature/SKILL.md",
       "profileIds": [
-        "codex.2026-07-15"
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
       ],
       "resourceId": "build-feature",
       "resourceVersion": "1.1.0",
@@ -125,7 +131,8 @@
       "mode": 420,
       "path": ".agents/skills/build-frontend/SKILL.md",
       "profileIds": [
-        "codex.2026-07-15"
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
       ],
       "resourceId": "build-frontend",
       "resourceVersion": "1.1.0",
@@ -143,7 +150,8 @@
       "mode": 420,
       "path": ".agents/skills/continuous-improvement/SKILL.md",
       "profileIds": [
-        "codex.2026-07-15"
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
       ],
       "resourceId": "continuous-improvement",
       "resourceVersion": "1.1.0",
@@ -161,7 +169,8 @@
       "mode": 420,
       "path": ".agents/skills/database-modeling/SKILL.md",
       "profileIds": [
-        "codex.2026-07-15"
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
       ],
       "resourceId": "database-modeling",
       "resourceVersion": "1.1.0",
@@ -179,7 +188,8 @@
       "mode": 420,
       "path": ".agents/skills/debug-failure/SKILL.md",
       "profileIds": [
-        "codex.2026-07-15"
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
       ],
       "resourceId": "debug-failure",
       "resourceVersion": "1.1.0",
@@ -197,7 +207,8 @@
       "mode": 420,
       "path": ".agents/skills/deploy-product/SKILL.md",
       "profileIds": [
-        "codex.2026-07-15"
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
       ],
       "resourceId": "deploy-product",
       "resourceVersion": "1.1.0",
@@ -215,7 +226,8 @@
       "mode": 420,
       "path": ".agents/skills/deployment-delivery/SKILL.md",
       "profileIds": [
-        "codex.2026-07-15"
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
       ],
       "resourceId": "deployment-delivery",
       "resourceVersion": "1.1.0",
@@ -233,7 +245,8 @@
       "mode": 420,
       "path": ".agents/skills/design-api/SKILL.md",
       "profileIds": [
-        "codex.2026-07-15"
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
       ],
       "resourceId": "design-api",
       "resourceVersion": "1.1.0",
@@ -251,7 +264,8 @@
       "mode": 420,
       "path": ".agents/skills/design-architecture/SKILL.md",
       "profileIds": [
-        "codex.2026-07-15"
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
       ],
       "resourceId": "design-architecture",
       "resourceVersion": "1.1.0",
@@ -269,7 +283,8 @@
       "mode": 420,
       "path": ".agents/skills/design-features/SKILL.md",
       "profileIds": [
-        "codex.2026-07-15"
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
       ],
       "resourceId": "design-features",
       "resourceVersion": "1.1.0",
@@ -287,7 +302,8 @@
       "mode": 420,
       "path": ".agents/skills/feature-design/SKILL.md",
       "profileIds": [
-        "codex.2026-07-15"
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
       ],
       "resourceId": "feature-design",
       "resourceVersion": "1.1.0",
@@ -305,7 +321,8 @@
       "mode": 420,
       "path": ".agents/skills/feature-planning/SKILL.md",
       "profileIds": [
-        "codex.2026-07-15"
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
       ],
       "resourceId": "feature-planning",
       "resourceVersion": "1.1.0",
@@ -323,7 +340,8 @@
       "mode": 420,
       "path": ".agents/skills/frontend-delivery/SKILL.md",
       "profileIds": [
-        "codex.2026-07-15"
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
       ],
       "resourceId": "frontend-delivery",
       "resourceVersion": "1.1.0",
@@ -341,7 +359,8 @@
       "mode": 420,
       "path": ".agents/skills/idea-validation/SKILL.md",
       "profileIds": [
-        "codex.2026-07-15"
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
       ],
       "resourceId": "idea-validation",
       "resourceVersion": "1.1.0",
@@ -359,7 +378,8 @@
       "mode": 420,
       "path": ".agents/skills/identify-target-users/SKILL.md",
       "profileIds": [
-        "codex.2026-07-15"
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
       ],
       "resourceId": "identify-target-users",
       "resourceVersion": "1.1.0",
@@ -377,7 +397,8 @@
       "mode": 420,
       "path": ".agents/skills/improve-documentation/SKILL.md",
       "profileIds": [
-        "codex.2026-07-15"
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
       ],
       "resourceId": "improve-documentation",
       "resourceVersion": "1.1.0",
@@ -395,7 +416,8 @@
       "mode": 420,
       "path": ".agents/skills/improve-product/SKILL.md",
       "profileIds": [
-        "codex.2026-07-15"
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
       ],
       "resourceId": "improve-product",
       "resourceVersion": "1.1.0",
@@ -413,7 +435,8 @@
       "mode": 420,
       "path": ".agents/skills/performance-investigation/SKILL.md",
       "profileIds": [
-        "codex.2026-07-15"
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
       ],
       "resourceId": "performance-investigation",
       "resourceVersion": "1.1.0",
@@ -431,7 +454,8 @@
       "mode": 420,
       "path": ".agents/skills/plan-mvp/SKILL.md",
       "profileIds": [
-        "codex.2026-07-15"
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
       ],
       "resourceId": "plan-mvp",
       "resourceVersion": "1.1.0",
@@ -449,7 +473,8 @@
       "mode": 420,
       "path": ".agents/skills/product-definition/SKILL.md",
       "profileIds": [
-        "codex.2026-07-15"
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
       ],
       "resourceId": "product-definition",
       "resourceVersion": "1.1.0",
@@ -467,7 +492,8 @@
       "mode": 420,
       "path": ".agents/skills/production-readiness/SKILL.md",
       "profileIds": [
-        "codex.2026-07-15"
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
       ],
       "resourceId": "production-readiness",
       "resourceVersion": "1.1.0",
@@ -485,7 +511,8 @@
       "mode": 420,
       "path": ".agents/skills/refactor-module/SKILL.md",
       "profileIds": [
-        "codex.2026-07-15"
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
       ],
       "resourceId": "refactor-module",
       "resourceVersion": "1.1.0",
@@ -503,7 +530,8 @@
       "mode": 420,
       "path": ".agents/skills/release-readiness/SKILL.md",
       "profileIds": [
-        "codex.2026-07-15"
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
       ],
       "resourceId": "release-readiness",
       "resourceVersion": "1.1.0",
@@ -521,7 +549,8 @@
       "mode": 420,
       "path": ".agents/skills/repository-audit/SKILL.md",
       "profileIds": [
-        "codex.2026-07-15"
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
       ],
       "resourceId": "repository-audit",
       "resourceVersion": "1.1.0",
@@ -539,7 +568,8 @@
       "mode": 420,
       "path": ".agents/skills/research-idea/SKILL.md",
       "profileIds": [
-        "codex.2026-07-15"
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
       ],
       "resourceId": "research-idea",
       "resourceVersion": "1.1.0",
@@ -557,7 +587,8 @@
       "mode": 420,
       "path": ".agents/skills/research-user-needs/SKILL.md",
       "profileIds": [
-        "codex.2026-07-15"
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
       ],
       "resourceId": "research-user-needs",
       "resourceVersion": "1.1.0",
@@ -575,7 +606,8 @@
       "mode": 420,
       "path": ".agents/skills/review-architecture/SKILL.md",
       "profileIds": [
-        "codex.2026-07-15"
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
       ],
       "resourceId": "review-architecture",
       "resourceVersion": "1.1.0",
@@ -593,7 +625,8 @@
       "mode": 420,
       "path": ".agents/skills/review-pull-request/SKILL.md",
       "profileIds": [
-        "codex.2026-07-15"
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
       ],
       "resourceId": "review-pull-request",
       "resourceVersion": "1.1.0",
@@ -611,7 +644,8 @@
       "mode": 420,
       "path": ".agents/skills/safe-refactoring/SKILL.md",
       "profileIds": [
-        "codex.2026-07-15"
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
       ],
       "resourceId": "safe-refactoring",
       "resourceVersion": "1.1.0",
@@ -629,7 +663,8 @@
       "mode": 420,
       "path": ".agents/skills/systematic-debugging/SKILL.md",
       "profileIds": [
-        "codex.2026-07-15"
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
       ],
       "resourceId": "systematic-debugging",
       "resourceVersion": "1.1.0",
@@ -647,7 +682,8 @@
       "mode": 420,
       "path": ".agents/skills/target-user-definition/SKILL.md",
       "profileIds": [
-        "codex.2026-07-15"
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
       ],
       "resourceId": "target-user-definition",
       "resourceVersion": "1.1.0",
@@ -665,7 +701,8 @@
       "mode": 420,
       "path": ".agents/skills/threat-model-review/SKILL.md",
       "profileIds": [
-        "codex.2026-07-15"
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
       ],
       "resourceId": "threat-model-review",
       "resourceVersion": "1.1.0",
@@ -683,7 +720,8 @@
       "mode": 420,
       "path": ".agents/skills/user-needs-research/SKILL.md",
       "profileIds": [
-        "codex.2026-07-15"
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
       ],
       "resourceId": "user-needs-research",
       "resourceVersion": "1.1.0",
@@ -701,7 +739,8 @@
       "mode": 420,
       "path": ".agents/skills/write-product-definition/SKILL.md",
       "profileIds": [
-        "codex.2026-07-15"
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
       ],
       "resourceId": "write-product-definition",
       "resourceVersion": "1.1.0",
@@ -1053,10 +1092,10 @@
         "claude-code"
       ],
       "approvals": [
-        "op.1ce4243640e4d0fd7330.hook-activation.dbf05075fb7d",
-        "op.1ce4243640e4d0fd7330.executable-change.dbf05075fb7d"
+        "op.67a44265592d9c6c2ce6.hook-activation.dbf05075fb7d",
+        "op.67a44265592d9c6c2ce6.executable-change.dbf05075fb7d"
       ],
-      "installedHash": "14cd97da4c43ebf368538692e55cff375ab75baa62b95a2bd8d4fc9c7542264e",
+      "installedHash": "9076bef65f2fc369bca0a9f3f9c83bebed41a37000f75b21ba00dfa6c75a4586",
       "mergeStrategy": "merge-json",
       "mode": 420,
       "ownedEntries": [
@@ -1068,6 +1107,11 @@
         {
           "identity": "name:change-discipline",
           "installedHash": "a0beff22b3f8349afbb9f85b427fc78bb2570135408d7647c040c33912faf32a",
+          "pointer": "/hooks/PreToolUse"
+        },
+        {
+          "identity": "name:risk-review",
+          "installedHash": "6463ea05685af2dd51ed642cbf2c9c039ee1c86d1b8af9b441a5107b95e00f27",
           "pointer": "/hooks/PreToolUse"
         },
         {
@@ -2076,11 +2120,11 @@
         "codex"
       ],
       "approvals": [
-        "op.63e652542a5fc3649191.hook-activation.a81059fa48b8",
-        "op.63e652542a5fc3649191.executable-change.a81059fa48b8",
-        "op.63e652542a5fc3649191.experimental-activation.a81059fa48b8"
+        "op.67a44265592d9c6c2ce6.hook-activation.ab2be3fea0b5",
+        "op.67a44265592d9c6c2ce6.executable-change.ab2be3fea0b5",
+        "op.67a44265592d9c6c2ce6.experimental-activation.ab2be3fea0b5"
       ],
-      "installedHash": "95c05bbb3b20f7393894784d10ac6f72445e519f2f5783842e6f55eafbba1e13",
+      "installedHash": "58ac54f435779b6fa67159bbdb19d787758a7c6d1fd471b0398f19826351e9e8",
       "mergeStrategy": "manual",
       "mode": 420,
       "path": ".codex/config.toml",
@@ -2420,10 +2464,10 @@
         "cursor"
       ],
       "approvals": [
-        "op.1ce4243640e4d0fd7330.hook-activation.b11dd91a04c6",
-        "op.1ce4243640e4d0fd7330.executable-change.b11dd91a04c6"
+        "op.67a44265592d9c6c2ce6.hook-activation.b11dd91a04c6",
+        "op.67a44265592d9c6c2ce6.executable-change.b11dd91a04c6"
       ],
-      "installedHash": "cfca336f9f4d3d7451aaacade1bfb18b6f9351e7e6a2ca66aa7f7e140d477631",
+      "installedHash": "dc1f9739b83bd67266126b7328945530483114a590f4f14f51985aad4cc8e34c",
       "mergeStrategy": "merge-json",
       "mode": 420,
       "ownedEntries": [
@@ -2440,6 +2484,11 @@
         {
           "identity": "name:change-discipline",
           "installedHash": "38cfbf141438b1e9d1267bd60d1964919e822e1fc380a9972b45809fbd46c536",
+          "pointer": "/hooks/preToolUse"
+        },
+        {
+          "identity": "name:risk-review",
+          "installedHash": "f85a822d6d4f2dcd874c11c9b25cc01ad2c0457fdcc07763d9829c4ce3e7158f",
           "pointer": "/hooks/preToolUse"
         },
         {
@@ -2496,10 +2545,10 @@
         "mstack-runtime"
       ],
       "approvals": [
-        "op.63e652542a5fc3649191.hook-activation.59e88531a1c0",
-        "op.63e652542a5fc3649191.executable-change.59e88531a1c0"
+        "op.67a44265592d9c6c2ce6.hook-activation.14fc048460b9",
+        "op.67a44265592d9c6c2ce6.executable-change.14fc048460b9"
       ],
-      "installedHash": "fa5432b69bb32635e4e2b9e6fe3736b6989d4b71d6193134d138bdb2f19cdde7",
+      "installedHash": "f6397f5b7f1880a66e012d15fa77684feace8af07ddd4d1f140df33e6f0ef9f0",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".mstack/runtime/hooks/change-discipline.mjs",
@@ -2507,7 +2556,7 @@
         "mstack-runtime.2026-07-15"
       ],
       "resourceId": "change-discipline-hook",
-      "resourceVersion": "1.0.0",
+      "resourceVersion": "1.1.0",
       "security": "executable"
     },
     {
@@ -2516,10 +2565,10 @@
         "mstack-runtime"
       ],
       "approvals": [
-        "op.63e652542a5fc3649191.hook-activation.f7c24637cba3",
-        "op.63e652542a5fc3649191.executable-change.f7c24637cba3"
+        "op.fc03d01079d67201f735.hook-activation.6c8326de782e",
+        "op.fc03d01079d67201f735.executable-change.6c8326de782e"
       ],
-      "installedHash": "7a734085df6a83c25fc275190e6d1bfbb9cce7980f7728d6375b4781b60dd71f",
+      "installedHash": "4aa33e9a40fd0bb7a89ca41e349159b7e8094d19c465d9f92bd666a46867edfb",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".mstack/runtime/hooks/feature-completeness.mjs",
@@ -2527,7 +2576,7 @@
         "mstack-runtime.2026-07-15"
       ],
       "resourceId": "feature-completeness-hook",
-      "resourceVersion": "1.0.0",
+      "resourceVersion": "1.1.0",
       "security": "executable"
     },
     {
@@ -2536,10 +2585,10 @@
         "mstack-runtime"
       ],
       "approvals": [
-        "op.63e652542a5fc3649191.hook-activation.5577a9ce7da2",
-        "op.63e652542a5fc3649191.executable-change.5577a9ce7da2"
+        "op.fc03d01079d67201f735.hook-activation.9773bdf62b4b",
+        "op.fc03d01079d67201f735.executable-change.9773bdf62b4b"
       ],
-      "installedHash": "8f6e91196ed596159d1a6e1f5d0c3c22375a7a89f2b149a4fdaec0a934d8db09",
+      "installedHash": "7c337828e74d5f5606b253b7e9248b524eee51758679b51aa35795e27ee5fc46",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".mstack/runtime/hooks/repository-health.mjs",
@@ -2547,6 +2596,26 @@
         "mstack-runtime.2026-07-15"
       ],
       "resourceId": "repository-health-hook",
+      "resourceVersion": "1.1.0",
+      "security": "executable"
+    },
+    {
+      "activation": "privileged",
+      "adapters": [
+        "mstack-runtime"
+      ],
+      "approvals": [
+        "op.67a44265592d9c6c2ce6.hook-activation.e19f5e9f9ec4",
+        "op.67a44265592d9c6c2ce6.executable-change.e19f5e9f9ec4"
+      ],
+      "installedHash": "b09c6576650f19f2012e06b66786d7a2b1bc87d48a5cf9fb6727b7b3aa75eb0a",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".mstack/runtime/hooks/risk-review.mjs",
+      "profileIds": [
+        "mstack-runtime.2026-07-15"
+      ],
+      "resourceId": "risk-review-hook",
       "resourceVersion": "1.0.0",
       "security": "executable"
     },

@@ -31,7 +31,7 @@ export const geminiAdapter: IntegrationAdapter = {
   displayName: "Gemini CLI",
   runtime: {
     commands: ["gemini"],
-    projectMarkers: ["GEMINI.md", ".gemini"],
+    projectMarkers: [".gemini"],
     documentationUrl: "https://geminicli.com/docs/cli/gemini-md",
   },
   capabilities,

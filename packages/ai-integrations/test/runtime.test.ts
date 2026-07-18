@@ -24,7 +24,7 @@ test("runtime ships a focused, structurally complete engineering library", () =>
   assert.equal(engineeringAgents.length, 19);
   assert.equal(engineeringSkills.length, 20);
   assert.equal(engineeringPrompts.length, 19);
-  assert.equal(engineeringHooks.length, 3);
+  assert.equal(engineeringHooks.length, 4);
   assert.equal(runtimeTemplates.length, 10);
   assert.ok(runtimeTemplates.every((item) => item.feature === "templates"));
   assert.ok(
@@ -183,6 +183,103 @@ test("installed hook scripts are valid JavaScript and remain advisory", async ()
     assert.equal(ordinaryInstall.status, 0);
     assert.equal(ordinaryInstall.stdout, "{}\n");
     assert.equal(ordinaryInstall.stderr, "");
+
+    const descriptiveCommit = spawnSync(process.execPath, [disciplinePath], {
+      encoding: "utf8",
+      input: JSON.stringify({ tool_input: { command: 'git commit -m "fix: preserve hook ownership"' } }),
+    });
+    assert.equal(descriptiveCommit.status, 0);
+    assert.equal(descriptiveCommit.stderr, "");
+
+    const riskPath = join(root, "risk-review.mjs");
+    const destructive = spawnSync(process.execPath, [riskPath], {
+      encoding: "utf8",
+      input: JSON.stringify({ tool_input: { command: "git reset --hard HEAD~1" } }),
+    });
+    assert.equal(destructive.status, 0);
+    assert.equal(destructive.stdout, "{}\n");
+    assert.match(destructive.stderr, /destructive command detected/);
+
+    const externalWrite = spawnSync(process.execPath, [riskPath], {
+      encoding: "utf8",
+      input: JSON.stringify({ tool_input: { command: "git push origin main" } }),
+    });
+    assert.match(externalWrite.stderr, /external write detected/);
+
+    const safeRead = spawnSync(process.execPath, [riskPath], {
+      encoding: "utf8",
+      input: JSON.stringify({ tool_input: { command: "git status --short" } }),
+    });
+    assert.equal(safeRead.status, 0);
+    assert.equal(safeRead.stderr, "");
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("feature completeness rechecks same-path content changes and secret-bearing files", async () => {
+  const root = await mkdtemp(join(tmpdir(), "mstack-feature-hook-"));
+  try {
+    await mkdir(join(root, "src"), { recursive: true });
+    await writeFile(join(root, "src/one.ts"), "export const one = 1;\n", "utf8");
+    await writeFile(join(root, "src/with space.ts"), "export const two = 2;\n", "utf8");
+    assert.equal(spawnSync("git", ["init", "--quiet"], { cwd: root }).status, 0);
+    assert.equal(spawnSync("git", ["add", "."], { cwd: root }).status, 0);
+    assert.equal(spawnSync("git", ["-c", "user.name=mstack", "-c", "user.email=mstack@example.test", "commit", "--quiet", "-m", "fixture"], { cwd: root }).status, 0);
+
+    await writeFile(join(root, "src/one.ts"), "export const one = 10;\n", "utf8");
+    await writeFile(join(root, "src/with space.ts"), "export const two = 20;\n", "utf8");
+    const featurePath = join(root, "feature-completeness.mjs");
+    const asset = hookAssets.find((item) => item.id === "feature-completeness-hook");
+    assert.ok(asset);
+    await writeFile(featurePath, asset.content, "utf8");
+
+    const first = spawnSync(process.execPath, [featurePath], { cwd: root, encoding: "utf8" });
+    assert.equal(first.status, 0, first.stderr);
+    assert.match(first.stderr, /without a corresponding test change/);
+
+    await writeFile(join(root, "src/one.ts"), "export const one = 100;\n", "utf8");
+    const second = spawnSync(process.execPath, [featurePath], { cwd: root, encoding: "utf8" });
+    assert.equal(second.status, 0, second.stderr);
+    assert.match(second.stderr, /without a corresponding test change/);
+
+    await writeFile(join(root, ".env.local"), "TOKEN=fixture-only\n", "utf8");
+    const secret = spawnSync(process.execPath, [featurePath], { cwd: root, encoding: "utf8" });
+    assert.equal(secret.status, 0, secret.stderr);
+    assert.match(secret.stderr, /potentially secret-bearing file changed/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("repository health reports missing mstack documents and TypeScript checks", async () => {
+  const root = await mkdtemp(join(tmpdir(), "mstack-health-hook-"));
+  try {
+    await mkdir(join(root, ".mstack"), { recursive: true });
+    await writeFile(join(root, "package.json"), JSON.stringify({ scripts: {} }), "utf8");
+    await writeFile(join(root, "tsconfig.json"), "{}\n", "utf8");
+    const asset = hookAssets.find((item) => item.id === "repository-health-hook");
+    assert.ok(asset);
+    const healthPath = join(root, "repository-health.mjs");
+    await writeFile(healthPath, asset.content, "utf8");
+
+    const checked = spawnSync(process.execPath, [healthPath], {
+      cwd: root,
+      encoding: "utf8",
+      input: JSON.stringify({ cwd: root }),
+    });
+    assert.equal(checked.status, 0);
+    assert.equal(checked.stdout, "{}\n");
+    assert.match(checked.stderr, /docs\/ is missing/);
+    assert.match(checked.stderr, /no typecheck or check script/);
+
+    const nullInput = spawnSync(process.execPath, [healthPath], {
+      cwd: root,
+      encoding: "utf8",
+      input: "null",
+    });
+    assert.equal(nullInput.status, 0, nullInput.stderr);
+    assert.equal(nullInput.stdout, "{}\n");
   } finally {
     await rm(root, { recursive: true, force: true });
   }

@@ -2,15 +2,14 @@
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 
-function readInput() {
-  return new Promise((resolve) => {
-    let data = "";
-    process.stdin.setEncoding("utf8");
-    process.stdin.on("data", (chunk) => (data += chunk));
-    process.stdin.on("end", () => {
-      try { resolve(data.trim() ? JSON.parse(data) : {}); } catch { resolve({}); }
-    });
-  });
+async function readInput() {
+  let data = "";
+  process.stdin.setEncoding("utf8");
+  for await (const chunk of process.stdin) {
+    data += chunk;
+    if (data.length > 1_000_000) return {};
+  }
+  try { return data.trim() ? JSON.parse(data) : {}; } catch { return {}; }
 }
 
 function findRoot(start) {
@@ -45,14 +44,26 @@ function hasTests(root) {
   return false;
 }
 
+function hasTypeScript(root) {
+  if (existsSync(join(root, "tsconfig.json"))) return true;
+  const packages = join(root, "packages");
+  if (!existsSync(packages)) return false;
+  try {
+    return readdirSync(packages).some((name) => existsSync(join(packages, name, "tsconfig.json")));
+  } catch { return false; }
+}
+
 const input = await readInput();
-const root = findRoot(typeof input.cwd === "string" ? input.cwd : process.cwd());
+const requestedCwd = input && typeof input === "object" && typeof input.cwd === "string" ? input.cwd : process.cwd();
+const root = findRoot(requestedCwd);
 const warnings = [];
 const docs = join(root, "docs");
-if (existsSync(docs)) {
+if (existsSync(join(root, ".mstack")) && !existsSync(docs)) {
+  warnings.push("mstack is installed but docs/ is missing; add project-owned product and architecture context");
+} else if (existsSync(docs)) {
   const markdown = readdirSync(docs).filter((name) => name.endsWith(".md"));
-  if (markdown.length && !existsSync(join(docs, "product.md"))) warnings.push("docs/ exists but docs/product.md is missing");
-  if (markdown.length && !existsSync(join(docs, "architecture.md"))) warnings.push("docs/ exists but docs/architecture.md is missing");
+  if ((markdown.length || existsSync(join(root, ".mstack"))) && !existsSync(join(docs, "product.md"))) warnings.push("docs/ exists but docs/product.md is missing");
+  if ((markdown.length || existsSync(join(root, ".mstack"))) && !existsSync(join(docs, "architecture.md"))) warnings.push("docs/ exists but docs/architecture.md is missing");
   for (const name of ["product.md", "architecture.md"]) {
     const path = join(docs, name);
     if (!existsSync(path)) continue;
@@ -69,10 +80,14 @@ if (existsSync(packagePath)) {
     const scripts = pkg.scripts || {};
     if (!scripts.test && hasTests(root)) warnings.push("tests exist but package.json has no test script");
     if (!scripts.build && (existsSync(join(root, "src")) || existsSync(join(root, "packages")))) warnings.push("source exists but package.json has no build script");
+    if (!scripts.typecheck && !scripts.check && hasTypeScript(root)) warnings.push("TypeScript configuration exists but package.json has no typecheck or check script");
   } catch {
     warnings.push("package.json could not be parsed");
   }
 }
+
+const lockfiles = ["package-lock.json", "pnpm-lock.yaml", "yarn.lock", "bun.lock", "bun.lockb"].filter((name) => existsSync(join(root, name)));
+if (lockfiles.length > 1) warnings.push("multiple JavaScript lockfiles found (" + lockfiles.join(", ") + "); keep one package-manager source of truth");
 
 if (warnings.length) {
   process.stderr.write("mstack repository health:\n" + warnings.slice(0, 5).map((item) => "- " + item).join("\n") + "\n");

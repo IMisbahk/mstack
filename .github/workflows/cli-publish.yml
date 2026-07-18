@@ -1,4 +1,4 @@
-name: Publish CLI
+name: Validate CLI release
 
 on:
   push:
@@ -7,12 +7,10 @@ on:
 
 permissions:
   contents: read
-  id-token: write
 
 jobs:
-  publish:
+  verify:
     runs-on: ubuntu-latest
-    environment: npm
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -27,6 +25,3 @@ jobs:
           RELEASE_TAG: ${{ github.ref_name }}
         run: node packages/cli/scripts/verify-release-tag.mjs
       - run: pnpm release:check
-      - run: npm publish --workspace @imisbahk/mstack --access public --provenance
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

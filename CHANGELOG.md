@@ -2,6 +2,32 @@
 
 All notable changes to mstack are documented here. This project follows [Semantic Versioning](https://semver.org/).
 
+## Unreleased
+
+### Added
+
+- Add a risk-review hook for destructive commands, external writes,
+  deployments, and secret-bearing paths.
+- Add verified adapters for Google Antigravity, Kimi Code, GitHub Copilot,
+  OpenCode, Kiro, Qwen Code, Junie, Cline, and Roo Code.
+- Add native provider paths where required and portable persona-skill fallbacks
+  where a provider has no stable auto-discovered project-agent format.
+
+### Changed
+
+- Strengthen repository-health, change-discipline, and feature-completeness
+  hooks with bounded input, higher-signal checks, robust Git path parsing, and
+  content-aware repeat detection.
+- Validate installed AI runtime integrity in CI and remove the obsolete Codex
+  `hooks.json` configuration superseded by `.codex/config.toml`.
+- Derive configured runtime state from provider-unique markers and the mstack
+  manifest so shared `AGENTS.md` and `.agents/skills/` files do not cause false
+  detection.
+- Record every sorted adapter and capability profile that co-owns a shared
+  artifact, independent of runtime selection order.
+- Allow explicitly selected editor integrations without inventing a CLI
+  executable detector.
+
 ## [0.4.0] - 2026-07-16
 
 ### Added

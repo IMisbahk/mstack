@@ -33,7 +33,7 @@ Build Like This defines the engineering method. mstack installs it consistently.
 
 ### AI runtime
 
-mstack detects, configures, and onboards six AI coding environments:
+mstack detects, configures, and onboards fifteen AI coding environments:
 
 - Claude Code
 - OpenAI Codex
@@ -41,6 +41,15 @@ mstack detects, configures, and onboards six AI coding environments:
 - Gemini CLI
 - Continue
 - Aider
+- Google Antigravity
+- Kimi Code
+- GitHub Copilot
+- OpenCode
+- Kiro
+- Qwen Code
+- Junie
+- Cline
+- Roo Code
 
 The runtime renders only capabilities the target actually supports. Native, adapted, experimental, and unsupported behavior stays explicit; unsupported resources are reported instead of being represented by fictional configuration.
 
@@ -91,12 +100,13 @@ Skills turn broad requests into repeatable processes with explicit inputs, outpu
 
 ### Hooks
 
-Three local, deterministic, advisory hooks automate checks around AI work:
+Four local, deterministic, advisory hooks automate checks around AI work:
 
 | Hook | Event | Automation |
 | --- | --- | --- |
 | Repository health | Session start | Finds missing or incomplete product/architecture context and project scripts |
 | Change discipline | Before tool use | Flags vague commit messages and dependency changes that require review |
+| Risk review | Before tool use | Flags destructive commands, external writes, deployments, and secret-bearing paths for explicit review |
 | Feature completeness | After response | Flags source changes without tests, uncovered contract changes, and migration risk |
 
 Hooks execute code and remain subject to each runtime's repository-trust controls. Review generated configuration before enabling them.
@@ -220,10 +230,10 @@ These totals come from the runtime catalog, adapter registry, templates, and exa
 
 | Capability | Total |
 | --- | ---: |
-| Supported AI environments | 6 |
+| Supported AI environments | 15 |
 | Specialist agents | 19 |
 | Reusable skills | 20 |
-| Automation hooks | 3 |
+| Automation hooks | 4 |
 | Prompt packs | 19 |
 | Runtime templates | 10 |
 | Worked example projects | 5 |
@@ -321,6 +331,15 @@ AI coding runtimes
   Gemini CLI    available · 9 native
   Continue      available · 5 native · 2 adapted
   Aider         available · 2 native · 4 adapted
+  Google Antigravity available · 10 native
+  Kimi Code     detected · 6 native · 1 adapted
+  GitHub Copilot available · 7 native
+  OpenCode      detected · 7 native
+  Kiro          available · 6 native · 2 adapted
+  Qwen Code     available · 7 native
+  Junie         available · 7 native
+  Cline         available · 5 native · 2 adapted
+  Roo Code      available · 6 native · 1 adapted
 ```
 
 ```text

@@ -45,7 +45,7 @@ export const aiderAdapter: IntegrationAdapter = {
   displayName: "Aider",
   runtime: {
     commands: ["aider"],
-    projectMarkers: [".aider.conf.yml", "CONVENTIONS.md"],
+    projectMarkers: [".aider.conf.yml"],
     documentationUrl: "https://aider.chat/docs/usage/conventions.html",
   },
   capabilities,

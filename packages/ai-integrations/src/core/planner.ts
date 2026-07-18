@@ -41,7 +41,20 @@ export function createIntegrationPlan(registry: IntegrationRegistry, spec: Integ
       const previous = artifacts.get(artifact.path);
       if (previous === undefined) artifacts.set(artifact.path, artifact);
       else if (!interoperable(previous, artifact)) throw new Error(`Adapters '${previous.environment}' and '${artifact.environment}' generated incompatible artifacts at ${artifact.path}`);
-      else artifacts.set(artifact.path, { ...previous, environments: [...new Set([...(previous.environments ?? [previous.environment]), ...(artifact.environments ?? [artifact.environment])])] });
+      else {
+        const contributors = [...new Set([...(previous.environments ?? [previous.environment]), ...(artifact.environments ?? [artifact.environment])])].sort();
+        const profileContributors = [...(previous.profileContributors ?? []), ...(artifact.profileContributors ?? [])]
+          .filter((item, index, values) => values.findIndex((candidate) => candidate.environment === item.environment && candidate.profileId === item.profileId) === index)
+          .sort((left, right) => left.environment.localeCompare(right.environment) || left.profileId.localeCompare(right.profileId));
+        const profiles = [...new Set([...(previous.profileIds ?? (previous.profileId === undefined ? [] : [previous.profileId])), ...(artifact.profileIds ?? (artifact.profileId === undefined ? [] : [artifact.profileId]))])].sort();
+        artifacts.set(artifact.path, {
+          ...previous,
+          environment: contributors[0]!,
+          environments: contributors,
+          ...(profiles.length === 0 ? {} : { profileId: profiles[0], profileIds: profiles }),
+          ...(profileContributors.length === 0 ? {} : { profileContributors }),
+        });
+      }
     }
   }
 
@@ -83,7 +96,7 @@ function enrichArtifact(artifact: GeneratedArtifact, resources: readonly Canonic
   return {
     ...artifact,
     environments: artifact.environments ?? [artifact.environment],
-    ...(profileId === undefined ? {} : { profileId }),
+    ...(profileId === undefined ? {} : { profileId, profileIds: [profileId], profileContributors: [{ environment: artifact.environment, profileId }] }),
     resourceId,
     resourceVersion: artifact.resourceVersion ?? selected?.version ?? "0.0.0",
     management,

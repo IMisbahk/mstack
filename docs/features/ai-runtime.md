@@ -2,7 +2,7 @@
 
 > Status: Released
 > Owner: AI Runtime
-> Last updated: 2026-07-16
+> Last updated: 2026-07-18
 > Product need: Install a safe, production-quality AI development workspace into an existing repository
 
 ## Summary
@@ -17,7 +17,9 @@ Developers need one coherent engineering workflow across the AI coding tools the
 - A complete ten-phase Build Like This catalog from idea validation through continuous improvement.
 - Explicit host-project identity and source-of-truth routing for repositories with complete, draft, or missing product context.
 - Phase-gated multi-agent handoffs with native parallel delegation where the selected runtime supports subagents.
-- Claude Code, Codex CLI, Cursor, Gemini CLI, Continue, and Aider adapters.
+- Claude Code, Codex CLI, Cursor, Gemini CLI, Continue, Aider, Antigravity,
+  Kimi Code, GitHub Copilot, OpenCode, Kiro, Qwen Code, Junie, Cline, and Roo
+  Code adapters.
 - Read-only inspection, deterministic planning, explicit approvals, recoverable application, reconciliation, and verification.
 - Manifest-backed ownership for safe upgrades and removal.
 
@@ -46,6 +48,30 @@ Every resource has a stable ID, version, feature, activation mode, security clas
 Unsupported resources are skipped with diagnostics. Emulation is allowed only when the resource permits semantic degradation. Experimental resources require explicit activation.
 
 Hooks, executable assets, MCP endpoints, trust changes, and permission broadening are privileged. They are never activated by a safe default and require a decision specific to that resource and path.
+
+## Cross-runtime compatibility contract
+
+The runtime reuses interoperable project surfaces only when current platform
+documentation verifies the same semantics. `AGENTS.md` and Open Agent Skills
+under `.agents/skills/` are rendered byte-for-byte once and co-owned by every
+selected adapter that consumes them. Tools that require their own skill,
+command, agent, rule, hook, or MCP paths receive real provider-specific files;
+the installer never creates compatibility symlinks.
+
+Reading Claude files does not grant a tool Claude's capabilities. An adapter
+may reuse verified instruction or skill content without inheriting Claude
+hooks, MCP settings, permissions, or trust changes. Missing project-local
+surfaces are omitted with diagnostics, or represented as explicit persona
+skills only where semantic degradation is allowed.
+
+Configured-state detection uses the mstack manifest plus provider-unique
+markers. Shared files such as `AGENTS.md`, `.agents/`, and `.claude/` never
+identify a provider by themselves. GUI-only environments remain explicitly
+selectable without a fabricated executable detector.
+
+When several adapters contribute one shared artifact, reconciliation records
+all sorted adapter and capability-profile contributors. Selection order must
+not change the desired artifact, its ownership, or its removal behavior.
 
 ## Host-project and lifecycle contract
 
@@ -97,7 +123,7 @@ Before an approved destructive edit, the runtime stores a repository-local backu
 - Preserve restrictive trust, sandbox, approval, and permission settings.
 - Store no credentials or secret-bearing MCP configuration.
 - Require HTTPS for remote MCP endpoints unless localhost is explicitly approved.
-- Keep curated hooks bounded, dependency-free, and disabled until approved.
+- Keep curated hooks bounded, dependency-free, advisory, and disabled until approved. They warn on repository-readiness gaps, dependency or commit discipline, destructive or external actions, secret-bearing paths, and incomplete verification evidence.
 
 ## Acceptance criteria
 
@@ -110,7 +136,14 @@ Before an approved destructive edit, the runtime stores a repository-local backu
 - [x] Upgrades and platform deselection remove only unchanged manifest-owned state.
 - [x] User-modified managed state is preserved and reported as drift.
 - [x] Filesystem safety and interrupted-operation recovery are tested.
-- [x] All six adapters have supported and degraded behavior tests.
+- [x] All fifteen adapters have supported and degraded behavior tests.
+- [x] Shared `AGENTS.md` and Open Agent Skills retain every adapter and profile
+  contributor independent of selection order.
+- [x] Shared compatibility paths do not cause unrelated runtimes to be
+  auto-selected or reported as configured.
+- [x] Content-compatible adapters do not inherit unverified Claude hooks, MCP,
+  permissions, or settings.
+- [x] Hook scripts are syntax-checked and behavior-tested as advisory checks, including repeated changes to the same dirty paths.
 - [x] A clean package build imports successfully through its published export.
 - [x] Generated guidance distinguishes the host project, Build Like This method, mstack installer, project-owned documentation, and reference-only templates.
 - [x] Every lifecycle phase has an installed skill, prompt, decision lead, and safe parallel handoff.

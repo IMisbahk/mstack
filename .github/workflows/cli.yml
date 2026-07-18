@@ -5,6 +5,13 @@ on:
     paths:
       - "packages/cli/**"
       - "packages/ai-integrations/**"
+      - ".agents/**"
+      - ".claude/**"
+      - ".codex/**"
+      - ".cursor/**"
+      - ".mstack/**"
+      - "AGENTS.md"
+      - "CLAUDE.md"
       - "docs/cli/**"
       - "templates/**"
       - "package.json"
@@ -17,6 +24,13 @@ on:
     paths:
       - "packages/cli/**"
       - "packages/ai-integrations/**"
+      - ".agents/**"
+      - ".claude/**"
+      - ".codex/**"
+      - ".cursor/**"
+      - ".mstack/**"
+      - "AGENTS.md"
+      - "CLAUDE.md"
       - "docs/cli/**"
       - "templates/**"
       - "package.json"
@@ -54,6 +68,9 @@ jobs:
       - run: pnpm typecheck
       - run: pnpm test
       - run: pnpm build
+      - name: Verify installed AI runtime integrity
+        if: matrix.os == 'ubuntu-latest' && matrix.node == 22
+        run: node packages/cli/dist/cli.js validate --strict
       - if: matrix.os == 'ubuntu-latest' && matrix.node == 22
         run: |
           pnpm --filter @imisbahk/mstack docs:generate

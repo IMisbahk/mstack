@@ -1,11 +1,20 @@
 export { builtInAdapters } from "./adapters/index.js";
 export {
   aiderAdapter,
+  antigravityAdapter,
   claudeAdapter,
+  clineAdapter,
   codexAdapter,
   continueAdapter,
   cursorAdapter,
   geminiAdapter,
+  githubCopilotAdapter,
+  junieAdapter,
+  kimiCodeAdapter,
+  kiroAdapter,
+  openCodeAdapter,
+  qwenCodeAdapter,
+  rooCodeAdapter,
 } from "./adapters/index.js";
 export { applyIntegrationPlan, resumeIntegrationOperation, type ApplyOptions } from "./core/installer.js";
 export { createIntegrationPlan } from "./core/planner.js";

@@ -60,7 +60,11 @@ test("built-in adapters declare and render all target environments", () => {
   const registry = createDefaultRegistry();
   assert.deepEqual(
     registry.list().map((adapter) => adapter.id),
-    ["claude-code", "codex", "cursor", "gemini-cli", "continue", "aider"],
+    [
+      "claude-code", "codex", "cursor", "gemini-cli", "continue", "aider",
+      "antigravity", "kimi-code", "github-copilot", "opencode", "kiro",
+      "qwen-code", "junie", "cline", "roo-code",
+    ],
   );
 
   const plan = createIntegrationPlan(
@@ -89,17 +93,51 @@ test("built-in adapters declare and render all target environments", () => {
     ".codex/agents/security-reviewer.toml",
     ".cursor/agents/security-reviewer.md",
     ".gemini/agents/security-reviewer.md",
+    ".agents/hooks.json",
+    ".agents/agents/security-reviewer/agent.md",
+    ".agents/skills/mstack-agent-security-reviewer/SKILL.md",
+    ".github/prompts/review-change.prompt.md",
+    ".github/agents/security-reviewer.agent.md",
+    ".opencode/commands/review-change.md",
+    ".opencode/agents/security-reviewer.md",
+    ".kiro/skills/ship-safely/SKILL.md",
+    ".kiro/skills/review-change/SKILL.md",
+    ".kiro/skills/mstack-agent-security-reviewer/SKILL.md",
+    ".qwen/skills/ship-safely/SKILL.md",
+    ".qwen/commands/review-change.md",
+    ".qwen/agents/security-reviewer.md",
+    ".junie/skills/ship-safely/SKILL.md",
+    ".junie/commands/review-change.md",
+    ".junie/agents/security-reviewer.md",
+    ".cline/skills/ship-safely/SKILL.md",
+    ".cline/skills/review-change/SKILL.md",
+    ".cline/skills/mstack-agent-security-reviewer/SKILL.md",
+    ".roo/commands/review-change.md",
   ]) {
     assert.ok(paths.has(expected), `missing ${expected}`);
   }
 
   assert.ok(registry.list().every((adapter) => adapter.runtime.documentationUrl.startsWith("https://")));
 
-  // Codex, Cursor, and Gemini share the open .agents skill artifact without collision.
-  assert.equal(
-    plan.artifacts.filter((artifact) => artifact.path === ".agents/skills/ship-safely/SKILL.md").length,
-    1,
-  );
+  // Every verified Open Agent Skills consumer co-owns one byte-identical artifact.
+  const sharedSkill = plan.artifacts.find((artifact) => artifact.path === ".agents/skills/ship-safely/SKILL.md")!;
+  assert.equal(plan.artifacts.filter((artifact) => artifact.path === sharedSkill.path).length, 1);
+  assert.deepEqual(sharedSkill.environments, [
+    "antigravity", "codex", "cursor", "gemini-cli", "github-copilot", "kimi-code", "opencode", "roo-code",
+  ]);
+  assert.deepEqual(sharedSkill.profileIds, [
+    "antigravity.2026-07-18",
+    "codex.2026-07-15",
+    "cursor.2026-07-15",
+    "gemini-cli.2026-07-15",
+    "github-copilot.2026-07-18",
+    "kimi-code.2026-07-18",
+    "opencode.2026-07-18",
+    "roo-code.2026-07-18",
+  ]);
+  assert.deepEqual(plan.artifacts.find((artifact) => artifact.path === "AGENTS.md")?.environments, [
+    "antigravity", "cline", "codex", "github-copilot", "junie", "kimi-code", "kiro", "opencode", "qwen-code", "roo-code",
+  ]);
   assert.match(
     plan.artifacts.find((artifact) => artifact.path === ".codex/config.toml")?.content ?? "",
     /timeout = 10/,
@@ -108,7 +146,22 @@ test("built-in adapters declare and render all target environments", () => {
     plan.artifacts.find((artifact) => artifact.path === ".gemini/settings.json")?.content ?? "",
     /"timeout": 10000/,
   );
-  assert.ok(registry.list().every((adapter) => adapter.profile?.verifiedAt === "2026-07-15"));
+  assert.ok(registry.list().every((adapter) => /^2026-07-(?:15|18)$/.test(adapter.profile?.verifiedAt ?? "")));
+});
+
+test("portable command adapters use each provider's documented Markdown contract", () => {
+  const registry = createDefaultRegistry();
+  for (const [environment, path] of [
+    ["github-copilot", ".github/prompts/review-change.prompt.md"],
+    ["qwen-code", ".qwen/commands/review-change.md"],
+    ["junie", ".junie/commands/review-change.md"],
+    ["roo-code", ".roo/commands/review-change.md"],
+  ] as const) {
+    const plan = createIntegrationPlan(registry, fullSpec, [environment]);
+    const command = plan.artifacts.find((artifact) => artifact.path === path)!;
+    assert.match(command.content, /^---\ndescription: "Review the current change"\n---\n/);
+    assert.match(command.content, /Review the current diff for correctness and missing tests/);
+  }
 });
 
 test("every adapter identifies the host project and keeps mstack templates reference-only", () => {
@@ -144,6 +197,44 @@ test("every adapter identifies the host project and keeps mstack templates refer
   const continueSkill = plan.artifacts.find((artifact) => artifact.path === ".continue/rules/skill-idea-validation.md")!;
   assert.equal(continueSkill.resourceId, "idea-validation");
   assert.equal(continueSkill.resourceVersion, "1.1.0");
+});
+
+test("shared compatibility artifacts and provenance are independent of selection order", async () => {
+  const registry = createDefaultRegistry();
+  const selected = ["roo-code", "kimi-code", "codex", "antigravity"];
+  const forward = createIntegrationPlan(registry, fullSpec, selected);
+  const reverse = createIntegrationPlan(registry, fullSpec, [...selected].reverse());
+  const path = ".agents/skills/ship-safely/SKILL.md";
+  const material = (plan: ReturnType<typeof createIntegrationPlan>) => {
+    const artifact = plan.artifacts.find((item) => item.path === path)!;
+    return {
+      environment: artifact.environment,
+      environments: artifact.environments,
+      profileId: artifact.profileId,
+      profileIds: artifact.profileIds,
+      profileContributors: artifact.profileContributors,
+      content: artifact.content,
+    };
+  };
+  assert.deepEqual(material(forward), material(reverse));
+
+  const root = await mkdtemp(join(tmpdir(), "mstack-shared-provenance-"));
+  try {
+    await applyApproved(root, forward);
+    const manifest = JSON.parse(await readFile(join(root, ".mstack/runtime/manifest.json"), "utf8")) as {
+      resources: Array<{ path: string; adapters: string[]; profileIds: string[] }>;
+    };
+    const resource = manifest.resources.find((item) => item.path === path)!;
+    assert.deepEqual(resource.adapters, ["antigravity", "codex", "kimi-code", "roo-code"]);
+    assert.deepEqual(resource.profileIds, [
+      "antigravity.2026-07-18",
+      "codex.2026-07-15",
+      "kimi-code.2026-07-18",
+      "roo-code.2026-07-18",
+    ]);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
 });
 
 test("Aider keeps indexed prompt, skill, and persona bodies out of automatic context", () => {
