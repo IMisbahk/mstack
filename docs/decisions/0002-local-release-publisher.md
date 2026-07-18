@@ -20,7 +20,9 @@ the current package; synchronizes the root, CLI, and integration package
 versions; runs the full checks; regenerates the command reference; commits and
 annotates the `mstack-v<version>` tag; pushes the branch and tag; authenticates
 with `npm login --auth-type=web` when `npm whoami` is not already authorized;
-and publishes `@imisbahk/mstack` with provenance.
+and publishes `@imisbahk/mstack` without provenance because npm's local
+environment has no GitHub Actions provenance provider. GitHub retains the
+validation workflow; CI provenance can be added when CI becomes the publisher.
 
 The tag-triggered GitHub workflow remains as a release validation gate only. It
 does not publish and therefore cannot duplicate the local npm publication.

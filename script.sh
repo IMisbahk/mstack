@@ -14,7 +14,7 @@ on_error() {
   printf 'release: failed (exit %s). No automatic rollback was attempted.\n' "$status" >&2
   if [[ -n "${tag_name:-}" ]]; then
     printf 'release: recovery state: version %s, tag %s\n' "${release_version:-unknown}" "$tag_name" >&2
-    printf 'release: retry npm publish with: npm publish --workspace %s --access public --provenance\n' "$package_name" >&2
+    printf 'release: retry npm publish with: npm publish --workspace %s --access public --provenance=false\n' "$package_name" >&2
     printf 'release: retry the git push with: git push origin %s %s\n' "${branch_name:-<branch>}" "$tag_name" >&2
   fi
   exit "$status"
@@ -115,7 +115,7 @@ if ! npm whoami --registry "$registry" >/dev/null 2>&1; then
 fi
 
 printf 'release: publishing %s@%s\n' "$package_name" "$release_version"
-npm publish --workspace "$package_name" --access public --provenance
+npm publish --workspace "$package_name" --access public --provenance=false
 
 published_version="$(npm view "${package_name}@${release_version}" version --registry "$registry")"
 [[ "$published_version" == "$release_version" ]] || die "registry verification returned $published_version"
