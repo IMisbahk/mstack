@@ -1,6 +1,6 @@
 # mstack command reference
 
-> Generated from mstack 0.5.0. Run `pnpm --filter @imisbahk/mstack build && pnpm --filter @imisbahk/mstack docs:generate` after changing the command surface.
+> Generated from mstack 0.6.0. Run `pnpm --filter @imisbahk/mstack build && pnpm --filter @imisbahk/mstack docs:generate` after changing the command surface.
 
 ## Global command
 
@@ -17,6 +17,8 @@ Options:
   -v, --version                   output the version number
 
 Commands:
+  agent [options] [id]            list installed specialists and runtime
+                                  invocation guidance; does not execute models
   ai                              configure AI coding environments for this
                                   repository
   catalog [options] [kind]        discover agents, skills, prompts, hooks, and
@@ -28,9 +30,12 @@ Commands:
   help [command]                  display help for command
   init [options] [directory]      install Misbah's Build Like This workflow or
                                   bootstrap a project
+  pack                            discover and manage curated capability packs
   plugins                         inspect installed mstack capability plugins
   status [options]                show repository readiness and the next
                                   recommended action
+  task                            inspect and run curated, policy-gated
+                                  argv-only task recipes
   update [options]                check for and apply mstack updates
   validate [options] [directory]  verify repository readiness and managed AI
                                   runtime integrity
@@ -170,12 +175,169 @@ Usage: mstack catalog [options] [kind]
 discover agents, skills, prompts, hooks, and templates
 
 Arguments:
-  kind        limit results to one resource kind (choices: "agents", "skills",
-              "prompts", "hooks", "templates")
+  kind        limit results to one resource kind (choices: "packs", "agents",
+              "skills", "prompts", "hooks", "templates", "task-recipes")
 
 Options:
   -h, --help  display help for command
   --json      print a versioned JSON catalog (default: false)
+```
+
+## mstack pack
+
+```text
+Usage: mstack pack [options] [command]
+
+discover and manage curated capability packs
+
+Options:
+  -h, --help                 display help for command
+
+Commands:
+  add [options] <ids...>     preview and install curated packs into compatible
+                             configured runtimes
+  help [command]             display help for command
+  info [options] <id>        show pack resources and prerequisites
+  list [options]             show curated packs
+  remove [options] <ids...>  remove selected packs and reconcile owned runtime
+                             files
+  update [options]           reconcile selected packs through ai setup
+```
+
+## mstack pack list
+
+```text
+Usage: mstack pack list [options]
+
+show curated packs
+
+Options:
+  -h, --help  display help for command
+  --json      print a versioned JSON result (default: false)
+```
+
+## mstack pack info
+
+```text
+Usage: mstack pack info [options] <id>
+
+show pack resources and prerequisites
+
+Options:
+  -h, --help  display help for command
+  --json      print a versioned JSON result (default: false)
+```
+
+## mstack pack add
+
+```text
+Usage: mstack pack add [options] <ids...>
+
+preview and install curated packs into compatible configured runtimes
+
+Options:
+  --dry-run          preview without writing (default: false)
+  -h, --help         display help for command
+  --json             print a versioned JSON result (default: false)
+  --runtime <id...>  also configure these runtimes
+  -y, --yes          accept the displayed plan (default: false)
+```
+
+## mstack pack remove
+
+```text
+Usage: mstack pack remove [options] <ids...>
+
+remove selected packs and reconcile owned runtime files
+
+Options:
+  --dry-run   preview without writing (default: false)
+  -h, --help  display help for command
+  --json      print a versioned JSON result (default: false)
+  -y, --yes   accept the displayed reconciliation plan (default: false)
+```
+
+## mstack pack update
+
+```text
+Usage: mstack pack update [options]
+
+reconcile selected packs through ai setup
+
+Options:
+  --dry-run   preview without writing (default: false)
+  -h, --help  display help for command
+  --json      print a versioned JSON result (default: false)
+  -y, --yes   accept the displayed plan (default: false)
+```
+
+## mstack agent
+
+```text
+Usage: mstack agent [options] [id]
+
+list installed specialists and runtime invocation guidance; does not execute
+models
+
+Options:
+  -h, --help  display help for command
+  --json      print a versioned JSON result (default: false)
+```
+
+## mstack task
+
+```text
+Usage: mstack task [options] [command]
+
+inspect and run curated, policy-gated argv-only task recipes
+
+Options:
+  -h, --help           display help for command
+
+Commands:
+  help [command]       display help for command
+  list [options]       list task recipes
+  run [options] <id>   run one policy-gated task recipe
+  show [options] <id>  show a task recipe
+```
+
+## mstack task list
+
+```text
+Usage: mstack task list [options]
+
+list task recipes
+
+Options:
+  -h, --help  display help for command
+  --json      print a versioned JSON result (default: false)
+```
+
+## mstack task show
+
+```text
+Usage: mstack task show [options] <id>
+
+show a task recipe
+
+Options:
+  -h, --help  display help for command
+  --json      print a versioned JSON result (default: false)
+```
+
+## mstack task run
+
+```text
+Usage: mstack task run [options] <id>
+
+run one policy-gated task recipe
+
+Options:
+  --dry-run                preview argv without executing (default: false)
+  -h, --help               display help for command
+  --input <name=value...>  provide a declared recipe input
+  --json                   print a versioned JSON result (default: false)
+  -y, --yes                approve task execution (default: false)
 ```
 
 ## mstack validate

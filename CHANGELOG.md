@@ -2,7 +2,7 @@
 
 All notable changes to mstack are documented here. This project follows [Semantic Versioning](https://semver.org/).
 
-## Unreleased
+## [0.6.0] - 2026-07-25
 
 ### Added
 
@@ -113,3 +113,4 @@ All notable changes to mstack are documented here. This project follows [Semanti
 [0.3.1]: https://github.com/IMisbahk/mstack/compare/mstack-v0.3.0...mstack-v0.3.1
 [0.3.0]: https://github.com/IMisbahk/mstack/compare/c54a28b...mstack-v0.3.0
 [0.5.0]: https://github.com/IMisbahk/mstack/compare/mstack-v0.4.0...mstack-v0.5.0
+[0.6.0]: https://github.com/IMisbahk/mstack/compare/mstack-v0.5.0...mstack-v0.6.0
