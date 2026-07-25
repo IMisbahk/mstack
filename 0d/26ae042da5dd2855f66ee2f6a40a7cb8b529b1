@@ -1,0 +1,25 @@
+CHANGELOG.md
+  s_d30eaa16910096::t_9f669501f616b1 5,116
+package.json
+  s_d30eaa16910096::t_2fe2364bdbae5d 3
+packages/ai-integrations/package.json
+  s_d30eaa16910096::t_df16be6f5edb5f 3
+packages/cli/package.json
+  s_d30eaa16910096::t_44d4b6527806f8 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "0d26ae042da5dd2855f66ee2f6a40a7cb8b529b1",
+  "prompts": {},
+  "sessions": {
+    "s_d30eaa16910096": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f9993-60ed-7802-80ae-32603eb355ca",
+        "model": "unknown"
+      },
+      "human_author": "Misbah Khursheed <m.misbahkhursheed@gmail.com>"
+    }
+  }
+}
