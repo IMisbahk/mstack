@@ -2,6 +2,23 @@
 
 All notable changes to mstack are documented here. This project follows [Semantic Versioning](https://semver.org/).
 
+## Unreleased
+
+### Added
+
+- Add curated, opt-in capability packs for repository intelligence, software/web,
+  systems, embedded/firmware, robotics, data/ML, mobile, games/graphics,
+  infrastructure/security, and CLI/devtools.
+- Add pack lifecycle commands, runtime-native repository specialists, and the
+  `mstack agent` discovery surface without hosted model execution.
+- Add policy-gated, argv-only task recipes for repository inspection, quality
+  verification, and dependency operations.
+
+### Changed
+
+- Persist selected pack versions in the mstack manifest and compose them into
+  existing safe AI-runtime reconciliation.
+
 ## [0.5.0] - 2026-07-18
 
 ### Added

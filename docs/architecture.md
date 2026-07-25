@@ -55,3 +55,7 @@ AI is valuable for enumerating failure modes, comparing trade-offs, drafting sch
 Update `architecture.md` when a change alters a boundary, core data model, public contract, security model, deployment topology, or important operational assumption. Use an [ADR](decisions.md) to retain the reasoning behind a consequential change.
 
 Start from [`templates/architecture.template.md`](../templates/architecture.template.md). Write the architecture you can justify now, then evolve it as the product teaches you more.
+
+## Current mstack architecture decision
+
+Capability packs are a curated in-process registry in the CLI. Each pack declares metadata, a normal `IntegrationSpec` contribution, and declarative argv-only task recipes. `ai setup` composes the core spec with manifest-selected packs, then uses existing adapters, planner, reconciliation, and ownership mechanisms. The project manifest stores the desired pack ID/version set; runtime manifests continue to own rendered files. Tasks execute literal argument vectors with `shell: false`, apply the configured policy before execution, and emit per-step results. See [ADR-0003](decisions/0003-curated-capability-packs-and-task-recipes.md).

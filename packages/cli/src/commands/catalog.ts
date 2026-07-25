@@ -5,9 +5,10 @@ import {
   engineeringSkills,
   runtimeTemplates,
 } from "../../../ai-integrations/src/index.js";
+import { createDefaultPackRegistry } from "../packs/index.js";
 import type { Output } from "../core/output.js";
 
-export const CATALOG_KINDS = ["agents", "skills", "prompts", "hooks", "templates"] as const;
+export const CATALOG_KINDS = ["packs", "agents", "skills", "prompts", "hooks", "templates", "task-recipes"] as const;
 export type CatalogKind = (typeof CATALOG_KINDS)[number];
 
 export interface CatalogItem {
@@ -24,7 +25,9 @@ export interface CatalogReport {
 }
 
 export function buildCatalog(kind?: CatalogKind): CatalogReport {
+  const packs = createDefaultPackRegistry().list();
   const items: CatalogItem[] = [
+    ...packs.map((item) => ({ kind: "packs" as const, id: item.id, description: item.description, detail: item.version })),
     ...engineeringAgents.map((item) => ({ kind: "agents" as const, id: item.id, description: item.description })),
     ...engineeringSkills.map((item) => ({ kind: "skills" as const, id: item.id, description: item.description })),
     ...engineeringPrompts.map((item) => ({
@@ -44,6 +47,7 @@ export function buildCatalog(kind?: CatalogKind): CatalogReport {
       id: item.id ?? item.path,
       description: `Reusable engineering template at ${item.path}.`,
     })),
+    ...packs.flatMap((pack) => pack.tasks.map((item) => ({ kind: "task-recipes" as const, id: item.id, description: item.description, detail: item.risk }))),
   ];
   const counts = Object.fromEntries(CATALOG_KINDS.map((name) => [name, items.filter((item) => item.kind === name).length])) as Record<CatalogKind, number>;
   return { schemaVersion: 1, counts, items: kind === undefined ? items : items.filter((item) => item.kind === kind) };
@@ -61,7 +65,7 @@ export function catalogCommand(output: Output, kind: CatalogKind | undefined, js
     const width = Math.max(13, ...items.map((item) => item.id.length));
     for (const item of items) output.field(item.id, item.description, width);
   }
-  output.next(`Install or reconcile this catalog with ${output.command("mstack ai setup")}`);
+  output.next(`Install or reconcile core resources with ${output.command("mstack ai setup")} and curated packs with ${output.command("mstack pack add <id>")}`);
 }
 
 function title(kind: CatalogKind): string {

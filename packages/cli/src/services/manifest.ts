@@ -19,6 +19,8 @@ export interface MstackManifest {
   readonly operationId: string;
   readonly updatedAt: string;
   readonly integrations: readonly string[];
+  /** Curated capability packs selected for runtime rendering. */
+  readonly packs?: readonly { id: string; version: string }[];
   readonly files: readonly ManifestFile[];
 }
 
@@ -38,6 +40,7 @@ export async function updateManifest(
   update: {
     files: readonly { path: string; kind: ManifestFile["kind"]; owner: string; integrity?: ManifestFile["integrity"] }[];
     integrations?: readonly string[];
+    packs?: readonly { id: string; version: string }[];
     now?: Date;
   },
 ): Promise<MstackManifest> {
@@ -65,6 +68,9 @@ export async function updateManifest(
     operationId: randomUUID(),
     updatedAt: now,
     integrations: [...new Set([...(existing?.integrations ?? []), ...(update.integrations ?? [])])].sort(),
+    ...(update.packs === undefined ? (existing?.packs === undefined ? {} : { packs: existing.packs }) : {
+      packs: [...new Map(update.packs.map((pack) => [pack.id, pack])).values()].sort((a, b) => a.id.localeCompare(b.id)),
+    }),
     files: [...files.values()].sort((left, right) => left.path.localeCompare(right.path)),
   };
   await writeJsonAtomic(manifestPath(root), manifest);

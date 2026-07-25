@@ -25,4 +25,10 @@ user need -> intended behavior -> contract and data changes
 
 The biggest mistake I want to prevent is a feature becoming a self-justifying project. If the link to a user need disappears, stop and revisit the product rather than writing a more detailed specification.
 
+## buildlikethis feature index
+
+| Feature | User need | Status | Owner | Specification | Outcome metric |
+| --- | --- | --- | --- | --- | --- |
+| Extensible AI engineering packs and safe task recipes | Teams need domain-specific AI guidance and repeatable local workflows without unreviewed model execution or shell injection. | in progress | mstack maintainers | [AI engineering packs](features/ai-engineering-packs.md) | A compatible runtime renders selected packs deterministically; every non-read-only task has a recorded policy decision. |
+
 Small, obvious work can remain in `product.md`, an issue, and tests. More documentation is not automatically more disciplined. The right documentation makes the next decision clearer.

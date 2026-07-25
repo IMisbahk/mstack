@@ -57,3 +57,7 @@ AI is useful for finding contradictions, identifying missing actors and failure 
 - Is there a named owner for product decisions?
 
 Start from [`templates/product.template.md`](../templates/product.template.md). Delete sections that genuinely do not matter; never fill them with invented certainty just to complete the file.
+
+## Current mstack product decision
+
+For mstack users who work across different engineering domains, optional curated capability packs provide specialist guidance and safe local task recipes without making the default setup heavyweight. The boundary is intentional: mstack installs and reconciles runtime-native resources, while the selected AI runtime owns model inference and any agent coordination. See [the feature specification](features/ai-engineering-packs.md).

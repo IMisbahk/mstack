@@ -9,6 +9,7 @@ import {
   inspectIntegrationRepository,
   type ApplyResult,
   type ApprovalRequirement,
+  type IntegrationSpec,
 } from "../../../ai-integrations/src/index.js";
 import type { Output } from "../core/output.js";
 import { CliError, errorMessage } from "../core/errors.js";
@@ -16,7 +17,19 @@ import { createDefaultPluginRegistry } from "../plugins/index.js";
 import { ConfigStore } from "../services/config.js";
 import { inspectRepository } from "../services/health.js";
 import { updateManifest } from "../services/manifest.js";
+import { readManifest } from "../services/manifest.js";
 import { detectRuntimes } from "../services/runtimes.js";
+import { createDefaultPackRegistry } from "../packs/index.js";
+
+function mergeSpecs(base: IntegrationSpec, additions: readonly Pick<IntegrationSpec, "agents" | "skills" | "prompts" | "templates">[]): IntegrationSpec {
+  return {
+    ...base,
+    agents: [...(base.agents ?? []), ...additions.flatMap((item) => item.agents ?? [])],
+    skills: [...(base.skills ?? []), ...additions.flatMap((item) => item.skills ?? [])],
+    prompts: [...(base.prompts ?? []), ...additions.flatMap((item) => item.prompts ?? [])],
+    templates: [...(base.templates ?? []), ...additions.flatMap((item) => item.templates ?? [])],
+  };
+}
 
 function valueOrCancel<T>(value: T | symbol): T {
   if (prompts.isCancel(value)) throw new CliError("AI runtime setup cancelled.", { exitCode: 130 });
@@ -51,6 +64,7 @@ export interface AiSetupOptions {
   force: boolean;
   yes: boolean;
   json: boolean;
+  packs?: readonly string[];
   output: Output;
 }
 
@@ -100,7 +114,11 @@ export async function aiSetupCommand(options: AiSetupOptions): Promise<void> {
   const pack = pluginRegistry.integrationPack("build-like-this");
   const project = await new ConfigStore({ cwd: health.root }).project();
   const projectName = project?.project?.name?.trim() || path.basename(health.root) || "Project";
-  const spec = pack.createSpec({ root: health.root, projectName });
+  const existingManifest = await readManifest(health.root);
+  const packRegistry = createDefaultPackRegistry();
+  const packIds = options.packs === undefined ? (existingManifest?.packs ?? []).map((item) => item.id) : options.packs;
+  const selectedPacks = packRegistry.resolve(packIds);
+  const spec = mergeSpecs(pack.createSpec({ root: health.root, projectName }), selectedPacks.map((selectedPack) => selectedPack.createSpec({ projectName })));
   let plan;
   try {
     plan = createIntegrationPlan(registry, spec, selected);
@@ -154,9 +172,9 @@ export async function aiSetupCommand(options: AiSetupOptions): Promise<void> {
     owner: file.path.startsWith(".mstack/runtime/") ? "mstack" : "mstack-ai-runtime",
     integrity: plan.artifacts.find((artifact) => artifact.path === file.path)?.mergeStrategy === "replace" ? "content" as const : "existence" as const,
   }));
-  const manifest = await updateManifest(health.root, { files: managedFiles, integrations: selected });
+  const manifest = await updateManifest(health.root, { files: managedFiles, integrations: selected, packs: selectedPacks.map((selectedPack) => ({ id: selectedPack.id, version: selectedPack.version })) });
 
-  if (options.json) return options.output.json({ ...aiResult("applied", selected, applied, plan.diagnostics), manifest: ".mstack/manifest.json", operationId: manifest.operationId });
+  if (options.json) return options.output.json({ ...aiResult("applied", selected, applied, plan.diagnostics), packs: selectedPacks.map((item) => ({ id: item.id, version: item.version })), manifest: ".mstack/manifest.json", operationId: manifest.operationId });
   const changed = applied.files.filter((file) => file.status === "created" || file.status === "updated").length;
   options.output.success(`Configured ${displayNames.join(", ")}`);
   options.output.field("Changed", `${changed} file${changed === 1 ? "" : "s"}`);

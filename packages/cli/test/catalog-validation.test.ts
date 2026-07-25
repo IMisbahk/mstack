@@ -34,8 +34,8 @@ async function initializedFixture(): Promise<{ root: string; templates: string }
 describe("runtime catalog", () => {
   it("derives complete counts and filtered resources from runtime exports", () => {
     const complete = buildCatalog();
-    expect(complete.counts).toEqual({ agents: 19, skills: 20, prompts: 19, hooks: 4, templates: 10 });
-    expect(complete.items).toHaveLength(72);
+    expect(complete.counts).toEqual({ packs: 10, agents: 19, skills: 20, prompts: 19, hooks: 4, templates: 10, "task-recipes": 15 });
+    expect(complete.items).toHaveLength(97);
 
     const agents = buildCatalog("agents");
     expect(agents.items).toHaveLength(19);

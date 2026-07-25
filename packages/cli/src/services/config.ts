@@ -12,6 +12,7 @@ export interface Preferences {
   initializeGit?: boolean;
   updateCheck?: boolean;
   template?: string;
+  taskPolicy?: "strict" | "balanced" | "automation";
 }
 
 export interface UserConfig {
@@ -32,6 +33,7 @@ export const CONFIG_KEYS = [
   "initializeGit",
   "updateCheck",
   "template",
+  "taskPolicy",
 ] as const;
 export type ConfigKey = (typeof CONFIG_KEYS)[number];
 
@@ -156,6 +158,9 @@ export function parseConfigValue(key: ConfigKey, raw: string): Preferences[Confi
   }
   if (key === "packageManager" && !PACKAGE_MANAGERS.includes(raw as PackageManager)) {
     throw new CliError(`packageManager must be one of: ${PACKAGE_MANAGERS.join(", ")}.`);
+  }
+  if (key === "taskPolicy" && !["strict", "balanced", "automation"].includes(raw)) {
+    throw new CliError("taskPolicy must be one of: strict, balanced, automation.");
   }
   if (!raw.trim()) throw new CliError(`${key} cannot be empty.`);
   return raw as Preferences[ConfigKey];
