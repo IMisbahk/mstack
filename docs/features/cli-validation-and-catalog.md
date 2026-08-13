@@ -11,7 +11,8 @@ Developers can see what the Build Like This runtime contains without inspecting 
 
 Included:
 
-- `mstack catalog [kind]` for agents, skills, prompts, hooks, and templates;
+- `mstack catalog [kind]` for agents, skills, prompts, hooks, templates, packs, and task recipes;
+- `mstack catalog --query` for id and description filtering;
 - stable, versioned JSON output for catalog automation;
 - `mstack validate [directory]` for planning-document readiness, mstack manifest integrity, and AI runtime verification;
 - `--strict` validation that treats warnings as release-blocking;
@@ -30,7 +31,7 @@ Not included:
 
 ### Catalog
 
-`mstack catalog` lists every resource grouped by kind and reports exact totals. An optional kind limits output to `agents`, `skills`, `prompts`, `hooks`, or `templates`. Catalog reads the versioned runtime definitions directly, so documentation and terminal output cannot maintain a separate inventory.
+`mstack catalog` lists every resource grouped by kind and reports exact totals. An optional kind limits output to `packs`, `agents`, `skills`, `prompts`, `hooks`, `templates`, or `task-recipes`. `--query` filters those results by id, description, or pack. Catalog reads the versioned runtime definitions and the curated pack registry directly, so documentation and terminal output cannot maintain a separate inventory.
 
 ### Validation
 

@@ -48,7 +48,10 @@ Existing planning documents are preserved. `--force` is the only path that inten
 | `mstack explain` | Walk through the repository's installed workflow |
 | `mstack ai setup` | Configure detected or selected AI coding runtimes |
 | `mstack ai list` | Inspect runtime support and detection |
-| `mstack catalog` | Discover agents, skills, prompts, hooks, and templates |
+| `mstack catalog` | Discover agents, skills, prompts, hooks, templates, packs, and task recipes |
+| `mstack pack` | List, inspect, recommend, add, and remove curated capability packs |
+| `mstack task` | Inspect and run policy-gated argv-only task recipes |
+| `mstack agent` | List installed specialists and runtime invocation guidance |
 | `mstack validate` | Verify planning readiness, ownership, and runtime integrity |
 | `mstack doctor` | Diagnose runtime, repository, permissions, and manifest health |
 | `mstack config` | Inspect or change layered configuration |

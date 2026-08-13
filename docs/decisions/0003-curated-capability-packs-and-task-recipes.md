@@ -15,5 +15,7 @@ Task recipes are data, not arbitrary shell programs: each step is a literal argv
 
 - Existing runtime adapter and reconciliation behavior remains the sole file-ownership mechanism.
 - v1 excludes third-party pack loading and high-consequence publishing/deployment recipes.
+- Pack recommendation inspects well-known marker files and does not change selection or install resources.
+- Composition is first-id-wins so a pack cannot overwrite a core resource id.
 - Pack removal changes desired selection and requires normal AI setup reconciliation to remove stale owned runtime resources safely.
 - Model execution remains visible to and controlled by the user’s chosen runtime.

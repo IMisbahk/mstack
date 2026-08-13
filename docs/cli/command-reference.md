@@ -21,8 +21,8 @@ Commands:
                                   invocation guidance; does not execute models
   ai                              configure AI coding environments for this
                                   repository
-  catalog [options] [kind]        discover agents, skills, prompts, hooks, and
-                                  templates
+  catalog [options] [kind]        discover packs, agents, skills, prompts,
+                                  hooks, templates, and task recipes
   config                          inspect or change mstack configuration
   doctor [options]                inspect the runtime and current project
   explain [options]               walk through Misbah's Build Like This workflow
@@ -172,15 +172,17 @@ Options:
 ```text
 Usage: mstack catalog [options] [kind]
 
-discover agents, skills, prompts, hooks, and templates
+discover packs, agents, skills, prompts, hooks, templates, and task recipes
 
 Arguments:
-  kind        limit results to one resource kind (choices: "packs", "agents",
-              "skills", "prompts", "hooks", "templates", "task-recipes")
+  kind            limit results to one resource kind (choices: "packs",
+                  "agents", "skills", "prompts", "hooks", "templates",
+                  "task-recipes")
 
 Options:
-  -h, --help  display help for command
-  --json      print a versioned JSON catalog (default: false)
+  -h, --help      display help for command
+  --json          print a versioned JSON catalog (default: false)
+  --query <text>  filter by id, description, or pack
 ```
 
 ## mstack pack
@@ -199,6 +201,8 @@ Commands:
   help [command]             display help for command
   info [options] <id>        show pack resources and prerequisites
   list [options]             show curated packs
+  recommend [options]        suggest curated packs from repository evidence
+                             without installing them
   remove [options] <ids...>  remove selected packs and reconcile owned runtime
                              files
   update [options]           reconcile selected packs through ai setup
@@ -222,6 +226,18 @@ Options:
 Usage: mstack pack info [options] <id>
 
 show pack resources and prerequisites
+
+Options:
+  -h, --help  display help for command
+  --json      print a versioned JSON result (default: false)
+```
+
+## mstack pack recommend
+
+```text
+Usage: mstack pack recommend [options]
+
+suggest curated packs from repository evidence without installing them
 
 Options:
   -h, --help  display help for command
@@ -309,8 +325,11 @@ Usage: mstack task list [options]
 list task recipes
 
 Options:
-  -h, --help  display help for command
-  --json      print a versioned JSON result (default: false)
+  -h, --help      display help for command
+  --json          print a versioned JSON result (default: false)
+  --pack <id>     limit results to one pack
+  --risk <class>  limit results to one risk class (choices: "read-only",
+                  "working-tree", "destructive", "remote")
 ```
 
 ## mstack task show
