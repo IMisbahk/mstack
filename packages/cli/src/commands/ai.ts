@@ -21,13 +21,23 @@ import { readManifest } from "../services/manifest.js";
 import { detectRuntimes } from "../services/runtimes.js";
 import { createDefaultPackRegistry } from "../packs/index.js";
 
+function mergeById<T extends { id: string }>(groups: readonly (readonly T[] | undefined)[]): T[] {
+  const merged = new Map<string, T>();
+  for (const group of groups) {
+    for (const item of group ?? []) {
+      if (!merged.has(item.id)) merged.set(item.id, item);
+    }
+  }
+  return [...merged.values()];
+}
+
 function mergeSpecs(base: IntegrationSpec, additions: readonly Pick<IntegrationSpec, "agents" | "skills" | "prompts" | "templates">[]): IntegrationSpec {
   return {
     ...base,
-    agents: [...(base.agents ?? []), ...additions.flatMap((item) => item.agents ?? [])],
-    skills: [...(base.skills ?? []), ...additions.flatMap((item) => item.skills ?? [])],
-    prompts: [...(base.prompts ?? []), ...additions.flatMap((item) => item.prompts ?? [])],
-    templates: [...(base.templates ?? []), ...additions.flatMap((item) => item.templates ?? [])],
+    agents: mergeById([base.agents, ...additions.map((item) => item.agents)]),
+    skills: mergeById([base.skills, ...additions.map((item) => item.skills)]),
+    prompts: mergeById([base.prompts, ...additions.map((item) => item.prompts)]),
+    templates: mergeById([base.templates, ...additions.map((item) => item.templates)]),
   };
 }
 

@@ -60,4 +60,4 @@ Start from [`templates/product.template.md`](../templates/product.template.md). 
 
 ## Current mstack product decision
 
-For mstack users who work across different engineering domains, optional curated capability packs provide specialist guidance and safe local task recipes without making the default setup heavyweight. The boundary is intentional: mstack installs and reconciles runtime-native resources, while the selected AI runtime owns model inference and any agent coordination. See [the feature specification](features/ai-engineering-packs.md).
+For mstack users who work across different engineering domains, optional curated capability packs provide specialist guidance, invokable prompts, and safe local task recipes without making the default setup heavyweight. Pack recommendation cites repository evidence and leaves selection explicit. The boundary is intentional: mstack installs and reconciles runtime-native resources, while the selected AI runtime owns model inference and any agent coordination. See [the feature specification](features/ai-engineering-packs.md).

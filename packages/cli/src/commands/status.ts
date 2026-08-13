@@ -15,6 +15,7 @@ export async function statusCommand(cwd: string, output: Output, json: boolean):
     output.field(label, `${detail} · ${document.path}`);
   }
   output.field("AI runtimes", report.integrations.length > 0 ? report.integrations.join(", ") : "not configured");
+  output.field("Packs", report.packs.length > 0 ? report.packs.join(", ") : "none selected");
   output.field("Manifest", report.manifest ?? "not found");
   const destination = report.next.path ? ` ${report.next.path}` : report.next.command ? ` ${output.command(report.next.command)}` : "";
   output.next(`${report.next.message}${destination}`);

@@ -19,6 +19,7 @@ export interface RepositoryHealth {
   readonly setup: "not-initialized" | "needs-attention" | "complete";
   readonly documents: readonly DocumentHealth[];
   readonly integrations: readonly string[];
+  readonly packs: readonly string[];
   readonly manifest: string | null;
   readonly next: { command?: string; path?: string; message: string };
 }
@@ -77,6 +78,7 @@ export async function inspectRepository(start: string): Promise<RepositoryHealth
     setup,
     documents,
     integrations: manifest?.integrations ?? [],
+    packs: manifest?.packs?.map((pack) => pack.id) ?? [],
     manifest: manifest ? ".mstack/manifest.json" : null,
     next,
   };

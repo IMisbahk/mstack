@@ -4,12 +4,14 @@ import path from "node:path";
 import { Writable } from "node:stream";
 import { afterEach, describe, expect, it } from "vitest";
 import { buildCatalog } from "../src/commands/catalog.js";
+import { createDefaultPackRegistry } from "../src/packs/index.js";
 import { hasBlockingDoctorIssue } from "../src/commands/doctor.js";
 import { validateRepository } from "../src/commands/validate.js";
 import { Output } from "../src/core/output.js";
 import { createProgram } from "../src/program.js";
 import { readManifest, updateManifest } from "../src/services/manifest.js";
 import { makeTemplates } from "./helpers.js";
+import { engineeringAgents, engineeringPrompts, engineeringSkills } from "../../ai-integrations/src/index.js";
 
 const temporary: string[] = [];
 afterEach(async () => {
@@ -33,15 +35,37 @@ async function initializedFixture(): Promise<{ root: string; templates: string }
 
 describe("runtime catalog", () => {
   it("derives complete counts and filtered resources from runtime exports", () => {
+    const registry = createDefaultPackRegistry();
+    const packs = registry.list();
+    const packSpecs = packs.map((pack) => pack.createSpec({ projectName: "fixture" }));
     const complete = buildCatalog();
-    expect(complete.counts).toEqual({ packs: 10, agents: 19, skills: 20, prompts: 19, hooks: 4, templates: 10, "task-recipes": 15 });
-    expect(complete.items).toHaveLength(97);
+    expect(complete.counts.packs).toBe(packs.length);
+    expect(complete.counts["task-recipes"]).toBe(packs.reduce((sum, pack) => sum + pack.tasks.length, 0));
+    expect(complete.counts.agents).toBe(engineeringAgents.length + packSpecs.reduce((sum, spec) => sum + (spec.agents?.length ?? 0), 0));
+    expect(complete.counts.skills).toBe(engineeringSkills.length + packSpecs.reduce((sum, spec) => sum + (spec.skills?.length ?? 0), 0));
+    expect(complete.counts.prompts).toBe(engineeringPrompts.length + packSpecs.reduce((sum, spec) => sum + (spec.prompts?.length ?? 0), 0));
+    expect(complete.counts.hooks).toBe(4);
+    expect(complete.counts.templates).toBe(10);
+    expect(packs).toHaveLength(14);
+    expect(complete.counts["task-recipes"]).toBeGreaterThanOrEqual(40);
+    expect(complete.items.some((item) => item.id === "product-manager" && item.kind === "agents")).toBe(true);
+    expect(complete.items.some((item) => item.id === "workflow-coordinator" && item.kind === "agents")).toBe(true);
 
     const agents = buildCatalog("agents");
-    expect(agents.items).toHaveLength(19);
     expect(agents.items.every((item) => item.kind === "agents")).toBe(true);
     expect(agents.items.some((item) => item.id === "product-manager")).toBe(true);
-    expect(agents.items.some((item) => item.id === "workflow-coordinator")).toBe(true);
+    expect(agents.items.some((item) => item.id === "web-engineer")).toBe(true);
+  });
+
+  it("filters the catalog by query without changing source counts", async () => {
+    const stdout: string[] = [];
+    const output = new Output({ stdout: memoryStream(stdout), stderr: memoryStream([]), color: false });
+    await createProgram({ output }).parseAsync(["node", "mstack", "catalog", "packs", "--query", "mobile", "--json"]);
+    const report = JSON.parse(stdout.join(""));
+    expect(report.schemaVersion).toBe(1);
+    expect(report.query).toBe("mobile");
+    expect(report.counts.packs).toBe(14);
+    expect(report.items.every((item: { id: string; description: string }) => `${item.id} ${item.description}`.toLowerCase().includes("mobile"))).toBe(true);
   });
 
   it("emits a versioned JSON catalog through the public CLI", async () => {

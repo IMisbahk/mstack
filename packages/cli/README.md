@@ -10,7 +10,7 @@ mstack init
 mstack ai setup
 ```
 
-`mstack init` installs the planning documents, project configuration, and ownership manifest. `mstack ai setup` then installs the capability-aware repository instructions, specialist agents, reusable skills and prompts, advisory hooks, and reference templates for selected coding environments. Both preview changes, preserve existing work, and record generated-file ownership.
+`mstack init` installs the planning documents, project configuration, and ownership manifest. `mstack ai setup` then installs the capability-aware repository instructions, specialist agents, reusable skills and prompts, advisory hooks, and reference templates for selected coding environments. Curated domain packs add extra specialists and argv-only task recipes after an explicit `mstack pack add`. Both preview changes, preserve existing work, and record generated-file ownership.
 
 ## Why mstack exists
 
@@ -145,6 +145,7 @@ The runtime catalog is discoverable without inspecting generated directories:
 ```sh
 mstack catalog
 mstack catalog agents
+mstack catalog --query mobile
 mstack catalog hooks --json
 ```
 
@@ -236,7 +237,8 @@ These totals come from the runtime catalog, adapter registry, templates, and exa
 | Automation hooks | 4 |
 | Prompt packs | 19 |
 | Runtime templates | 10 |
-| Worked example projects | 5 |
+| Curated capability packs | 14 |
+| Worked example projects | 9 |
 | Supported package managers | 4 |
 
 Catalog totals are enforced by [runtime tests](https://github.com/IMisbahk/mstack/blob/main/packages/ai-integrations/test/runtime.test.ts).
@@ -416,7 +418,14 @@ Every command below is implemented. `mstack ai`, `mstack config`, and `mstack pl
 | `explain` | Walk through the installed workflow | `mstack explain [--json]`<br>`mstack explain` | Describes the planning documents that exist and points to the first incomplete step. Makes no changes. |
 | `ai setup` | Install the AI engineering pack | `mstack ai setup [runtimes...] [options]`<br>`mstack ai setup claude-code codex --dry-run` | Detects or accepts runtimes, renders supported capabilities, reports limitations and conflicts, confirms before applying, and updates the manifest. Supports `--all`, `--yes`, `--force`, and `--json`. |
 | `ai list` | Inspect runtime support and detection | `mstack ai list [--json]`<br>`mstack ai list` | Shows every environment as available, detected, or configured with native and adapted capability counts. Makes no changes. |
-| `catalog` | Discover runtime resources | `mstack catalog [kind] [--json]`<br>`mstack catalog agents` | Lists source-backed agents, skills, prompts, hooks, and templates with exact catalog totals. Makes no changes. |
+| `catalog` | Discover runtime and pack resources | `mstack catalog [kind] [--query <text>] [--json]`<br>`mstack catalog --query mobile` | Lists source-backed packs, agents, skills, prompts, hooks, templates, and task recipes. Makes no changes. |
+| `pack list` | List curated packs | `mstack pack list [--json]`<br>`mstack pack list` | Shows bundled pack ids, versions, and descriptions. Makes no changes. |
+| `pack info` | Inspect one pack | `mstack pack info <id> [--json]`<br>`mstack pack info mobile` | Shows specialists, skills, prompts, tasks, and toolchains. Makes no changes. |
+| `pack recommend` | Suggest packs from repository evidence | `mstack pack recommend [--json]`<br>`mstack pack recommend` | Cites well-known marker files and package dependencies. Does not install packs. |
+| `pack add` | Select packs and reconcile runtimes | `mstack pack add <ids...> [options]`<br>`mstack pack add mobile qa-testing --dry-run` | Composes selected packs into existing AI setup. Requires `--yes` in non-interactive privileged setup. |
+| `task list` | List argv-only recipes | `mstack task list [--pack <id>] [--risk <class>] [--json]`<br>`mstack task list --risk read-only` | Lists policy-gated recipes. Makes no changes. |
+| `task run` | Run one recipe | `mstack task run <id> [--dry-run] [--yes]`<br>`mstack task run repository.status --dry-run` | Executes literal argv with `shell: false`, file preconditions, and the configured task policy. |
+| `agent` | Describe installed specialists | `mstack agent [id] [--json]`<br>`mstack agent` | Lists specialists from the core pack and selected capability packs. Does not execute models. |
 | `validate` | Verify repository and runtime integrity | `mstack validate [directory] [--strict] [--json]`<br>`mstack validate --strict` | Checks planning readiness, repository ownership, and AI runtime drift. Exits with code `4` on errors, or on warnings in strict mode. Makes no changes. |
 | `plugins list` | Inspect capability plugins | `mstack plugins list [--json]`<br>`mstack plugins list --json` | Lists plugin metadata and integration, template, and generator contributions. Makes no changes. |
 | `config list` | Print resolved configuration | `mstack config list [--json]`<br>`mstack config list` | Merges user and project preferences, then prints the resolved values. Makes no changes. |
@@ -434,7 +443,6 @@ The following command families describe the platform direction. **They are plann
 
 | Planned command | Direction |
 | --- | --- |
-| `mstack agent` | Invoke and coordinate installed specialists |
 | `mstack prompt` | Apply and compose prompt packs |
 | `mstack hook` | Manage activation of approved hooks |
 | `mstack skill` | Install or update individual engineering skills |
@@ -453,7 +461,7 @@ Today, use `mstack ai setup` for runtime installation and `mstack update` for th
 │   ├── cli/                      CLI guide, command reference, runtime matrix, migrations
 │   ├── decisions/                Architecture decision records
 │   └── features/                 Capability specifications
-├── examples/                     Five worked product and architecture examples
+├── examples/                     Nine worked product and architecture examples
 ├── packages/
 │   ├── ai-integrations/          Runtime catalog, adapters, ownership, verification
 │   └── cli/                      Commands, configuration, manifests, project services

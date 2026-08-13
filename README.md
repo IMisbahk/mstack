@@ -82,7 +82,7 @@ Use `mstack catalog` to discover the installed engineering resources and `mstack
 
 From a clean `main` checkout, run `./script.sh major`, `./script.sh minor`, or `./script.sh patch`. The script validates the package, updates all workspace versions, regenerates the command reference, runs the release checks, creates and pushes the `mstack-v<version>` commit and tag, then opens npm's web login when needed and publishes `@imisbahk/mstack`. If publishing fails after the git push, rerun the printed `npm publish` command; do not create another version.
 
-The current platform includes 15 AI environments, 19 specialist agents, 20 reusable skills, 4 automation hooks, 19 prompt packs, and 10 runtime templates. Its ten-phase workflow runs bounded specialist lanes in parallel where the AI environment supports subagents, while preserving one decision owner and safe sequential fallbacks elsewhere. It supports npm, pnpm, Yarn, and Bun, with versioned JSON output for automation.
+The current platform includes 15 AI environments, 19 specialist agents, 20 reusable skills, 4 automation hooks, 19 prompt packs, 10 runtime templates, 14 curated capability packs, and policy-gated task recipes. Its ten-phase workflow runs bounded specialist lanes in parallel where the AI environment supports subagents, while preserving one decision owner and safe sequential fallbacks elsewhere. It supports npm, pnpm, Yarn, and Bun, with versioned JSON output for automation.
 
 Projects such as [g-stack](https://github.com/garrytan/gstack) already approach AI development environments with broad capability and configuration. I respect that approach. Build Like This makes a different trade-off: fewer choices, stronger defaults, and a specific product-to-production workflow. The purpose of mstack is not to expose every possible setup. It is to get a repository ready for the process I would personally use.
 
@@ -141,6 +141,10 @@ Each example begins with product and architecture documents. There is no impleme
 - [SaaS: InvoiceFlow](examples/saas/README.md) — design tenancy, payments, and operational reliability before they become incidents.
 - [Startup: CareCircle](examples/startup/README.md) — validate risky assumptions before automating the business.
 - [Web application: LocalBoard](examples/web-app/README.md) — keep a conventional application simple and modular.
+- [Mobile application: FieldNote](examples/mobile-app/README.md) — treat permissions, offline queues, and store constraints as product decisions.
+- [Data platform: SignalWell](examples/data-platform/README.md) — make data contracts, late events, and evaluation part of architecture.
+- [CLI tool: RepoLens](examples/cli-tool/README.md) — keep command contracts stable, safe, and automation-friendly.
+- [Firmware device: DockSense](examples/firmware-device/README.md) — keep hardware fail-safes explicit and bench claims evidence-gated.
 
 ## AI agents in this repository
 

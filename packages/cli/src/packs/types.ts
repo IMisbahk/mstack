@@ -1,6 +1,12 @@
 import type { IntegrationSpec } from "../../../ai-integrations/src/index.js";
 
-export type TaskRisk = "read-only" | "working-tree" | "destructive" | "remote";
+export const TASK_RISKS = ["read-only", "working-tree", "destructive", "remote"] as const;
+export type TaskRisk = (typeof TASK_RISKS)[number];
+
+export interface TaskListFilter {
+  readonly pack?: string;
+  readonly risk?: TaskRisk;
+}
 
 export interface TaskRecipe {
   readonly id: string;

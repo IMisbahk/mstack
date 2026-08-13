@@ -2,6 +2,25 @@
 
 All notable changes to mstack are documented here. This project follows [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Added
+
+- Expand curated packs with additional specialists, skills, invokable prompts, and
+  argv-only task recipes for every starter domain.
+- Add backend/API, QA/testing, observability, and documentation packs.
+- Add `mstack pack recommend` to cite repository evidence without installing packs.
+- Add `mstack catalog --query` and `mstack task list --pack/--risk` discovery filters.
+- Enforce task file preconditions and report missing executables as step failures.
+- Add mobile, data-platform, CLI, and firmware worked examples.
+
+### Changed
+
+- Compose selected packs with first-id-wins merging so core resources cannot be
+  overwritten by a colliding pack identifier.
+- Include pack specialists, skills, and prompts in `mstack catalog`.
+- Show selected packs in `mstack status`.
+
 ## [0.6.0] - 2026-07-25
 
 ### Added
