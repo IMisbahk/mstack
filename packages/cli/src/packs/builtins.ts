@@ -422,4 +422,33 @@ export const builtInPacks: readonly CapabilityPack[] = [
       recipe({ id: "docs.grep-todo", description: "Find TODO markers in documentation.", risk: "read-only", argv: ["git", "grep", "-n", "TODO", "--", "docs"] }),
     ],
   }),
+  createCapabilityPack({
+    id: "computer-use",
+    displayName: "Computer use and browser automation",
+    description: "Grounded UI automation, browser-journey evidence, and tool-trust guidance.",
+    agents: [
+      createSpecialist("computer-use-operator", "Operates GUI targets through grounded, authorized steps.", "Prefer APIs and CLIs. Re-ground every action from fresh state and stop on ambiguity."),
+      createSpecialist("automation-safety-reviewer", "Reviews automation plans for authorization and recovery gaps.", "Require confirmation points for consequential actions and hand control back instead of guessing."),
+    ],
+    skills: [
+      createPackSkill("computer-use-grounding", "Ground one UI action at a time from fresh screenshots.", "Re-ground after every state change and verify the success signal before continuing."),
+      createPackSkill("browser-journey-evidence", "Capture screenshots, console, and traces for web journeys.", "Record seeded state, environment, and exact commands so any engineer can reproduce the run."),
+      createPackSkill("automation-fallback-planning", "Define stop conditions and human handoff for automation.", "Name what the automation must not touch and where a person resumes."),
+    ],
+    prompts: [
+      createPackPrompt(
+        "review-automation-plan",
+        "Review a UI automation plan for authorization, grounding, and recovery.",
+        "[application and goal]",
+        "Check authorization scope, API/CLI alternatives, per-step grounding evidence, confirmation points, stop conditions, and handoff behavior. Do not execute the plan.",
+      ),
+    ],
+    tasks: [
+      recipe({ id: "auto.node-version", description: "Show the Node.js version available to automation.", risk: "read-only", argv: ["node", "--version"] }),
+      recipe({ id: "auto.python-version", description: "Show the Python version available to automation.", risk: "read-only", argv: ["python", "--version"] }),
+      recipe({ id: "auto.workspace-tree", description: "List tracked files for agent context.", risk: "read-only", argv: ["git", "ls-files"] }),
+      recipe({ id: "auto.docs-inventory", description: "List source-of-truth documents for agent context.", risk: "read-only", argv: ["git", "ls-files", "--", "docs", "README.md", "AGENTS.md", "CLAUDE.md"] }),
+      recipe({ id: "auto.diff-stat", description: "Summarize working-tree changes for review.", risk: "read-only", argv: ["git", "diff", "--stat"] }),
+    ],
+  }),
 ];

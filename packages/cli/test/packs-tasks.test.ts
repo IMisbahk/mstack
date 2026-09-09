@@ -33,6 +33,7 @@ describe("capability packs", () => {
       "qa-testing",
       "observability",
       "documentation",
+      "computer-use",
     ]);
     expect(registry.resolve(["robotics"]).map((pack) => pack.id)).toEqual(["systems", "embedded-firmware", "robotics"]);
     expect(registry.get("repository-intelligence").createSpec({ projectName: "fixture" }).agents).toHaveLength(6);
@@ -152,5 +153,15 @@ describe("capability packs", () => {
       "documentation",
     ]));
     expect(report.recommendations.every((item) => item.alreadySelected === false)).toBe(true);
+  });
+
+  it("recommends the computer-use pack from browser automation evidence", async () => {
+    const root = await mkdtemp(path.join(os.tmpdir(), "mstack-recommend-auto-")); temporary.push(root);
+    await writeFile(path.join(root, "cypress.config.js"), "module.exports = {};\n");
+    await writeFile(path.join(root, "package.json"), JSON.stringify({ name: "fixture", devDependencies: { playwright: "1.0.0" } }));
+    const report = await recommendPacks(root);
+    const ids = report.recommendations.map((item) => item.id);
+    expect(ids).toEqual(expect.arrayContaining(["computer-use", "qa-testing"]));
+    expect(report.recommendations.find((item) => item.id === "computer-use")?.reasons.length).toBeGreaterThan(0);
   });
 });

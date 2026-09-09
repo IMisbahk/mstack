@@ -46,7 +46,7 @@ describe("runtime catalog", () => {
     expect(complete.counts.prompts).toBe(engineeringPrompts.length + packSpecs.reduce((sum, spec) => sum + (spec.prompts?.length ?? 0), 0));
     expect(complete.counts.hooks).toBe(4);
     expect(complete.counts.templates).toBe(10);
-    expect(packs).toHaveLength(14);
+    expect(packs).toHaveLength(15);
     expect(complete.counts["task-recipes"]).toBeGreaterThanOrEqual(40);
     expect(complete.items.some((item) => item.id === "product-manager" && item.kind === "agents")).toBe(true);
     expect(complete.items.some((item) => item.id === "workflow-coordinator" && item.kind === "agents")).toBe(true);
@@ -64,7 +64,7 @@ describe("runtime catalog", () => {
     const report = JSON.parse(stdout.join(""));
     expect(report.schemaVersion).toBe(1);
     expect(report.query).toBe("mobile");
-    expect(report.counts.packs).toBe(14);
+    expect(report.counts.packs).toBe(15);
     expect(report.items.every((item: { id: string; description: string }) => `${item.id} ${item.description}`.toLowerCase().includes("mobile"))).toBe(true);
   });
 

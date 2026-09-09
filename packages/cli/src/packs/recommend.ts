@@ -59,6 +59,10 @@ const markerReasons: readonly { file: string; pack: string; reason: string }[] =
   { file: "package.xml", pack: "robotics", reason: "package.xml may indicate a ROS package." },
   { file: "playwright.config.ts", pack: "qa-testing", reason: "playwright.config.ts indicates browser verification." },
   { file: "playwright.config.js", pack: "qa-testing", reason: "playwright.config.js indicates browser verification." },
+  { file: "playwright.config.ts", pack: "computer-use", reason: "playwright.config.ts indicates scripted browser automation." },
+  { file: "playwright.config.js", pack: "computer-use", reason: "playwright.config.js indicates scripted browser automation." },
+  { file: "cypress.config.ts", pack: "computer-use", reason: "cypress.config.ts indicates scripted browser automation." },
+  { file: "cypress.config.js", pack: "computer-use", reason: "cypress.config.js indicates scripted browser automation." },
   { file: "vitest.config.ts", pack: "qa-testing", reason: "vitest.config.ts indicates a unit/integration test runner." },
   { file: "jest.config.ts", pack: "qa-testing", reason: "jest.config.ts indicates a JavaScript test runner." },
 ];
@@ -71,6 +75,7 @@ const cliDependencies = ["commander", "citty", "yargs", "cac"];
 const telemetryDependencies = ["pino", "winston", "@opentelemetry/api"];
 const mlDependencies = ["torch", "pytorch", "scikit-learn", "tensorflow", "pandas"];
 const qaDependencies = ["playwright", "cypress", "vitest", "jest", "@testing-library/react"];
+const automationDependencies = ["playwright", "cypress", "puppeteer", "selenium-webdriver"];
 
 function dependencyNames(manifest: PackageManifest): Set<string> {
   return new Set([
@@ -131,6 +136,8 @@ export async function recommendPacks(root: string): Promise<PackRecommendReport>
       if (ml) addReason("data-ml", `package.json depends on ${ml}.`);
       const qa = hasAny(names, qaDependencies);
       if (qa) addReason("qa-testing", `package.json depends on ${qa}.`);
+      const automation = hasAny(names, automationDependencies);
+      if (automation) addReason("computer-use", `package.json depends on ${automation}.`);
       if (manifest.scripts && Object.keys(manifest.scripts).some((name) => /test|lint|typecheck/.test(name))) {
         addReason("qa-testing", "package.json declares verification scripts.");
       }
