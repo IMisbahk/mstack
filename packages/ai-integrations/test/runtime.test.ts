@@ -23,7 +23,7 @@ import {
 test("runtime ships a focused, structurally complete engineering library", () => {
   assert.equal(engineeringAgents.length, 19);
   assert.equal(engineeringSkills.length, 23);
-  assert.equal(engineeringPrompts.length, 19);
+  assert.equal(engineeringPrompts.length, 21);
   assert.equal(engineeringHooks.length, 4);
   assert.equal(runtimeTemplates.length, 10);
   assert.ok(runtimeTemplates.every((item) => item.feature === "templates"));
@@ -349,5 +349,5 @@ test("runtime can omit optional automation assets without weakening content", ()
   assert.deepEqual(runtime.assets?.map((asset) => asset.path), [".mstack/runtime/.gitignore"]);
   assert.equal(runtime.agents?.length, 19);
   assert.equal(runtime.skills?.length, 23);
-  assert.equal(runtime.prompts?.length, 19);
+  assert.equal(runtime.prompts?.length, 21);
 });

@@ -117,9 +117,9 @@ Hooks execute code and remain subject to each runtime's repository-trust control
 
 ### Prompt packs
 
-The runtime ships **19 complete task prompts**:
+The runtime ships **21 complete task prompts**:
 
-`research-idea` · `identify-target-users` · `research-user-needs` · `design-features` · `write-product-definition` · `design-architecture` · `build-backend` · `build-frontend` · `deploy-product` · `improve-product` · `build-feature` · `plan-mvp` · `review-architecture` · `review-pull-request` · `debug-failure` · `refactor-module` · `design-api` · `improve-documentation` · `production-readiness`
+`research-idea` · `identify-target-users` · `research-user-needs` · `design-features` · `write-product-definition` · `design-architecture` · `build-backend` · `build-frontend` · `deploy-product` · `improve-product` · `build-feature` · `plan-mvp` · `review-architecture` · `review-pull-request` · `debug-failure` · `refactor-module` · `design-api` · `improve-documentation` · `production-readiness` · `operate-computer` · `verify-journey`
 
 Each prompt discovers repository instructions, checks relevant sources of truth, defines boundaries, and requires exact verification evidence.
 

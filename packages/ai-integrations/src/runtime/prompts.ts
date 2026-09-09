@@ -517,4 +517,52 @@ export const engineeringPrompts: readonly PromptDefinition[] = [
       "Do not absorb unrelated cleanup or roadmap ideas without a demonstrated outcome or maintenance need.",
     ],
   }),
+  definePrompt({
+    id: "operate-computer",
+    description: "Operate a GUI application through grounded, explicitly authorized computer-use steps.",
+    argumentHint: "<goal, target application, authorization scope>",
+    task: "Run the computer-use-safety skill. Treat GUI automation as a last resort after API, CLI, and scripted paths are ruled out, then execute one grounded, confirmed step at a time.",
+    method: [
+      "Restate the goal, the target application and start state, why API/CLI access is insufficient, and the explicit authorization scope with non-goals.",
+      "Define the bounded step plan with a visible success signal, stop conditions, and the human-confirmation points for consequential actions.",
+      "Re-ground every action from fresh screenshots or accessibility state; never replay coordinates across a state change.",
+      "Require confirmation before credentials, purchases, deletions, messages, permission grants, or production writes.",
+      "Stop on ambiguity, unexpected dialogs, or authentication prompts and hand control back instead of guessing.",
+      "Capture before/after screenshots and the action log, then verify the success signal rather than assuming the interaction landed.",
+    ],
+    deliverables: [
+      "Authorization scope, step plan, and per-step grounding evidence with success signals.",
+      "Execution log with screenshots, verification result, and any handed-back or unresolved state.",
+      "Residual risks and the deterministic alternative to try before repeating automation.",
+    ],
+    constraints: [
+      "Do not enter secrets or personal data into an automated session without explicit authorization.",
+      "Do not dismiss security dialogs, permission prompts, or consent screens on the user's behalf.",
+      "Do not chain consequential actions without re-confirmation after each state-changing step.",
+    ],
+  }),
+  definePrompt({
+    id: "verify-journey",
+    description: "Verify a web journey in a real browser with seeded state and captured evidence.",
+    argumentHint: "<journey, base URL, browsers and viewports>",
+    task: "Run the browser-verification skill. Turn the requested journey into a reproducible browser run with deterministic setup, full state coverage, and captured traces.",
+    method: [
+      "Restate the journey, acceptance criteria, seeded users and data, target browsers and viewports, and the base URL or preview deployment.",
+      "Confirm the backend contract or build a faithful typed mock before exercising browser behavior.",
+      "Set up deterministic state with isolated users, fixed viewports, and explicit wait conditions instead of sleeps.",
+      "Exercise the critical path, then validation, denial, empty, degraded-network, and failure/recovery states.",
+      "Verify keyboard reachability, focus order, visible focus, landmark and label semantics, contrast, and reduced-motion behavior.",
+      "Capture screenshots, console errors, failed requests, and traces; rerun suspected flakes in isolation before reporting.",
+    ],
+    deliverables: [
+      "A pass/fail matrix per journey, browser, and state with linked screenshots, traces, and console/network evidence.",
+      "Reproducible defect reports with steps, seeded state, expected versus actual behavior, and severity.",
+      "The exact verification command, environment, residual coverage gaps, and flake assessment.",
+    ],
+    constraints: [
+      "Do not verify against production data or mutate shared environments without explicit authorization and isolation.",
+      "Do not use fixed sleeps or nth-match selectors that hide race conditions.",
+      "Do not report a green run that skipped authentication, denial, or failure states as full verification.",
+    ],
+  }),
 ];
