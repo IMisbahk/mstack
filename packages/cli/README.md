@@ -237,11 +237,11 @@ These totals come from the runtime catalog, adapter registry, templates, and exa
 | --- | ---: |
 | Supported AI environments | 19 |
 | Specialist agents | 19 |
-| Reusable skills | 20 |
+| Reusable skills | 23 |
 | Automation hooks | 4 |
-| Prompt packs | 19 |
+| Prompt packs | 21 |
 | Runtime templates | 10 |
-| Curated capability packs | 14 |
+| Curated capability packs | 15 |
 | Worked example projects | 9 |
 | Supported package managers | 4 |
 
@@ -430,6 +430,7 @@ Every command below is implemented. `mstack ai`, `mstack config`, and `mstack pl
 | `task list` | List argv-only recipes | `mstack task list [--pack <id>] [--risk <class>] [--json]`<br>`mstack task list --risk read-only` | Lists policy-gated recipes. Makes no changes. |
 | `task run` | Run one recipe | `mstack task run <id> [--dry-run] [--yes]`<br>`mstack task run repository.status --dry-run` | Executes literal argv with `shell: false`, file preconditions, and the configured task policy. |
 | `agent` | Describe installed specialists | `mstack agent [id] [--json]`<br>`mstack agent` | Lists specialists from the core pack and selected capability packs. Does not execute models. |
+| `snapshot` | Export an agent-ready snapshot | `mstack snapshot [--json]`<br>`mstack snapshot --json` | Reports setup, runtimes, packs, catalog totals, the next action, and paste-ready guidance. Makes no changes. |
 | `validate` | Verify repository and runtime integrity | `mstack validate [directory] [--strict] [--json]`<br>`mstack validate --strict` | Checks planning readiness, repository ownership, and AI runtime drift. Exits with code `4` on errors, or on warnings in strict mode. Makes no changes. |
 | `plugins list` | Inspect capability plugins | `mstack plugins list [--json]`<br>`mstack plugins list --json` | Lists plugin metadata and integration, template, and generator contributions. Makes no changes. |
 | `config list` | Print resolved configuration | `mstack config list [--json]`<br>`mstack config list` | Merges user and project preferences, then prints the resolved values. Makes no changes. |

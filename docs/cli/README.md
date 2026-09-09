@@ -52,6 +52,7 @@ Existing planning documents are preserved. `--force` is the only path that inten
 | `mstack pack` | List, inspect, recommend, add, and remove curated capability packs |
 | `mstack task` | Inspect and run policy-gated argv-only task recipes |
 | `mstack agent` | List installed specialists and runtime invocation guidance |
+| `mstack snapshot` | Export an agent-ready snapshot of readiness and installed resources |
 | `mstack validate` | Verify planning readiness, ownership, and runtime integrity |
 | `mstack doctor` | Diagnose runtime, repository, permissions, and manifest health |
 | `mstack config` | Inspect or change layered configuration |

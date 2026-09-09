@@ -4,7 +4,7 @@
 
 Users of `mstack` can opt into a curated domain pack, discover its specialists and tasks, and safely run a small catalog of local argv-only task recipes. `mstack ai setup` remains the lightweight core setup and renders selected compatible packs; it does not execute models or coordinate inference.
 
-The catalog includes starter packs for repository intelligence, software/web, systems, embedded/firmware, robotics, data/ML, mobile, games/graphics, infrastructure/security, CLI/devtools, backend/API, QA/testing, observability, and documentation. Repository intelligence produces evidence-backed maps and explanations, not autonomous code edits. `mstack pack recommend` inspects well-known repository markers and suggests packs with cited evidence; it never installs them.
+The catalog includes starter packs for repository intelligence, software/web, systems, embedded/firmware, robotics, data/ML, mobile, games/graphics, infrastructure/security, CLI/devtools, backend/API, QA/testing, observability, documentation, and computer use. Repository intelligence produces evidence-backed maps and explanations, not autonomous code edits. The computer-use pack covers grounded UI automation and browser-journey evidence behind explicit authorization; its recipes stay read-only and its specialists hand control back instead of guessing. `mstack pack recommend` inspects well-known repository markers and suggests packs with cited evidence; it never installs them.
 
 Every curated pack ships specialists, skills, an invokable prompt, and policy-gated task recipes. Domain recipes stay argv-only and fail before execution when declared file preconditions are missing.
 
