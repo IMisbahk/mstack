@@ -98,11 +98,15 @@ describe("vNext developer experience", () => {
     expect(await readFile(path.join(root, ".junie", "agents", "backend-engineer.md"), "utf8")).toContain("backend application behavior");
     expect(await readFile(path.join(root, ".cline", "skills", "mstack-agent-code-reviewer", "SKILL.md"), "utf8")).toContain("code-reviewer specialist pass");
     expect(await readFile(path.join(root, ".roo", "commands", "build-feature.md"), "utf8")).toContain("Build the requested feature");
+    expect(await readFile(path.join(root, ".windsurf", "skills", "build-feature", "SKILL.md"), "utf8")).toContain("Build the requested feature");
+    expect(await readFile(path.join(root, ".warp", "skills", "build-feature", "SKILL.md"), "utf8")).toContain("Build the requested feature");
+    expect(await readFile(path.join(root, ".amp", "agents", "software-architect.md"), "utf8")).toContain("software-architect");
+    expect(await readFile(path.join(root, ".zed", "prompts", "build-feature.md"), "utf8")).toContain("Build the requested feature");
 
     const manifest = JSON.parse(await readFile(path.join(root, ".mstack", "manifest.json"), "utf8"));
     expect(manifest.integrations).toEqual([
-      "aider", "antigravity", "claude-code", "cline", "codex", "continue", "cursor", "gemini-cli",
-      "github-copilot", "junie", "kimi-code", "kiro", "opencode", "qwen-code", "roo-code",
+      "aider", "amp", "antigravity", "claude-code", "cline", "codex", "continue", "cursor", "gemini-cli",
+      "github-copilot", "junie", "kimi-code", "kiro", "opencode", "qwen-code", "roo-code", "warp", "windsurf", "zed",
     ]);
     expect(manifest.files.find((file: { path: string }) => file.path === "AGENTS.md")?.owner).toBe("mstack-ai-runtime");
   });

@@ -63,7 +63,7 @@ test("built-in adapters declare and render all target environments", () => {
     [
       "claude-code", "codex", "cursor", "gemini-cli", "continue", "aider",
       "antigravity", "kimi-code", "github-copilot", "opencode", "kiro",
-      "qwen-code", "junie", "cline", "roo-code",
+      "qwen-code", "junie", "cline", "roo-code", "windsurf", "warp", "amp", "zed",
     ],
   );
 
@@ -113,6 +113,11 @@ test("built-in adapters declare and render all target environments", () => {
     ".cline/skills/review-change/SKILL.md",
     ".cline/skills/mstack-agent-security-reviewer/SKILL.md",
     ".roo/commands/review-change.md",
+    ".windsurf/skills/ship-safely/SKILL.md",
+    ".warp/skills/ship-safely/SKILL.md",
+    ".amp/commands/review-change.md",
+    ".amp/agents/security-reviewer.md",
+    ".zed/prompts/review-change.md",
   ]) {
     assert.ok(paths.has(expected), `missing ${expected}`);
   }
@@ -123,9 +128,10 @@ test("built-in adapters declare and render all target environments", () => {
   const sharedSkill = plan.artifacts.find((artifact) => artifact.path === ".agents/skills/ship-safely/SKILL.md")!;
   assert.equal(plan.artifacts.filter((artifact) => artifact.path === sharedSkill.path).length, 1);
   assert.deepEqual(sharedSkill.environments, [
-    "antigravity", "codex", "cursor", "gemini-cli", "github-copilot", "kimi-code", "opencode", "roo-code",
+    "amp", "antigravity", "codex", "cursor", "gemini-cli", "github-copilot", "kimi-code", "opencode", "roo-code",
   ]);
   assert.deepEqual(sharedSkill.profileIds, [
+    "amp.2026-07-18",
     "antigravity.2026-07-18",
     "codex.2026-07-15",
     "cursor.2026-07-15",
@@ -136,7 +142,7 @@ test("built-in adapters declare and render all target environments", () => {
     "roo-code.2026-07-18",
   ]);
   assert.deepEqual(plan.artifacts.find((artifact) => artifact.path === "AGENTS.md")?.environments, [
-    "antigravity", "cline", "codex", "github-copilot", "junie", "kimi-code", "kiro", "opencode", "qwen-code", "roo-code",
+    "amp", "antigravity", "cline", "codex", "github-copilot", "junie", "kimi-code", "kiro", "opencode", "qwen-code", "roo-code", "warp", "windsurf", "zed",
   ]);
   assert.match(
     plan.artifacts.find((artifact) => artifact.path === ".codex/config.toml")?.content ?? "",
@@ -156,6 +162,7 @@ test("portable command adapters use each provider's documented Markdown contract
     ["qwen-code", ".qwen/commands/review-change.md"],
     ["junie", ".junie/commands/review-change.md"],
     ["roo-code", ".roo/commands/review-change.md"],
+    ["amp", ".amp/commands/review-change.md"],
   ] as const) {
     const plan = createIntegrationPlan(registry, fullSpec, [environment]);
     const command = plan.artifacts.find((artifact) => artifact.path === path)!;

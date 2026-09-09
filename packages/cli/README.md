@@ -33,7 +33,7 @@ Build Like This defines the engineering method. mstack installs it consistently.
 
 ### AI runtime
 
-mstack detects, configures, and onboards fifteen AI coding environments:
+mstack detects, configures, and onboards nineteen AI coding environments:
 
 - Claude Code
 - OpenAI Codex
@@ -50,6 +50,10 @@ mstack detects, configures, and onboards fifteen AI coding environments:
 - Junie
 - Cline
 - Roo Code
+- Windsurf
+- Warp
+- Amp
+- Zed
 
 The runtime renders only capabilities the target actually supports. Native, adapted, experimental, and unsupported behavior stays explicit; unsupported resources are reported instead of being represented by fictional configuration.
 
@@ -231,7 +235,7 @@ These totals come from the runtime catalog, adapter registry, templates, and exa
 
 | Capability | Total |
 | --- | ---: |
-| Supported AI environments | 15 |
+| Supported AI environments | 19 |
 | Specialist agents | 19 |
 | Reusable skills | 20 |
 | Automation hooks | 4 |

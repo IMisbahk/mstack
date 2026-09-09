@@ -33,6 +33,9 @@ test("verified adapter profiles expose honest native, emulated, experimental, an
   assert.equal(registry.get("kimi-code").capabilities.agents.level, "emulated");
   assert.equal(registry.get("kimi-code").capabilities.hooks.level, "unsupported");
   assert.equal(registry.get("opencode").capabilities.agents.level, "native");
+  assert.equal(registry.get("amp").capabilities.agents.level, "native");
+  assert.equal(registry.get("windsurf").capabilities.agents.level, "emulated");
+  assert.equal(registry.get("zed").capabilities.hooks.level, "unsupported");
   assert.deepEqual(registry.get("roo-code").runtime.commands, []);
 });
 
@@ -50,7 +53,7 @@ test("Antigravity renders only verified project hooks, agents, rules, and MCP fi
 });
 
 test("content-compatible adapters do not inherit Claude privileged configuration", () => {
-  for (const environment of ["kimi-code", "github-copilot", "opencode", "kiro", "qwen-code", "junie", "cline", "roo-code"]) {
+  for (const environment of ["kimi-code", "github-copilot", "opencode", "kiro", "qwen-code", "junie", "cline", "roo-code", "windsurf", "warp", "amp", "zed"]) {
     const plan = createIntegrationPlan(createDefaultRegistry(), platformSpec, [environment]);
     assert.ok(plan.artifacts.every((artifact) => !artifact.path.startsWith(".claude/")), environment);
     assert.ok(plan.artifacts.every((artifact) => artifact.path !== ".mcp.json"), environment);

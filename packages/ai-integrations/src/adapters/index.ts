@@ -15,6 +15,10 @@ import {
   openCodeAdapter,
   qwenCodeAdapter,
   rooCodeAdapter,
+  warpAdapter,
+  windsurfAdapter,
+  ampAdapter,
+  zedAdapter,
 } from "./portable.js";
 
 export const builtInAdapters: readonly IntegrationAdapter[] = [
@@ -33,6 +37,10 @@ export const builtInAdapters: readonly IntegrationAdapter[] = [
   junieAdapter,
   clineAdapter,
   rooCodeAdapter,
+  windsurfAdapter,
+  warpAdapter,
+  ampAdapter,
+  zedAdapter,
 ];
 
 export {
@@ -51,4 +59,8 @@ export {
   openCodeAdapter,
   qwenCodeAdapter,
   rooCodeAdapter,
+  warpAdapter,
+  windsurfAdapter,
+  ampAdapter,
+  zedAdapter,
 };

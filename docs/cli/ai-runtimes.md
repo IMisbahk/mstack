@@ -21,12 +21,16 @@ mstack installs one platform-neutral Build Like This pack and renders it through
 | Junie | Native | Native commands | Native | Native subagents | Not installed | `AGENTS.md`, `.junie/` |
 | Cline | Native | Native skills | Native | Persona skills | Not installed | `AGENTS.md`, `.cline/` |
 | Roo Code | Native | Native commands | Native | Persona skills | Not installed | `AGENTS.md`, `.agents/skills/`, `.roo/` |
+| Windsurf | Native | Native skills | Native | Persona skills | Not installed | `AGENTS.md`, `.windsurf/` |
+| Warp | Native | Native skills | Native | Persona skills | Not installed | `AGENTS.md`, `.warp/` |
+| Amp | Native | Native commands | Native | Native subagents | Not installed | `AGENTS.md`, `.agents/skills/`, `.amp/` |
+| Zed | Native | Native prompts | Native | Persona skills | Not installed | `AGENTS.md`, `.zed/` |
 
 Unsupported capabilities are skipped with a warning; mstack does not generate fictional configuration. "Not installed" means the platform has an extension surface that this adapter intentionally leaves user-owned because no safe common mapping is verified. Shared Open Agent Skills use `.agents/skills/` where runtimes support that interoperable location. Other tools receive their verified native skill directories. Persona skills preserve specialist guidance where a platform can load skills and delegate work but has no stable auto-discovered project-agent format.
 
 ## Agent delegation and fallback
 
-Every material lifecycle prompt delegates at least one bounded specialist lane. Claude Code, Codex, Cursor, Gemini CLI, Continue, Antigravity, OpenCode, Qwen Code, and Junie use verified native project-agent or subagent surfaces. Kimi can run generic subagents while loading mstack specialist personas as skills. Kiro, Cline, and Roo load specialist personas as skills and must disclose when their current surface requires sequential named passes. Independent native lanes may run concurrently while one lead owns synthesis. Shared documents, contracts, migrations, overlapping files, deployments, and other consequential actions stay serialized and retain their normal authorization requirements.
+Every material lifecycle prompt delegates at least one bounded specialist lane. Claude Code, Codex, Cursor, Gemini CLI, Continue, Antigravity, OpenCode, Qwen Code, Junie, and Amp use verified native project-agent or subagent surfaces. Kimi can run generic subagents while loading mstack specialist personas as skills. Kiro, Cline, Roo, Windsurf, Warp, and Zed load specialist personas as skills and must disclose when their current surface requires sequential named passes. Independent native lanes may run concurrently while one lead owns synthesis. Shared documents, contracts, migrations, overlapping files, deployments, and other consequential actions stay serialized and retain their normal authorization requirements.
 
 Aider has no native project subagent or slash-command execution model. Its always-read resource catalog is therefore a compact index, with full prompt, skill, and persona bodies stored under `.mstack/aider/` for explicit loading. Aider performs those named lanes sequentially and must not claim that it spawned agents or ran them concurrently.
 
@@ -69,5 +73,9 @@ The original adapter conventions were verified against current official sources 
 - [Junie guidelines](https://junie.jetbrains.com/docs/guidelines-and-memory.html), [skills](https://junie.jetbrains.com/docs/agent-skills.html), [commands](https://junie.jetbrains.com/docs/custom-slash-commands.html), and [subagents](https://junie.jetbrains.com/docs/junie-cli-subagents.html)
 - [Cline rules](https://docs.cline.bot/customization/cline-rules), [skills](https://docs.cline.bot/customization/skills), and [subagents](https://docs.cline.bot/features/subagents)
 - [Roo Code custom instructions](https://roocodeinc.github.io/Roo-Code/features/custom-instructions), [skills](https://roocodeinc.github.io/Roo-Code/features/skills), and [slash commands](https://roocodeinc.github.io/Roo-Code/features/slash-commands)
+- [Windsurf memories](https://docs.windsurf.com/windsurf/cascade/memories)
+- [Warp rules](https://docs.warp.dev/knowledge-and-collaboration/rules)
+- [Amp manual](https://ampcode.com/manual)
+- [Zed assistant prompting](https://zed.dev/docs/assistant/prompting)
 
 Runtime formats evolve. The adapter registry keeps capability details and official documentation URLs beside each renderer so support can be updated independently.

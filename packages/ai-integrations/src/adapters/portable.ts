@@ -241,6 +241,49 @@ export const rooCodeAdapter = createMarkdownAdapter({
   slashCommands: "native",
 });
 
+export const windsurfAdapter = createMarkdownAdapter({
+  id: "windsurf",
+  displayName: "Windsurf",
+  commands: ["windsurf"],
+  projectMarkers: [".windsurf"],
+  documentationUrl: "https://docs.windsurf.com/windsurf/cascade/memories",
+  skillBase: ".windsurf/skills",
+  slashCommands: "emulated",
+});
+
+export const warpAdapter = createMarkdownAdapter({
+  id: "warp",
+  displayName: "Warp",
+  commands: ["warp"],
+  projectMarkers: [".warp"],
+  documentationUrl: "https://docs.warp.dev/knowledge-and-collaboration/rules",
+  skillBase: ".warp/skills",
+  slashCommands: "emulated",
+});
+
+export const ampAdapter = createMarkdownAdapter({
+  id: "amp",
+  displayName: "Amp",
+  commands: ["amp"],
+  projectMarkers: [".amp"],
+  documentationUrl: "https://ampcode.com/manual",
+  skillBase: ".agents/skills",
+  promptBase: ".amp/commands",
+  agentBase: ".amp/agents",
+  slashCommands: "native",
+});
+
+export const zedAdapter = createMarkdownAdapter({
+  id: "zed",
+  displayName: "Zed",
+  commands: ["zed"],
+  projectMarkers: [".zed"],
+  documentationUrl: "https://zed.dev/docs/assistant/prompting",
+  skillBase: ".zed/skills",
+  promptBase: ".zed/prompts",
+  slashCommands: "emulated",
+});
+
 export const portableAdapters: readonly IntegrationAdapter[] = [
   kimiCodeAdapter,
   githubCopilotAdapter,
@@ -250,4 +293,8 @@ export const portableAdapters: readonly IntegrationAdapter[] = [
   junieAdapter,
   clineAdapter,
   rooCodeAdapter,
+  windsurfAdapter,
+  warpAdapter,
+  ampAdapter,
+  zedAdapter,
 ];

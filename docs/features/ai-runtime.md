@@ -136,7 +136,7 @@ Before an approved destructive edit, the runtime stores a repository-local backu
 - [x] Upgrades and platform deselection remove only unchanged manifest-owned state.
 - [x] User-modified managed state is preserved and reported as drift.
 - [x] Filesystem safety and interrupted-operation recovery are tested.
-- [x] All fifteen adapters have supported and degraded behavior tests.
+- [x] All nineteen adapters have supported and degraded behavior tests.
 - [x] Shared `AGENTS.md` and Open Agent Skills retain every adapter and profile
   contributor independent of selection order.
 - [x] Shared compatibility paths do not cause unrelated runtimes to be

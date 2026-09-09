@@ -15,6 +15,10 @@ export {
   openCodeAdapter,
   qwenCodeAdapter,
   rooCodeAdapter,
+  warpAdapter,
+  windsurfAdapter,
+  ampAdapter,
+  zedAdapter,
 } from "./adapters/index.js";
 export { applyIntegrationPlan, resumeIntegrationOperation, type ApplyOptions } from "./core/installer.js";
 export { createIntegrationPlan } from "./core/planner.js";
