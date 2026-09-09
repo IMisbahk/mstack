@@ -1,0 +1,48 @@
+packages/cli/package.json
+  s_fb239fb767d783::t_be97df2fd23f8d 50-54
+packages/ai-integrations/src/adapters/index.ts
+  s_fb239fb767d783::t_a6c33bf459cb99 62-65
+  s_fb239fb767d783::t_051c38f69fd198 18-21,40-43
+docs/features/ai-runtime.md
+  s_fb239fb767d783::t_f05cf49c79c4de 139
+packages/ai-integrations/test/adapters.test.ts
+  s_fb239fb767d783::t_aef497fee5d297 56
+  s_fb239fb767d783::t_023ac421ff1368 36-38
+packages/ai-integrations/test/integrations.test.ts
+  s_fb239fb767d783::t_a01972c151171b 165
+  s_fb239fb767d783::t_c101f125787218 116-120
+  s_fb239fb767d783::t_a3aae98fb56af0 66
+  s_fb239fb767d783::t_fac95c5aab28c9 131,134
+  s_fb239fb767d783::t_90c850884b8070 145
+packages/ai-integrations/src/index.ts
+  s_fb239fb767d783::t_b3dd6116b21f2a 18-21
+packages/cli/README.md
+  s_fb239fb767d783::t_c2ab673dc3c7f0 238
+  s_fb239fb767d783::t_e2bf730706c23b 36,53-56
+docs/cli/ai-runtimes.md
+  s_fb239fb767d783::t_c4b59eb926deca 33,76-79
+  s_fb239fb767d783::t_3f1c54c6b44d44 24-27
+packages/ai-integrations/src/adapters/portable.ts
+  s_fb239fb767d783::t_0b51e9590d7477 244-286,296-299
+README.md
+  s_fb239fb767d783::t_2a94b1aece8a70 85
+  s_fb239fb767d783::t_b1e4fd4312b852 77
+packages/cli/test/vnext.test.ts
+  s_fb239fb767d783::t_b99177a9fab874 101-104,108-109
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "86b7fe56c2bf599729eeb708975948782655e771",
+  "prompts": {},
+  "sessions": {
+    "s_fb239fb767d783": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_f78261a9bffeYOstKqptYxnE4O",
+        "model": "muse-spark-1.3-contributor-free"
+      },
+      "human_author": "Misbah Khursheed <m.misbahkhursheed@gmail.com>"
+    }
+  }
+}
