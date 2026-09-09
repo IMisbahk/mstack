@@ -1,0 +1,34 @@
+docs/features/ai-engineering-packs.md
+  s_fb239fb767d783::t_149cc16fc390d9 7
+docs/product.md
+  s_fb239fb767d783::t_dd0e8bbce11a68 63
+docs/features.md
+  s_fb239fb767d783::t_cf64002d4144e8 33
+docs/cli/README.md
+  s_fb239fb767d783::t_66e0eda5801458 55
+README.md
+  s_fb239fb767d783::t_9afe173730a2c4 85
+docs/architecture.md
+  s_fb239fb767d783::t_de2ce47fbfa191 61
+packages/cli/README.md
+  s_fb239fb767d783::t_5e9e6886fb8deb 240,242,244
+  s_fb239fb767d783::t_3b5f1d95fbcdf0 433
+docs/decisions/0004-agent-automation-surface.md
+  s_fb239fb767d783::t_0af6a162a344c9 1-24
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "1f7e417e82efd276698d8eefcceccb8d23114edd",
+  "prompts": {},
+  "sessions": {
+    "s_fb239fb767d783": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_f78261a9bffeYOstKqptYxnE4O",
+        "model": "muse-spark-1.3-contributor-free"
+      },
+      "human_author": "Misbah Khursheed <m.misbahkhursheed@gmail.com>"
+    }
+  }
+}
