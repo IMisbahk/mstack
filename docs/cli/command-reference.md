@@ -32,6 +32,8 @@ Commands:
                                   bootstrap a project
   pack                            discover and manage curated capability packs
   plugins                         inspect installed mstack capability plugins
+  snapshot [options]              export an agent-ready snapshot of repository
+                                  readiness and installed resources
   status [options]                show repository readiness and the next
                                   recommended action
   task                            inspect and run curated, policy-gated
@@ -298,6 +300,18 @@ models
 Options:
   -h, --help  display help for command
   --json      print a versioned JSON result (default: false)
+```
+
+## mstack snapshot
+
+```text
+Usage: mstack snapshot [options]
+
+export an agent-ready snapshot of repository readiness and installed resources
+
+Options:
+  -h, --help  display help for command
+  --json      print a versioned JSON snapshot (default: false)
 ```
 
 ## mstack task

@@ -16,6 +16,7 @@ import { catalogCommand, CATALOG_KINDS, type CatalogKind } from "./commands/cata
 import { packAddCommand, packInfoCommand, packListCommand, packRecommendCommand, packRemoveCommand } from "./commands/packs.js";
 import { taskListCommand, taskRunCommand, taskShowCommand } from "./commands/tasks.js";
 import { agentCommand } from "./commands/agents.js";
+import { snapshotCommand } from "./commands/snapshot.js";
 import { validateCommand } from "./commands/validate.js";
 import { createDefaultRegistry } from "../../ai-integrations/src/index.js";
 import { TASK_RISKS } from "./packs/types.js";
@@ -186,6 +187,15 @@ export function createProgram(options: ProgramOptions = {}): Command {
   pack.command("update").description("reconcile selected packs through ai setup").option("-y, --yes", "accept the displayed plan", false).option("--dry-run", "preview without writing", false).option("--json", "print a versioned JSON result", false).action(async (local: { yes: boolean; dryRun: boolean; json: boolean }, command: Command) => { const context = globals(command); await packAddCommand({ cwd: context.values.cwd, ids: [], runtimes: [], yes: local.yes, dryRun: local.dryRun, json: local.json, output: context.output }); });
 
   program.command("agent [id]").description("list installed specialists and runtime invocation guidance; does not execute models").option("--json", "print a versioned JSON result", false).action(async (id: string | undefined, local: { json: boolean }, command: Command) => { const context = globals(command); await agentCommand(context.values.cwd, context.output, id, local.json); });
+
+  program
+    .command("snapshot")
+    .description("export an agent-ready snapshot of repository readiness and installed resources")
+    .option("--json", "print a versioned JSON snapshot", false)
+    .action(async (local: { json: boolean }, command: Command) => {
+      const context = globals(command);
+      await snapshotCommand(context.values.cwd, context.output, local.json);
+    });
 
   const task = program.command("task").description("inspect and run curated, policy-gated argv-only task recipes");
   task.command("list", { isDefault: true }).description("list task recipes").option("--pack <id>", "limit results to one pack").addOption(new Option("--risk <class>", "limit results to one risk class").choices([...TASK_RISKS])).option("--json", "print a versioned JSON result", false).action((local: { json: boolean; pack?: string; risk?: typeof TASK_RISKS[number] }, command: Command) => { const context = globals(command); taskListCommand(context.output, local.json, { ...(local.pack === undefined ? {} : { pack: local.pack }), ...(local.risk === undefined ? {} : { risk: local.risk }) }); });

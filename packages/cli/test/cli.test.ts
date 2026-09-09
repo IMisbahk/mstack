@@ -57,4 +57,26 @@ describe("CLI", () => {
     const config = JSON.parse(await readFile(path.join(root, ".mstack", "config.json"), "utf8"));
     expect(config.preferences.updateCheck).toBe(false);
   });
+
+  it("exports an agent-ready snapshot as JSON and human-readable text", async () => {
+    const root = await mkdtemp(path.join(os.tmpdir(), "mstack-cli-"));
+    temporary.push(root);
+    const templatesDirectory = await makeTemplates(root);
+    await createProgram({ cwd: root, templatesDirectory, output: new Output({ stdout: memoryStream([]), stderr: memoryStream([]) }) })
+      .parseAsync(["node", "mstack", "init", ".", "--yes", "--no-git", "--no-templates"]);
+
+    const json: string[] = [];
+    await createProgram({ cwd: root, templatesDirectory, output: new Output({ stdout: memoryStream(json), stderr: memoryStream([]) }) })
+      .parseAsync(["node", "mstack", "snapshot", "--json"]);
+    const report = JSON.parse(json.join(""));
+    expect(report).toMatchObject({ schemaVersion: 1 });
+    expect(typeof report.setup).toBe("string");
+    expect(report.catalog.skills).toBeGreaterThanOrEqual(23);
+    expect(typeof report.guidance).toBe("string");
+
+    const text: string[] = [];
+    await createProgram({ cwd: root, templatesDirectory, output: new Output({ stdout: memoryStream(text), stderr: memoryStream([]) }) })
+      .parseAsync(["node", "mstack", "snapshot"]);
+    expect(text.join("")).toContain("mstack snapshot");
+  });
 });
