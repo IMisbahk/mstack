@@ -1,0 +1,24 @@
+packages/cli/README.md
+  s_fb239fb767d783::t_a33ec7ed8c3903 99,101
+packages/ai-integrations/test/runtime.test.ts
+  s_fb239fb767d783::t_6715dd92bc3147 351
+  s_fb239fb767d783::t_1ea9f65d0bd7b4 25
+packages/ai-integrations/src/runtime/skills.ts
+  s_fb239fb767d783::t_d9c1ace2892010 648-734
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "14261a42b36094e36e5095168361be3fb403ee84",
+  "prompts": {},
+  "sessions": {
+    "s_fb239fb767d783": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_f78261a9bffeYOstKqptYxnE4O",
+        "model": "muse-spark-1.3-contributor-free"
+      },
+      "human_author": "Misbah Khursheed <m.misbahkhursheed@gmail.com>"
+    }
+  }
+}
