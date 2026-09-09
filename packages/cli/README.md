@@ -96,9 +96,9 @@ Supported environments expose these specialists using their native agent or pers
 
 ### Skills
 
-The runtime includes **20 reusable engineering skills**:
+The runtime includes **23 reusable engineering skills**:
 
-`idea-validation` · `target-user-definition` · `user-needs-research` · `feature-design` · `product-definition` · `architecture-design` · `backend-delivery` · `frontend-delivery` · `deployment-delivery` · `continuous-improvement` · `feature-planning` · `api-contract-design` · `database-modeling` · `repository-audit` · `architecture-assessment` · `threat-model-review` · `systematic-debugging` · `safe-refactoring` · `performance-investigation` · `release-readiness`
+`idea-validation` · `target-user-definition` · `user-needs-research` · `feature-design` · `product-definition` · `architecture-design` · `backend-delivery` · `frontend-delivery` · `deployment-delivery` · `continuous-improvement` · `computer-use-safety` · `browser-verification` · `mcp-governance` · `feature-planning` · `api-contract-design` · `database-modeling` · `repository-audit` · `architecture-assessment` · `threat-model-review` · `systematic-debugging` · `safe-refactoring` · `performance-investigation` · `release-readiness`
 
 Skills turn broad requests into repeatable processes with explicit inputs, output contracts, and guardrails.
 
