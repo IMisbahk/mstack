@@ -1,0 +1,6 @@
+{
+  "name": "@mstack/skills",
+  "private": true,
+  "version": "0.6.0",
+  "description": "skills.sh-compatible layout generated from the mstack runtime registry."
+}

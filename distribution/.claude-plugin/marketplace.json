@@ -1,0 +1,17 @@
+{
+  "name": "mstack",
+  "owner": {
+    "name": "Misbah Khursheed",
+    "url": "https://github.com/IMisbahk"
+  },
+  "description": "mstack Build Like This marketplace for Claude Code.",
+  "plugins": [
+    {
+      "name": "mstack",
+      "source": "./plugins/mstack",
+      "description": "Build Like This agents, skills, and prompts. Prefer one install channel: Cursor plugin (/mstack) OR mstack ai setup OR Claude/Codex/skills.sh — not multiple.",
+      "category": "engineering",
+      "version": "0.6.0"
+    }
+  ]
+}

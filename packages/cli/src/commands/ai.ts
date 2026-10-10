@@ -3,18 +3,28 @@ import * as prompts from "@clack/prompts";
 import {
   applyIntegrationPlan,
   approveIntegrationPlan,
+  buildTokenBudget,
   createDefaultRegistry,
   createIntegrationPlan,
   createReconciliationPlan,
+  defaultModelRoleMapping,
   inspectIntegrationRepository,
+  modelRoleConfigPath,
+  modelsForRuntimes,
+  renderModelRoleGuidance,
   type ApplyResult,
   type ApprovalRequirement,
+  type InstallProfile,
   type IntegrationSpec,
+  type ModelRoleConfigFile,
+  type ModelRoleMapping,
 } from "../../../ai-integrations/src/index.js";
 import type { Output } from "../core/output.js";
 import { CliError, errorMessage } from "../core/errors.js";
+import { writeFileAtomic, writeJsonAtomic } from "../core/fs.js";
 import { createDefaultPluginRegistry } from "../plugins/index.js";
 import { ConfigStore } from "../services/config.js";
+import { assertSafeSkillInstallChannel, writeInstallChannel } from "../services/distribution.js";
 import { inspectRepository } from "../services/health.js";
 import { updateManifest } from "../services/manifest.js";
 import { readManifest } from "../services/manifest.js";
@@ -75,6 +85,8 @@ export interface AiSetupOptions {
   yes: boolean;
   json: boolean;
   packs?: readonly string[];
+  profile?: InstallProfile;
+  arena?: boolean;
   output: Output;
 }
 
@@ -120,15 +132,38 @@ export async function aiSetupCommand(options: AiSetupOptions): Promise<void> {
     ...selected,
   ])];
 
+  const configStore = new ConfigStore({ cwd: health.root });
+  const preferences = await configStore.resolved();
+  const profile: InstallProfile = options.profile ?? preferences.installProfile ?? "full";
+  const arena = options.arena ?? preferences.arena ?? false;
+  const channelFindings = await assertSafeSkillInstallChannel(health.root, { force: options.force });
+  const blockingChannel = channelFindings.filter((finding) => finding.level === "error");
+  if (blockingChannel.length > 0) {
+    throw new CliError("Refusing to install skills from overlapping channels.", {
+      exitCode: 3,
+      hints: [
+        ...blockingChannel.map((finding) => finding.message),
+        "Use one channel: native marketplace/skills.sh OR mstack ai setup.",
+        "Pass --force only when intentionally migrating install channels.",
+      ],
+    });
+  }
+  for (const finding of channelFindings) {
+    if (!options.json) options.output.warn(finding.message);
+  }
+
   const pluginRegistry = createDefaultPluginRegistry();
   const pack = pluginRegistry.integrationPack("build-like-this");
-  const project = await new ConfigStore({ cwd: health.root }).project();
+  const project = await configStore.project();
   const projectName = project?.project?.name?.trim() || path.basename(health.root) || "Project";
   const existingManifest = await readManifest(health.root);
   const packRegistry = createDefaultPackRegistry();
   const packIds = options.packs === undefined ? (existingManifest?.packs ?? []).map((item) => item.id) : options.packs;
   const selectedPacks = packRegistry.resolve(packIds);
-  const spec = mergeSpecs(pack.createSpec({ root: health.root, projectName }), selectedPacks.map((selectedPack) => selectedPack.createSpec({ projectName })));
+  const spec = mergeSpecs(
+    pack.createSpec({ root: health.root, projectName, profile, arena }),
+    selectedPacks.map((selectedPack) => selectedPack.createSpec({ projectName })),
+  );
   let plan;
   try {
     plan = createIntegrationPlan(registry, spec, selected);
@@ -159,12 +194,35 @@ export async function aiSetupCommand(options: AiSetupOptions): Promise<void> {
   const preview = await applyIntegrationPlan(health.root, approved, { dryRun: true });
 
   const displayNames = selected.map((id) => registry.get(id).displayName);
+  const tokenBudget = buildTokenBudget({
+    profile,
+    skills: spec.skills ?? [],
+    prompts: spec.prompts ?? [],
+    agents: spec.agents ?? [],
+  });
+  const baseRoleMapping = resolveModelRoleMapping(preferences, selected);
+  const roleMapping: ModelRoleMapping = arena
+    ? {
+        ...baseRoleMapping,
+        arena: true,
+        arenaModels: baseRoleMapping.arenaModels ?? baseRoleMapping.reviewPanel ?? modelsForRuntimes(selected).slice(0, 3),
+      }
+    : baseRoleMapping;
   if (!options.json) {
-    outputPlan(options.output, displayNames, preview, plan.artifacts, plan.diagnostics.length, requirements, options.dryRun);
+    outputPlan(options.output, displayNames, preview, plan.artifacts, plan.diagnostics.length, requirements, options.dryRun, profile, arena, tokenBudget.totals.alwaysOnTokens);
     for (const diagnostic of plan.diagnostics) options.output.warn(`${registry.get(diagnostic.environment).displayName}: ${diagnostic.message}`);
   }
   if (options.dryRun) {
-    if (options.json) options.output.json(aiResult("dry-run", selected, preview, plan.diagnostics));
+    if (options.json) {
+      options.output.json({
+        ...aiResult("dry-run", selected, preview, plan.diagnostics),
+        profile,
+        arena,
+        tokenBudget,
+        modelRoles: roleMapping,
+        channelFindings,
+      });
+    }
     return;
   }
   if (interactive) {
@@ -176,19 +234,49 @@ export async function aiSetupCommand(options: AiSetupOptions): Promise<void> {
   progress?.start("Installing AI runtime pack");
   const applied = await applyIntegrationPlan(health.root, approved);
   progress?.stop("AI runtime pack installed");
+  const roleConfig: ModelRoleConfigFile = {
+    ...roleMapping,
+    schemaVersion: 1,
+    updatedAt: new Date().toISOString(),
+    runtimes: selected,
+  };
+  await writeJsonAtomic(path.join(health.root, modelRoleConfigPath), roleConfig);
+  await writeFileAtomic(path.join(health.root, ".mstack", "model-roles.md"), renderModelRoleGuidance(roleConfig));
+  await writeInstallChannel(health.root, "cli", profile);
   const managedFiles = applied.files.filter((file) => file.status !== "conflict").map((file) => ({
     path: file.path,
     kind: file.path.startsWith(".mstack/runtime/") ? "runtime" as const : "integration" as const,
     owner: file.path.startsWith(".mstack/runtime/") ? "mstack" : "mstack-ai-runtime",
     integrity: plan.artifacts.find((artifact) => artifact.path === file.path)?.mergeStrategy === "replace" ? "content" as const : "existence" as const,
   }));
+  managedFiles.push(
+    { path: modelRoleConfigPath, kind: "runtime", owner: "mstack", integrity: "content" },
+    { path: ".mstack/model-roles.md", kind: "runtime", owner: "mstack", integrity: "content" },
+    { path: ".mstack/install-channel.json", kind: "runtime", owner: "mstack", integrity: "content" },
+  );
   const manifest = await updateManifest(health.root, { files: managedFiles, integrations: selected, packs: selectedPacks.map((selectedPack) => ({ id: selectedPack.id, version: selectedPack.version })) });
 
-  if (options.json) return options.output.json({ ...aiResult("applied", selected, applied, plan.diagnostics), packs: selectedPacks.map((item) => ({ id: item.id, version: item.version })), manifest: ".mstack/manifest.json", operationId: manifest.operationId });
+  if (options.json) {
+    return options.output.json({
+      ...aiResult("applied", selected, applied, plan.diagnostics),
+      packs: selectedPacks.map((item) => ({ id: item.id, version: item.version })),
+      manifest: ".mstack/manifest.json",
+      operationId: manifest.operationId,
+      profile,
+      arena,
+      tokenBudget,
+      modelRoles: roleConfig,
+      channelFindings,
+    });
+  }
   const changed = applied.files.filter((file) => file.status === "created" || file.status === "updated").length;
   options.output.success(`Configured ${displayNames.join(", ")}`);
   options.output.field("Changed", `${changed} file${changed === 1 ? "" : "s"}`);
+  options.output.field("Profile", profile);
+  options.output.field("Context cost", `~${tokenBudget.totals.alwaysOnTokens} always-on tokens · ~${tokenBudget.totals.fullLibraryTokens} full-library tokens`);
+  options.output.field("Model roles", `${roleConfig.code ?? "unset"} / ${roleConfig.judgment ?? "unset"}`);
   options.output.field("Manifest", ".mstack/manifest.json");
+  if (arena) options.output.field("Arena", "enabled · invoke multi-model-arena");
   if (plan.artifacts.some((artifact) => artifact.feature === "hooks" && artifact.environment !== "mstack-runtime")) {
     options.output.warn("Project hooks require runtime trust. Review the generated hook configuration before enabling it.");
   }
@@ -200,6 +288,28 @@ export async function aiSetupCommand(options: AiSetupOptions): Promise<void> {
   }
 }
 
+function resolveModelRoleMapping(
+  preferences: Awaited<ReturnType<ConfigStore["resolved"]>>,
+  runtimeIds: readonly string[],
+): ModelRoleMapping {
+  const defaults = defaultModelRoleMapping(runtimeIds);
+  const reviewPanel = preferences.modelRoleReviewPanel
+    ?.split(",")
+    .map((item) => item.trim())
+    .filter(Boolean);
+  const code = preferences.modelRoleCode ?? defaults.code;
+  const judgment = preferences.modelRoleJudgment ?? defaults.judgment;
+  const panel = reviewPanel && reviewPanel.length > 0 ? reviewPanel : defaults.reviewPanel;
+  return {
+    schemaVersion: 1,
+    ...(code === undefined ? {} : { code }),
+    ...(judgment === undefined ? {} : { judgment }),
+    ...(panel === undefined ? {} : { reviewPanel: panel }),
+    arena: preferences.arena ?? defaults.arena ?? false,
+    ...(defaults.arenaModels ? { arenaModels: defaults.arenaModels } : {}),
+  };
+}
+
 function outputPlan(
   output: Output,
   displayNames: readonly string[],
@@ -208,12 +318,17 @@ function outputPlan(
   warnings: number,
   approvals: readonly ApprovalRequirement[],
   dryRun: boolean,
+  profile: InstallProfile,
+  arena: boolean,
+  alwaysOnTokens: number,
 ): void {
   const counts = new Map<string, number>();
   for (const artifact of artifacts) counts.set(artifact.feature, (counts.get(artifact.feature) ?? 0) + 1);
   const contents = [...counts.entries()].map(([feature, count]) => `${count} ${artifactLabel(feature, count)}`).join(" · ");
   output.title(dryRun ? "AI runtime setup · dry run" : "AI runtime setup");
   output.field("Runtimes", displayNames.join(", "));
+  output.field("Profile", `${profile}${arena ? " · arena" : ""}`);
+  output.field("Context cost", `~${alwaysOnTokens} always-on tokens (metadata)`);
   output.field("Files", contents);
   output.field("Create", String(preview.files.filter((file) => file.status === "created").length));
   output.field("Update", String(preview.files.filter((file) => file.status === "updated").length));

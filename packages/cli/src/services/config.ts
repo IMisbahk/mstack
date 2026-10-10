@@ -6,6 +6,8 @@ import { pathExists, readJson, walkParents, writeJsonAtomic } from "../core/fs.j
 export const PACKAGE_MANAGERS = ["npm", "pnpm", "yarn", "bun"] as const;
 export type PackageManager = (typeof PACKAGE_MANAGERS)[number];
 
+export type InstallProfilePreference = "lite" | "full";
+
 export interface Preferences {
   packageManager?: PackageManager;
   defaultBranch?: string;
@@ -13,6 +15,16 @@ export interface Preferences {
   updateCheck?: boolean;
   template?: string;
   taskPolicy?: "strict" | "balanced" | "automation";
+  /** Install density for AI runtime resources. */
+  installProfile?: InstallProfilePreference;
+  /** Enable the optional multi-model arena prompt during ai setup. */
+  arena?: boolean;
+  /** Model id bound to the code role. */
+  modelRoleCode?: string;
+  /** Model id bound to the judgment role. */
+  modelRoleJudgment?: string;
+  /** Comma-separated model ids for the review panel / arena. */
+  modelRoleReviewPanel?: string;
 }
 
 export interface UserConfig {
@@ -34,10 +46,15 @@ export const CONFIG_KEYS = [
   "updateCheck",
   "template",
   "taskPolicy",
+  "installProfile",
+  "arena",
+  "modelRoleCode",
+  "modelRoleJudgment",
+  "modelRoleReviewPanel",
 ] as const;
 export type ConfigKey = (typeof CONFIG_KEYS)[number];
 
-const booleanKeys = new Set<ConfigKey>(["initializeGit", "updateCheck"]);
+const booleanKeys = new Set<ConfigKey>(["initializeGit", "updateCheck", "arena"]);
 
 export function globalConfigPath(env: NodeJS.ProcessEnv = process.env, platform = process.platform): string {
   if (env.MSTACK_CONFIG_HOME) return path.join(env.MSTACK_CONFIG_HOME, "config.json");
@@ -161,6 +178,9 @@ export function parseConfigValue(key: ConfigKey, raw: string): Preferences[Confi
   }
   if (key === "taskPolicy" && !["strict", "balanced", "automation"].includes(raw)) {
     throw new CliError("taskPolicy must be one of: strict, balanced, automation.");
+  }
+  if (key === "installProfile" && !["lite", "full"].includes(raw)) {
+    throw new CliError("installProfile must be one of: lite, full.");
   }
   if (!raw.trim()) throw new CliError(`${key} cannot be empty.`);
   return raw as Preferences[ConfigKey];

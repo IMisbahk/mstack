@@ -1,0 +1,13 @@
+{
+  "name": "mstack",
+  "version": "0.6.0",
+  "description": "Build Like This agents, skills, and prompts. Prefer one install channel: Cursor plugin (/mstack) OR mstack ai setup OR Claude/Codex/skills.sh — not multiple.",
+  "keywords": [
+    "engineering",
+    "skills",
+    "agents",
+    "build-like-this",
+    "mstack"
+  ],
+  "skills": "./skills"
+}

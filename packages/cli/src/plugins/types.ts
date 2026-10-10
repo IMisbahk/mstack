@@ -1,8 +1,10 @@
-import type { IntegrationSpec } from "../../../ai-integrations/src/index.js";
+import type { InstallProfile, IntegrationSpec } from "../../../ai-integrations/src/index.js";
 
 export interface PluginContext {
   readonly root: string;
   readonly projectName: string;
+  readonly profile?: InstallProfile;
+  readonly arena?: boolean;
 }
 
 export interface IntegrationPack {

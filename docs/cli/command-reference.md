@@ -121,13 +121,19 @@ install Misbah's Build Like This agent, prompt, skill, hook, and instruction
 pack
 
 Options:
-  --all        configure every supported runtime (default: false)
-  --dry-run    preview files and limitations without writing (default: false)
-  -f, --force  replace conflicting generated targets (default: false)
-  -h, --help   display help for command
-  --json       print a versioned JSON result (default: false)
-  -y, --yes    accept the displayed runtime plan without prompting (default:
-               false)
+  --all                configure every supported runtime (default: false)
+  --arena              install the optional multi-model arena prompt and enable
+                       arena bindings (default: false)
+  --dry-run            preview files and limitations without writing (default:
+                       false)
+  -f, --force          replace conflicting generated targets or migrate install
+                       channels (default: false)
+  -h, --help           display help for command
+  --json               print a versioned JSON result (default: false)
+  --profile <profile>  install density for skills, prompts, and agents (choices:
+                       "lite", "full")
+  -y, --yes            accept the displayed runtime plan without prompting
+                       (default: false)
 ```
 
 ## mstack ai list

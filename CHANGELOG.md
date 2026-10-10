@@ -6,6 +6,23 @@ All notable changes to mstack are documented here. This project follows [Semanti
 
 ### Added
 
+- Generate a first-class Cursor plugin at `distribution/mstack/` (pstack-shaped)
+  with `/mstack` playbook router, `/setup-mstack`, commands, agents, rules, hooks,
+  and a committed square logo (`assets/logo.svg`).
+- Publish root `.cursor-plugin/marketplace.json` for `cursor.com/marketplace/publish`
+  (`source: distribution/mstack`) plus self-hosted Claude/Codex/skills.sh layouts
+  ([ADR-0007](docs/decisions/0007-native-distribution-model-roles-and-token-budget.md)).
+- Add `/mstack` sticky workflow router, `/mstack-help`, ten evidence-gated playbooks,
+  and fourteen citeable principle skills in the core runtime.
+- Add `lite`/`full` install profiles, user- vs model-invoked resource tags, and
+  context-cost reporting in `mstack doctor` / `mstack status`.
+- Write model-role bindings (code / judgment / reviewPanel) and optional
+  `multi-model-arena` during `mstack ai setup`.
+- Detect overlapping install channels (CLI vs skills.sh/native) and refuse dual installs.
+- Add `generate:runtime-artifacts`, `validate:cursor-plugin`, and
+  `install:cursor-plugin:local` scripts; CI fails on distribution drift.
+- Generate `resource-counts.json` from the live registry (61 skills / 33 prompts /
+  14 templates after workflow + planning merge).
 - Expand curated packs with additional specialists, skills, invokable prompts, and
   argv-only task recipes for every starter domain.
 - Add backend/API, QA/testing, observability, and documentation packs.
@@ -49,18 +66,24 @@ All notable changes to mstack are documented here. This project follows [Semanti
   computer-use probes).
 - Standardize workspace scripts on pnpm; keep npm only for registry publish and
   foreign-repo pack recipes.
-- Widen CLI CI path filters to every generated runtime directory (including
-  `.opencode`, `.windsurf`, `.warp`, `.amp`, `.zed`, and other portable roots).
+- Slim GitHub Actions to one ubuntu-latest Node 22 job (typecheck, test, build,
+  `mstack validate --strict`, template sync, command-reference drift, distribution
+  artifact verify). Drop Node 20/24 matrix, macOS/Windows, launcher smokes, and
+  the separate Documentation workflow.
 - Rewrite the root README as failure-mode → fix with quick-start and per-tool
   install lines; move maintainer release steps to `CONTRIBUTING.md`.
 - Wire product-definition and architecture-design to grill unsettled decisions
   before writing authoritative planning docs.
+- Project the Cursor plugin `/mstack` skill from the registry playbook router
+  (not a separate phase-table body) so plugin and `mstack ai setup` stay aligned.
 
 ### Fixed
 
 - Stop treating init templates under `templates/` and runtime scaffolds under
   `.mstack/templates/` as the same files drifting apart; document and sync each
   pipeline separately.
+- Unescape markdown backticks in `templates/runtime/` api/repository sources so
+  sync no longer installs literal `\\`` fences.
 
 ## [0.6.0] - 2026-07-25
 

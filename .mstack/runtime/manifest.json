@@ -1,8 +1,8 @@
 {
   "recovery": {
-    "backupRoot": ".mstack/runtime/backups/op.aa276920a9833ec34bdc",
-    "journalPath": ".mstack/runtime/operations/op.aa276920a9833ec34bdc.json",
-    "operationId": "op.aa276920a9833ec34bdc"
+    "backupRoot": ".mstack/runtime/backups/op.ce5609c0a402aa32106c",
+    "journalPath": ".mstack/runtime/operations/op.ce5609c0a402aa32106c.json",
+    "operationId": "op.ce5609c0a402aa32106c"
   },
   "resources": [
     {
@@ -374,7 +374,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "1ddbc1d1820b77fdd88b0448311bc4c2e09fc9599624331a13df51b9e148a219",
+      "installedHash": "df51e2a4b54dcaa7528b529950f3618cde2543da53aab5fde0fa58524a7ce227",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/api-contract-design/SKILL.md",
@@ -397,7 +397,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "5b1352469d28b0b2ca65c25ad34b37464fa1f2aa688126982d4fb679e0a7be0c",
+      "installedHash": "62c853c9c53f08e1f2392b3ad5d568bb57adedcca3d0f4b98554aea29e4dd36f",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/architecture-assessment/SKILL.md",
@@ -420,7 +420,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "8dafc18c085a88bbe6dd16197a95aafdb40f7e27d566f85e091845748ac5d538",
+      "installedHash": "b8b9515097647489fc56ca7ce5ea5c70d934beb9aedfdea0aa3939acc16a844a",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/architecture-design/SKILL.md",
@@ -443,7 +443,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "3f5befe7cfe21527f1b9dd91bbf7ff8d1046bf604b8a26235fff29058810b904",
+      "installedHash": "d5adeacd941e9b6003dc591e931c6e44a33f2c9a04ea7f03e1dc45503a766aa8",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/backend-delivery/SKILL.md",
@@ -466,7 +466,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "3ed602395479dfad5f9a863b6d5388e8cd1f9a88b5e4824aedf3ea13235b6c3c",
+      "installedHash": "0d72ce1445c4798212f2bc6e8c7378dec6e7db4e327dfc90ad4ab8cabd1fad17",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/browser-verification/SKILL.md",
@@ -488,7 +488,7 @@
         "cursor"
       ],
       "approvals": [],
-      "installedHash": "4e3d7a9b3a2d618ed18c631a2ec17c9cdf4808b0a653cf1cd5cfceedaf1778e0",
+      "installedHash": "a1156ae5fa6a7ae2426fa91373b7c0832a866c796a16c4ccf63613bd0a37feab",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/build-backend/SKILL.md",
@@ -509,7 +509,7 @@
         "cursor"
       ],
       "approvals": [],
-      "installedHash": "3431814ab4b2f91a4aa9c086165d2635bca15bc86f195a1d30c122061856ed7b",
+      "installedHash": "c093e0f29c4cac8c385b3719222d4502ee9c015a7591149b76d16f0eaec37f45",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/build-feature/SKILL.md",
@@ -530,7 +530,7 @@
         "cursor"
       ],
       "approvals": [],
-      "installedHash": "3a86ed2dcf3c25dab78727a799868733931ce73da5b3d2cfbb46892d37ccb4b8",
+      "installedHash": "8c5a2b1c1eefb1b60433af25ca4fc970546a1db0f82a97763090e50acbe41983",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/build-frontend/SKILL.md",
@@ -552,7 +552,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "3db36012b039ef9c3bb2d595f612abd915d7c93b764a5f4f80f96d6e99d18c87",
+      "installedHash": "0e4eceafec920c018c7543564c48142f8fd456544dec0421bcef24d935c5b23c",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/computer-use-safety/SKILL.md",
@@ -575,7 +575,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "8fb2e3a34cc6380f3edf6f58a2aa016d095a5896ed9c136ecad0d2c215618cc4",
+      "installedHash": "f6ff68aab44988afca22f04c1445db5883ea3328d822b22e97b35a7a13190fb4",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/continuous-improvement/SKILL.md",
@@ -598,7 +598,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "490b14981e0464a6ef978bb43123d205cd7b51df31a5bf538f316b821bdefb0c",
+      "installedHash": "ab5d9fde2800af12d77dedbf07611b67adcb261ba33e44fac5983b335677119a",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/contracts-before-clients/SKILL.md",
@@ -621,7 +621,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "fcf0c66137927248f2b2223f0de9390a1f7fb65823f245d84676a1e5afefb115",
+      "installedHash": "cead3ff15e56936d04fa05f5c58c88bc63dffb3b87dd150fffe7c7c80cc1cc71",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/database-modeling/SKILL.md",
@@ -643,7 +643,7 @@
         "cursor"
       ],
       "approvals": [],
-      "installedHash": "a34afa285b77efd0033dd5272cf548fdcd391faafa997cc0fa0be1a58a014ed7",
+      "installedHash": "b87e7f5635039d6f47a6762e4444d89810ed26b65076c097016146f1d0b3ddba",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/debug-failure/SKILL.md",
@@ -664,7 +664,7 @@
         "cursor"
       ],
       "approvals": [],
-      "installedHash": "311324af65982730c05c2e675e6e01d2468ccd01029972b28ca087583740712a",
+      "installedHash": "12670f80e978493553f1c444248a3b2ee8d2b038ecbae68a0efd73bf6dee7af5",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/deploy-product/SKILL.md",
@@ -686,7 +686,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "c92eb4d6bdee7ff8936cf57dd580c23b12abe57a2fa0b8dc216c62633993876b",
+      "installedHash": "db478d7e49670bdf6be75e8e535f278143cf6c56307788799569639894b38dfd",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/deployment-delivery/SKILL.md",
@@ -708,7 +708,7 @@
         "cursor"
       ],
       "approvals": [],
-      "installedHash": "2ba1d5e365c9f2d97bfced0a77ac3a7df243281179d136236f4b25d5cd28eb73",
+      "installedHash": "40752998cfedd3db335e1fd8879d5b43e9202184d3c2af0869504b2c132c9c37",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/design-api/SKILL.md",
@@ -729,7 +729,7 @@
         "cursor"
       ],
       "approvals": [],
-      "installedHash": "9388ee8207ca208157b389ffd6c844dad0b28913c74ddd3233f86c2c5be37063",
+      "installedHash": "4238f3124a716168ea3d14ba023f56425bd5fa7d134e54cdf4003dbe6d2c369b",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/design-architecture/SKILL.md",
@@ -750,7 +750,7 @@
         "cursor"
       ],
       "approvals": [],
-      "installedHash": "f9a5004fe4bc660bda1a70b08804eabf848d3a144e0b53ec7a4ecf7de79e4fcb",
+      "installedHash": "07c26c440810af1e4db9f4daed9ae24f1a927aedb7a007b5c3df7fa0370dc4a5",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/design-features/SKILL.md",
@@ -772,7 +772,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "31bc513c1a974ffd117c74cc8ac7fb0c06854c1854d7e885496728954608df25",
+      "installedHash": "d7ccd8069145547357a33c35f66a500b4a2cd38e4ffc8c91243c4392951cd0af",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/design-grilling/SKILL.md",
@@ -795,7 +795,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "d1030bc4f2d1a21a97a43203639e0ca6b105a2f2b8971ee1d12cd0b8a07273a5",
+      "installedHash": "f1d7ed04b0a1a6aa2276901990021efc63ce001768c4ee515612cd75f9533f95",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/dual-axis-review/SKILL.md",
@@ -818,7 +818,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "80a0fa9435e57a97df7c885b5438ed95acb95f57c3dbf0bc0cf7f7318f68f574",
+      "installedHash": "a84df4dbf80c088e52bcf5f64d7836e8f3155facdaf0163bf547b1b2255d4b18",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/encode-lessons-in-structure/SKILL.md",
@@ -841,7 +841,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "bdac5040046c94cd58f49ec1e035152672993d1126b0f93c50b0c243988743a0",
+      "installedHash": "73184bd06f5ac92a86c464c81b19995ff50f8a82f167b6a80b1a68cb684579a2",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/encode-lessons/SKILL.md",
@@ -864,7 +864,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "31ec5b4ab64e0229b2919d0c71d858bfea2900e9784e983a46d75fc8b7a1830b",
+      "installedHash": "1b457f6d329849d6c9c8b5df19186f95c2cddd8f0901e0c72bc50ff6f4ec5d94",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/evidence-over-optimism/SKILL.md",
@@ -887,7 +887,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "220879a356d4949df34ef63c07ad174ba26c7bb1474884715e6c11e05f3ce24e",
+      "installedHash": "b5697fb1ff2f4477890469dbee46a861c611f7f3660a116065e4fccac5fc2918",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/feature-design/SKILL.md",
@@ -910,7 +910,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "f4f122d16355611d6a7b407c9ee59ca93027ff4742d99053ff4c0ff5d2580dd2",
+      "installedHash": "67036cb83d6f7c14797488660b458022c7f623709fb09bcce00e7ea0300a904f",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/feature-planning/SKILL.md",
@@ -933,7 +933,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "fe0f5f43a540adc4743c3edd5000a0a23559f68f37e272b526210788c349e5b7",
+      "installedHash": "86cda1b1af2009bd6d3be153e40753c7f4c4cd026b5d0d0f4bebf2f3803576cd",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/fix-root-causes/SKILL.md",
@@ -956,7 +956,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "eb2ceb4102beb95b042250369fa39e6e007f9142e49248b15609cb9efd0dc42b",
+      "installedHash": "364a539408f92350123c7c37c309642e484fd2cd7a6cf8b40bf5125775f25d93",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/frontend-delivery/SKILL.md",
@@ -978,7 +978,7 @@
         "cursor"
       ],
       "approvals": [],
-      "installedHash": "f107a54b7509ba0edcd51191005a0852ee16375f179867642772d23845e3de6c",
+      "installedHash": "bd5ccbeedf736b5ff46f7c6f1d5b11f0324b9ef1ba9fe3c7724f7e8c5dcfde03",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/grill-and-document/SKILL.md",
@@ -999,7 +999,7 @@
         "cursor"
       ],
       "approvals": [],
-      "installedHash": "58b302b4eab523fcf3f98dc589a1b98c4da06f38fc4434db0e287653a5116f29",
+      "installedHash": "68f240257a37ddb088fa31d1b2244e35a8f099c27548df70ef829a1ffcdb6f59",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/grill-decisions/SKILL.md",
@@ -1021,7 +1021,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "19ac80edf76cfbcf0fc17649ab54b083af7aa85c80758db2dd9e4a0612e15f9c",
+      "installedHash": "eb85839f3fde5a4c1b029f07e1d192032e48ad0168e895e0d5dab38311a12bd4",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/grill-with-docs/SKILL.md",
@@ -1044,7 +1044,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "663a5a6cdb10d779f55864eb98470b8dd60d27798808819ea5de6fab0c5434b5",
+      "installedHash": "30b74c0db5ac38697ca218061a34c887cc8d43c542f01cd78b6656e77c6b7085",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/guard-the-context-window/SKILL.md",
@@ -1066,7 +1066,7 @@
         "cursor"
       ],
       "approvals": [],
-      "installedHash": "f1f745fbe53436867cabf4786bec959949aca1056cb9d5a86721980c146271e6",
+      "installedHash": "7543449769b8b1cf533f24f1d01a969ecf6cdb7452670996b60c6e333e1fc424",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/handoff-session/SKILL.md",
@@ -1088,7 +1088,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "b4ef921df3fc4a1400f703b42fda3f466cb9042eb48b8914236c029868a1f1b3",
+      "installedHash": "8a01f565a0a4ee027762b160bfe3496bc7f24b6e8e38a310377792ad19f2eb17",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/idea-validation/SKILL.md",
@@ -1110,7 +1110,7 @@
         "cursor"
       ],
       "approvals": [],
-      "installedHash": "1c8841bd64d1a68740b4e5e440429bb642388f473eff09eba8c1f22a0f9ad482",
+      "installedHash": "806f73301ed50cf2a88f8ceaa86fe17b041f2d1b87e95fa9f315cdb1ff51fc62",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/identify-target-users/SKILL.md",
@@ -1131,7 +1131,7 @@
         "cursor"
       ],
       "approvals": [],
-      "installedHash": "02202ad475c525cca5740b7617d2243041542b7ad77922c122f259ed056217b5",
+      "installedHash": "39940c36b2dd4ee00e36bf1048ff11e44ee4e22568fe503c60e0baeb7fd60479",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/implement-spec/SKILL.md",
@@ -1153,7 +1153,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "f9549f8d25e7a32be983acc98d2805664b1504164ca8b6a208094d5eb7d11ef9",
+      "installedHash": "de1467217a31d8e05c341cc4f024d8883e249166e2293b63ee5499759637d0cb",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/implement-task-graph/SKILL.md",
@@ -1175,7 +1175,7 @@
         "cursor"
       ],
       "approvals": [],
-      "installedHash": "82e1af5c491a49f8e2dcd8d71123fc873e3bf43fd36699058fbe024d72788686",
+      "installedHash": "4cfe9ef5f07836393a26549c5d8342f457d68e64e3ab85d0eaf0a2508bc94112",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/improve-documentation/SKILL.md",
@@ -1196,7 +1196,7 @@
         "cursor"
       ],
       "approvals": [],
-      "installedHash": "218578d98d1f9a692d7b82c14c6d84f8366b868ac269cd58345b73dfa628dd54",
+      "installedHash": "0b18e22d0ca0662a7e06320f87d111996afc34c344d8d60ba71d3bff1cccb7c5",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/improve-product/SKILL.md",
@@ -1218,7 +1218,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "682c213d6e872fa52a7407b4155386390cd03b0c25633ac3b7cb960559097665",
+      "installedHash": "04d58d1e4a44cebb6294e1d3f7b4bbb01a653fbc7d7006f75d48796ae64df369",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/make-failure-observable/SKILL.md",
@@ -1241,7 +1241,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "7f2bb50e92b84455f5fbd236f663938af97dbb9a971df0d7703dc906ad77a1f1",
+      "installedHash": "ca92f3efaf334d09b9f9549843f79ff3d980825dda0e262feb7c0e10502a7bee",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/mcp-governance/SKILL.md",
@@ -1310,7 +1310,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "a13a978e2437befef7c848f3acfe9c5afc5554dc35c724e6146f8de041ee95f5",
+      "installedHash": "769764b1cb582109ac3e2fc6fa70d66c5b878534bc38110c829fec2f6a965bc2",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/name-the-trade-off/SKILL.md",
@@ -1333,7 +1333,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "625575ceb3e85cef7a408eb61dc5d3cb60d5e3fc926a770ae5226fdd47dbdca1",
+      "installedHash": "7d4a37c0a4623f60a9bba92e0daafe722af872ac0b1a42fd9fe2fa7472b13e8f",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/never-block-on-the-human/SKILL.md",
@@ -1355,7 +1355,7 @@
         "cursor"
       ],
       "approvals": [],
-      "installedHash": "c7a0fffd31fa7b69a7801e425ad843f50a0fc2f07ff4601c8ad6c344fe6dfcde",
+      "installedHash": "74ee00abac39dd68927997cb1ce704d9c5783a00c1e45bb4cd52e5352570ecfd",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/operate-computer/SKILL.md",
@@ -1377,7 +1377,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "4d71d8605a65ac42e0cba9a33aa298ec73ebca39389517f4de30f5b039524e58",
+      "installedHash": "a183adf7e0a9c265cbff6824faf147768e0383c330387f89a7644178ef962dd7",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/pause-safely/SKILL.md",
@@ -1399,7 +1399,7 @@
         "cursor"
       ],
       "approvals": [],
-      "installedHash": "69b44acb33d0ec416cc31905fa29f6a5340ecccee55e1a35d8a99a68ec847f93",
+      "installedHash": "2ddbf00cbcb2a4d6b6c75b2309981ecc1460751c1979d0abc118535139b4bbad",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/pause-session/SKILL.md",
@@ -1421,7 +1421,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "f7825754124194ac952e826a7e312329a5c179f7637ed0c4239a00b17b8cdced",
+      "installedHash": "6e1c591313d6971416faadd5fd077154a324a218cb4e0f720ef741dcc37f3a9b",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/performance-investigation/SKILL.md",
@@ -1443,7 +1443,7 @@
         "cursor"
       ],
       "approvals": [],
-      "installedHash": "49c232da53f954b99e07376ba2b4e4f7401921d129490ecefa49493770ed301e",
+      "installedHash": "6448af39e7025276d84e718b5199b7facdde9d8ded0bd722848c355ea2fe8597",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/pickup-session/SKILL.md",
@@ -1464,7 +1464,7 @@
         "cursor"
       ],
       "approvals": [],
-      "installedHash": "3caf94c876c38e7e7cbb4fc37f073c68a1cf8d19a715e7a2e99c0cb4124872f5",
+      "installedHash": "0ad42b120967bc46cc194f799b35a48c888d65ec1cd49888290cd468e4beec99",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/plan-mvp/SKILL.md",
@@ -1485,7 +1485,7 @@
         "cursor"
       ],
       "approvals": [],
-      "installedHash": "3349c8440fa904c73c6ac31f8ccd99646bc45a90c0baf513d64e0821ce7f7cc3",
+      "installedHash": "e8eda092d1bc02f0cdc5b5ccfb862f5c316052f8cff7aef551df466742363aba",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/plan-tickets/SKILL.md",
@@ -1507,7 +1507,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "0139f0f237350972316c27a882191d49bcf6142871662fb47a3a938f82870118",
+      "installedHash": "952117230a9efc8474b20ac8cb69fa680f5a7e2ab51a3901f70d4abb7e6fa23b",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/planning-setup/SKILL.md",
@@ -1530,7 +1530,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "e75efe657a2b9f6fb6c5215f7676cefe9e9506957d6a5325cb9ff78fea52e85f",
+      "installedHash": "9ae0da40e156d9a33268879c102fc5f5f7ed2d45288f8cb7ee1a73e2ae16c802",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/playbook-autonomous-run/SKILL.md",
@@ -1553,7 +1553,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "f12660269b1984236f556d925f68a1d9f0742c293200043e8801eebd9756f550",
+      "installedHash": "23c42449535bb76f903a72a6798fa4ff1d005420003d33e0a73f70c1e0a0b94e",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/playbook-babysit-pr/SKILL.md",
@@ -1576,7 +1576,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "318ea6014ff5c35dc07b0651a66d0d6f3ef37f26b77863e2ba79380a24e44538",
+      "installedHash": "b8f4498d134dce78f80d3cd52954a85548808c542593e08f9befcaf982c74886",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/playbook-bug-fix/SKILL.md",
@@ -1599,7 +1599,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "7095fa25057761df66df83f0361c1705b6c342235bb0549fef783176840dc0c6",
+      "installedHash": "845592dfdc2f459c97b6916119d93b861cbc4a7fc0cfa522f1233d6e2ea13617",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/playbook-feature/SKILL.md",
@@ -1622,7 +1622,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "0f2e834848048d3b26f3f176fa4ddb5890bf07663ddbc5b44e023ba50880146f",
+      "installedHash": "8678aaef41c747503cb3fb04b5cc1cec8ea094c714b21e2104644397f1ae7802",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/playbook-investigation/SKILL.md",
@@ -1645,7 +1645,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "6a632721d28b933c5cf9b92bcaf66670bbb1f9572604aa279602e8fe5794b399",
+      "installedHash": "d7724fd572a1ab2285e23e2ea965d8c4dac093014a2d49f5da76bd08808c5af3",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/playbook-orchestrate/SKILL.md",
@@ -1668,7 +1668,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "1b6304745becfe961d6424b67bc3f75e6486e4cfd0ea7598d666be3948dd8413",
+      "installedHash": "5696532dee0c01aea44daec4fc3913312987569edf589f8eeaa277a0592393a6",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/playbook-perf-hillclimb/SKILL.md",
@@ -1691,7 +1691,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "654ba0c3ca8bbe07d4fcd6bef58b2ac101da56dcea741e607947d1a1d33ed3f0",
+      "installedHash": "aa545ff61a75c5d8d907443e4ccd98bb1ef1d1330295edac9bfcaba226a7495e",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/playbook-prototype/SKILL.md",
@@ -1714,7 +1714,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "38c75fdba356a34d615755ee76dd2959d92769dd625310c91daff0d8fd7a60c2",
+      "installedHash": "d4167584eed997b667d69e4f04babb58a34b31bc4c1781613ad748263bb68334",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/playbook-refactor/SKILL.md",
@@ -1737,7 +1737,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "808c8e2987f21107efa7dd135db7486f40c974dcb54041df19d3947821cee5b0",
+      "installedHash": "8c37248c7f18bbd6e441326713900656c6e82756047b5bc210a3f896fd08c47d",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/playbook-shipping/SKILL.md",
@@ -1760,7 +1760,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "97aa2b3923284d781cfa402e4cd499cbbee131c0fc30eeb7da0031fccd31dfb4",
+      "installedHash": "277433573dce7d44280121f8e014254f14a71ae81346d72e41d2bad576f38887",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/product-definition/SKILL.md",
@@ -1782,7 +1782,7 @@
         "cursor"
       ],
       "approvals": [],
-      "installedHash": "946b4657494f84a3fa2cbdd5259a665a687119259cf9b26a99799bbb1fee963e",
+      "installedHash": "efe63735d4b93a043a53aa4f4a10c5670c21f59aab822c3c611b5c8b8f1a6041",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/production-readiness/SKILL.md",
@@ -1804,7 +1804,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "b94a7a1df9a5cf538894960036ecfbaaae9caedea60603a51f40f7ecfd63611b",
+      "installedHash": "1615333092ee1af92edac8cbd9b725deb882bb408429cd50be17e36f25f5c3b8",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/prove-it-works/SKILL.md",
@@ -1826,7 +1826,7 @@
         "cursor"
       ],
       "approvals": [],
-      "installedHash": "d699d536c30e855f289e5dc88d7cc1efd724cf97d9f2c1e61f0ad0c68689ed5f",
+      "installedHash": "ad7fd193860d3b0ba30ac8caf47aae5201520a1503bf0b420047bc33876152fb",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/recall-context/SKILL.md",
@@ -1847,7 +1847,7 @@
         "cursor"
       ],
       "approvals": [],
-      "installedHash": "13728bd0162a351d2d39eddcf972e4b0e55e597e057af3042f59f808313e3ed3",
+      "installedHash": "f6d09c3e314c1283895220d75c033f52e943871948aebd6cd8c7f184e6369277",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/refactor-module/SKILL.md",
@@ -1868,7 +1868,7 @@
         "cursor"
       ],
       "approvals": [],
-      "installedHash": "8e1e9c4ddd14d9bb3a036e1f27db100674eb872679f6bad2f8b2de8d45a8d1c0",
+      "installedHash": "3e57f8407bf902997f03015930e7d0eb1972bee6841f6c96a60bbea036b747c4",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/reflect-and-encode/SKILL.md",
@@ -1890,7 +1890,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "3bf6bd24dc3e4a7eb1c6a232f15f0e0a4ae495e50760c93a071fa9e74971a7ab",
+      "installedHash": "30d9e0ffe73eb96bbba1f2ad0adf9a91518a257cc2ea4531f816658fdaec3d55",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/release-readiness/SKILL.md",
@@ -1913,7 +1913,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "23832c3a3fdba9214b679533782929b775ce499c3ab0294ae5b68ea95d87db40",
+      "installedHash": "e6bf5850c4694e1a2418644f3363537ccc94b93fdc272e0414a320492b0c87b0",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/repository-audit/SKILL.md",
@@ -1935,7 +1935,7 @@
         "cursor"
       ],
       "approvals": [],
-      "installedHash": "dc902b792b36b2ba12f353eed30de0c8ecc57502c578d7e0b74518576f3dab06",
+      "installedHash": "59cf992d66b06443380268d13cf518fdfd4ed2f5281d0f5fd4a1358f07e55c33",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/research-idea/SKILL.md",
@@ -1956,7 +1956,7 @@
         "cursor"
       ],
       "approvals": [],
-      "installedHash": "af8a6e921186b7a296fbf60c80992ae900c73ca5f00c2cce3c7a33803075e6a5",
+      "installedHash": "fb82fc28eb9bf169d149dc0fcb6b1c3b24e5ed7ba849ac1898ef33815de5edaf",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/research-user-needs/SKILL.md",
@@ -1978,7 +1978,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "1dbca981c439c21ab576b6238d19882897ad14974f61456768652f0209500f2d",
+      "installedHash": "d6f77528bcda63363404685e8c1208b3931bec9b146464258a44586a16f66c20",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/reversible-by-default/SKILL.md",
@@ -2000,7 +2000,7 @@
         "cursor"
       ],
       "approvals": [],
-      "installedHash": "d01210456a2db5d5e6d0e48778c934ad0c26d72ad31a8c13b328e15f736b0683",
+      "installedHash": "252862fe366501253d78fe1c3339e8b7d656f5259838e46fcdfd6fbb609b1f53",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/review-against-spec/SKILL.md",
@@ -2021,7 +2021,7 @@
         "cursor"
       ],
       "approvals": [],
-      "installedHash": "b4505e2c0f4c33e6c7c34ed66ec5c9617f7f4bcc5f81e66225d36fed44e1e0a4",
+      "installedHash": "3afe733ed05e148e664d32c20365fd6f0c43bf6e6dc55bb5961a13c97219abe7",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/review-architecture/SKILL.md",
@@ -2042,7 +2042,7 @@
         "cursor"
       ],
       "approvals": [],
-      "installedHash": "9c1f3ed635034aa5ae1004dbb2bdea53a0743acdb4f21f11a796df5accd9817b",
+      "installedHash": "4d98ee934d4a55445f1c518447435e2bcf1f1d17bfe410bc41ad53ffcbb0f118",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/review-pull-request/SKILL.md",
@@ -2064,7 +2064,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "311c2e7e43027c1191a57d70eaf32974b025204c72e804b280ae17107f41c1d1",
+      "installedHash": "d9944cc66b16e67ab83971901a285f74f5e24ed2a69569a8b47de29dcf302d95",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/safe-refactoring/SKILL.md",
@@ -2087,7 +2087,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "f5fe3db00100df283a6b71f2b29e351138bf13b724be3669422d67d1d2c3e60d",
+      "installedHash": "a295d8d8f08ea9d37aae16e2de1da69656f94cda01b645cc76340a3534744589",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/session-handoff/SKILL.md",
@@ -2110,7 +2110,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "c9eb9271abca025b9c00448b4376d71f9c04157dd0838493751af4e10fae1def",
+      "installedHash": "865fa4a675750142f2337c575457934518cc1a099752d99c998b402239a6925b",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/session-pickup/SKILL.md",
@@ -2133,7 +2133,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "14d11a8b35debd6d60d8bed6127bb24c3afc2ada614350ce66883e47c86b4503",
+      "installedHash": "c87c7fb2afd1b519b3e88283a263b95f9bab67e416609c0b483a965fe476cd4e",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/session-recall/SKILL.md",
@@ -2155,7 +2155,7 @@
         "cursor"
       ],
       "approvals": [],
-      "installedHash": "bc4c6b0ce64e84ae023327a3b7c49008ba6de1b4bad01a0383c7656ad04f8c11",
+      "installedHash": "65fd1f4bf6b9d7a1b9223dbebbb25bad9cefa54a9dd7b789ec28c7e8bbc63148",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/setup-planning/SKILL.md",
@@ -2177,7 +2177,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "11734ed93b16cae551cf48b0cec52ab396bdfd7c4b8564a80126d4e6117cd7b2",
+      "installedHash": "8e847e60b66025ef70e52c549bc1c0b2b03b054aff550033ccc644eb8c79506a",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/smallest-complete-slice/SKILL.md",
@@ -2200,7 +2200,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "0a5ecdeb5b64587c95e45e273ece52b88fb3624607121a98cad2eb6e13074bf7",
+      "installedHash": "573cbf49862be133788ac17f30cf650aaf31ce6a2322055493dc9d2d2120810f",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/spec-synthesis/SKILL.md",
@@ -2222,7 +2222,7 @@
         "cursor"
       ],
       "approvals": [],
-      "installedHash": "71fc4517ddbc4aefaa6803ded1e983d2a2a656bda024d63d7ca2b08cc78327ea",
+      "installedHash": "48ffe86d4636a78fe3a6a991c97235ce29fa317375759ea269c6d38ca080acec",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/synthesize-spec/SKILL.md",
@@ -2244,7 +2244,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "a8289e36050c7e89c6ceaec670460c5d5c3340900dd09d43d0e7fefb2438015b",
+      "installedHash": "7b005e0e4477f18ae4d52a536b47792e13f0a1550a9aea8e8125fedadddbb52a",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/systematic-debugging/SKILL.md",
@@ -2267,7 +2267,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "b4099a769ca18ef5be9f6319d465ec8fbfad3006c4a08154449135ba990e7517",
+      "installedHash": "9c2ce97f1ef11e4fa0d37cf6fdf06fa4fe2fd68d25fbf56e1e36e3cbd0954cc9",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/target-user-definition/SKILL.md",
@@ -2290,7 +2290,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "bb39d138a4e6033f01736a22ec6b1aaa5e14069e1cf7314096e48dde3dc8d9f2",
+      "installedHash": "22e7d4821a57e971c9e16ba26a10105d2df1c42e88d255328eabd66740aba042",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/thinking-before-typing/SKILL.md",
@@ -2313,7 +2313,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "8011b57c48921688c539844a7d699fb9ff7b840fc2bd9bcce668684835fbfc9f",
+      "installedHash": "3c69426292631c903358e482c343c51e7549fb2ccfeba82d52f87dcb93033bb2",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/threat-model-review/SKILL.md",
@@ -2336,7 +2336,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "6ca5a0dcaf5da2018c81c635e15ef25073e71acccad5e10bb83223885b4c4356",
+      "installedHash": "b4d905a4b189ddfa89c0ee691d8309239fab64236956bd164f8476deab21385c",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/ticket-graph/SKILL.md",
@@ -2359,7 +2359,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "8d6bff6841ec39337037ab4e5bc8bffcc0129a95da96066a0c8b4999c86ea13a",
+      "installedHash": "2e689d0a95e5ce21809d4398feeb035ba1dfabf3543515b7b78b4c859350e960",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/user-before-feature/SKILL.md",
@@ -2382,7 +2382,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "f95e9f48f71abadf100233bb48e602de717af240b6786e842a2f41b723e9199d",
+      "installedHash": "518a41cdeace04ca668bec9a292e5068c3e6a300fe53ba16ecb34b2b91e76bde",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/user-needs-research/SKILL.md",
@@ -2405,7 +2405,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "a288916c1b1aa94ab80924f010ca607a82209a54d1012dd2a23da94c8d87de8a",
+      "installedHash": "9d0a7bdf21ee5e667ef93e93cd8ee7876609eabeb1a76016abaede4d7c4d7f15",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/validate-every-boundary/SKILL.md",
@@ -2427,7 +2427,7 @@
         "cursor"
       ],
       "approvals": [],
-      "installedHash": "f89d224c149485d37f16af2f04618bc7b43857cfa537faa38eb62bb538b37275",
+      "installedHash": "1e27d90650d69407e612150496edb072ad3865fd9e336719599f41fc224b9a16",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/verify-journey/SKILL.md",
@@ -2448,7 +2448,7 @@
         "cursor"
       ],
       "approvals": [],
-      "installedHash": "482b9c7d95706ec1c2664794436eda110eb9ea4d7fd66f11905f58498e04caba",
+      "installedHash": "acfb1cae0584060c8005f90d900e80eb145837cec89d5df1b16bbbba8e54180f",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/write-product-definition/SKILL.md",
@@ -2849,7 +2849,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "1ddbc1d1820b77fdd88b0448311bc4c2e09fc9599624331a13df51b9e148a219",
+      "installedHash": "df51e2a4b54dcaa7528b529950f3618cde2543da53aab5fde0fa58524a7ce227",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/api-contract-design/SKILL.md",
@@ -2866,7 +2866,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "5b1352469d28b0b2ca65c25ad34b37464fa1f2aa688126982d4fb679e0a7be0c",
+      "installedHash": "62c853c9c53f08e1f2392b3ad5d568bb57adedcca3d0f4b98554aea29e4dd36f",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/architecture-assessment/SKILL.md",
@@ -2883,7 +2883,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "8dafc18c085a88bbe6dd16197a95aafdb40f7e27d566f85e091845748ac5d538",
+      "installedHash": "b8b9515097647489fc56ca7ce5ea5c70d934beb9aedfdea0aa3939acc16a844a",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/architecture-design/SKILL.md",
@@ -2900,7 +2900,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "3f5befe7cfe21527f1b9dd91bbf7ff8d1046bf604b8a26235fff29058810b904",
+      "installedHash": "d5adeacd941e9b6003dc591e931c6e44a33f2c9a04ea7f03e1dc45503a766aa8",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/backend-delivery/SKILL.md",
@@ -2917,7 +2917,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "3ed602395479dfad5f9a863b6d5388e8cd1f9a88b5e4824aedf3ea13235b6c3c",
+      "installedHash": "0d72ce1445c4798212f2bc6e8c7378dec6e7db4e327dfc90ad4ab8cabd1fad17",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/browser-verification/SKILL.md",
@@ -2985,7 +2985,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "3db36012b039ef9c3bb2d595f612abd915d7c93b764a5f4f80f96d6e99d18c87",
+      "installedHash": "0e4eceafec920c018c7543564c48142f8fd456544dec0421bcef24d935c5b23c",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/computer-use-safety/SKILL.md",
@@ -3002,7 +3002,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "8fb2e3a34cc6380f3edf6f58a2aa016d095a5896ed9c136ecad0d2c215618cc4",
+      "installedHash": "f6ff68aab44988afca22f04c1445db5883ea3328d822b22e97b35a7a13190fb4",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/continuous-improvement/SKILL.md",
@@ -3019,7 +3019,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "490b14981e0464a6ef978bb43123d205cd7b51df31a5bf538f316b821bdefb0c",
+      "installedHash": "ab5d9fde2800af12d77dedbf07611b67adcb261ba33e44fac5983b335677119a",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/contracts-before-clients/SKILL.md",
@@ -3036,7 +3036,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "fcf0c66137927248f2b2223f0de9390a1f7fb65823f245d84676a1e5afefb115",
+      "installedHash": "cead3ff15e56936d04fa05f5c58c88bc63dffb3b87dd150fffe7c7c80cc1cc71",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/database-modeling/SKILL.md",
@@ -3087,7 +3087,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "c92eb4d6bdee7ff8936cf57dd580c23b12abe57a2fa0b8dc216c62633993876b",
+      "installedHash": "db478d7e49670bdf6be75e8e535f278143cf6c56307788799569639894b38dfd",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/deployment-delivery/SKILL.md",
@@ -3155,7 +3155,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "31bc513c1a974ffd117c74cc8ac7fb0c06854c1854d7e885496728954608df25",
+      "installedHash": "d7ccd8069145547357a33c35f66a500b4a2cd38e4ffc8c91243c4392951cd0af",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/design-grilling/SKILL.md",
@@ -3172,7 +3172,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "d1030bc4f2d1a21a97a43203639e0ca6b105a2f2b8971ee1d12cd0b8a07273a5",
+      "installedHash": "f1d7ed04b0a1a6aa2276901990021efc63ce001768c4ee515612cd75f9533f95",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/dual-axis-review/SKILL.md",
@@ -3189,7 +3189,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "80a0fa9435e57a97df7c885b5438ed95acb95f57c3dbf0bc0cf7f7318f68f574",
+      "installedHash": "a84df4dbf80c088e52bcf5f64d7836e8f3155facdaf0163bf547b1b2255d4b18",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/encode-lessons-in-structure/SKILL.md",
@@ -3206,7 +3206,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "bdac5040046c94cd58f49ec1e035152672993d1126b0f93c50b0c243988743a0",
+      "installedHash": "73184bd06f5ac92a86c464c81b19995ff50f8a82f167b6a80b1a68cb684579a2",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/encode-lessons/SKILL.md",
@@ -3223,7 +3223,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "31ec5b4ab64e0229b2919d0c71d858bfea2900e9784e983a46d75fc8b7a1830b",
+      "installedHash": "1b457f6d329849d6c9c8b5df19186f95c2cddd8f0901e0c72bc50ff6f4ec5d94",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/evidence-over-optimism/SKILL.md",
@@ -3240,7 +3240,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "220879a356d4949df34ef63c07ad174ba26c7bb1474884715e6c11e05f3ce24e",
+      "installedHash": "b5697fb1ff2f4477890469dbee46a861c611f7f3660a116065e4fccac5fc2918",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/feature-design/SKILL.md",
@@ -3257,7 +3257,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "f4f122d16355611d6a7b407c9ee59ca93027ff4742d99053ff4c0ff5d2580dd2",
+      "installedHash": "67036cb83d6f7c14797488660b458022c7f623709fb09bcce00e7ea0300a904f",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/feature-planning/SKILL.md",
@@ -3274,7 +3274,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "fe0f5f43a540adc4743c3edd5000a0a23559f68f37e272b526210788c349e5b7",
+      "installedHash": "86cda1b1af2009bd6d3be153e40753c7f4c4cd026b5d0d0f4bebf2f3803576cd",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/fix-root-causes/SKILL.md",
@@ -3291,7 +3291,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "eb2ceb4102beb95b042250369fa39e6e007f9142e49248b15609cb9efd0dc42b",
+      "installedHash": "364a539408f92350123c7c37c309642e484fd2cd7a6cf8b40bf5125775f25d93",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/frontend-delivery/SKILL.md",
@@ -3342,7 +3342,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "19ac80edf76cfbcf0fc17649ab54b083af7aa85c80758db2dd9e4a0612e15f9c",
+      "installedHash": "eb85839f3fde5a4c1b029f07e1d192032e48ad0168e895e0d5dab38311a12bd4",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/grill-with-docs/SKILL.md",
@@ -3359,7 +3359,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "663a5a6cdb10d779f55864eb98470b8dd60d27798808819ea5de6fab0c5434b5",
+      "installedHash": "30b74c0db5ac38697ca218061a34c887cc8d43c542f01cd78b6656e77c6b7085",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/guard-the-context-window/SKILL.md",
@@ -3393,7 +3393,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "b4ef921df3fc4a1400f703b42fda3f466cb9042eb48b8914236c029868a1f1b3",
+      "installedHash": "8a01f565a0a4ee027762b160bfe3496bc7f24b6e8e38a310377792ad19f2eb17",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/idea-validation/SKILL.md",
@@ -3444,7 +3444,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "f9549f8d25e7a32be983acc98d2805664b1504164ca8b6a208094d5eb7d11ef9",
+      "installedHash": "de1467217a31d8e05c341cc4f024d8883e249166e2293b63ee5499759637d0cb",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/implement-task-graph/SKILL.md",
@@ -3495,7 +3495,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "682c213d6e872fa52a7407b4155386390cd03b0c25633ac3b7cb960559097665",
+      "installedHash": "04d58d1e4a44cebb6294e1d3f7b4bbb01a653fbc7d7006f75d48796ae64df369",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/make-failure-observable/SKILL.md",
@@ -3512,7 +3512,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "7f2bb50e92b84455f5fbd236f663938af97dbb9a971df0d7703dc906ad77a1f1",
+      "installedHash": "ca92f3efaf334d09b9f9549843f79ff3d980825dda0e262feb7c0e10502a7bee",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/mcp-governance/SKILL.md",
@@ -3563,7 +3563,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "a13a978e2437befef7c848f3acfe9c5afc5554dc35c724e6146f8de041ee95f5",
+      "installedHash": "769764b1cb582109ac3e2fc6fa70d66c5b878534bc38110c829fec2f6a965bc2",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/name-the-trade-off/SKILL.md",
@@ -3580,7 +3580,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "625575ceb3e85cef7a408eb61dc5d3cb60d5e3fc926a770ae5226fdd47dbdca1",
+      "installedHash": "7d4a37c0a4623f60a9bba92e0daafe722af872ac0b1a42fd9fe2fa7472b13e8f",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/never-block-on-the-human/SKILL.md",
@@ -3614,7 +3614,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "4d71d8605a65ac42e0cba9a33aa298ec73ebca39389517f4de30f5b039524e58",
+      "installedHash": "a183adf7e0a9c265cbff6824faf147768e0383c330387f89a7644178ef962dd7",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/pause-safely/SKILL.md",
@@ -3648,7 +3648,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "f7825754124194ac952e826a7e312329a5c179f7637ed0c4239a00b17b8cdced",
+      "installedHash": "6e1c591313d6971416faadd5fd077154a324a218cb4e0f720ef741dcc37f3a9b",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/performance-investigation/SKILL.md",
@@ -3716,7 +3716,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "0139f0f237350972316c27a882191d49bcf6142871662fb47a3a938f82870118",
+      "installedHash": "952117230a9efc8474b20ac8cb69fa680f5a7e2ab51a3901f70d4abb7e6fa23b",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/planning-setup/SKILL.md",
@@ -3733,7 +3733,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "e75efe657a2b9f6fb6c5215f7676cefe9e9506957d6a5325cb9ff78fea52e85f",
+      "installedHash": "9ae0da40e156d9a33268879c102fc5f5f7ed2d45288f8cb7ee1a73e2ae16c802",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/playbook-autonomous-run/SKILL.md",
@@ -3750,7 +3750,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "f12660269b1984236f556d925f68a1d9f0742c293200043e8801eebd9756f550",
+      "installedHash": "23c42449535bb76f903a72a6798fa4ff1d005420003d33e0a73f70c1e0a0b94e",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/playbook-babysit-pr/SKILL.md",
@@ -3767,7 +3767,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "318ea6014ff5c35dc07b0651a66d0d6f3ef37f26b77863e2ba79380a24e44538",
+      "installedHash": "b8f4498d134dce78f80d3cd52954a85548808c542593e08f9befcaf982c74886",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/playbook-bug-fix/SKILL.md",
@@ -3784,7 +3784,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "7095fa25057761df66df83f0361c1705b6c342235bb0549fef783176840dc0c6",
+      "installedHash": "845592dfdc2f459c97b6916119d93b861cbc4a7fc0cfa522f1233d6e2ea13617",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/playbook-feature/SKILL.md",
@@ -3801,7 +3801,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "0f2e834848048d3b26f3f176fa4ddb5890bf07663ddbc5b44e023ba50880146f",
+      "installedHash": "8678aaef41c747503cb3fb04b5cc1cec8ea094c714b21e2104644397f1ae7802",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/playbook-investigation/SKILL.md",
@@ -3818,7 +3818,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "6a632721d28b933c5cf9b92bcaf66670bbb1f9572604aa279602e8fe5794b399",
+      "installedHash": "d7724fd572a1ab2285e23e2ea965d8c4dac093014a2d49f5da76bd08808c5af3",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/playbook-orchestrate/SKILL.md",
@@ -3835,7 +3835,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "1b6304745becfe961d6424b67bc3f75e6486e4cfd0ea7598d666be3948dd8413",
+      "installedHash": "5696532dee0c01aea44daec4fc3913312987569edf589f8eeaa277a0592393a6",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/playbook-perf-hillclimb/SKILL.md",
@@ -3852,7 +3852,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "654ba0c3ca8bbe07d4fcd6bef58b2ac101da56dcea741e607947d1a1d33ed3f0",
+      "installedHash": "aa545ff61a75c5d8d907443e4ccd98bb1ef1d1330295edac9bfcaba226a7495e",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/playbook-prototype/SKILL.md",
@@ -3869,7 +3869,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "38c75fdba356a34d615755ee76dd2959d92769dd625310c91daff0d8fd7a60c2",
+      "installedHash": "d4167584eed997b667d69e4f04babb58a34b31bc4c1781613ad748263bb68334",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/playbook-refactor/SKILL.md",
@@ -3886,7 +3886,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "808c8e2987f21107efa7dd135db7486f40c974dcb54041df19d3947821cee5b0",
+      "installedHash": "8c37248c7f18bbd6e441326713900656c6e82756047b5bc210a3f896fd08c47d",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/playbook-shipping/SKILL.md",
@@ -3903,7 +3903,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "97aa2b3923284d781cfa402e4cd499cbbee131c0fc30eeb7da0031fccd31dfb4",
+      "installedHash": "277433573dce7d44280121f8e014254f14a71ae81346d72e41d2bad576f38887",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/product-definition/SKILL.md",
@@ -3937,7 +3937,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "b94a7a1df9a5cf538894960036ecfbaaae9caedea60603a51f40f7ecfd63611b",
+      "installedHash": "1615333092ee1af92edac8cbd9b725deb882bb408429cd50be17e36f25f5c3b8",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/prove-it-works/SKILL.md",
@@ -4005,7 +4005,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "3bf6bd24dc3e4a7eb1c6a232f15f0e0a4ae495e50760c93a071fa9e74971a7ab",
+      "installedHash": "30d9e0ffe73eb96bbba1f2ad0adf9a91518a257cc2ea4531f816658fdaec3d55",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/release-readiness/SKILL.md",
@@ -4022,7 +4022,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "23832c3a3fdba9214b679533782929b775ce499c3ab0294ae5b68ea95d87db40",
+      "installedHash": "e6bf5850c4694e1a2418644f3363537ccc94b93fdc272e0414a320492b0c87b0",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/repository-audit/SKILL.md",
@@ -4073,7 +4073,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "1dbca981c439c21ab576b6238d19882897ad14974f61456768652f0209500f2d",
+      "installedHash": "d6f77528bcda63363404685e8c1208b3931bec9b146464258a44586a16f66c20",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/reversible-by-default/SKILL.md",
@@ -4141,7 +4141,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "311c2e7e43027c1191a57d70eaf32974b025204c72e804b280ae17107f41c1d1",
+      "installedHash": "d9944cc66b16e67ab83971901a285f74f5e24ed2a69569a8b47de29dcf302d95",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/safe-refactoring/SKILL.md",
@@ -4158,7 +4158,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "f5fe3db00100df283a6b71f2b29e351138bf13b724be3669422d67d1d2c3e60d",
+      "installedHash": "a295d8d8f08ea9d37aae16e2de1da69656f94cda01b645cc76340a3534744589",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/session-handoff/SKILL.md",
@@ -4175,7 +4175,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "c9eb9271abca025b9c00448b4376d71f9c04157dd0838493751af4e10fae1def",
+      "installedHash": "865fa4a675750142f2337c575457934518cc1a099752d99c998b402239a6925b",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/session-pickup/SKILL.md",
@@ -4192,7 +4192,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "14d11a8b35debd6d60d8bed6127bb24c3afc2ada614350ce66883e47c86b4503",
+      "installedHash": "c87c7fb2afd1b519b3e88283a263b95f9bab67e416609c0b483a965fe476cd4e",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/session-recall/SKILL.md",
@@ -4226,7 +4226,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "11734ed93b16cae551cf48b0cec52ab396bdfd7c4b8564a80126d4e6117cd7b2",
+      "installedHash": "8e847e60b66025ef70e52c549bc1c0b2b03b054aff550033ccc644eb8c79506a",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/smallest-complete-slice/SKILL.md",
@@ -4243,7 +4243,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "0a5ecdeb5b64587c95e45e273ece52b88fb3624607121a98cad2eb6e13074bf7",
+      "installedHash": "573cbf49862be133788ac17f30cf650aaf31ce6a2322055493dc9d2d2120810f",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/spec-synthesis/SKILL.md",
@@ -4277,7 +4277,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "a8289e36050c7e89c6ceaec670460c5d5c3340900dd09d43d0e7fefb2438015b",
+      "installedHash": "7b005e0e4477f18ae4d52a536b47792e13f0a1550a9aea8e8125fedadddbb52a",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/systematic-debugging/SKILL.md",
@@ -4294,7 +4294,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "b4099a769ca18ef5be9f6319d465ec8fbfad3006c4a08154449135ba990e7517",
+      "installedHash": "9c2ce97f1ef11e4fa0d37cf6fdf06fa4fe2fd68d25fbf56e1e36e3cbd0954cc9",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/target-user-definition/SKILL.md",
@@ -4311,7 +4311,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "bb39d138a4e6033f01736a22ec6b1aaa5e14069e1cf7314096e48dde3dc8d9f2",
+      "installedHash": "22e7d4821a57e971c9e16ba26a10105d2df1c42e88d255328eabd66740aba042",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/thinking-before-typing/SKILL.md",
@@ -4328,7 +4328,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "8011b57c48921688c539844a7d699fb9ff7b840fc2bd9bcce668684835fbfc9f",
+      "installedHash": "3c69426292631c903358e482c343c51e7549fb2ccfeba82d52f87dcb93033bb2",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/threat-model-review/SKILL.md",
@@ -4345,7 +4345,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "6ca5a0dcaf5da2018c81c635e15ef25073e71acccad5e10bb83223885b4c4356",
+      "installedHash": "b4d905a4b189ddfa89c0ee691d8309239fab64236956bd164f8476deab21385c",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/ticket-graph/SKILL.md",
@@ -4362,7 +4362,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "8d6bff6841ec39337037ab4e5bc8bffcc0129a95da96066a0c8b4999c86ea13a",
+      "installedHash": "2e689d0a95e5ce21809d4398feeb035ba1dfabf3543515b7b78b4c859350e960",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/user-before-feature/SKILL.md",
@@ -4379,7 +4379,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "f95e9f48f71abadf100233bb48e602de717af240b6786e842a2f41b723e9199d",
+      "installedHash": "518a41cdeace04ca668bec9a292e5068c3e6a300fe53ba16ecb34b2b91e76bde",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/user-needs-research/SKILL.md",
@@ -4396,7 +4396,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "a288916c1b1aa94ab80924f010ca607a82209a54d1012dd2a23da94c8d87de8a",
+      "installedHash": "9d0a7bdf21ee5e667ef93e93cd8ee7876609eabeb1a76016abaede4d7c4d7f15",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/validate-every-boundary/SKILL.md",

@@ -1,0 +1,21 @@
+{
+  "name": "mstack",
+  "interface": {
+    "displayName": "mstack"
+  },
+  "plugins": [
+    {
+      "name": "mstack",
+      "source": {
+        "source": "local",
+        "path": "./plugins/mstack"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity",
+      "description": "Build Like This agents, skills, and prompts. Prefer one install channel: Cursor plugin (/mstack) OR mstack ai setup OR Claude/Codex/skills.sh — not multiple."
+    }
+  ]
+}

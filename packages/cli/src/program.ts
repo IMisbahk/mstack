@@ -139,14 +139,27 @@ export function createProgram(options: ProgramOptions = {}): Command {
     .command("setup [runtimes...]", { isDefault: true })
     .description("install Misbah's Build Like This agent, prompt, skill, hook, and instruction pack")
     .option("--all", "configure every supported runtime", false)
+    .addOption(new Option("--profile <profile>", "install density for skills, prompts, and agents").choices(["lite", "full"]))
+    .option("--arena", "install the optional multi-model arena prompt and enable arena bindings", false)
     .option("--dry-run", "preview files and limitations without writing", false)
-    .option("-f, --force", "replace conflicting generated targets", false)
+    .option("-f, --force", "replace conflicting generated targets or migrate install channels", false)
     .option("-y, --yes", "accept the displayed runtime plan without prompting", false)
     .option("--json", "print a versioned JSON result", false)
-    .addHelpText("after", `\nRuntime IDs:\n  ${runtimeIds}`)
-    .action(async (runtimes: string[], local: { all: boolean; dryRun: boolean; force: boolean; yes: boolean; json: boolean }, command: Command) => {
+    .addHelpText("after", `\nRuntime IDs:\n  ${runtimeIds}\n\nInstall channels:\n  Prefer one of: native marketplace/skills.sh (see distribution/) OR mstack ai setup.\n  Mixing both duplicates skills and is blocked unless --force is set.`)
+    .action(async (runtimes: string[], local: { all: boolean; profile?: "lite" | "full"; arena: boolean; dryRun: boolean; force: boolean; yes: boolean; json: boolean }, command: Command) => {
       const context = globals(command);
-      await aiSetupCommand({ cwd: context.values.cwd, runtimes, ...local, output: context.output });
+      await aiSetupCommand({
+        cwd: context.values.cwd,
+        runtimes,
+        all: local.all,
+        dryRun: local.dryRun,
+        force: local.force,
+        yes: local.yes,
+        json: local.json,
+        ...(local.profile ? { profile: local.profile } : {}),
+        ...(command.getOptionValueSource("arena") === "cli" ? { arena: local.arena } : {}),
+        output: context.output,
+      });
     });
   ai
     .command("list")

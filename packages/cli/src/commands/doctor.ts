@@ -4,6 +4,8 @@ import type { Output } from "../core/output.js";
 import { commandExists } from "../core/process.js";
 import { detectProject } from "../services/project.js";
 import { ConfigStore } from "../services/config.js";
+import { inspectContextCost } from "../services/context-cost.js";
+import { detectDuplicateSkillInstalls } from "../services/distribution.js";
 import { inspectRepository } from "../services/health.js";
 import { verifyManifest } from "../services/manifest.js";
 import { VERSION } from "../meta.js";
@@ -24,6 +26,14 @@ export interface DoctorReport {
   readonly preferences: Awaited<ReturnType<ConfigStore["resolved"]>>;
   readonly checks: readonly DoctorCheck[];
   readonly integrity: Awaited<ReturnType<typeof verifyManifest>>;
+  readonly contextCost?: {
+    readonly profile: string;
+    readonly channel: string | null;
+    readonly alwaysOnTokens: number;
+    readonly fullLibraryTokens: number;
+    readonly userInvoked: number;
+    readonly modelInvoked: number;
+  };
 }
 
 export function hasBlockingDoctorIssue(report: Pick<DoctorReport, "checks">): boolean {
@@ -38,6 +48,8 @@ export async function doctorCommand(cwd: string, output: Output, json: boolean):
   const integrity = await verifyManifest(health.root);
   let writable = true;
   try { await access(health.root, constants.W_OK); } catch { writable = false; }
+  const contextCost = await inspectContextCost(cwd);
+  const duplicates = await detectDuplicateSkillInstalls(health.root);
   const checks: DoctorCheck[] = [
     { id: "CLI", status: "ok", detail: VERSION },
     { id: "RUNTIME", status: Number(process.versions.node.split(".")[0]) >= 20 ? "ok" : "error", detail: `Node.js ${process.versions.node}`, fix: "Install Node.js 20.11 or newer." },
@@ -45,6 +57,21 @@ export async function doctorCommand(cwd: string, output: Output, json: boolean):
     { id: "REPOSITORY", status: health.initialized ? "ok" : "warning", detail: health.initialized ? health.root : "not initialized", fix: "Run mstack init." },
     { id: "PERMISSIONS", status: writable ? "ok" : "error", detail: writable ? "repository is writable" : "repository is not writable", fix: `Grant the current user write access to ${health.root}.` },
     { id: "MANIFEST", status: integrity.length === 0 ? "ok" : "warning", detail: integrity.length === 0 ? health.manifest ?? "not installed" : `${integrity.length} managed file${integrity.length === 1 ? "" : "s"} changed`, fix: "Review mstack status and rerun the relevant setup command." },
+    {
+      id: "CONTEXT",
+      status: "ok",
+      detail: `${contextCost.profile} profile · ~${contextCost.tokenBudget.totals.alwaysOnTokens} always-on tokens · ~${contextCost.tokenBudget.totals.fullLibraryTokens} full-library tokens · ${contextCost.tokenBudget.totals.userInvoked} user-invoked · ${contextCost.tokenBudget.totals.modelInvoked} model-invoked`,
+    },
+    {
+      id: "INSTALL_CHANNEL",
+      status: duplicates.some((item) => item.level === "error") ? "error" : duplicates.length > 0 ? "warning" : "ok",
+      detail: contextCost.channel
+        ? `${contextCost.channel}${duplicates.length > 0 ? ` · ${duplicates.length} overlap warning${duplicates.length === 1 ? "" : "s"}` : ""}`
+        : duplicates.length > 0
+          ? `${duplicates.length} overlap finding${duplicates.length === 1 ? "" : "s"}`
+          : "not recorded",
+      fix: duplicates[0]?.message ?? "Run mstack ai setup once, or install from distribution/ — not both.",
+    },
   ];
   const report: DoctorReport = {
     schemaVersion: 1 as const,
@@ -55,6 +82,14 @@ export async function doctorCommand(cwd: string, output: Output, json: boolean):
     preferences: await config.resolved(),
     checks,
     integrity,
+    contextCost: {
+      profile: contextCost.profile,
+      channel: contextCost.channel,
+      alwaysOnTokens: contextCost.tokenBudget.totals.alwaysOnTokens,
+      fullLibraryTokens: contextCost.tokenBudget.totals.fullLibraryTokens,
+      userInvoked: contextCost.tokenBudget.totals.userInvoked,
+      modelInvoked: contextCost.tokenBudget.totals.modelInvoked,
+    },
   };
   if (json) {
     output.json(report);

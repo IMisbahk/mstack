@@ -33,6 +33,11 @@ export type ActivationMode = "passive" | "explicit" | "privileged";
 export type SecurityClass = "content" | "executable" | "network" | "trust" | "policy";
 export type FallbackPolicy = "skip" | "degrade" | "fail";
 export type ManagementMode = "whole-file" | "managed-block" | "owned-json" | "manual";
+/** Who is expected to load the resource into context. */
+export type InvocationMode = "user" | "model";
+/** Install density: lite keeps always-on metadata small; full installs the complete library. */
+export type InstallProfile = "lite" | "full";
+export type ModelRole = "code" | "judgment" | "reviewPanel";
 
 export interface ResourceMetadata {
   readonly version?: string;
@@ -75,6 +80,8 @@ export interface PromptDefinition extends ResourceMetadata {
   readonly description: string;
   readonly prompt: string;
   readonly argumentHint?: string;
+  readonly invocation?: InvocationMode;
+  readonly installProfiles?: readonly InstallProfile[];
 }
 
 export interface SkillResource extends ResourceMetadata {
@@ -88,6 +95,8 @@ export interface SkillDefinition extends ResourceMetadata {
   readonly description: string;
   readonly instructions: string;
   readonly resources?: readonly SkillResource[];
+  readonly invocation?: InvocationMode;
+  readonly installProfiles?: readonly InstallProfile[];
 }
 
 export type HookEvent =
@@ -112,6 +121,7 @@ export interface AgentDefinition extends ResourceMetadata {
   readonly instructions: string;
   readonly tools?: readonly string[];
   readonly model?: string;
+  readonly installProfiles?: readonly InstallProfile[];
 }
 
 export interface ContextSource extends ResourceMetadata {
