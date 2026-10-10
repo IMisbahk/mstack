@@ -98,7 +98,7 @@ describe("repository validation", () => {
     const report = await validateRepository(root);
     expect(report.valid).toBe(true);
     expect(report.checks).toContainEqual(expect.objectContaining({ id: "AI_RUNTIME", status: "warning" }));
-    expect(report.checks).toContainEqual(expect.objectContaining({ id: "GLOSSARY", status: "ok" }));
+    expect(report.checks).toContainEqual(expect.objectContaining({ id: "GLOSSARY", status: "warning", detail: expect.stringContaining("placeholder") }));
     expect(report.checks).toContainEqual(expect.objectContaining({ id: "DECISIONS", status: "warning" }));
   });
 
@@ -119,6 +119,15 @@ describe("repository validation", () => {
     const report = await validateRepository(root);
     expect(report.checks).toContainEqual(expect.objectContaining({ id: "GLOSSARY", status: "ok" }));
     expect(report.checks).toContainEqual(expect.objectContaining({ id: "DECISIONS", status: "ok" }));
+  });
+
+  it("warns when the glossary file is missing after init", async () => {
+    const { root } = await initializedFixture();
+    await rm(path.join(root, "docs", "glossary.md"));
+    const report = await validateRepository(root);
+    expect(report.checks).toContainEqual(
+      expect.objectContaining({ id: "GLOSSARY", status: "warning", detail: "docs/glossary.md is missing" }),
+    );
   });
 
   it("treats warnings as failures in strict mode and exposes exit code 4", async () => {

@@ -2,6 +2,7 @@ import { access, readFile } from "node:fs/promises";
 import path from "node:path";
 import { findProjectRoot } from "./config.js";
 import { readManifest } from "./manifest.js";
+import { countPlaceholders } from "./placeholders.js";
 
 export type DocumentState = "missing" | "draft" | "ready";
 
@@ -22,17 +23,6 @@ export interface RepositoryHealth {
   readonly packs: readonly string[];
   readonly manifest: string | null;
   readonly next: { command?: string; path?: string; message: string };
-}
-
-function countPlaceholders(content: string): number {
-  let count = content.match(/YYYY-MM-DD|\{\{[^}\n]+\}\}/g)?.length ?? 0;
-  for (const match of content.matchAll(/\[([^\]\n]{2,160})\]/g)) {
-    const index = match.index ?? 0;
-    const next = content[index + match[0].length];
-    const previous = content[index - 1];
-    if (next !== "(" && previous !== "!" && !/^[ xX]$/.test(match[1] ?? "")) count += 1;
-  }
-  return count;
 }
 
 async function documentHealth(root: string, id: DocumentHealth["id"], relativePath: string): Promise<DocumentHealth> {

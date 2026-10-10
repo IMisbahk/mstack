@@ -1,5 +1,6 @@
 import { access, readdir, readFile } from "node:fs/promises";
 import path from "node:path";
+import { countPlaceholders } from "./placeholders.js";
 
 export type PlanningDocumentState = "missing" | "draft" | "ready" | "empty";
 
@@ -15,17 +16,6 @@ export interface DecisionsHealth {
   readonly path: string;
   readonly state: PlanningDocumentState;
   readonly adrCount: number;
-}
-
-function countPlaceholders(content: string): number {
-  let count = content.match(/YYYY-MM-DD|\{\{[^}\n]+\}\}/g)?.length ?? 0;
-  for (const match of content.matchAll(/\[([^\]\n]{2,160})\]/g)) {
-    const index = match.index ?? 0;
-    const next = content[index + match[0].length];
-    const previous = content[index - 1];
-    if (next !== "(" && previous !== "!" && !/^[ xX]$/.test(match[1] ?? "")) count += 1;
-  }
-  return count;
 }
 
 async function glossaryHealth(root: string): Promise<GlossaryHealth> {

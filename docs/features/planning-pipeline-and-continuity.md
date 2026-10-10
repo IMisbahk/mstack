@@ -1,6 +1,6 @@
 # Planning pipeline and session continuity
 
-Status: planned  
+Status: in progress  
 Owner: mstack maintainers  
 Product/architecture links: [product.md](../product.md), [architecture.md](../architecture.md), [ADR-0006](../decisions/0006-planning-pipeline-and-session-continuity.md)
 
@@ -39,11 +39,11 @@ Lifecycle binding: grilling prepares phases 5–6; tickets implement after contr
 
 ## Acceptance criteria
 
-- [ ] Core runtime exports the planning and continuity skills/prompts and templates.
-- [ ] `mstack validate` reports GLOSSARY and DECISIONS.
-- [ ] `mstack init` seeds `docs/glossary.md`.
-- [ ] Documentation pack inventories glossary/decisions.
-- [ ] Dogfooded adapter trees include the new resources after `mstack ai setup`.
+- [x] Core runtime exports the planning and continuity skills/prompts and templates.
+- [x] `mstack validate` reports GLOSSARY and DECISIONS.
+- [x] `mstack init` seeds `docs/glossary.md`.
+- [x] Documentation pack inventories glossary/decisions.
+- [x] Dogfooded adapter trees include the new resources after `mstack ai setup`.
 
 ## Verification
 
