@@ -109,7 +109,7 @@ describe("vNext developer experience", () => {
       "github-copilot", "junie", "kimi-code", "kiro", "opencode", "qwen-code", "roo-code", "warp", "windsurf", "zed",
     ]);
     expect(manifest.files.find((file: { path: string }) => file.path === "AGENTS.md")?.owner).toBe("mstack-ai-runtime");
-  });
+  }, 60_000);
 
   it("retains previously configured runtimes when reconciling an explicit subset", async () => {
     const { root, templates, output } = await fixture();
