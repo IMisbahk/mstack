@@ -1,8 +1,8 @@
 {
   "recovery": {
-    "backupRoot": ".mstack/runtime/backups/op.6dd822e8efbc0f771c98",
-    "journalPath": ".mstack/runtime/operations/op.6dd822e8efbc0f771c98.json",
-    "operationId": "op.6dd822e8efbc0f771c98"
+    "backupRoot": ".mstack/runtime/backups/op.aa276920a9833ec34bdc",
+    "journalPath": ".mstack/runtime/operations/op.aa276920a9833ec34bdc.json",
+    "operationId": "op.aa276920a9833ec34bdc"
   },
   "resources": [
     {
@@ -420,7 +420,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "270fd4de1e442b97f073bb9b499c40ad025638e24e01907dfa340c599a4726e0",
+      "installedHash": "8dafc18c085a88bbe6dd16197a95aafdb40f7e27d566f85e091845748ac5d538",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/architecture-design/SKILL.md",
@@ -729,7 +729,7 @@
         "cursor"
       ],
       "approvals": [],
-      "installedHash": "4691f4433137b03a6a1e756ffe0d3ffc6d03be3eb8f618c328e6c7c23497a45f",
+      "installedHash": "9388ee8207ca208157b389ffd6c844dad0b28913c74ddd3233f86c2c5be37063",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/design-architecture/SKILL.md",
@@ -764,6 +764,52 @@
       "security": "content"
     },
     {
+      "activation": "passive",
+      "adapters": [
+        "antigravity",
+        "codex",
+        "cursor",
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "31bc513c1a974ffd117c74cc8ac7fb0c06854c1854d7e885496728954608df25",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/design-grilling/SKILL.md",
+      "profileIds": [
+        "antigravity.2026-07-18",
+        "codex.2026-07-15",
+        "cursor.2026-07-15",
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "design-grilling",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "antigravity",
+        "codex",
+        "cursor",
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "d1030bc4f2d1a21a97a43203639e0ca6b105a2f2b8971ee1d12cd0b8a07273a5",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/dual-axis-review/SKILL.md",
+      "profileIds": [
+        "antigravity.2026-07-18",
+        "codex.2026-07-15",
+        "cursor.2026-07-15",
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "dual-axis-review",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
       "activation": "explicit",
       "adapters": [
         "antigravity",
@@ -783,6 +829,29 @@
         "opencode.2026-07-18"
       ],
       "resourceId": "encode-lessons-in-structure",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "antigravity",
+        "codex",
+        "cursor",
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "bdac5040046c94cd58f49ec1e035152672993d1126b0f93c50b0c243988743a0",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/encode-lessons/SKILL.md",
+      "profileIds": [
+        "antigravity.2026-07-18",
+        "codex.2026-07-15",
+        "cursor.2026-07-15",
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "encode-lessons",
       "resourceVersion": "1.1.0",
       "security": "content"
     },
@@ -902,6 +971,71 @@
       "security": "content"
     },
     {
+      "activation": "passive",
+      "adapters": [
+        "antigravity",
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "f107a54b7509ba0edcd51191005a0852ee16375f179867642772d23845e3de6c",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/grill-and-document/SKILL.md",
+      "profileIds": [
+        "antigravity.2026-07-18",
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
+      ],
+      "resourceId": "grill-and-document",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "antigravity",
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "58b302b4eab523fcf3f98dc589a1b98c4da06f38fc4434db0e287653a5116f29",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/grill-decisions/SKILL.md",
+      "profileIds": [
+        "antigravity.2026-07-18",
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
+      ],
+      "resourceId": "grill-decisions",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "antigravity",
+        "codex",
+        "cursor",
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "19ac80edf76cfbcf0fc17649ab54b083af7aa85c80758db2dd9e4a0612e15f9c",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/grill-with-docs/SKILL.md",
+      "profileIds": [
+        "antigravity.2026-07-18",
+        "codex.2026-07-15",
+        "cursor.2026-07-15",
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "grill-with-docs",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
       "activation": "explicit",
       "adapters": [
         "antigravity",
@@ -921,6 +1055,27 @@
         "opencode.2026-07-18"
       ],
       "resourceId": "guard-the-context-window",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "antigravity",
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "f1f745fbe53436867cabf4786bec959949aca1056cb9d5a86721980c146271e6",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/handoff-session/SKILL.md",
+      "profileIds": [
+        "antigravity.2026-07-18",
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
+      ],
+      "resourceId": "handoff-session",
       "resourceVersion": "1.1.0",
       "security": "content"
     },
@@ -965,6 +1120,50 @@
         "cursor.2026-07-15"
       ],
       "resourceId": "identify-target-users",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "antigravity",
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "02202ad475c525cca5740b7617d2243041542b7ad77922c122f259ed056217b5",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/implement-spec/SKILL.md",
+      "profileIds": [
+        "antigravity.2026-07-18",
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
+      ],
+      "resourceId": "implement-spec",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "antigravity",
+        "codex",
+        "cursor",
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "f9549f8d25e7a32be983acc98d2805664b1504164ca8b6a208094d5eb7d11ef9",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/implement-task-graph/SKILL.md",
+      "profileIds": [
+        "antigravity.2026-07-18",
+        "codex.2026-07-15",
+        "cursor.2026-07-15",
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "implement-task-graph",
       "resourceVersion": "1.1.0",
       "security": "content"
     },
@@ -1178,6 +1377,50 @@
         "opencode"
       ],
       "approvals": [],
+      "installedHash": "4d71d8605a65ac42e0cba9a33aa298ec73ebca39389517f4de30f5b039524e58",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/pause-safely/SKILL.md",
+      "profileIds": [
+        "antigravity.2026-07-18",
+        "codex.2026-07-15",
+        "cursor.2026-07-15",
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "pause-safely",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "antigravity",
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "69b44acb33d0ec416cc31905fa29f6a5340ecccee55e1a35d8a99a68ec847f93",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/pause-session/SKILL.md",
+      "profileIds": [
+        "antigravity.2026-07-18",
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
+      ],
+      "resourceId": "pause-session",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "antigravity",
+        "codex",
+        "cursor",
+        "opencode"
+      ],
+      "approvals": [],
       "installedHash": "f7825754124194ac952e826a7e312329a5c179f7637ed0c4239a00b17b8cdced",
       "mergeStrategy": "replace",
       "mode": 420,
@@ -1200,6 +1443,27 @@
         "cursor"
       ],
       "approvals": [],
+      "installedHash": "49c232da53f954b99e07376ba2b4e4f7401921d129490ecefa49493770ed301e",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/pickup-session/SKILL.md",
+      "profileIds": [
+        "antigravity.2026-07-18",
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
+      ],
+      "resourceId": "pickup-session",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "antigravity",
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
       "installedHash": "3caf94c876c38e7e7cbb4fc37f073c68a1cf8d19a715e7a2e99c0cb4124872f5",
       "mergeStrategy": "replace",
       "mode": 420,
@@ -1210,6 +1474,50 @@
         "cursor.2026-07-15"
       ],
       "resourceId": "plan-mvp",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "antigravity",
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "3349c8440fa904c73c6ac31f8ccd99646bc45a90c0baf513d64e0821ce7f7cc3",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/plan-tickets/SKILL.md",
+      "profileIds": [
+        "antigravity.2026-07-18",
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
+      ],
+      "resourceId": "plan-tickets",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "antigravity",
+        "codex",
+        "cursor",
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "0139f0f237350972316c27a882191d49bcf6142871662fb47a3a938f82870118",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/planning-setup/SKILL.md",
+      "profileIds": [
+        "antigravity.2026-07-18",
+        "codex.2026-07-15",
+        "cursor.2026-07-15",
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "planning-setup",
       "resourceVersion": "1.1.0",
       "security": "content"
     },
@@ -1452,7 +1760,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "a906425f9f3085ecd6818b03954eac596665fbc68c1d6689d278812eb8e630c3",
+      "installedHash": "97aa2b3923284d781cfa402e4cd499cbbee131c0fc30eeb7da0031fccd31dfb4",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/product-definition/SKILL.md",
@@ -1518,6 +1826,27 @@
         "cursor"
       ],
       "approvals": [],
+      "installedHash": "d699d536c30e855f289e5dc88d7cc1efd724cf97d9f2c1e61f0ad0c68689ed5f",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/recall-context/SKILL.md",
+      "profileIds": [
+        "antigravity.2026-07-18",
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
+      ],
+      "resourceId": "recall-context",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "antigravity",
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
       "installedHash": "13728bd0162a351d2d39eddcf972e4b0e55e597e057af3042f59f808313e3ed3",
       "mergeStrategy": "replace",
       "mode": 420,
@@ -1528,6 +1857,27 @@
         "cursor.2026-07-15"
       ],
       "resourceId": "refactor-module",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "antigravity",
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "8e1e9c4ddd14d9bb3a036e1f27db100674eb872679f6bad2f8b2de8d45a8d1c0",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/reflect-and-encode/SKILL.md",
+      "profileIds": [
+        "antigravity.2026-07-18",
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
+      ],
+      "resourceId": "reflect-and-encode",
       "resourceVersion": "1.1.0",
       "security": "content"
     },
@@ -1650,6 +2000,27 @@
         "cursor"
       ],
       "approvals": [],
+      "installedHash": "d01210456a2db5d5e6d0e48778c934ad0c26d72ad31a8c13b328e15f736b0683",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/review-against-spec/SKILL.md",
+      "profileIds": [
+        "antigravity.2026-07-18",
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
+      ],
+      "resourceId": "review-against-spec",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "antigravity",
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
       "installedHash": "b4505e2c0f4c33e6c7c34ed66ec5c9617f7f4bcc5f81e66225d36fed44e1e0a4",
       "mergeStrategy": "replace",
       "mode": 420,
@@ -1708,6 +2079,96 @@
       "security": "content"
     },
     {
+      "activation": "passive",
+      "adapters": [
+        "antigravity",
+        "codex",
+        "cursor",
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "f5fe3db00100df283a6b71f2b29e351138bf13b724be3669422d67d1d2c3e60d",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/session-handoff/SKILL.md",
+      "profileIds": [
+        "antigravity.2026-07-18",
+        "codex.2026-07-15",
+        "cursor.2026-07-15",
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "session-handoff",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "antigravity",
+        "codex",
+        "cursor",
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "c9eb9271abca025b9c00448b4376d71f9c04157dd0838493751af4e10fae1def",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/session-pickup/SKILL.md",
+      "profileIds": [
+        "antigravity.2026-07-18",
+        "codex.2026-07-15",
+        "cursor.2026-07-15",
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "session-pickup",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "antigravity",
+        "codex",
+        "cursor",
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "14d11a8b35debd6d60d8bed6127bb24c3afc2ada614350ce66883e47c86b4503",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/session-recall/SKILL.md",
+      "profileIds": [
+        "antigravity.2026-07-18",
+        "codex.2026-07-15",
+        "cursor.2026-07-15",
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "session-recall",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "antigravity",
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "bc4c6b0ce64e84ae023327a3b7c49008ba6de1b4bad01a0383c7656ad04f8c11",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/setup-planning/SKILL.md",
+      "profileIds": [
+        "antigravity.2026-07-18",
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
+      ],
+      "resourceId": "setup-planning",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
       "activation": "explicit",
       "adapters": [
         "antigravity",
@@ -1727,6 +2188,50 @@
         "opencode.2026-07-18"
       ],
       "resourceId": "smallest-complete-slice",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "antigravity",
+        "codex",
+        "cursor",
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "0a5ecdeb5b64587c95e45e273ece52b88fb3624607121a98cad2eb6e13074bf7",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/spec-synthesis/SKILL.md",
+      "profileIds": [
+        "antigravity.2026-07-18",
+        "codex.2026-07-15",
+        "cursor.2026-07-15",
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "spec-synthesis",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "antigravity",
+        "codex",
+        "cursor"
+      ],
+      "approvals": [],
+      "installedHash": "71fc4517ddbc4aefaa6803ded1e983d2a2a656bda024d63d7ca2b08cc78327ea",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/synthesize-spec/SKILL.md",
+      "profileIds": [
+        "antigravity.2026-07-18",
+        "codex.2026-07-15",
+        "cursor.2026-07-15"
+      ],
+      "resourceId": "synthesize-spec",
       "resourceVersion": "1.1.0",
       "security": "content"
     },
@@ -1819,6 +2324,29 @@
         "opencode.2026-07-18"
       ],
       "resourceId": "threat-model-review",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "antigravity",
+        "codex",
+        "cursor",
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "6ca5a0dcaf5da2018c81c635e15ef25073e71acccad5e10bb83223885b4c4356",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".agents/skills/ticket-graph/SKILL.md",
+      "profileIds": [
+        "antigravity.2026-07-18",
+        "codex.2026-07-15",
+        "cursor.2026-07-15",
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "ticket-graph",
       "resourceVersion": "1.1.0",
       "security": "content"
     },
@@ -1920,7 +2448,7 @@
         "cursor"
       ],
       "approvals": [],
-      "installedHash": "60b4b26122d991626be426c12a577e374ef373a3b0eb47c2b7b23e5417dc3b60",
+      "installedHash": "482b9c7d95706ec1c2664794436eda110eb9ea4d7fd66f11905f58498e04caba",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/write-product-definition/SKILL.md",
@@ -2262,7 +2790,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "e83220154383072496384bd20fc18612fda04309a9090f94a11c6636e884ea01",
+      "installedHash": "485bb447e9c3b4a458e806f365cb87ed57307eaa8067efe103ccfec4e77692ca",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/rules/build-like-this/project.md",
@@ -2355,7 +2883,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "270fd4de1e442b97f073bb9b499c40ad025638e24e01907dfa340c599a4726e0",
+      "installedHash": "8dafc18c085a88bbe6dd16197a95aafdb40f7e27d566f85e091845748ac5d538",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/architecture-design/SKILL.md",
@@ -2593,7 +3121,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "08f75cbd43298732bb03d7533c5f2202b7282f4ed002009ae74d3d7c583c9022",
+      "installedHash": "d8c6f3846271d5bd5fdc5825557534f836eed349c74c0e059ced7d9366dd5b44",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/design-architecture/SKILL.md",
@@ -2622,6 +3150,40 @@
       "security": "content"
     },
     {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "31bc513c1a974ffd117c74cc8ac7fb0c06854c1854d7e885496728954608df25",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/design-grilling/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "design-grilling",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "d1030bc4f2d1a21a97a43203639e0ca6b105a2f2b8971ee1d12cd0b8a07273a5",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/dual-axis-review/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "dual-axis-review",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
       "activation": "explicit",
       "adapters": [
         "claude-code"
@@ -2635,6 +3197,23 @@
         "claude-code.2026-07-15"
       ],
       "resourceId": "encode-lessons-in-structure",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "bdac5040046c94cd58f49ec1e035152672993d1126b0f93c50b0c243988743a0",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/encode-lessons/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "encode-lessons",
       "resourceVersion": "1.1.0",
       "security": "content"
     },
@@ -2724,6 +3303,57 @@
       "security": "content"
     },
     {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "db8c9dd2bf2cd769954b6fec80ed7ff58c8bdaa38b1261a847d0b02d5c0cba6b",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/grill-and-document/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "grill-and-document",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "f0265b87f4b1c274b1e2e01e473674195a655c00be2f916a9ce71a9d10a2293a",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/grill-decisions/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "grill-decisions",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "19ac80edf76cfbcf0fc17649ab54b083af7aa85c80758db2dd9e4a0612e15f9c",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/grill-with-docs/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "grill-with-docs",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
       "activation": "explicit",
       "adapters": [
         "claude-code"
@@ -2737,6 +3367,23 @@
         "claude-code.2026-07-15"
       ],
       "resourceId": "guard-the-context-window",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "d17c118f62322da8d22d70ce17350c6ffb07b39e1913c1298d210804404d9bf4",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/handoff-session/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "handoff-session",
       "resourceVersion": "1.1.0",
       "security": "content"
     },
@@ -2771,6 +3418,40 @@
         "claude-code.2026-07-15"
       ],
       "resourceId": "identify-target-users",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "3b7ceedab43f963a3c46e10b8c2469bfe6af2ac0db0cde210de95d9d670d5fbf",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/implement-spec/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "implement-spec",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "f9549f8d25e7a32be983acc98d2805664b1504164ca8b6a208094d5eb7d11ef9",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/implement-task-graph/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "implement-task-graph",
       "resourceVersion": "1.1.0",
       "security": "content"
     },
@@ -2933,6 +3614,40 @@
         "claude-code"
       ],
       "approvals": [],
+      "installedHash": "4d71d8605a65ac42e0cba9a33aa298ec73ebca39389517f4de30f5b039524e58",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/pause-safely/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "pause-safely",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "ac3a9739fcb0ca6dbae393f97f5a9267031a98f27aa2f38118891f92c0fa9258",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/pause-session/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "pause-session",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
       "installedHash": "f7825754124194ac952e826a7e312329a5c179f7637ed0c4239a00b17b8cdced",
       "mergeStrategy": "replace",
       "mode": 420,
@@ -2950,6 +3665,23 @@
         "claude-code"
       ],
       "approvals": [],
+      "installedHash": "e1948f1f6336baee6039119c6490206ea32702f4151c7192f1874e69ea424f6e",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/pickup-session/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "pickup-session",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
       "installedHash": "d67c89d048ba7472d77091393391fc82f07b0fec10f70846608f78da3caaa0f7",
       "mergeStrategy": "replace",
       "mode": 420,
@@ -2958,6 +3690,40 @@
         "claude-code.2026-07-15"
       ],
       "resourceId": "plan-mvp",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "6c8e5369430da4bf837bd9ebbb1fea484677a13d4706f9b1e0768221121b4b1c",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/plan-tickets/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "plan-tickets",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "0139f0f237350972316c27a882191d49bcf6142871662fb47a3a938f82870118",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/planning-setup/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "planning-setup",
       "resourceVersion": "1.1.0",
       "security": "content"
     },
@@ -3137,7 +3903,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "a906425f9f3085ecd6818b03954eac596665fbc68c1d6689d278812eb8e630c3",
+      "installedHash": "97aa2b3923284d781cfa402e4cd499cbbee131c0fc30eeb7da0031fccd31dfb4",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/product-definition/SKILL.md",
@@ -3188,6 +3954,23 @@
         "claude-code"
       ],
       "approvals": [],
+      "installedHash": "22706df9e1c1ceee0adde830677624c5da1b70f2c4ea4a40c93e0a7422932270",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/recall-context/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "recall-context",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
       "installedHash": "66855106a79db7949b9ffa48bf762c60c987252b8f820b83c2fd69f77b5489ec",
       "mergeStrategy": "replace",
       "mode": 420,
@@ -3196,6 +3979,23 @@
         "claude-code.2026-07-15"
       ],
       "resourceId": "refactor-module",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "cd982658b9d4564b837283dc890907e7a14178d5084acea18922ee4dfd7ed224",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/reflect-and-encode/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "reflect-and-encode",
       "resourceVersion": "1.1.0",
       "security": "content"
     },
@@ -3290,6 +4090,23 @@
         "claude-code"
       ],
       "approvals": [],
+      "installedHash": "bc50eb29db74f6b5397cf5b09f1f9a49770ebf0e3398f810edb8e23915235193",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/review-against-spec/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "review-against-spec",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
       "installedHash": "9a7cf8b073dae165df1969cdf0a1c6eb8565fd15e6ed033a9adca07ab2982c2d",
       "mergeStrategy": "replace",
       "mode": 420,
@@ -3336,6 +4153,74 @@
       "security": "content"
     },
     {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "f5fe3db00100df283a6b71f2b29e351138bf13b724be3669422d67d1d2c3e60d",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/session-handoff/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "session-handoff",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "c9eb9271abca025b9c00448b4376d71f9c04157dd0838493751af4e10fae1def",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/session-pickup/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "session-pickup",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "14d11a8b35debd6d60d8bed6127bb24c3afc2ada614350ce66883e47c86b4503",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/session-recall/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "session-recall",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "a91c74f54e83f68682085ab0dcf99a2c38036a2ab6d2208d3d9ab71d75855a12",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/setup-planning/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "setup-planning",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
       "activation": "explicit",
       "adapters": [
         "claude-code"
@@ -3349,6 +4234,40 @@
         "claude-code.2026-07-15"
       ],
       "resourceId": "smallest-complete-slice",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "0a5ecdeb5b64587c95e45e273ece52b88fb3624607121a98cad2eb6e13074bf7",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/spec-synthesis/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "spec-synthesis",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "f85921f49601df769bc6a68efbdf739b8c8f02ffd177f5db8bcaab111ef6408b",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/synthesize-spec/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "synthesize-spec",
       "resourceVersion": "1.1.0",
       "security": "content"
     },
@@ -3417,6 +4336,23 @@
         "claude-code.2026-07-15"
       ],
       "resourceId": "threat-model-review",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "claude-code"
+      ],
+      "approvals": [],
+      "installedHash": "6ca5a0dcaf5da2018c81c635e15ef25073e71acccad5e10bb83223885b4c4356",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".claude/skills/ticket-graph/SKILL.md",
+      "profileIds": [
+        "claude-code.2026-07-15"
+      ],
+      "resourceId": "ticket-graph",
       "resourceVersion": "1.1.0",
       "security": "content"
     },
@@ -3494,7 +4430,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "c33806e9d1ec1f7c60a25fff8695eb00fcd53a095501285a979a36d9a54c9a98",
+      "installedHash": "cb39ccee749f48f3e549c60e8dba2eb068ea1d03eb69a237a625d6998a18cb75",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/write-product-definition/SKILL.md",
@@ -4225,7 +5161,7 @@
         "cursor"
       ],
       "approvals": [],
-      "installedHash": "193e73dc4c9584d82684befdedf6fb9d884cb4569c686b0f98e77f4d3518e79a",
+      "installedHash": "2f6feff5f44f384a9e563fd815984794320e236a6f74ed56efc1e4a0cc5add82",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".cursor/rules/mstack.mdc",
@@ -4458,6 +5394,40 @@
         "mstack-runtime"
       ],
       "approvals": [],
+      "installedHash": "36f5b60e76ab3a2dc5daf8dc079d1e473d2218339cb6f69a4f34cbc01545cb38",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".mstack/templates/glossary.template.md",
+      "profileIds": [
+        "mstack-runtime.2026-07-15"
+      ],
+      "resourceId": "glossary-template",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "mstack-runtime"
+      ],
+      "approvals": [],
+      "installedHash": "c72007efa1c58029020dedaf938ae221778ac611409affc8338a97076823decb",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".mstack/templates/issue-tracker.template.md",
+      "profileIds": [
+        "mstack-runtime.2026-07-15"
+      ],
+      "resourceId": "issue-tracker-template",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "mstack-runtime"
+      ],
+      "approvals": [],
       "installedHash": "413f369aeacd9e2ff24c22cb2d02bf61c7f497cc338ecb69cab7fa6fcba4a031",
       "mergeStrategy": "replace",
       "mode": 420,
@@ -4500,6 +5470,40 @@
         "mstack-runtime.2026-07-15"
       ],
       "resourceId": "repository-template",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "mstack-runtime"
+      ],
+      "approvals": [],
+      "installedHash": "87f7c8e269ba1c2f5dcb70e4de43f4a5b864ef80a3873a44ff9b5d10136d1465",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".mstack/templates/session-handoff.template.md",
+      "profileIds": [
+        "mstack-runtime.2026-07-15"
+      ],
+      "resourceId": "session-handoff-template",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "mstack-runtime"
+      ],
+      "approvals": [],
+      "installedHash": "e5fa04a945d889ad1dadc52d5a1332b192b46c0485d888fb341fdfe5b6d52111",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".mstack/templates/ticket.template.md",
+      "profileIds": [
+        "mstack-runtime.2026-07-15"
+      ],
+      "resourceId": "ticket-template",
       "resourceVersion": "1.1.0",
       "security": "content"
     },
@@ -4934,7 +5938,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "11e064a4ce08815aeb6fe767990d8fd9a2fa22ca5b9509181f790985f619fc94",
+      "installedHash": "bd7ebd9302cbe32855d867d73362152e3ee144a8b71177a04c99ff142255dfcc",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".opencode/commands/design-architecture.md",
@@ -4968,6 +5972,57 @@
         "opencode"
       ],
       "approvals": [],
+      "installedHash": "7e3921ba7c090985be4f2314f042edc4b60dd146e0ea6213f86eb0fe84cecb25",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/commands/grill-and-document.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "grill-and-document",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "7ff505c99d55880a6ab906fdb098433d82945231302491e6788e4cdef0f25444",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/commands/grill-decisions.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "grill-decisions",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "48336b0a646759ee6eb6b6d419744ea45d0d1256ed8235c2c765af8927670d3b",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/commands/handoff-session.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "handoff-session",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
       "installedHash": "17017c40b4280a002316a92372ace3e75835d1b0f996fb0e2efdf27582f3031e",
       "mergeStrategy": "replace",
       "mode": 420,
@@ -4976,6 +6031,23 @@
         "opencode.2026-07-18"
       ],
       "resourceId": "identify-target-users",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "691d17dff968e644aee237b718c880a1ed0f9ee5a05b90684a286c84d69265c8",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/commands/implement-spec.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "implement-spec",
       "resourceVersion": "1.1.0",
       "security": "content"
     },
@@ -5036,6 +6108,40 @@
         "opencode"
       ],
       "approvals": [],
+      "installedHash": "07e5fed99f3ea5e89ffa9bd1c8907a6ca1c04760ea387b5d632dd0eb042cb262",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/commands/pause-session.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "pause-session",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "b4c11206306451ad0d047c14ea04a7c48fceaa8fea73f63d19522e1220002fe5",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/commands/pickup-session.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "pickup-session",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
       "installedHash": "9e8780b1b0ceab5ea600bf64f9c4d64a36fa2184d0e4fb68bf75eeea36f1e9c1",
       "mergeStrategy": "replace",
       "mode": 420,
@@ -5044,6 +6150,23 @@
         "opencode.2026-07-18"
       ],
       "resourceId": "plan-mvp",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "265ec74ee412a58d35cfa6a652cfe024aee1416ea22147396d107907736be716",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/commands/plan-tickets.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "plan-tickets",
       "resourceVersion": "1.1.0",
       "security": "content"
     },
@@ -5070,6 +6193,23 @@
         "opencode"
       ],
       "approvals": [],
+      "installedHash": "d6a24374231680b84a782b93a8728db2af57329d70cfc0f10a37e804d5ee2cb7",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/commands/recall-context.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "recall-context",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
       "installedHash": "f3bb527e97f3da97924ea82ea4d47d872f5f78496e5446e24682aaaf539ed185",
       "mergeStrategy": "replace",
       "mode": 420,
@@ -5078,6 +6218,23 @@
         "opencode.2026-07-18"
       ],
       "resourceId": "refactor-module",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "3a20e710c1c1d8bcb5984dfadd77c17fb95eab7ce3496263e401fcb80e2fd944",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/commands/reflect-and-encode.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "reflect-and-encode",
       "resourceVersion": "1.1.0",
       "security": "content"
     },
@@ -5121,6 +6278,23 @@
         "opencode"
       ],
       "approvals": [],
+      "installedHash": "9f97db674aa27c322935a935ccb52b205a31474805d74683c6bfc0c3da55bdcd",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/commands/review-against-spec.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "review-against-spec",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
       "installedHash": "cd838344ce59e38e740737bf5623ded0a894bc12c76049db7ebf6fad5886cd57",
       "mergeStrategy": "replace",
       "mode": 420,
@@ -5155,6 +6329,40 @@
         "opencode"
       ],
       "approvals": [],
+      "installedHash": "d2ff34b78aeb70d9302f13c6b55db1558935510c1ecfa61a73423ad6ed46c267",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/commands/setup-planning.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "setup-planning",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
+      "installedHash": "b0fce7e598602e82b5c8fad9491b6217a268c11c461515b606c46bf005fd0f07",
+      "mergeStrategy": "replace",
+      "mode": 420,
+      "path": ".opencode/commands/synthesize-spec.md",
+      "profileIds": [
+        "opencode.2026-07-18"
+      ],
+      "resourceId": "synthesize-spec",
+      "resourceVersion": "1.1.0",
+      "security": "content"
+    },
+    {
+      "activation": "passive",
+      "adapters": [
+        "opencode"
+      ],
+      "approvals": [],
       "installedHash": "8bba3d2e69640cec9280ff06cffb312895171bede060357b20e57578f29d846c",
       "mergeStrategy": "replace",
       "mode": 420,
@@ -5172,7 +6380,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "c0ac27687ea95e80e1ae303dce8fc7d17ef0a2f7e93deb033eac55ec46d2f1e7",
+      "installedHash": "210b3a3ce6a8864cd79b9a096052739ff53bfb51eece0dfce9e2d6cd3dafb629",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".opencode/commands/write-product-definition.md",
@@ -5191,8 +6399,8 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "4a393d7d8b5b7c74917bef48f9a3d524d200fddb6ee44da1761572768377a9e6",
-      "managedHash": "c280c0d7f5e1d1e0134b1647ee41334aec54691dad4037101666cae0d8671e0f",
+      "installedHash": "c2a917685320a62fe34e0f9714e5a15db81e204fec02bc773a93e7fc72ae5c3f",
+      "managedHash": "3d125a61c029e2c2d82a0c9992343db783a0285caabec8d09aa8b0a9de8e87c2",
       "mergeStrategy": "managed-block",
       "mode": 420,
       "path": "AGENTS.md",
