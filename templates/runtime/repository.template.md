@@ -22,21 +22,21 @@ Prefer organization by product capability. Keep domain behavior independent from
 
 ## Required repository surfaces
 
-- \`README.md\`: fast orientation and links, not the full source of truth.
-- \`docs/product.md\`: users, problem, outcome, scope, non-goals, success.
-- \`docs/architecture.md\`: current boundaries, contracts, data, operations, security.
-- \`docs/decisions/\`: consequential decision history.
+- `README.md`: fast orientation and links, not the full source of truth.
+- `docs/product.md`: users, problem, outcome, scope, non-goals, success.
+- `docs/architecture.md`: current boundaries, contracts, data, operations, security.
+- `docs/decisions/`: consequential decision history.
 - Agent instructions: setup, verification, ownership, and safety constraints.
 - Repeatable commands for install, build, typecheck, test, lint/format, and release checks.
 
 ## Developer workflow
 
 1. Prerequisites: {{runtime_and_services}}
-2. Install: \`{{install_command}}\`
+2. Install: `{{install_command}}`
 3. Configure: {{configuration_without_secrets}}
-4. Run: \`{{run_command}}\`
-5. Verify: \`{{verification_commands}}\`
-6. Build artifact: \`{{build_command}}\`
+4. Run: `{{run_command}}`
+5. Verify: `{{verification_commands}}`
+6. Build artifact: `{{build_command}}`
 
 ## Quality gates
 

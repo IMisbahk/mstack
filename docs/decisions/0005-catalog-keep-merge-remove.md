@@ -101,7 +101,8 @@ The core catalog grew skill/prompt pairs that look like duplicates from the outs
 | `api.prisma-version` | REMOVE | — | Version ping |
 | `qa.node-test`, `qa.playwright-list`, `qa.pytest` | REMOVE | Use `devtools.node-test`, `web.playwright-list`, `ml.pytest` | Duplicate recipes |
 | `obs.compose-config` | REMOVE | Use `infra.compose-config` | Duplicate |
-| `auto.node-version`, `auto.python-version`, `auto.workspace-tree`, `auto.docs-inventory`, `auto.diff-stat` | REMOVE | Prefer `mstack snapshot` + shell | Trivial probes |
+| `auto.node-version`, `auto.python-version`, `auto.workspace-tree`, `auto.docs-inventory` | REMOVE | Prefer `mstack snapshot` + shell | Trivial probes |
+| `auto.diff-stat` | KEEP | — | Useful pre-automation review signal; not a version ping |
 | Niche packs (`robotics`, `embedded-firmware`, `games-graphics`, …) | KEEP | — | Opt-in; keep remaining domain specialists |
 
 ### Discovery aliases (catalog)

@@ -13,7 +13,7 @@ Consumers: {{clients}}
 
 ## Operation
 
-\`{{METHOD}} {{path}}\`
+`{{METHOD}} {{path}}`
 
 Authentication: {{scheme}}
 Authorization: {{resource-level rule}}
@@ -30,19 +30,19 @@ Rate limit: {{identity/window/headers/error}}
 
 ### Body schema
 
-\`\`\`json
+```json
 {{request_example}}
-\`\`\`
+```
 
 Unknown fields, normalization, size limits, and content type: {{details}}
 
 ## Success response
 
-Status: \`{{status}}\`
+Status: `{{status}}`
 
-\`\`\`json
+```json
 {{response_example}}
-\`\`\`
+```
 
 Headers/caching/pagination: {{details}}
 

@@ -19,6 +19,12 @@ const blocks = [];
 for (const fileName of entries) {
   const name = fileName.replace(/\.template\.md$/, "");
   const body = (await readFile(path.join(sourceDirectory, fileName), "utf8")).replace(/\s+$/, "");
+  // Sources are markdown; reject TS-template leftover escapes so installs do not render `\``.
+  if (body.includes("\\`")) {
+    throw new Error(
+      fileName + " contains escaped backticks (\\`). Use real markdown backtick fences in templates/runtime/.",
+    );
+  }
   blocks.push(`  template(\n    ${JSON.stringify(name)},\n    ${JSON.stringify(`${body}\n`)},\n  )`);
 }
 
