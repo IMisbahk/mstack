@@ -3,12 +3,13 @@ import { verifyIntegrationRuntime, type VerificationFinding } from "../../../ai-
 import type { Output } from "../core/output.js";
 import { CliError, errorMessage } from "../core/errors.js";
 import { inspectRepository } from "../services/health.js";
+import { inspectPlanningContinuity } from "../services/planning-health.js";
 import { verifyManifest } from "../services/manifest.js";
 
 export type ValidationStatus = "ok" | "warning" | "error";
 
 export interface ValidationCheck {
-  readonly id: "SETUP" | "PRODUCT" | "ARCHITECTURE" | "MANIFEST" | "AI_RUNTIME";
+  readonly id: "SETUP" | "PRODUCT" | "ARCHITECTURE" | "GLOSSARY" | "DECISIONS" | "MANIFEST" | "AI_RUNTIME";
   readonly status: ValidationStatus;
   readonly detail: string;
   readonly fix?: string;
@@ -44,6 +45,47 @@ export async function validateRepository(start: string, strict = false): Promise
     if (document.state === "ready") checks.push({ id, status: "ok", detail: `${document.path} is ready` });
     else if (document.state === "missing") checks.push({ id, status: "warning", detail: `${document.path} is missing`, fix: "Run mstack init to add missing planning documents." });
     else checks.push({ id, status: "warning", detail: `${document.path} has ${document.placeholders} placeholder${document.placeholders === 1 ? "" : "s"}`, fix: `Complete ${document.path}.` });
+  }
+
+  const planning = await inspectPlanningContinuity(health.root);
+  if (planning.glossary.state === "ready") {
+    checks.push({ id: "GLOSSARY", status: "ok", detail: `${planning.glossary.path} is ready` });
+  } else if (planning.glossary.state === "missing") {
+    checks.push({
+      id: "GLOSSARY",
+      status: "warning",
+      detail: `${planning.glossary.path} is missing`,
+      fix: "Run mstack init or grill-and-document to create the shared glossary.",
+    });
+  } else {
+    checks.push({
+      id: "GLOSSARY",
+      status: "warning",
+      detail: `${planning.glossary.path} has ${planning.glossary.placeholders} placeholder${planning.glossary.placeholders === 1 ? "" : "s"}`,
+      fix: "Complete docs/glossary.md during grill-with-docs.",
+    });
+  }
+
+  if (planning.decisions.state === "ready") {
+    checks.push({
+      id: "DECISIONS",
+      status: "ok",
+      detail: `${planning.decisions.path} has ${planning.decisions.adrCount} ADR${planning.decisions.adrCount === 1 ? "" : "s"}`,
+    });
+  } else if (planning.decisions.state === "missing") {
+    checks.push({
+      id: "DECISIONS",
+      status: "warning",
+      detail: `${planning.decisions.path} is missing`,
+      fix: "Run mstack init to add docs/decisions/, then record consequential choices as ADRs.",
+    });
+  } else {
+    checks.push({
+      id: "DECISIONS",
+      status: "warning",
+      detail: `${planning.decisions.path} has no numbered ADRs yet`,
+      fix: "Add docs/decisions/NNNN-slug.md for hard-to-reverse choices during grill-with-docs or design-architecture.",
+    });
   }
 
   if (!health.initialized) {

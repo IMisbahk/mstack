@@ -30,11 +30,12 @@ If a missing input would materially change the result, state the gap and obtain 
 ## Process
 
 1. Have the software architect lead; delegate data, security, and deployment/operability analysis to their owning specialists in parallel.
-2. Map actors, trust boundaries, components, ownership, data, critical flows, external effects, and current constraints from evidence.
-3. Compare the smallest viable options, preferring a modular monolith and explicit adapters until measured requirements justify more deployables.
-4. Define module ownership/dependency direction, public contracts, schemas, authorization, state transitions, failure behavior, and transaction boundaries.
-5. Design deployment, configuration, observability, migration, capacity triggers, rollback/forward recovery, and security controls.
-6. Update docs/architecture.md and record consequential choices in an ADR with alternatives, consequences, validation, and revisit triggers.
+2. If consequential architecture trade-offs remain unsettled, run design-grilling or grill-with-docs first; keep shared terms in docs/glossary.md.
+3. Map actors, trust boundaries, components, ownership, data, critical flows, external effects, and current constraints from evidence.
+4. Compare the smallest viable options, preferring a modular monolith and explicit adapters until measured requirements justify more deployables.
+5. Define module ownership/dependency direction, public contracts, schemas, authorization, state transitions, failure behavior, and transaction boundaries.
+6. Design deployment, configuration, observability, migration, capacity triggers, rollback/forward recovery, and security controls.
+7. Update docs/architecture.md and record consequential choices in an ADR with alternatives, consequences, validation, and revisit triggers.
 
 ## Output contract
 

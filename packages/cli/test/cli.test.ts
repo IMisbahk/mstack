@@ -76,7 +76,7 @@ describe("CLI", () => {
     expect(report.catalog.agents).toBeGreaterThanOrEqual(19);
     expect(report.catalog.prompts).toBeGreaterThanOrEqual(21);
     expect(report.catalog.hooks).toBe(4);
-    expect(report.catalog.templates).toBe(10);
+    expect(report.catalog.templates).toBe(14);
     expect(report.catalog.packs).toBe(15);
     expect(Array.isArray(report.documents)).toBe(true);
     expect(Array.isArray(report.integrations)).toBe(true);
