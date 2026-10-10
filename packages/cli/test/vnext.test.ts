@@ -12,7 +12,13 @@ import { createDefaultRegistry } from "../../ai-integrations/src/index.js";
 import { makeTemplates } from "./helpers.js";
 
 const temporary: string[] = [];
-afterEach(async () => Promise.all(temporary.splice(0).map((directory) => rm(directory, { recursive: true, force: true }))));
+afterEach(async () =>
+  Promise.all(
+    temporary.splice(0).map((directory) =>
+      rm(directory, { recursive: true, force: true, maxRetries: 5, retryDelay: 50 }).catch(() => undefined),
+    ),
+  ),
+);
 
 function memoryStream(buffer: string[]): NodeJS.WriteStream {
   return new Writable({ write(chunk, _encoding, callback) { buffer.push(String(chunk)); callback(); } }) as NodeJS.WriteStream;
