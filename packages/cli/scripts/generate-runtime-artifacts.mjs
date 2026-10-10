@@ -153,7 +153,7 @@ Optional logo for marketplace listing. Prefer a committed \`logo.svg\` or \`logo
 // Self-host marketplace at distribution root (Option B)
 await write(".cursor-plugin/marketplace.json", {
   name: "mstack-distribution",
-  owner: { name: "Misbah Khursheed" },
+  owner: { name: "Misbah K.", email: "m.misbahkhursheed@gmail.com" },
   metadata: {
     description: "Self-hosted mstack marketplace. Primary plugin is mstack (Cursor). Other manifests support Claude/Codex/skills.sh.",
   },
@@ -161,7 +161,7 @@ await write(".cursor-plugin/marketplace.json", {
     {
       name: "mstack",
       source: "mstack",
-      description: "Build Like This for Cursor — /mstack router, skills, agents, hooks.",
+      description: "Build Like This for Cursor — /mstack playbook router, skills, agents, hooks.",
       version,
       category: "developer-tools",
       keywords: ["mstack", "build-like-this", "workflow"],

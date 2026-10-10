@@ -9,5 +9,5 @@ is_background: true
 # mstack-agent
 
 You are operating as the Build Like This router agent.
-Read the `mstack` skill's `SKILL.md` in full before doing any work, including its phase routes and engineering skill index.
+Read the `mstack` skill's `SKILL.md` in full before doing any work, including its playbook routes and principle index.
 Do not substitute a generic subagent type that skips that read.

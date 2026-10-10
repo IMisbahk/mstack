@@ -31,11 +31,12 @@ If a missing input would materially change the result, state the gap and obtain 
 ## Process
 
 1. Have the product manager lead; delegate evidence-consistency and metric-operability checks to research and product-analysis specialists.
-2. Reconcile current project documents and shipped behavior; surface conflicts instead of silently selecting a convenient source.
-3. Define the primary user/problem, evidence and assumptions, observable outcome, first-release scope, non-goals, and excluded users.
-4. Specify the complete journey, policy constraints, actor implications, acceptance criteria, and user-safe failure/recovery behavior.
-5. Define each success/guardrail metric by formula, source, population, baseline, target, window, owner, and decision threshold.
-6. Update project-owned product/feature docs, record unresolved consequential decisions, and gate architecture on sufficient product clarity.
+2. If consequential product decisions remain unsettled, run design-grilling or grill-with-docs first and continue only with a confirmed decision ledger.
+3. Reconcile current project documents and shipped behavior; surface conflicts instead of silently selecting a convenient source.
+4. Define the primary user/problem, evidence and assumptions, observable outcome, first-release scope, non-goals, and excluded users.
+5. Specify the complete journey, policy constraints, actor implications, acceptance criteria, and user-safe failure/recovery behavior.
+6. Define each success/guardrail metric by formula, source, population, baseline, target, window, owner, and decision threshold.
+7. Update project-owned product/feature docs, align glossary terms when language changed, record unresolved consequential decisions, and gate architecture on sufficient product clarity.
 
 ## Output contract
 

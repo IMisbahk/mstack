@@ -3,10 +3,10 @@
   "generatedFrom": "build-like-this-runtime",
   "adapters": 19,
   "agents": 19,
-  "skills": 23,
-  "prompts": 21,
+  "skills": 61,
+  "prompts": 33,
   "hooks": 4,
-  "templates": 10,
+  "templates": 14,
   "hookAssets": 4,
   "profiles": {
     "lite": {
@@ -16,8 +16,8 @@
     },
     "full": {
       "agents": 19,
-      "skills": 23,
-      "prompts": 21
+      "skills": 61,
+      "prompts": 33
     }
   }
 }

@@ -67,4 +67,4 @@ Works without any marketplace. Do **not** combine with the Cursor plugin for the
 | Codex / Copilot marketplace | `.agents/plugins/marketplace.json` |
 | skills.sh layout | `skills/*/SKILL.md` |
 
-Registry snapshot: **19 adapters**, **19 agents**, **23 skills**, **21 prompts**, **4 hooks**, **10 templates** (registry adapters: 19).
+Registry snapshot: **19 adapters**, **19 agents**, **61 skills**, **33 prompts**, **4 hooks**, **14 templates** (registry adapters: 19).

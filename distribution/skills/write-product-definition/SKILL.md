@@ -24,12 +24,13 @@ Treat the invocation arguments and current repository state as task input. Disco
 
 ## Method
 
-1. Reconcile project-owned product/feature documents with research decisions and shipped behavior; surface conflicts and stale sources explicitly.
-2. Define the primary user, current problem, evidence versus assumptions, intended observable outcome, constraints, and decision owner.
-3. Set first-release scope, non-goals, excluded users, complete user journey, policy boundaries, failure/recovery behavior, and acceptance criteria.
-4. Define success and guardrail metrics by formula, source, population, baseline, target, window, owner, and decision threshold.
-5. Update docs/product.md and any necessary docs/features.md or feature spec, preserving links to research rather than duplicating unsupported claims.
-6. Create a product-to-architecture handoff and block architecture only on unresolved decisions that materially change system design.
+1. If consequential product decisions are still unsettled, run design-grilling or grill-and-document first and only continue with a confirmed decision ledger.
+2. Reconcile project-owned product/feature documents with research decisions and shipped behavior; surface conflicts and stale sources explicitly.
+3. Define the primary user, current problem, evidence versus assumptions, intended observable outcome, constraints, and decision owner.
+4. Set first-release scope, non-goals, excluded users, complete user journey, policy boundaries, failure/recovery behavior, and acceptance criteria.
+5. Define success and guardrail metrics by formula, source, population, baseline, target, window, owner, and decision threshold.
+6. Update docs/product.md and any necessary docs/features.md or feature spec, preserving links to research, glossary terms, and ADRs rather than duplicating unsupported claims.
+7. Create a product-to-architecture handoff and block architecture only on unresolved decisions that materially change system design.
 
 ## Deliverables
 

@@ -24,12 +24,13 @@ Treat the invocation arguments and current repository state as task input. Disco
 
 ## Method
 
-1. Read the defined product outcomes, non-goals, journeys, acceptance criteria, constraints, current architecture/code, and relevant decisions.
-2. Map actors, trust boundaries, modules, ownership, data, critical flows, dependencies, external effects, and failure paths.
-3. Compare the smallest viable options against security, reliability, scale, cost, compatibility, and team operability; prefer a modular monolith absent measured need.
-4. Define module interfaces, dependency direction, contracts, schemas, permissions, state transitions, transaction/idempotency behavior, and migration compatibility.
-5. Define deployment/configuration, observability, capacity triggers, security controls, degradation, rollback/forward recovery, and validation evidence.
-6. Update docs/architecture.md and create an ADR for consequential choices with alternatives, consequences, rollout, and revisit triggers.
+1. If consequential architecture trade-offs are still unsettled, run design-grilling or grill-and-document first; keep hard-to-reverse choices in ADRs and shared terms in docs/glossary.md.
+2. Read the defined product outcomes, non-goals, journeys, acceptance criteria, constraints, current architecture/code, glossary, and relevant decisions.
+3. Map actors, trust boundaries, modules, ownership, data, critical flows, dependencies, external effects, and failure paths.
+4. Compare the smallest viable options against security, reliability, scale, cost, compatibility, and team operability; prefer a modular monolith absent measured need.
+5. Define module interfaces, dependency direction, contracts, schemas, permissions, state transitions, transaction/idempotency behavior, and migration compatibility.
+6. Define deployment/configuration, observability, capacity triggers, security controls, degradation, rollback/forward recovery, and validation evidence.
+7. Update docs/architecture.md and create an ADR for consequential choices with alternatives, consequences, rollout, and revisit triggers.
 
 ## Deliverables
 

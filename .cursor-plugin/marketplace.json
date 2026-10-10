@@ -1,0 +1,17 @@
+{
+  "name": "mstack",
+  "owner": {
+    "name": "Misbah K.",
+    "email": "m.misbahkhursheed@gmail.com"
+  },
+  "metadata": {
+    "description": "Misbah's Build Like This engineering workflow for Cursor — /mstack router, playbooks, principles, skills, agents, and hooks."
+  },
+  "plugins": [
+    {
+      "name": "mstack",
+      "source": "distribution/mstack",
+      "description": "Build Like This for Cursor: evidence-gated /mstack playbooks, principles, specialists, and hooks. Prefer one install channel."
+    }
+  ]
+}

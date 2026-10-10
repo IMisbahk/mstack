@@ -128,9 +128,13 @@ test("Cursor plugin bundle includes /mstack router, commands, rules, agents, and
   const router = bundle.files.find((file) => file.path === "skills/mstack/SKILL.md")?.content ?? "";
   assert.match(router, /mode: true/);
   assert.match(router, /disable-model-invocation: true/);
-  assert.match(router, /Phase routes/);
+  assert.match(router, /playbook-bug-fix/);
+  assert.match(router, /evidence-gated/);
+  assert.ok(paths.has("assets/logo.svg"));
   const manifest = JSON.parse(bundle.files.find((file) => file.path === ".cursor-plugin/plugin.json")?.content ?? "{}");
   assert.equal(manifest.name, "mstack");
+  assert.equal(manifest.homepage, "https://misbah.lol/mstack");
+  assert.equal(manifest.logo, "assets/logo.svg");
   assert.equal(manifest.skills, "./skills/");
   assert.equal(manifest.commands, "./commands/");
   assert.equal(manifest.hooks, "./hooks/hooks.json");

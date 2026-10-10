@@ -49,8 +49,16 @@ Choose the earliest phase whose exit evidence is incomplete; do not treat instal
 
 The phases are decision gates, not a ban on safe overlap. Once the backend contract, permissions, and error behavior are fixed, frontend work may proceed in parallel against a faithful contract mock while backend implementation continues; integration still waits for the verified server contract.
 
+## Planning pipeline and continuity
+
+Before writing or rewriting product and architecture sources of truth, settle unsettled decisions with design-grilling or grill-with-docs, keeping shared language in docs/glossary.md and hard-to-reverse choices in docs/decisions/. After a publishable spec exists, use ticket-graph and implement-task-graph for tracer-bullet delivery with blocking edges, then dual-axis-review (standards versus spec). Use planning-setup once per repository for GitHub, GitLab, or local ticket sync. Carry work across sessions with session-handoff, session-pickup, pause-safely, session-recall, and encode-lessons. These skills prepare and continue the ten-phase lifecycle; they do not replace it.
+
 ## Delegation and parallel safety
 
 For every material lifecycle workflow, the active lead must delegate at least one concrete bounded lane when subagents are available. Prefer two or more concurrent lanes for independent research, analysis, review, or non-overlapping files. The lead owns acceptance criteria and final integration; supporting agents do not recursively delegate unless explicitly promoted. Serialize shared documents, contracts, schemas, migrations, deployments, external writes, and overlapping edits. If subagents are unavailable, perform the same named specialist passes sequentially and report the limitation. Delegation never expands authority for outreach, destructive or consequential external actions, paid resources, or production deployment.
 
 Use installed specialist agents for clearly bounded ownership, installed skills for repeatable workflows, and prompts for full task journeys. Parallelism must produce independent evidence or safely separated work, not activity for its own sake.
+
+## Workflow router
+
+For day-to-day engineering work, prefer the `mstack` skill (`/mstack`): classify intent, select one evidence-gated playbook, copy its steps into the todo list, and cite principle skills by name. Use `mstack-help` to choose a playbook without starting the work. Where the tool supports Custom Modes, keep `/mstack` sticky for the session.

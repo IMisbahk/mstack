@@ -1,6 +1,6 @@
 ---
 name: "feature-planning"
-description: "Turn a validated user need into implementation-ready scope, contracts, risks, and delivery slices."
+description: "Turn an agreed capability into implementation-ready scope, contracts, risks, and delivery slices."
 disable-model-invocation: false
 ---
 
@@ -18,7 +18,7 @@ Use project-owned docs/, decisions, executable code, and tests as sources of tru
 
 ## Purpose
 
-Create a plan that connects a user outcome to observable behavior and the smallest safe sequence of engineering changes.
+Create a plan that connects a validated, agreed capability to observable behavior and the smallest safe sequence of engineering changes. This follows feature-design (or an equivalent product decision). It is not plan-mvp: plan-mvp shapes a hypothesis into an MVP experiment, while feature-planning slices an agreed capability for implementation.
 
 ## Required inputs
 

@@ -107,6 +107,19 @@ export function renderCommandMarkdown(id: string, description: string, body: str
   ].join("\n");
 }
 
+/** Square 1:1 logo on a solid plate for Cursor marketplace / plugin.json. */
+export function mstackLogoSvg(): string {
+  return [
+    '<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="mstack">',
+    '  <rect width="512" height="512" fill="#0F1C24"/>',
+    '  <rect x="48" y="48" width="416" height="416" rx="48" fill="#163039"/>',
+    '  <path d="M128 352V160h48l48 96 48-96h48v192h-44V236l-52 92h-8l-52-92v116H128z" fill="#7DD3C0"/>',
+    '  <circle cx="368" cy="320" r="36" fill="#F2C14E"/>',
+    "</svg>",
+    "",
+  ].join("\n");
+}
+
 export function renderCursorRule(description: string, body: string, alwaysApply = true): string {
   return [
     "---",
