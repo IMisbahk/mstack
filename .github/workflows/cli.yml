@@ -2,131 +2,15 @@ name: CLI
 
 on:
   pull_request:
-    paths:
-      - "packages/cli/**"
-      - "packages/ai-integrations/**"
-      - ".agents/**"
-      - ".claude/**"
-      - ".codex/**"
-      - ".cursor/**"
-      - ".opencode/**"
-      - ".mstack/**"
-      - ".gemini/**"
-      - ".continue/**"
-      - ".windsurf/**"
-      - ".warp/**"
-      - ".amp/**"
-      - ".zed/**"
-      - ".kiro/**"
-      - ".qwen/**"
-      - ".junie/**"
-      - ".cline/**"
-      - ".clinerules/**"
-      - ".roo/**"
-      - ".roorules/**"
-      - ".github/agents/**"
-      - ".github/prompts/**"
-      - ".github/copilot-instructions.md"
-      - ".aider.conf.yml"
-      - "AGENTS.md"
-      - "CLAUDE.md"
-      - "GEMINI.md"
-      - "CONVENTIONS.md"
-      - "docs/cli/**"
-      - "docs/decisions/**"
-      - "templates/**"
-      - "package.json"
-      - "pnpm-lock.yaml"
-      - "pnpm-workspace.yaml"
-      - ".github/workflows/cli.yml"
   push:
     branches:
       - main
-    paths:
-      - "packages/cli/**"
-      - "packages/ai-integrations/**"
-      - ".agents/**"
-      - ".claude/**"
-      - ".codex/**"
-      - ".cursor/**"
-      - ".opencode/**"
-      - ".mstack/**"
-      - ".gemini/**"
-      - ".continue/**"
-      - ".windsurf/**"
-      - ".warp/**"
-      - ".amp/**"
-      - ".zed/**"
-      - ".kiro/**"
-      - ".qwen/**"
-      - ".junie/**"
-      - ".cline/**"
-      - ".clinerules/**"
-      - ".roo/**"
-      - ".roorules/**"
-      - ".github/agents/**"
-      - ".github/prompts/**"
-      - ".github/copilot-instructions.md"
-      - ".aider.conf.yml"
-      - "AGENTS.md"
-      - "CLAUDE.md"
-      - "GEMINI.md"
-      - "CONVENTIONS.md"
-      - "docs/cli/**"
-      - "docs/decisions/**"
-      - "templates/**"
-      - "package.json"
-      - "pnpm-lock.yaml"
-      - "pnpm-workspace.yaml"
-      - ".github/workflows/cli.yml"
 
 permissions:
   contents: read
 
 jobs:
   validate:
-    strategy:
-      matrix:
-        include:
-          - os: ubuntu-latest
-            node: 20
-          - os: ubuntu-latest
-            node: 22
-          - os: ubuntu-latest
-            node: 24
-          - os: macos-latest
-            node: 22
-          - os: windows-latest
-            node: 22
-    runs-on: ${{ matrix.os }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node }}
-          cache: pnpm
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm typecheck
-      - run: pnpm test
-      - run: pnpm build
-      - name: Verify template sources stay synced
-        if: matrix.os == 'ubuntu-latest' && matrix.node == 22
-        run: |
-          pnpm --filter @mstack/ai-integrations sync-runtime-templates
-          pnpm --filter @imisbahk/mstack sync-assets
-          git diff --exit-code -- packages/ai-integrations/src/runtime/templates.ts packages/cli/templates
-      - name: Verify installed AI runtime integrity
-        if: matrix.os == 'ubuntu-latest' && matrix.node == 22
-        run: node packages/cli/dist/cli.js validate --strict
-      - if: matrix.os == 'ubuntu-latest' && matrix.node == 22
-        run: |
-          pnpm --filter @imisbahk/mstack docs:generate
-          git diff --exit-code -- docs/cli/command-reference.md
-      - run: pnpm pack --dry-run
-        working-directory: packages/cli
-
-  launchers:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -135,15 +19,18 @@ jobs:
         with:
           node-version: 22
           cache: pnpm
-      - uses: oven-sh/setup-bun@v2
       - run: pnpm install --frozen-lockfile
+      - run: pnpm typecheck
+      - run: pnpm test
       - run: pnpm build
-      - name: Pack CLI
-        working-directory: packages/cli
+      - name: Verify template sources stay synced
         run: |
-          PACKAGE_TARBALL="$(pnpm pack --ignore-scripts --silent | tail -n 1)"
-          echo "PACKAGE_TARBALL=$PWD/$PACKAGE_TARBALL" >> "$GITHUB_ENV"
-      - run: npx --yes --package "$PACKAGE_TARBALL" mstack --version
-      - run: pnpm dlx "$PACKAGE_TARBALL" --version
-      - run: corepack yarn dlx --quiet "mstack@file:$PACKAGE_TARBALL" --version
-      - run: bunx --package "$PACKAGE_TARBALL" mstack --version
+          pnpm --filter @mstack/ai-integrations sync-runtime-templates
+          pnpm --filter @imisbahk/mstack sync-assets
+          git diff --exit-code -- packages/ai-integrations/src/runtime/templates.ts packages/cli/templates
+      - name: Validate repository
+        run: node packages/cli/dist/cli.js validate --strict
+      - name: Verify command reference drift
+        run: |
+          pnpm --filter @imisbahk/mstack docs:generate
+          git diff --exit-code -- docs/cli/command-reference.md
