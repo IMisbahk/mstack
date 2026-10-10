@@ -54,6 +54,10 @@ For every material lifecycle workflow, the active lead must delegate at least on
 
 Use installed specialist agents for clearly bounded ownership, installed skills for repeatable workflows, and prompts for full task journeys. Parallelism must produce independent evidence or safely separated work, not activity for its own sake.
 
+## Workflow router
+
+For day-to-day engineering work, prefer the `mstack` skill (`/mstack`): classify intent, select one evidence-gated playbook, copy its steps into the todo list, and cite principle skills by name. Use `mstack-help` to choose a playbook without starting the work. Where the tool supports Custom Modes, keep `/mstack` sticky for the session.
+
 Treat the project's own docs/ directory, code, and tests as its sources of truth. Read docs/product.md and docs/architecture.md before material implementation work, preserve user-owned guidance, and update affected sources of truth with behavioral changes. Use .mstack/templates/ only as reference scaffolds: adapt them to this project, and never treat template text as a project requirement or evidence.
 
 ## Required context

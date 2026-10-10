@@ -97,6 +97,8 @@ describe("vNext developer experience", () => {
     expect(await readFile(path.join(root, "AGENTS.md"), "utf8")).toContain("mstack:project-instructions:start");
     expect(await readFile(path.join(root, ".agents", "hooks.json"), "utf8")).toContain("PostInvocation");
     expect(await readFile(path.join(root, ".agents", "agents", "product-manager", "agent.md"), "utf8")).toContain("name: \"product-manager\"");
+    expect(await readFile(path.join(root, ".agents", "skills", "mstack", "SKILL.md"), "utf8")).toContain("evidence-gated");
+    expect(await readFile(path.join(root, ".agents", "skills", "playbook-bug-fix", "SKILL.md"), "utf8")).toContain("Reproduce");
     expect(await readFile(path.join(root, ".github", "prompts", "build-feature.prompt.md"), "utf8")).toContain("Build the requested feature");
     expect(await readFile(path.join(root, ".opencode", "agents", "software-architect.md"), "utf8")).toContain("mode: subagent");
     expect(await readFile(path.join(root, ".kiro", "skills", "build-feature", "SKILL.md"), "utf8")).toContain("Build the requested feature");

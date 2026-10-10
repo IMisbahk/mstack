@@ -64,7 +64,8 @@ function defineSkill(source: SkillSource): SkillDefinition {
   };
 }
 
-export const engineeringSkills: readonly SkillDefinition[] = [
+/** Deep delivery and lifecycle skills. Composed with workflow skills in runtime/index.ts. */
+export const deliverySkills: readonly SkillDefinition[] = [
   defineSkill({
     id: "feature-planning",
     description: "Turn an agreed capability into implementation-ready scope, contracts, risks, and delivery slices.",

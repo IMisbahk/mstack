@@ -3,12 +3,24 @@ import type {
   IntegrationSpec,
   RepositoryOnboarding,
   RuntimeAsset,
+  SkillDefinition,
 } from "../types.js";
 import { engineeringAgents } from "./agents.js";
 import { engineeringHooks, hookAssets } from "./hooks.js";
+import { playbookSkills } from "./playbooks.js";
+import { principleSkills } from "./principles.js";
 import { engineeringPrompts } from "./prompts.js";
-import { engineeringSkills } from "./skills.js";
+import { deliverySkills } from "./skills.js";
 import { runtimeTemplates } from "./templates.js";
+import { workflowSkills } from "./workflow.js";
+
+/** Full skill library: delivery + principles + playbooks + workflow routers. */
+export const engineeringSkills: readonly SkillDefinition[] = [
+  ...deliverySkills,
+  ...principleSkills,
+  ...playbookSkills,
+  ...workflowSkills,
+];
 
 const runtimeStateIgnore: RuntimeAsset = {
   id: "runtime-state-gitignore",
@@ -70,7 +82,11 @@ The phases are decision gates, not a ban on safe overlap. Once the backend contr
 
 For every material lifecycle workflow, the active lead must delegate at least one concrete bounded lane when subagents are available. Prefer two or more concurrent lanes for independent research, analysis, review, or non-overlapping files. The lead owns acceptance criteria and final integration; supporting agents do not recursively delegate unless explicitly promoted. Serialize shared documents, contracts, schemas, migrations, deployments, external writes, and overlapping edits. If subagents are unavailable, perform the same named specialist passes sequentially and report the limitation. Delegation never expands authority for outreach, destructive or consequential external actions, paid resources, or production deployment.
 
-Use installed specialist agents for clearly bounded ownership, installed skills for repeatable workflows, and prompts for full task journeys. Parallelism must produce independent evidence or safely separated work, not activity for its own sake.`;
+Use installed specialist agents for clearly bounded ownership, installed skills for repeatable workflows, and prompts for full task journeys. Parallelism must produce independent evidence or safely separated work, not activity for its own sake.
+
+## Workflow router
+
+For day-to-day engineering work, prefer the \`mstack\` skill (\`/mstack\`): classify intent, select one evidence-gated playbook, copy its steps into the todo list, and cite principle skills by name. Use \`mstack-help\` to choose a playbook without starting the work. Where the tool supports Custom Modes, keep \`/mstack\` sticky for the session.`;
 
 function projectIdentity(projectName: string): string {
   return `## Project identity and sources of truth
@@ -117,6 +133,9 @@ export function createBuildLikeThisRuntime(options: BuildLikeThisRuntimeOptions)
 
 export { engineeringAgents } from "./agents.js";
 export { engineeringHooks, hookAssets } from "./hooks.js";
+export { playbookSkills, playbookCatalog } from "./playbooks.js";
+export { principleSkills } from "./principles.js";
 export { engineeringPrompts } from "./prompts.js";
-export { engineeringSkills } from "./skills.js";
+export { deliverySkills } from "./skills.js";
 export { runtimeTemplates } from "./templates.js";
+export { workflowSkills } from "./workflow.js";
