@@ -1,8 +1,8 @@
 {
   "recovery": {
-    "backupRoot": ".mstack/runtime/backups/op.6ebb66dfc67d355a3914",
-    "journalPath": ".mstack/runtime/operations/op.6ebb66dfc67d355a3914.json",
-    "operationId": "op.6ebb66dfc67d355a3914"
+    "backupRoot": ".mstack/runtime/backups/op.6dd822e8efbc0f771c98",
+    "journalPath": ".mstack/runtime/operations/op.6dd822e8efbc0f771c98.json",
+    "operationId": "op.6dd822e8efbc0f771c98"
   },
   "resources": [
     {
@@ -708,7 +708,7 @@
         "cursor"
       ],
       "approvals": [],
-      "installedHash": "8f1c9c9f4032c902700c61020ca2c7860abbe583e6548f49679b813b5e613eb6",
+      "installedHash": "2ba1d5e365c9f2d97bfced0a77ac3a7df243281179d136236f4b25d5cd28eb73",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/design-api/SKILL.md",
@@ -841,7 +841,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "1e46533b298775f7dfae3c3d6a766fabce67fcd06d33ee235701722e4a317dc2",
+      "installedHash": "f4f122d16355611d6a7b407c9ee59ca93027ff4742d99053ff4c0ff5d2580dd2",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/feature-planning/SKILL.md",
@@ -1200,7 +1200,7 @@
         "cursor"
       ],
       "approvals": [],
-      "installedHash": "975beb13ea2d36fb099ccd3b6ff8b7104e5834d1e0981d7da30e02d6265f8a76",
+      "installedHash": "3caf94c876c38e7e7cbb4fc37f073c68a1cf8d19a715e7a2e99c0cb4124872f5",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/plan-mvp/SKILL.md",
@@ -1474,7 +1474,7 @@
         "cursor"
       ],
       "approvals": [],
-      "installedHash": "1d88141e7db1355cc2713fdf88cbfb82eecb4b454abe2c8e64a5ab444ce2c040",
+      "installedHash": "946b4657494f84a3fa2cbdd5259a665a687119259cf9b26a99799bbb1fee963e",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".agents/skills/production-readiness/SKILL.md",
@@ -2576,7 +2576,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "bddb6d2e4fdf73f5b1a681af9354b7312077cf95fa8610f9c996be23272d6070",
+      "installedHash": "c3941276f1494c2c49ec1568d0c34172244f73f34101b4a3bb93037f7a9d31a3",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/design-api/SKILL.md",
@@ -2678,7 +2678,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "1e46533b298775f7dfae3c3d6a766fabce67fcd06d33ee235701722e4a317dc2",
+      "installedHash": "f4f122d16355611d6a7b407c9ee59ca93027ff4742d99053ff4c0ff5d2580dd2",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/feature-planning/SKILL.md",
@@ -2950,7 +2950,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "555798f79083afb361fe79d38633fbd14935ea3513e3a564cd534cf50f5684d7",
+      "installedHash": "d67c89d048ba7472d77091393391fc82f07b0fec10f70846608f78da3caaa0f7",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/plan-mvp/SKILL.md",
@@ -3154,7 +3154,7 @@
         "claude-code"
       ],
       "approvals": [],
-      "installedHash": "817efcef61ef0cc8ae91f0cf4591271da8806cc4ad68857254f5f7a923c861e4",
+      "installedHash": "a93f4e2ef32acf77ac44b8ca97ea53633f0a79f8432d289f75a6f53cd1d86371",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".claude/skills/production-readiness/SKILL.md",
@@ -4917,7 +4917,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "ab3af8e57668f6365133098f80451a5623427455c21f6930815c5c18517888e6",
+      "installedHash": "7a40d4ea6ee47614378824a699553773ffd66826378145cb0d8a076e38b9178a",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".opencode/commands/design-api.md",
@@ -5036,7 +5036,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "e9dcd27a28674b8f926ebb4375d3cf766dca2edb5df8c22f45149c0c297088df",
+      "installedHash": "9e8780b1b0ceab5ea600bf64f9c4d64a36fa2184d0e4fb68bf75eeea36f1e9c1",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".opencode/commands/plan-mvp.md",
@@ -5053,7 +5053,7 @@
         "opencode"
       ],
       "approvals": [],
-      "installedHash": "0ba9f156d929968374c9ccdee9332b0ae753ba84e8f29d06ff3830f89e6a18c4",
+      "installedHash": "e100d62dcce0384364910d1f57ca549691b81eaca827c3c4f36348a42d98752e",
       "mergeStrategy": "replace",
       "mode": 420,
       "path": ".opencode/commands/production-readiness.md",

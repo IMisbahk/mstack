@@ -1,6 +1,6 @@
 ---
 name: "production-readiness"
-description: "Assess whether a system or change is safe to operate and release under real failure conditions."
+description: "Run the release-readiness skill as a go/no-go production readiness journey."
 user-invocable: true
 disable-model-invocation: true
 argument-hint: "<service, feature, or release scope>"
@@ -10,7 +10,7 @@ argument-hint: "<service, feature, or release scope>"
 
 # production-readiness
 
-Perform an evidence-based production readiness review and produce a go/no-go decision with an actionable recovery-aware plan.
+Run the release-readiness skill. The release-manager leads parallel evidence lanes for DevOps, security, and testing; this assesses readiness only and does not deploy.
 
 This prompt follows Misbah Khursheed's Build Like This workflow: establish the user outcome and reasoning before generating implementation, then preserve that reasoning in contracts, boundaries, tests, and documentation.
 
@@ -24,12 +24,11 @@ Treat the invocation arguments and current repository state as task input. Disco
 
 ## Method
 
-1. Confirm scope, acceptance criteria, owners, traffic/data assumptions, SLOs, and consequential user actions.
-2. Review authentication/authorization, data protection, abuse controls, dependencies, timeouts, retries, and idempotency.
-3. Trace startup, normal operation, overload, partial dependency failure, deploy, migration, backup/restore, and incident recovery.
-4. Verify build/tests/configuration/secrets, health/readiness, logs/metrics/traces, alerts, dashboards, and cost/capacity limits.
-5. Assess compatibility, rollout sequencing, smoke tests, feature controls, and rollback versus forward-recovery safety.
-6. Classify blockers, accepted risks, and follow-ups with named evidence, threshold, and owner.
+1. Load and follow the release-readiness skill as the method source of truth; do not invent a parallel checklist.
+2. Confirm scope, acceptance criteria, owners, traffic/data assumptions, SLOs, and consequential user actions.
+3. Collect evidence for authz, data protection, dependencies, deploy/migration/recovery, observability, and rollout controls.
+4. Classify blockers, accepted risks, and follow-ups with named evidence, threshold, and owner.
+5. Hand authorized release execution to deploy-product / deployment-delivery only after a go decision.
 
 ## Deliverables
 
@@ -42,6 +41,7 @@ Treat the invocation arguments and current repository state as task input. Disco
 - Do not mark readiness based on planned controls or commands that were not run.
 - Do not recommend blind retries, fail-open security, or rollback across incompatible data migrations.
 - Do not bury a high-impact operational gap in a checklist score.
+- Do not execute production deployment from this prompt.
 
 ## Delegation and parallel safety
 
