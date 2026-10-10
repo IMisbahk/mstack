@@ -26,14 +26,14 @@ import {
 
 test("runtime ships a focused, structurally complete engineering library", () => {
   assert.equal(engineeringAgents.length, 19);
-  assert.equal(deliverySkills.length, 23);
+  assert.equal(deliverySkills.length, 35);
   assert.equal(principleSkills.length, 14);
   assert.equal(playbookSkills.length, 10);
   assert.equal(workflowSkills.length, 2);
   assert.equal(engineeringSkills.length, deliverySkills.length + principleSkills.length + playbookSkills.length + workflowSkills.length);
-  assert.equal(engineeringPrompts.length, 21);
+  assert.equal(engineeringPrompts.length, 33);
   assert.equal(engineeringHooks.length, 4);
-  assert.equal(runtimeTemplates.length, 10);
+  assert.equal(runtimeTemplates.length, 14);
   assert.ok(runtimeTemplates.every((item) => item.feature === "templates"));
   assert.ok(
     [...engineeringAgents, ...engineeringSkills, ...engineeringPrompts, ...runtimeTemplates].every(
@@ -357,7 +357,55 @@ test("runtime can omit optional automation assets without weakening content", ()
   assert.deepEqual(runtime.assets?.map((asset) => asset.path), [".mstack/runtime/.gitignore"]);
   assert.equal(runtime.agents?.length, 19);
   assert.equal(runtime.skills?.length, engineeringSkills.length);
-  assert.equal(runtime.prompts?.length, 21);
+  assert.equal(runtime.prompts?.length, 33);
+});
+
+test("runtime ships planning pipeline and session continuity skills with prompt journeys", () => {
+  const planningSkills = [
+    "design-grilling",
+    "grill-with-docs",
+    "planning-setup",
+    "spec-synthesis",
+    "ticket-graph",
+    "implement-task-graph",
+    "dual-axis-review",
+    "session-handoff",
+    "session-pickup",
+    "pause-safely",
+    "session-recall",
+    "encode-lessons",
+  ] as const;
+  const planningPrompts = [
+    "grill-decisions",
+    "grill-and-document",
+    "setup-planning",
+    "synthesize-spec",
+    "plan-tickets",
+    "implement-spec",
+    "review-against-spec",
+    "handoff-session",
+    "pickup-session",
+    "pause-session",
+    "recall-context",
+    "reflect-and-encode",
+  ] as const;
+  for (const id of planningSkills) {
+    assert.ok(engineeringSkills.some((item) => item.id === id), `missing skill ${id}`);
+  }
+  for (const id of planningPrompts) {
+    const prompt = engineeringPrompts.find((item) => item.id === id);
+    assert.ok(prompt, `missing prompt ${id}`);
+  }
+  assert.match(
+    createBuildLikeThisRuntime({ projectName: "fixture" }).instructions?.content ?? "",
+    /## Planning pipeline and continuity/,
+  );
+  for (const name of ["glossary", "ticket", "session-handoff", "issue-tracker"]) {
+    assert.ok(
+      runtimeTemplates.some((item) => item.path === `.mstack/templates/${name}.template.md`),
+      `missing template ${name}`,
+    );
+  }
 });
 
 test("portable-only setups never write privileged hook JSON", () => {

@@ -34,6 +34,7 @@ describe("scaffoldProject", () => {
       "docs/architecture.md",
       "docs/features/_template.md",
       "docs/decisions/_template.md",
+      "docs/glossary.md",
     ]);
     expect(JSON.parse(await readFile(result.configPath, "utf8"))).toMatchObject({
       project: { name: "app", initializedAt: "2026-06-01T12:00:00.000Z" },

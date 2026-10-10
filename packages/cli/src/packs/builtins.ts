@@ -387,7 +387,7 @@ export const builtInPacks: readonly CapabilityPack[] = [
   createCapabilityPack({
     id: "documentation",
     displayName: "Documentation",
-    description: "Product, architecture, and changelog stewardship.",
+    description: "Product, architecture, glossary, ADR, and changelog stewardship.",
     agents: [
       createSpecialist("docs-engineer", "Keeps product and architecture documents aligned with shipped behavior.", "Do not treat templates as requirements. Update docs in the same change as behavior."),
       createSpecialist("changelog-steward", "Reviews user-facing change notes and migration copy.", "Keep current behavior separate from future direction."),
@@ -395,6 +395,8 @@ export const builtInPacks: readonly CapabilityPack[] = [
     skills: [
       createPackSkill("source-of-truth-alignment", "Align docs with executable behavior.", "If documents conflict with deployed behavior, identify the intended source of truth."),
       createPackSkill("changelog-hygiene", "Write user-facing change notes.", "Record verification evidence and residual risk, not a file list."),
+      createPackSkill("glossary-stewardship", "Keep docs/glossary.md decision-relevant.", "Prefer terms that change specs or tickets. Flag ambiguity instead of inventing false precision."),
+      createPackSkill("adr-hygiene", "Keep ADRs short and consequential.", "Record hard-to-reverse trade-offs only. Link glossary terms and product constraints."),
     ],
     prompts: [
       createPackPrompt(
@@ -403,11 +405,19 @@ export const builtInPacks: readonly CapabilityPack[] = [
         "[document or change]",
         "Find contradictions, missing actors, and undocumented failure behavior. Do not invent user evidence.",
       ),
+      createPackPrompt(
+        "review-planning-continuity",
+        "Review glossary and ADR continuity for the current change.",
+        "[change or decision set]",
+        "Check that contested terms appear in docs/glossary.md, hard-to-reverse choices have ADRs, and mstack validate GLOSSARY/DECISIONS warnings are addressed or explicitly accepted.",
+      ),
     ],
     tasks: [
       recipe({ id: "docs.list", description: "List tracked documentation files.", risk: "read-only", argv: ["git", "ls-files", "--", "docs", "README.md"] }),
       recipe({ id: "docs.diff", description: "Show documentation diffs.", risk: "read-only", argv: ["git", "diff", "--", "docs", "README.md"] }),
       recipe({ id: "docs.grep-todo", description: "Find TODO markers in documentation.", risk: "read-only", argv: ["git", "grep", "-n", "TODO", "--", "docs"] }),
+      recipe({ id: "docs.list-decisions", description: "List decision records.", risk: "read-only", argv: ["git", "ls-files", "--", "docs/decisions"] }),
+      recipe({ id: "docs.list-glossary", description: "List the shared glossary when tracked.", risk: "read-only", argv: ["git", "ls-files", "--", "docs/glossary.md"] }),
     ],
   }),
   createCapabilityPack({

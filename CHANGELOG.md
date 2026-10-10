@@ -23,6 +23,14 @@ All notable changes to mstack are documented here. This project follows [Semanti
   `packages/ai-integrations/src/runtime/templates.ts`.
 - Add tests for snapshot fields, Windsurf/Warp/Amp/Zed portable rendering, and
   portable-only setups that never write privileged hook JSON.
+- Add a planning pipeline and session continuity surface: design grilling,
+  glossary/ADR continuity, tracer-bullet ticket graphs, dual-axis review, and
+  handoff/pickup/pause/recall/encode-lessons skills with matching prompts
+  ([ADR-0006](docs/decisions/0006-planning-pipeline-and-session-continuity.md)).
+- Seed `docs/glossary.md` from `mstack init` and teach `mstack validate` to report
+  GLOSSARY and DECISIONS continuity checks.
+- Extend the documentation pack with glossary/ADR stewardship skills and inventory
+  recipes.
 
 ### Changed
 
@@ -45,6 +53,8 @@ All notable changes to mstack are documented here. This project follows [Semanti
   `.opencode`, `.windsurf`, `.warp`, `.amp`, `.zed`, and other portable roots).
 - Rewrite the root README as failure-mode → fix with quick-start and per-tool
   install lines; move maintainer release steps to `CONTRIBUTING.md`.
+- Wire product-definition and architecture-design to grill unsettled decisions
+  before writing authoritative planning docs.
 
 ### Fixed
 

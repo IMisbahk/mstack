@@ -45,7 +45,7 @@ describe("runtime catalog", () => {
     expect(complete.counts.skills).toBe(engineeringSkills.length + packSpecs.reduce((sum, spec) => sum + (spec.skills?.length ?? 0), 0));
     expect(complete.counts.prompts).toBe(engineeringPrompts.length + packSpecs.reduce((sum, spec) => sum + (spec.prompts?.length ?? 0), 0));
     expect(complete.counts.hooks).toBe(4);
-    expect(complete.counts.templates).toBe(10);
+    expect(complete.counts.templates).toBe(14);
     expect(packs).toHaveLength(15);
     expect(complete.counts["task-recipes"]).toBeGreaterThanOrEqual(40);
     expect(complete.items.some((item) => item.id === "product-manager" && item.kind === "agents")).toBe(true);
@@ -98,6 +98,27 @@ describe("repository validation", () => {
     const report = await validateRepository(root);
     expect(report.valid).toBe(true);
     expect(report.checks).toContainEqual(expect.objectContaining({ id: "AI_RUNTIME", status: "warning" }));
+    expect(report.checks).toContainEqual(expect.objectContaining({ id: "GLOSSARY", status: "ok" }));
+    expect(report.checks).toContainEqual(expect.objectContaining({ id: "DECISIONS", status: "warning" }));
+  });
+
+  it("accepts a ready glossary and numbered ADRs for planning continuity", async () => {
+    const { root } = await initializedFixture();
+    const { mkdir, writeFile } = await import("node:fs/promises");
+    await writeFile(
+      path.join(root, "docs", "glossary.md"),
+      "# Glossary\n\n| Term | Meaning | Avoid | Related |\n| --- | --- | --- | --- |\n| Host project | Repository being built | Calling mstack the product | ADR-0005 |\n",
+      "utf8",
+    );
+    await mkdir(path.join(root, "docs", "decisions"), { recursive: true });
+    await writeFile(
+      path.join(root, "docs", "decisions", "0001-example.md"),
+      "# ADR-0001: Example\n\n- Status: Accepted\n\n## Decision\n\nRecord a consequential choice.\n",
+      "utf8",
+    );
+    const report = await validateRepository(root);
+    expect(report.checks).toContainEqual(expect.objectContaining({ id: "GLOSSARY", status: "ok" }));
+    expect(report.checks).toContainEqual(expect.objectContaining({ id: "DECISIONS", status: "ok" }));
   });
 
   it("treats warnings as failures in strict mode and exposes exit code 4", async () => {

@@ -12,6 +12,7 @@ const TEMPLATE_FILES = [
   ["architecture.template.md", "docs/architecture.md"],
   ["feature.template.md", "docs/features/_template.md"],
   ["adr.template.md", "docs/decisions/_template.md"],
+  ["glossary.template.md", "docs/glossary.md"],
 ] as const;
 
 export interface ScaffoldOptions {

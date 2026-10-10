@@ -9,6 +9,7 @@ export async function makeTemplates(root: string): Promise<string> {
     writeFile(path.join(directory, "architecture.template.md"), "# Architecture\n"),
     writeFile(path.join(directory, "feature.template.md"), "# Feature\n"),
     writeFile(path.join(directory, "adr.template.md"), "# Decision\n"),
+    writeFile(path.join(directory, "glossary.template.md"), "# Glossary\n"),
   ]);
   return directory;
 }
