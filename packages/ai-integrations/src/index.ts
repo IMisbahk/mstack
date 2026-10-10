@@ -34,12 +34,17 @@ export type * from "./types.js";
 export {
   buildLikeThisMethod,
   createBuildLikeThisRuntime,
+  deliverySkills,
   engineeringAgents,
   engineeringHooks,
   engineeringPrompts,
   engineeringSkills,
   hookAssets,
+  playbookCatalog,
+  playbookSkills,
+  principleSkills,
   runtimeTemplates,
+  workflowSkills,
   type BuildLikeThisRuntimeOptions,
 } from "./runtime/index.js";
 

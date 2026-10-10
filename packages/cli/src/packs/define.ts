@@ -60,6 +60,28 @@ export function createPackSkill(id: string, description: string, guidance: strin
   };
 }
 
+/** Short named rule for pack authors who need a citeable principle leaf. */
+export function createPrincipleSkill(id: string, description: string, rule: string, applyWhen: string): SkillDefinition {
+  return {
+    id,
+    version: "1.0.0",
+    activation: "explicit",
+    security: "content",
+    fallback: "degrade",
+    description,
+    constraints: { kind: "principle" },
+    instructions: [
+      `# ${id}`,
+      "",
+      rule.trim(),
+      "",
+      `**When:** ${applyWhen}`,
+      "",
+      "Cite this principle by id when it changed a decision. Keep pack-specific guidance shorter than a delivery skill.",
+    ].join("\n"),
+  };
+}
+
 export function createPackPrompt(id: string, description: string, argumentHint: string, body: string): PromptDefinition {
   return {
     id,

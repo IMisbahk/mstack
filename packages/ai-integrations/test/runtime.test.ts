@@ -11,18 +11,26 @@ import {
   createDefaultRegistry,
   createIntegrationPlan,
   createReconciliationPlan,
+  deliverySkills,
   engineeringAgents,
   engineeringHooks,
   engineeringPrompts,
   engineeringSkills,
   hookAssets,
   inspectIntegrationRepository,
+  playbookSkills,
+  principleSkills,
   runtimeTemplates,
+  workflowSkills,
 } from "../src/index.js";
 
 test("runtime ships a focused, structurally complete engineering library", () => {
   assert.equal(engineeringAgents.length, 19);
-  assert.equal(engineeringSkills.length, 23);
+  assert.equal(deliverySkills.length, 23);
+  assert.equal(principleSkills.length, 14);
+  assert.equal(playbookSkills.length, 10);
+  assert.equal(workflowSkills.length, 2);
+  assert.equal(engineeringSkills.length, deliverySkills.length + principleSkills.length + playbookSkills.length + workflowSkills.length);
   assert.equal(engineeringPrompts.length, 21);
   assert.equal(engineeringHooks.length, 4);
   assert.equal(runtimeTemplates.length, 10);
@@ -56,7 +64,7 @@ test("runtime ships a focused, structurally complete engineering library", () =>
     for (const section of agentSections) assert.match(agent.instructions, new RegExp(section));
   }
 
-  for (const skill of engineeringSkills) {
+  for (const skill of deliverySkills) {
     assert.ok(skill.instructions.length > 1_500, `${skill.id} is too shallow`);
     for (const section of [
       "## Project identity and sources of truth",
@@ -348,7 +356,7 @@ test("runtime can omit optional automation assets without weakening content", ()
   assert.deepEqual(runtime.hooks, []);
   assert.deepEqual(runtime.assets?.map((asset) => asset.path), [".mstack/runtime/.gitignore"]);
   assert.equal(runtime.agents?.length, 19);
-  assert.equal(runtime.skills?.length, 23);
+  assert.equal(runtime.skills?.length, engineeringSkills.length);
   assert.equal(runtime.prompts?.length, 21);
 });
 

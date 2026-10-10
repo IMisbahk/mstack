@@ -1,6 +1,14 @@
 import { builtInPacks } from "./builtins.js";
 import { PackRegistry } from "./registry.js";
 export { builtInPacks } from "./builtins.js";
+export {
+  createCapabilityPack,
+  createPackPrompt,
+  createPackSkill,
+  createPrincipleSkill,
+  createSpecialist,
+  createTaskRecipe,
+} from "./define.js";
 export { recommendPacks, type PackRecommendation, type PackRecommendReport } from "./recommend.js";
 export type * from "./types.js";
 export { TASK_RISKS } from "./types.js";
