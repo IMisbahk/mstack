@@ -9,10 +9,31 @@ on:
       - ".claude/**"
       - ".codex/**"
       - ".cursor/**"
+      - ".opencode/**"
       - ".mstack/**"
+      - ".gemini/**"
+      - ".continue/**"
+      - ".windsurf/**"
+      - ".warp/**"
+      - ".amp/**"
+      - ".zed/**"
+      - ".kiro/**"
+      - ".qwen/**"
+      - ".junie/**"
+      - ".cline/**"
+      - ".clinerules/**"
+      - ".roo/**"
+      - ".roorules/**"
+      - ".github/agents/**"
+      - ".github/prompts/**"
+      - ".github/copilot-instructions.md"
+      - ".aider.conf.yml"
       - "AGENTS.md"
       - "CLAUDE.md"
+      - "GEMINI.md"
+      - "CONVENTIONS.md"
       - "docs/cli/**"
+      - "docs/decisions/**"
       - "templates/**"
       - "package.json"
       - "pnpm-lock.yaml"
@@ -28,10 +49,31 @@ on:
       - ".claude/**"
       - ".codex/**"
       - ".cursor/**"
+      - ".opencode/**"
       - ".mstack/**"
+      - ".gemini/**"
+      - ".continue/**"
+      - ".windsurf/**"
+      - ".warp/**"
+      - ".amp/**"
+      - ".zed/**"
+      - ".kiro/**"
+      - ".qwen/**"
+      - ".junie/**"
+      - ".cline/**"
+      - ".clinerules/**"
+      - ".roo/**"
+      - ".roorules/**"
+      - ".github/agents/**"
+      - ".github/prompts/**"
+      - ".github/copilot-instructions.md"
+      - ".aider.conf.yml"
       - "AGENTS.md"
       - "CLAUDE.md"
+      - "GEMINI.md"
+      - "CONVENTIONS.md"
       - "docs/cli/**"
+      - "docs/decisions/**"
       - "templates/**"
       - "package.json"
       - "pnpm-lock.yaml"
@@ -68,6 +110,12 @@ jobs:
       - run: pnpm typecheck
       - run: pnpm test
       - run: pnpm build
+      - name: Verify template sources stay synced
+        if: matrix.os == 'ubuntu-latest' && matrix.node == 22
+        run: |
+          pnpm --filter @mstack/ai-integrations sync-runtime-templates
+          pnpm --filter @imisbahk/mstack sync-assets
+          git diff --exit-code -- packages/ai-integrations/src/runtime/templates.ts packages/cli/templates
       - name: Verify installed AI runtime integrity
         if: matrix.os == 'ubuntu-latest' && matrix.node == 22
         run: node packages/cli/dist/cli.js validate --strict
@@ -75,7 +123,7 @@ jobs:
         run: |
           pnpm --filter @imisbahk/mstack docs:generate
           git diff --exit-code -- docs/cli/command-reference.md
-      - run: npm pack --dry-run
+      - run: pnpm pack --dry-run
         working-directory: packages/cli
 
   launchers:
@@ -93,7 +141,7 @@ jobs:
       - name: Pack CLI
         working-directory: packages/cli
         run: |
-          PACKAGE_TARBALL="$(npm pack --ignore-scripts --silent)"
+          PACKAGE_TARBALL="$(pnpm pack --ignore-scripts --silent | tail -n 1)"
           echo "PACKAGE_TARBALL=$PWD/$PACKAGE_TARBALL" >> "$GITHUB_ENV"
       - run: npx --yes --package "$PACKAGE_TARBALL" mstack --version
       - run: pnpm dlx "$PACKAGE_TARBALL" --version

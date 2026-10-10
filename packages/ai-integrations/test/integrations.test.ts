@@ -163,11 +163,70 @@ test("portable command adapters use each provider's documented Markdown contract
     ["junie", ".junie/commands/review-change.md"],
     ["roo-code", ".roo/commands/review-change.md"],
     ["amp", ".amp/commands/review-change.md"],
+    ["zed", ".zed/prompts/review-change.md"],
   ] as const) {
     const plan = createIntegrationPlan(registry, fullSpec, [environment]);
     const command = plan.artifacts.find((artifact) => artifact.path === path)!;
     assert.match(command.content, /^---\ndescription: "Review the current change"\n---\n/);
     assert.match(command.content, /Review the current diff for correctness and missing tests/);
+  }
+});
+
+test("Windsurf, Warp, Amp, and Zed portable adapters render skills without privileged hooks", () => {
+  const registry = createDefaultRegistry();
+  const cases = [
+    {
+      id: "windsurf",
+      skill: ".windsurf/skills/ship-safely/SKILL.md",
+      persona: ".windsurf/skills/mstack-agent-security-reviewer/SKILL.md",
+      agents: "emulated",
+    },
+    {
+      id: "warp",
+      skill: ".warp/skills/ship-safely/SKILL.md",
+      persona: ".warp/skills/mstack-agent-security-reviewer/SKILL.md",
+      agents: "emulated",
+    },
+    {
+      id: "amp",
+      skill: ".agents/skills/ship-safely/SKILL.md",
+      agent: ".amp/agents/security-reviewer.md",
+      command: ".amp/commands/review-change.md",
+      agents: "native",
+    },
+    {
+      id: "zed",
+      skill: ".zed/skills/ship-safely/SKILL.md",
+      persona: ".zed/skills/mstack-agent-security-reviewer/SKILL.md",
+      prompt: ".zed/prompts/review-change.md",
+      agents: "emulated",
+    },
+  ] as const;
+
+  for (const entry of cases) {
+    const adapter = registry.get(entry.id);
+    assert.equal(adapter.capabilities.hooks.level, "unsupported", entry.id);
+    assert.equal(adapter.capabilities.agents.level, entry.agents, entry.id);
+    const plan = createIntegrationPlan(registry, fullSpec, [entry.id]);
+    assert.ok(plan.artifacts.some((artifact) => artifact.path === entry.skill), entry.id);
+    assert.ok(plan.diagnostics.some((diagnostic) => diagnostic.feature === "hooks"), entry.id);
+    assert.ok(plan.artifacts.every((artifact) => !artifact.path.includes("hooks.json")), entry.id);
+    assert.ok(plan.artifacts.every((artifact) => !artifact.path.startsWith(".claude/")), entry.id);
+    if ("persona" in entry) {
+      assert.ok(plan.artifacts.some((artifact) => artifact.path === entry.persona), entry.id);
+      assert.ok(plan.diagnostics.some((diagnostic) => diagnostic.feature === "agents"), entry.id);
+    }
+    if ("agent" in entry) {
+      assert.ok(plan.artifacts.some((artifact) => artifact.path === entry.agent), entry.id);
+    }
+    if ("command" in entry) {
+      const command = plan.artifacts.find((artifact) => artifact.path === entry.command)!;
+      assert.match(command.content, /^---\ndescription:/);
+    }
+    if ("prompt" in entry) {
+      const prompt = plan.artifacts.find((artifact) => artifact.path === entry.prompt)!;
+      assert.match(prompt.content, /^---\ndescription:/);
+    }
   }
 });
 

@@ -18,8 +18,10 @@
     "dist/src"
   ],
   "scripts": {
+    "sync-runtime-templates": "node scripts/sync-runtime-templates.mjs",
+    "prebuild": "pnpm run sync-runtime-templates",
     "build": "tsc -p tsconfig.json",
-    "typecheck": "tsc -p tsconfig.json --noEmit",
-    "test": "npm run build && node --test dist/test/*.test.js"
+    "typecheck": "pnpm run sync-runtime-templates && tsc -p tsconfig.json --noEmit",
+    "test": "pnpm run build && node --test dist/test/*.test.js"
   }
 }

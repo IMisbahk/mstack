@@ -36,7 +36,7 @@ describe("capability packs", () => {
       "computer-use",
     ]);
     expect(registry.resolve(["robotics"]).map((pack) => pack.id)).toEqual(["systems", "embedded-firmware", "robotics"]);
-    expect(registry.get("repository-intelligence").createSpec({ projectName: "fixture" }).agents).toHaveLength(6);
+    expect(registry.get("repository-intelligence").createSpec({ projectName: "fixture" }).agents).toHaveLength(3);
   });
 
   it("gives every pack specialists, skills, a prompt, and argv-only tasks with unique ids", () => {

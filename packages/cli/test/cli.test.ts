@@ -71,12 +71,44 @@ describe("CLI", () => {
     const report = JSON.parse(json.join(""));
     expect(report).toMatchObject({ schemaVersion: 1 });
     expect(typeof report.setup).toBe("string");
+    expect(["not-initialized", "needs-attention", "complete"]).toContain(report.setup);
     expect(report.catalog.skills).toBeGreaterThanOrEqual(23);
+    expect(report.catalog.agents).toBeGreaterThanOrEqual(19);
+    expect(report.catalog.prompts).toBeGreaterThanOrEqual(21);
+    expect(report.catalog.hooks).toBe(4);
+    expect(report.catalog.templates).toBe(10);
+    expect(report.catalog.packs).toBe(15);
+    expect(Array.isArray(report.documents)).toBe(true);
+    expect(Array.isArray(report.integrations)).toBe(true);
+    expect(Array.isArray(report.packs)).toBe(true);
+    expect(report.next).toMatchObject({ message: expect.any(String) });
     expect(typeof report.guidance).toBe("string");
+    expect(report.guidance).toContain("Paste this snapshot");
+    expect(report.guidance).toContain("Sources of truth");
 
     const text: string[] = [];
     await createProgram({ cwd: root, templatesDirectory, output: new Output({ stdout: memoryStream(text), stderr: memoryStream([]) }) })
       .parseAsync(["node", "mstack", "snapshot"]);
-    expect(text.join("")).toContain("mstack snapshot");
+    const human = text.join("");
+    expect(human).toContain("mstack snapshot");
+    expect(human).toContain("Paste this snapshot");
+  });
+
+  it("snapshot reflects post ai-setup runtime configuration", async () => {
+    const root = await mkdtemp(path.join(os.tmpdir(), "mstack-snapshot-ai-"));
+    temporary.push(root);
+    const templatesDirectory = await makeTemplates(root);
+    const quiet = new Output({ stdout: memoryStream([]), stderr: memoryStream([]) });
+    await createProgram({ cwd: root, templatesDirectory, output: quiet })
+      .parseAsync(["node", "mstack", "init", ".", "--yes", "--no-git", "--no-templates"]);
+    await createProgram({ cwd: root, templatesDirectory, output: quiet })
+      .parseAsync(["node", "mstack", "ai", "setup", "cursor", "--yes"]);
+
+    const json: string[] = [];
+    await createProgram({ cwd: root, templatesDirectory, output: new Output({ stdout: memoryStream(json), stderr: memoryStream([]) }) })
+      .parseAsync(["node", "mstack", "snapshot", "--json"]);
+    const report = JSON.parse(json.join(""));
+    expect(report.integrations).toContain("cursor");
+    expect(report.guidance).toMatch(/configured runtimes|cursor/i);
   });
 });

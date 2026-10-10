@@ -54,7 +54,10 @@ describe("runtime catalog", () => {
     const agents = buildCatalog("agents");
     expect(agents.items.every((item) => item.kind === "agents")).toBe(true);
     expect(agents.items.some((item) => item.id === "product-manager")).toBe(true);
-    expect(agents.items.some((item) => item.id === "web-engineer")).toBe(true);
+    expect(agents.items.some((item) => item.id === "frontend-engineer")).toBe(true);
+    expect(agents.items.some((item) => item.id === "web-engineer" && item.aliasOf === "frontend-engineer")).toBe(true);
+    expect(complete.aliases.some((entry) => entry.alias === "design-api" && entry.canonicalId === "api-contract-design")).toBe(true);
+    expect(complete.aliases.some((entry) => entry.alias === "plan-mvp")).toBe(false);
   });
 
   it("filters the catalog by query without changing source counts", async () => {

@@ -351,3 +351,18 @@ test("runtime can omit optional automation assets without weakening content", ()
   assert.equal(runtime.skills?.length, 23);
   assert.equal(runtime.prompts?.length, 21);
 });
+
+test("portable-only setups never write privileged hook JSON", () => {
+  const runtime = createBuildLikeThisRuntime({ projectName: "Portable Only" });
+  const portableIds = ["windsurf", "warp", "amp", "zed", "cline", "kiro"] as const;
+  const plan = createIntegrationPlan(createDefaultRegistry(), runtime, [...portableIds]);
+  assert.ok(plan.artifacts.every((artifact) => !artifact.path.endsWith("hooks.json")));
+  assert.ok(plan.artifacts.every((artifact) => !artifact.path.startsWith(".claude/")));
+  assert.ok(plan.artifacts.every((artifact) => artifact.path !== ".mcp.json"));
+  for (const id of portableIds) {
+    assert.ok(plan.diagnostics.some((diagnostic) => diagnostic.environment === id && diagnostic.feature === "hooks"));
+  }
+  assert.ok(plan.artifacts.some((artifact) => artifact.path === ".mstack/runtime/hooks/risk-review.mjs"));
+  assert.equal(engineeringHooks.length, 4);
+  assert.ok(engineeringHooks.every((hook) => typeof hook.command === "string" && hook.command.length > 0));
+});

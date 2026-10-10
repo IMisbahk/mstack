@@ -140,7 +140,7 @@ Ten runtime templates keep engineering decisions durable:
 | Discovery | Sourced idea, user, alternative, and needs evidence |
 | Experiment | Hypothesis, baseline, threshold, result, and next decision |
 
-`mstack init` installs project-owned product and architecture documents plus feature and ADR templates. `mstack ai setup` installs the selected environments' runtime library, including reference scaffolds under `.mstack/templates/`.
+`mstack init` installs project-owned product and architecture documents plus feature and ADR templates from `templates/`. `mstack ai setup` installs the selected environments' runtime library, including reference scaffolds under `.mstack/templates/` sourced from `templates/runtime/` (see [ADR-0005](../../docs/decisions/0005-catalog-keep-merge-remove.md)). Catalog queries also resolve discovery aliases for renamed or merged resource IDs.
 
 ### Catalog and validation
 

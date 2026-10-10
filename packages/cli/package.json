@@ -22,15 +22,15 @@
   },
   "scripts": {
     "sync-assets": "node scripts/sync-assets.mjs",
-    "prebuild": "npm run sync-assets",
+    "prebuild": "pnpm run sync-assets",
     "build": "tsup",
     "typecheck": "tsc --noEmit",
     "dev": "tsx src/cli.ts",
     "test": "vitest run",
     "test:watch": "vitest",
     "docs:generate": "node scripts/generate-command-reference.mjs",
-    "prepublishOnly": "npm run typecheck && npm test && npm run build",
-    "release:check": "npm run prepublishOnly && npm pack --dry-run"
+    "prepublishOnly": "pnpm run typecheck && pnpm test && pnpm run build",
+    "release:check": "pnpm run prepublishOnly && pnpm pack --dry-run"
   },
   "keywords": [
     "ai",

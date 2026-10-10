@@ -13,6 +13,16 @@ All notable changes to mstack are documented here. This project follows [Semanti
 - Add `mstack catalog --query` and `mstack task list --pack/--risk` discovery filters.
 - Enforce task file preconditions and report missing executables as step failures.
 - Add mobile, data-platform, CLI, and firmware worked examples.
+- Add Windsurf, Warp, Amp, and Zed adapters (portable Markdown / persona-skill profiles).
+- Add `mstack snapshot` for paste-ready session guidance and catalog totals.
+- Add the `computer-use` pack plus core `computer-use-safety`, `browser-verification`,
+  and `mcp-governance` skills with `operate-computer` / `verify-journey` prompts.
+- Add catalog discovery aliases so removed or dual-named IDs still resolve
+  ([ADR-0005](docs/decisions/0005-catalog-keep-merge-remove.md)).
+- Add `templates/runtime/` as the source of truth for `.mstack/templates/`, synced into
+  `packages/ai-integrations/src/runtime/templates.ts`.
+- Add tests for snapshot fields, Windsurf/Warp/Amp/Zed portable rendering, and
+  portable-only setups that never write privileged hook JSON.
 
 ### Changed
 
@@ -20,6 +30,27 @@ All notable changes to mstack are documented here. This project follows [Semanti
   overwritten by a colliding pack identifier.
 - Include pack specialists, skills, and prompts in `mstack catalog`.
 - Show selected packs in `mstack status`.
+- Thin `design-api` and `production-readiness` prompts to invoke their canonical
+  skills (`api-contract-design`, `release-readiness`) instead of duplicating method prose.
+- Clarify `plan-mvp` vs `feature-planning` (not aliases of each other).
+- Merge repository-intelligence specialists to explorer / explainer / advisor;
+  remove pack specialists and skills that shadowed core agents
+  (`web-engineer`, `security-engineer`, `api-boundary-engineer`, QA strategists, and
+  related thin skills).
+- Cut low-value task recipes (version pings, duplicate test runners, trivial
+  computer-use probes).
+- Standardize workspace scripts on pnpm; keep npm only for registry publish and
+  foreign-repo pack recipes.
+- Widen CLI CI path filters to every generated runtime directory (including
+  `.opencode`, `.windsurf`, `.warp`, `.amp`, `.zed`, and other portable roots).
+- Rewrite the root README as failure-mode → fix with quick-start and per-tool
+  install lines; move maintainer release steps to `CONTRIBUTING.md`.
+
+### Fixed
+
+- Stop treating init templates under `templates/` and runtime scaffolds under
+  `.mstack/templates/` as the same files drifting apart; document and sync each
+  pipeline separately.
 
 ## [0.6.0] - 2026-07-25
 

@@ -38,12 +38,13 @@ export const builtInPacks: readonly CapabilityPack[] = [
     description: "Evidence-backed repository exploration, explanation, and improvement planning.",
     requiredToolchains: ["git"],
     agents: [
-      createSpecialist("repository-explorer", "Maps entry points, modules, build tooling, and risk areas.", "Create repository maps with citations to observable files."),
+      createSpecialist(
+        "repository-explorer",
+        "Maps entry points, modules, build tooling, dependencies, history hotspots, and risk areas.",
+        "Create repository maps with citations to observable files, configs, dependency manifests, and git history. Do not rewrite history.",
+      ),
       createSpecialist("code-explainer", "Traces a selected path, symbol, flow, or subsystem.", "Explain execution paths and explicitly label inference."),
       createSpecialist("improvement-advisor", "Produces prioritized and scoped improvement plans.", "Recommend changes but never silently modify code."),
-      createSpecialist("dependency-analyst", "Audits dependency purpose, freshness, and risk.", "Report evidence and compatibility constraints."),
-      createSpecialist("build-system-diagnostician", "Explains build, test, and CI configuration.", "Diagnose from configuration and reproducible commands."),
-      createSpecialist("repository-historian", "Summarizes recent change patterns and ownership hotspots.", "Use git history as evidence; do not rewrite history."),
     ],
     skills: [
       createPackSkill("repository-exploration", "Map a repository from observable files.", "Produce a cited map of entry points, modules, and generated vs owned files."),
@@ -68,21 +69,19 @@ export const builtInPacks: readonly CapabilityPack[] = [
     description: "Web application implementation, client-state, and accessibility specialists.",
     requiredToolchains: ["node"],
     agents: [
-      createSpecialist("web-engineer", "Builds accessible web journeys against explicit contracts.", "Keep client state and server contracts distinct."),
-      createSpecialist("accessibility-specialist", "Reviews keyboard, semantics, contrast, and reduced-motion behavior.", "Do not treat visual polish as accessibility evidence."),
+      createSpecialist("accessibility-specialist", "Reviews keyboard, semantics, contrast, and reduced-motion behavior.", "Do not treat visual polish as accessibility evidence. Prefer core frontend-engineer for implementation ownership."),
       createSpecialist("client-platform-analyst", "Explains bundler, routing, and hydration constraints.", "Diagnose from configuration and reproducible commands."),
     ],
     skills: [
-      createPackSkill("web-delivery", "Deliver an accessible web slice against a contract.", "Implement loading, empty, validation, unauthorized, and failure states."),
       createPackSkill("accessibility-verification", "Verify keyboard and semantic access.", "Check names, roles, focus, and contrast against the product's accessibility target."),
-      createPackSkill("client-state-separation", "Keep server, form, and presentation state distinct.", "Do not duplicate server authorization in the client as the source of truth."),
+      createPackSkill("client-state-separation", "Keep server, form, and presentation state distinct.", "Do not duplicate server authorization in the client as the source of truth. For delivery ownership use core frontend-delivery."),
     ],
     prompts: [
       createPackPrompt(
         "review-web-journey",
         "Review a web user journey for contract and accessibility gaps.",
         "[journey or route]",
-        "Inspect the selected journey against the backend contract. Report missing UI states, accessibility gaps, and unauthorized data exposure. Do not rewrite unrelated styling.",
+        "Inspect the selected journey against the backend contract. Prefer core frontend-engineer and frontend-delivery for implementation. Report missing UI states, accessibility gaps, and unauthorized data exposure. Do not rewrite unrelated styling.",
       ),
     ],
     tasks: [
@@ -254,7 +253,6 @@ export const builtInPacks: readonly CapabilityPack[] = [
       ),
     ],
     tasks: [
-      recipe({ id: "graphics.godot-version", description: "Show the Godot CLI version.", risk: "read-only", argv: ["godot", "--version"], preconditions: ["project.godot"] }),
       recipe({ id: "graphics.cargo-clippy", description: "Lint a Rust graphics crate with Clippy.", risk: "working-tree", argv: ["cargo", "clippy", "--locked", "--", "-D", "warnings"], preconditions: ["Cargo.toml"] }),
     ],
   }),
@@ -264,8 +262,7 @@ export const builtInPacks: readonly CapabilityPack[] = [
     description: "Infrastructure reliability and security review guidance.",
     requiredToolchains: ["terraform", "docker"],
     agents: [
-      createSpecialist("security-engineer", "Owns threat analysis and infrastructure safety.", "Use least privilege and explicit trust boundaries."),
-      createSpecialist("infrastructure-operator", "Reviews IaC, images, and runtime topology.", "Do not apply infrastructure changes; report the plan and blast radius."),
+      createSpecialist("infrastructure-operator", "Reviews IaC, images, and runtime topology.", "Do not apply infrastructure changes; report the plan and blast radius. Prefer core security-reviewer for product trust-boundary threat modeling."),
     ],
     skills: [
       createPackSkill("infrastructure-threat-review", "Threat-model infrastructure and delivery paths.", "Stay inside the product's trust boundaries. Do not invent compliance regimes."),
@@ -311,7 +308,6 @@ export const builtInPacks: readonly CapabilityPack[] = [
     tasks: [
       recipe({ id: "devtools.pkg-bin", description: "Show package.bin from package.json.", risk: "read-only", argv: ["npm", "pkg", "get", "bin"], preconditions: ["package.json"] }),
       recipe({ id: "devtools.node-test", description: "Run Node's built-in test runner.", risk: "read-only", argv: ["node", "--test"] }),
-      recipe({ id: "devtools.help", description: "Print this CLI's help.", risk: "read-only", argv: ["node", "--help"] }),
     ],
   }),
   createCapabilityPack({
@@ -320,12 +316,10 @@ export const builtInPacks: readonly CapabilityPack[] = [
     description: "Server contracts, authorization, and persistence-boundary guidance.",
     requiredToolchains: ["node"],
     agents: [
-      createSpecialist("api-boundary-engineer", "Owns HTTP and event contracts without leaking persistence models.", "Define authentication, authorization, idempotency, and errors before clients integrate."),
-      createSpecialist("persistence-contract-analyst", "Reviews schema ownership, constraints, and expand-and-contract changes.", "Never edit an applied production migration to rewrite history."),
+      createSpecialist("persistence-contract-analyst", "Reviews schema ownership, constraints, and expand-and-contract changes.", "Never edit an applied production migration to rewrite history. Prefer core backend-engineer and api-contract-design for HTTP/event contracts."),
     ],
     skills: [
-      createPackSkill("api-boundary-design", "Design stable request, response, and error schemas.", "Keep Prisma and vendor types behind the owning module."),
-      createPackSkill("authz-operation-review", "Review resource-level authorization per operation.", "Authentication is not authorization. Deny by default."),
+      createPackSkill("authz-operation-review", "Review resource-level authorization per operation.", "Authentication is not authorization. Deny by default. Prefer core api-contract-design for full contract shape."),
       createPackSkill("schema-expand-contract", "Plan additive schema changes.", "Prefer expand-and-contract over destructive cutovers."),
     ],
     prompts: [
@@ -333,13 +327,12 @@ export const builtInPacks: readonly CapabilityPack[] = [
         "review-api-boundary",
         "Review an API operation for contract, auth, and compatibility risk.",
         "[operation or route]",
-        "Check request/response schemas, authorization, idempotency, and error mapping. Do not expose database models.",
+        "Check request/response schemas, authorization, idempotency, and error mapping against core api-contract-design. Do not expose database models.",
       ),
     ],
     tasks: [
       recipe({ id: "api.prisma-validate", description: "Validate a Prisma schema.", risk: "read-only", argv: ["npx", "--no-install", "prisma", "validate"], preconditions: ["package.json", "prisma/schema.prisma"] }),
       recipe({ id: "api.contract-files", description: "List tracked API contract files.", risk: "read-only", argv: ["git", "ls-files", "--", "openapi.json", "openapi.yaml", "prisma/schema.prisma"] }),
-      recipe({ id: "api.prisma-version", description: "Show the local Prisma CLI version.", risk: "read-only", argv: ["npx", "--no-install", "prisma", "-v"], preconditions: ["package.json"] }),
     ],
   }),
   createCapabilityPack({
@@ -347,11 +340,10 @@ export const builtInPacks: readonly CapabilityPack[] = [
     displayName: "QA and testing",
     description: "Independent verification, coverage, and regression guidance.",
     agents: [
-      createSpecialist("verification-strategist", "Owns risk-based test selection and acceptance evidence.", "Do not duplicate the implementer's happy-path tests as the only evidence."),
-      createSpecialist("regression-analyst", "Reviews flaky tests, missing failure paths, and coverage gaps.", "A skipped failure path is a product risk, not a cleanup item."),
+      createSpecialist("flaky-test-analyst", "Reviews flaky tests, missing failure paths, and coverage gaps.", "Prefer core test-engineer for overall verification strategy. A skipped failure path is a product risk, not a cleanup item."),
     ],
     skills: [
-      createPackSkill("verification-planning", "Plan verification from user risk, not folder structure.", "Cover success, validation, denial, failure, and recovery at the level that proves behavior."),
+      createPackSkill("verification-planning", "Plan verification from user risk, not folder structure.", "Cover success, validation, denial, failure, and recovery at the level that proves behavior. Align with core test-engineer ownership."),
       createPackSkill("flaky-test-triage", "Triage flaky tests without deleting signal.", "Do not weaken or delete a meaningful test merely to make a change pass."),
     ],
     prompts: [
@@ -359,14 +351,11 @@ export const builtInPacks: readonly CapabilityPack[] = [
         "plan-verification",
         "Plan independent verification for a change.",
         "[change or feature]",
-        "List the important success, denial, failure, and recovery paths. Name the smallest tests that prove them. Do not implement the feature in this pass.",
+        "List the important success, denial, failure, and recovery paths. Name the smallest tests that prove them. Prefer core test-engineer as lead. Do not implement the feature in this pass.",
       ),
     ],
     tasks: [
-      recipe({ id: "qa.node-test", description: "Run Node's built-in test runner recursively.", risk: "read-only", argv: ["node", "--test"] }),
-      recipe({ id: "qa.pytest", description: "Run pytest quietly.", risk: "working-tree", argv: ["python", "-m", "pytest", "-q"] }),
       recipe({ id: "qa.coverage", description: "Run the npm test script with coverage arguments.", risk: "working-tree", argv: ["npm", "test", "--", "--coverage"], preconditions: ["package.json"] }),
-      recipe({ id: "qa.playwright-list", description: "List Playwright tests without running them.", risk: "read-only", argv: ["npx", "--no-install", "playwright", "test", "--list"], preconditions: ["package.json"] }),
     ],
   }),
   createCapabilityPack({
@@ -391,7 +380,6 @@ export const builtInPacks: readonly CapabilityPack[] = [
       ),
     ],
     tasks: [
-      recipe({ id: "obs.compose-config", description: "Validate Compose configuration used for local telemetry stacks.", risk: "read-only", argv: ["docker", "compose", "config"] }),
       recipe({ id: "obs.compose-ps", description: "Show Compose service status.", risk: "read-only", argv: ["docker", "compose", "ps"] }),
       recipe({ id: "obs.docker-ps", description: "List running containers.", risk: "read-only", argv: ["docker", "ps"] }),
     ],
@@ -431,24 +419,22 @@ export const builtInPacks: readonly CapabilityPack[] = [
       createSpecialist("automation-safety-reviewer", "Reviews automation plans for authorization and recovery gaps.", "Require confirmation points for consequential actions and hand control back instead of guessing."),
     ],
     skills: [
-      createPackSkill("computer-use-grounding", "Ground one UI action at a time from fresh screenshots.", "Re-ground after every state change and verify the success signal before continuing."),
-      createPackSkill("browser-journey-evidence", "Capture screenshots, console, and traces for web journeys.", "Record seeded state, environment, and exact commands so any engineer can reproduce the run."),
-      createPackSkill("automation-fallback-planning", "Define stop conditions and human handoff for automation.", "Name what the automation must not touch and where a person resumes."),
+      createPackSkill(
+        "automation-grounding-checklist",
+        "Apply core computer-use-safety and browser-verification to a concrete GUI plan.",
+        "Load computer-use-safety and browser-verification as the method sources. Re-ground after every state change, prefer APIs/CLIs, and define stop conditions plus human handoff.",
+      ),
     ],
     prompts: [
       createPackPrompt(
         "review-automation-plan",
         "Review a UI automation plan for authorization, grounding, and recovery.",
         "[application and goal]",
-        "Check authorization scope, API/CLI alternatives, per-step grounding evidence, confirmation points, stop conditions, and handoff behavior. Do not execute the plan.",
+        "Check authorization scope, API/CLI alternatives, per-step grounding evidence, confirmation points, stop conditions, and handoff behavior against computer-use-safety. Do not execute the plan.",
       ),
     ],
     tasks: [
-      recipe({ id: "auto.node-version", description: "Show the Node.js version available to automation.", risk: "read-only", argv: ["node", "--version"] }),
-      recipe({ id: "auto.python-version", description: "Show the Python version available to automation.", risk: "read-only", argv: ["python", "--version"] }),
-      recipe({ id: "auto.workspace-tree", description: "List tracked files for agent context.", risk: "read-only", argv: ["git", "ls-files"] }),
-      recipe({ id: "auto.docs-inventory", description: "List source-of-truth documents for agent context.", risk: "read-only", argv: ["git", "ls-files", "--", "docs", "README.md", "AGENTS.md", "CLAUDE.md"] }),
-      recipe({ id: "auto.diff-stat", description: "Summarize working-tree changes for review.", risk: "read-only", argv: ["git", "diff", "--stat"] }),
+      recipe({ id: "auto.diff-stat", description: "Summarize working-tree changes before an automation review.", risk: "read-only", argv: ["git", "diff", "--stat"] }),
     ],
   }),
 ];
