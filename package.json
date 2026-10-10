@@ -9,10 +9,10 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "npm run build --workspaces --if-present",
-    "typecheck": "npm run typecheck --workspaces --if-present",
-    "test": "npm run test --workspaces --if-present",
-    "release:check": "npm run release:check --workspace @imisbahk/mstack"
+    "build": "pnpm -r --if-present run build",
+    "typecheck": "pnpm -r --if-present run typecheck",
+    "test": "pnpm -r --if-present run test",
+    "release:check": "pnpm --filter @imisbahk/mstack run release:check"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",

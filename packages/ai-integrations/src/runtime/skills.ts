@@ -67,9 +67,9 @@ function defineSkill(source: SkillSource): SkillDefinition {
 export const engineeringSkills: readonly SkillDefinition[] = [
   defineSkill({
     id: "feature-planning",
-    description: "Turn a validated user need into implementation-ready scope, contracts, risks, and delivery slices.",
+    description: "Turn an agreed capability into implementation-ready scope, contracts, risks, and delivery slices.",
     purpose:
-      "Create a plan that connects a user outcome to observable behavior and the smallest safe sequence of engineering changes.",
+      "Create a plan that connects a validated, agreed capability to observable behavior and the smallest safe sequence of engineering changes. This follows feature-design (or an equivalent product decision). It is not plan-mvp: plan-mvp shapes a hypothesis into an MVP experiment, while feature-planning slices an agreed capability for implementation.",
     inputs: [
       "Target user, problem evidence or labeled hypothesis, desired outcome, and non-goals.",
       "Current behavior and relevant product, architecture, contract, and operational context.",
