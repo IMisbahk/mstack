@@ -1,0 +1,20 @@
+docs/cli/command-reference.md
+  h_b8c068798e4e71 3
+package.json
+  h_b8c068798e4e71 3
+packages/ai-integrations/package.json
+  h_b8c068798e4e71 3
+packages/cli/package.json
+  h_b8c068798e4e71 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "e6b5d55e6764e0d949099021e2c3bcacc993ccfc",
+  "prompts": {},
+  "humans": {
+    "h_b8c068798e4e71": {
+      "author": "Misbah Khursheed <m.misbahkhursheed@gmail.com>"
+    }
+  }
+}
