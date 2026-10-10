@@ -21,7 +21,7 @@ export const buildLikeThisPlugin: MstackPlugin = {
       id: "build-like-this",
       displayName: "Build Like This engineering pack",
       description: "Project guidance, specialist agents, reusable prompts, skills, hooks, and templates",
-      createSpec: ({ projectName }) => createBuildLikeThisRuntime({
+      createSpec: ({ projectName, profile, arena }) => createBuildLikeThisRuntime({
         projectName,
         projectDescription: "This host repository is the project being built. Build Like This is the engineering method, and mstack is the installer that adds the method to the project. They describe how to work, not what to build, unless project-owned documentation explicitly makes them the product.",
         projectInstructions: "Treat the project's own docs/ directory, code, and tests as its sources of truth. Read docs/product.md and docs/architecture.md before material implementation work, preserve user-owned guidance, and update affected sources of truth with behavioral changes. Use .mstack/templates/ only as reference scaffolds: adapt them to this project, and never treat template text as a project requirement or evidence.",
@@ -36,6 +36,8 @@ export const buildLikeThisPlugin: MstackPlugin = {
         },
         includeHooks: true,
         includeTemplates: true,
+        profile: profile ?? "full",
+        arena: arena ?? false,
       }),
     },
   ],

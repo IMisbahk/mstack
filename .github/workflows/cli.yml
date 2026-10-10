@@ -34,3 +34,7 @@ jobs:
         run: |
           pnpm --filter @imisbahk/mstack docs:generate
           git diff --exit-code -- docs/cli/command-reference.md
+      - name: Verify runtime distribution artifacts
+        run: |
+          pnpm verify:runtime-artifacts
+          pnpm --filter @imisbahk/mstack validate:cursor-plugin

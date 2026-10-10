@@ -29,6 +29,10 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "docs:generate": "node scripts/generate-command-reference.mjs",
+    "generate:runtime-artifacts": "node scripts/generate-runtime-artifacts.mjs",
+    "verify:runtime-artifacts": "node scripts/verify-runtime-artifacts.mjs",
+    "validate:cursor-plugin": "node scripts/validate-cursor-plugin.mjs",
+    "install:cursor-plugin:local": "node scripts/install-cursor-plugin-local.mjs",
     "prepublishOnly": "pnpm run typecheck && pnpm test && pnpm run build",
     "release:check": "pnpm run prepublishOnly && pnpm pack --dry-run"
   },

@@ -12,6 +12,8 @@
     "build": "pnpm -r --if-present run build",
     "typecheck": "pnpm -r --if-present run typecheck",
     "test": "pnpm -r --if-present run test",
+    "generate:runtime-artifacts": "pnpm --filter @imisbahk/mstack run generate:runtime-artifacts",
+    "verify:runtime-artifacts": "pnpm --filter @imisbahk/mstack run verify:runtime-artifacts",
     "release:check": "pnpm --filter @imisbahk/mstack run release:check"
   },
   "devDependencies": {

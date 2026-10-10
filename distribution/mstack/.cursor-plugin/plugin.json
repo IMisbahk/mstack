@@ -1,0 +1,32 @@
+{
+  "name": "mstack",
+  "displayName": "mstack",
+  "version": "0.6.0",
+  "description": "Build Like This for Cursor: /mstack routes outcome-driven engineering across skills, prompts, specialists, and hooks. Prefer one install channel.",
+  "author": {
+    "name": "Misbah Khursheed"
+  },
+  "homepage": "https://github.com/IMisbahk/mstack/tree/main/distribution/mstack",
+  "repository": "https://github.com/IMisbahk/mstack",
+  "license": "MIT",
+  "keywords": [
+    "mstack",
+    "build-like-this",
+    "workflow",
+    "skills",
+    "agents",
+    "engineering"
+  ],
+  "category": "developer-tools",
+  "tags": [
+    "workflow",
+    "planning",
+    "review",
+    "engineering"
+  ],
+  "skills": "./skills/",
+  "agents": "./agents/",
+  "commands": "./commands/",
+  "rules": "./rules/",
+  "hooks": "./hooks/hooks.json"
+}

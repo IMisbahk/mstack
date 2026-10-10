@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "code": "claude-opus-4-6",
+  "judgment": "claude-sonnet-4-6",
+  "reviewPanel": [
+    "claude-opus-4-6",
+    "claude-sonnet-4-6",
+    "claude-haiku-4-5"
+  ],
+  "arena": true,
+  "arenaModels": [
+    "claude-opus-4-6",
+    "claude-sonnet-4-6",
+    "claude-haiku-4-5"
+  ],
+  "updatedAt": "1970-01-01T00:00:00.000Z",
+  "runtimes": [
+    "claude-code",
+    "cursor",
+    "codex"
+  ]
+}

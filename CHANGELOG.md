@@ -6,6 +6,16 @@ All notable changes to mstack are documented here. This project follows [Semanti
 
 ### Added
 
+- Generate a first-class Cursor plugin at `distribution/mstack/` (pstack-shaped)
+  with `/mstack` router, `/setup-mstack`, commands, agents, rules, and hooks.
+- Generate Claude/Codex/skills.sh marketplace layouts from the same runtime registry.
+- Add `lite`/`full` install profiles, user- vs model-invoked resource tags, and
+  context-cost reporting in `mstack doctor` / `mstack status`.
+- Write model-role bindings (code / judgment / reviewPanel) and optional
+  `multi-model-arena` during `mstack ai setup`.
+- Detect overlapping install channels (CLI vs skills.sh/native) and refuse dual installs.
+- Add `generate:runtime-artifacts`, `validate:cursor-plugin`, and
+  `install:cursor-plugin:local` scripts; CI fails on distribution drift.
 - Expand curated packs with additional specialists, skills, invokable prompts, and
   argv-only task recipes for every starter domain.
 - Add backend/API, QA/testing, observability, and documentation packs.

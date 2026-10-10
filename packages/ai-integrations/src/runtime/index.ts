@@ -1,12 +1,16 @@
 import type {
   ContextSource,
+  InstallProfile,
   IntegrationSpec,
+  PromptDefinition,
   RepositoryOnboarding,
   RuntimeAsset,
   SkillDefinition,
 } from "../types.js";
 import { engineeringAgents } from "./agents.js";
+import { filterSpecForProfile, decoratedAgents, decoratedPrompts, decoratedSkills } from "./catalog.js";
 import { engineeringHooks, hookAssets } from "./hooks.js";
+import { createArenaPrompt } from "./model-roles.js";
 import { playbookSkills } from "./playbooks.js";
 import { principleSkills } from "./principles.js";
 import { engineeringPrompts } from "./prompts.js";
@@ -44,6 +48,10 @@ export interface BuildLikeThisRuntimeOptions {
   readonly onboarding?: RepositoryOnboarding;
   readonly includeHooks?: boolean;
   readonly includeTemplates?: boolean;
+  /** Install density. Defaults to full. */
+  readonly profile?: InstallProfile;
+  /** When true, include the optional multi-model arena prompt. */
+  readonly arena?: boolean;
 }
 
 export const buildLikeThisMethod = `## Build Like This method
@@ -105,6 +113,7 @@ export function createBuildLikeThisRuntime(options: BuildLikeThisRuntimeOptions)
   if (projectName.length === 0) throw new Error("projectName is required");
   const includeHooks = options.includeHooks ?? true;
   const includeTemplates = options.includeTemplates ?? true;
+  const profile = options.profile ?? "full";
   const assets: RuntimeAsset[] = [
     runtimeStateIgnore,
     ...(includeHooks ? hookAssets : []),
@@ -113,8 +122,12 @@ export function createBuildLikeThisRuntime(options: BuildLikeThisRuntimeOptions)
   const instructions = [projectIdentity(projectName), buildLikeThisMethod, options.projectInstructions?.trim()]
     .filter((value): value is string => Boolean(value))
     .join("\n\n");
+  const prompts: PromptDefinition[] = [
+    ...decoratedPrompts(),
+    ...(options.arena ? [createArenaPrompt()] : []),
+  ];
 
-  return {
+  const spec: IntegrationSpec = {
     schemaVersion: 1,
     id: "build-like-this",
     version: "1.1.0",
@@ -125,14 +138,15 @@ export function createBuildLikeThisRuntime(options: BuildLikeThisRuntimeOptions)
         : { description: options.projectDescription.trim() }),
     },
     instructions: { content: instructions },
-    agents: engineeringAgents,
-    skills: engineeringSkills,
-    prompts: engineeringPrompts,
+    agents: decoratedAgents(),
+    skills: decoratedSkills(),
+    prompts,
     hooks: includeHooks ? engineeringHooks : [],
     context: options.context ?? [],
     ...(options.onboarding === undefined ? {} : { onboarding: options.onboarding }),
     assets,
   };
+  return filterSpecForProfile(spec, profile);
 }
 
 export { engineeringAgents } from "./agents.js";
@@ -143,3 +157,49 @@ export { engineeringPrompts } from "./prompts.js";
 export { deliverySkills } from "./skills.js";
 export { runtimeTemplates } from "./templates.js";
 export { workflowSkills } from "./workflow.js";
+export {
+  buildRuntimeResourceCounts,
+  countForProfile,
+  decoratedAgents,
+  decoratedPrompts,
+  decoratedSkills,
+  filterSpecForProfile,
+  type RuntimeResourceCounts,
+} from "./catalog.js";
+export {
+  applyAgentPolicy,
+  applyPromptPolicy,
+  applySkillPolicy,
+  matchesInstallProfile,
+  skillPolicy,
+  promptPolicy,
+  agentPolicy,
+} from "./resource-policy.js";
+export { buildTokenBudget, charsPerTokenEstimate, type TokenBudgetReport } from "./token-budget.js";
+export {
+  createArenaPrompt,
+  defaultModelRoleMapping,
+  modelRoleConfigPath,
+  modelRoles,
+  modelsForRuntimes,
+  renderModelRoleGuidance,
+  runtimeModelCatalogs,
+  type ModelRoleConfigFile,
+  type ModelRoleMapping,
+  type RuntimeModelCatalog,
+} from "./model-roles.js";
+export {
+  createInstallChannelRecord,
+  installChannelPath,
+  mstackGeneratedMarker,
+  type DuplicateSkillFinding,
+  type InstallChannel,
+  type InstallChannelRecord,
+} from "./install-channel.js";
+export {
+  buildCursorPluginBundle,
+  renderMstackRouterSkill,
+  renderSetupMstackSkill,
+  type CursorPluginBundle,
+  type CursorPluginFile,
+} from "./cursor-plugin.js";

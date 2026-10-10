@@ -22,6 +22,8 @@ Developers need one coherent engineering workflow across the AI coding tools the
   Code adapters.
 - Read-only inspection, deterministic planning, explicit approvals, recoverable application, reconciliation, and verification.
 - Manifest-backed ownership for safe upgrades and removal.
+- Generated native distribution manifests under `distribution/` (Claude, Cursor, Codex/Copilot marketplaces, skills.sh layout) from the same runtime registry, with `mstack ai setup` as the universal fallback.
+- Install profiles (`lite` / `full`), user- vs model-invoked resource tags, install-channel conflict detection, model-role bindings, optional multi-model arena, and context-cost reporting in `doctor` / `status`.
 
 ### Not included
 

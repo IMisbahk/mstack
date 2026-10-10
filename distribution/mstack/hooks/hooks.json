@@ -1,0 +1,30 @@
+{
+  "hooks": {
+    "sessionStart": [
+      {
+        "name": "repository-health",
+        "command": "node ./scripts/repository-health.mjs",
+        "timeout": 5
+      }
+    ],
+    "preToolUse": [
+      {
+        "name": "change-discipline",
+        "command": "node ./scripts/change-discipline.mjs",
+        "timeout": 2
+      },
+      {
+        "name": "risk-review",
+        "command": "node ./scripts/risk-review.mjs",
+        "timeout": 2
+      }
+    ],
+    "afterAgentResponse": [
+      {
+        "name": "feature-completeness",
+        "command": "node ./scripts/feature-completeness.mjs",
+        "timeout": 5
+      }
+    ]
+  }
+}

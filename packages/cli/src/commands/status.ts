@@ -1,9 +1,23 @@
 import type { Output } from "../core/output.js";
+import { inspectContextCost } from "../services/context-cost.js";
 import { inspectRepository } from "../services/health.js";
 
 export async function statusCommand(cwd: string, output: Output, json: boolean): Promise<void> {
   const report = await inspectRepository(cwd);
-  if (json) return output.json(report);
+  const contextCost = await inspectContextCost(cwd);
+  if (json) {
+    return output.json({
+      ...report,
+      contextCost: {
+        profile: contextCost.profile,
+        channel: contextCost.channel,
+        alwaysOnTokens: contextCost.tokenBudget.totals.alwaysOnTokens,
+        fullLibraryTokens: contextCost.tokenBudget.totals.fullLibraryTokens,
+        userInvoked: contextCost.tokenBudget.totals.userInvoked,
+        modelInvoked: contextCost.tokenBudget.totals.modelInvoked,
+      },
+    });
+  }
 
   output.title("mstack status");
   output.field("Setup", report.setup === "complete" ? "complete" : report.setup.replace("-", " "));
@@ -16,6 +30,8 @@ export async function statusCommand(cwd: string, output: Output, json: boolean):
   }
   output.field("AI runtimes", report.integrations.length > 0 ? report.integrations.join(", ") : "not configured");
   output.field("Packs", report.packs.length > 0 ? report.packs.join(", ") : "none selected");
+  output.field("Install profile", `${contextCost.profile}${contextCost.channel ? ` · ${contextCost.channel}` : ""}`);
+  output.field("Context cost", `~${contextCost.tokenBudget.totals.alwaysOnTokens} always-on · ~${contextCost.tokenBudget.totals.fullLibraryTokens} full-library tokens`);
   output.field("Manifest", report.manifest ?? "not found");
   const destination = report.next.path ? ` ${report.next.path}` : report.next.command ? ` ${output.command(report.next.command)}` : "";
   output.next(`${report.next.message}${destination}`);

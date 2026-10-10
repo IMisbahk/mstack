@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "generatedFrom": "build-like-this-runtime",
+  "adapters": 19,
+  "agents": 19,
+  "skills": 23,
+  "prompts": 21,
+  "hooks": 4,
+  "templates": 10,
+  "hookAssets": 4,
+  "profiles": {
+    "lite": {
+      "agents": 8,
+      "skills": 14,
+      "prompts": 10
+    },
+    "full": {
+      "agents": 19,
+      "skills": 23,
+      "prompts": 21
+    }
+  }
+}
