@@ -363,11 +363,16 @@ function extractRelativeMarkdownLinks(content) {
 
 function zipDirectory(sourceDirectory, zipPath) {
   rmSync(zipPath, { force: true });
-  const result = spawnSync("zip", ["-r", "-q", zipPath, "."], {
-    cwd: sourceDirectory,
-    stdio: "inherit",
-  });
-  if (result.status !== 0) {
+  // Fixed timestamps keep rebuilds bit-stable for git.
+  const touch = spawnSync(
+    "bash",
+    [
+      "-lc",
+      `find . -exec touch -t 202601010000 {} + && zip -r -q -X ${JSON.stringify(zipPath)} .`,
+    ],
+    { cwd: sourceDirectory, stdio: "inherit" },
+  );
+  if (touch.status !== 0) {
     throw new Error(`zip failed for ${zipPath}`);
   }
 }

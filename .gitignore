@@ -2,7 +2,9 @@
 .idea/
 .vscode/
 node_modules/
-/dist/
+dist/
+!marketplace/agensi/dist/
+!marketplace/agensi/dist/**
 coverage/
 *.tgz
 *.log
