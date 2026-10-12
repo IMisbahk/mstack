@@ -14,7 +14,9 @@
     "test": "pnpm -r --if-present run test",
     "generate:runtime-artifacts": "pnpm --filter @imisbahk/mstack run generate:runtime-artifacts",
     "verify:runtime-artifacts": "pnpm --filter @imisbahk/mstack run verify:runtime-artifacts",
-    "release:check": "pnpm --filter @imisbahk/mstack run release:check"
+    "release:check": "pnpm --filter @imisbahk/mstack run release:check",
+    "build:agensi-bundles": "node scripts/build-agensi-bundles.mjs",
+    "test:agensi-bundles": "node scripts/test-agensi-bundles.mjs"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",
