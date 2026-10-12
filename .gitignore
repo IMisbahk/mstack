@@ -3,6 +3,8 @@
 .vscode/
 node_modules/
 dist/
+!marketplace/agensi/dist/
+!marketplace/agensi/dist/**
 coverage/
 *.tgz
 *.log

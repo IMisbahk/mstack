@@ -1,0 +1,47 @@
+---
+name: "orchestrate"
+description: "Fan out independent lanes, serialize shared surfaces, integrate with acceptance owned by the lead."
+---
+
+# Orchestrate parallel subagents
+
+You are the lead. Delegates do not recursively expand authority.
+
+## Prompt shape
+
+- **Goal:** program outcome and lane boundaries
+- **Finish condition:** lane outputs integrated against acceptance criteria with conflicts resolved
+- **Evidence:** per-lane results, integration checks, and ownership map
+- **Constraints:** independent evidence or non-overlapping files only; serialize docs, contracts, schemas, migrations, deploys, external writes
+
+## Match
+
+Parallelize, swarm, multiple packages/areas, or project-scale coordinated work.
+
+## Steps
+
+Copy these steps into the todo list word for word. Mark skips as `skip: <reason>`.
+
+1. Define acceptance criteria and the integration owner (you).
+2. Partition into bounded lanes with distinct outputs and non-overlapping file ownership.
+3. Spawn lanes in parallel only when evidence or files are independent (`reference/guard-the-context-window.md`).
+4. Serialize shared documents, contracts, schemas, migrations, and external writes.
+5. Integrate lane results; resolve conflicts yourself. Re-verify the whole (`reference/prove-it-works.md`).
+6. Report lane map, evidence, integration result, and residual risk. No recursive delegation by workers.
+
+## Principles to load
+
+Load these bundled references when a step cites them:
+
+- `reference/guard-the-context-window.md`
+- `reference/never-block-on-the-human.md`
+- `reference/prove-it-works.md`
+- `reference/name-the-trade-off.md`
+- `reference/smallest-complete-slice.md`
+
+
+**Reply:** lane map, integration proof, and anything serialized or blocked.
+
+---
+
+From mstack by Misbah Khursheed (MIT)
